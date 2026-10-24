@@ -1,0 +1,1914 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Opción B, proveedor para dependencias: carpeta de proveedor, precios por partida y cotización formal en PDF.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Grupo Industrial JOME">
+<meta property="og:title" content="Grupo Industrial JOME, opción B">
+<meta property="og:description" content="Opción B, proveedor para dependencias: carpeta de proveedor, precios por partida y cotización formal en PDF.">
+<meta property="og:image" content="https://grupo-industrial-jome.github.io/og/opcion-b.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://grupo-industrial-jome.github.io/opcion-b/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F2C21A'/%3E%3Ctext x='32' y='47' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='42' text-anchor='middle' fill='%231C1D1F'%3EJ%3C/text%3E%3C/svg%3E">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Grupo Industrial JOME, opción B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* La página es el objeto: la carpeta de proveedor de JOME, pieza por pieza, en papel piedra y tinta azul de plano. */
+:root {
+  --field: #DFDEDB;        /* piedra: el suelo donde se apoya cada pieza */
+  --surface: #D3D2CE;      /* un tono abajo */
+  --paper: #F5F5F2;        /* papel de la carpeta */
+  --ink: #26251E;
+  --muted: #55534B;
+  --accent: #2456D6;       /* tinta azul de plano: un botón y una imagen a la vez */
+  --accent-ink: #FFFFFF;
+  --accent-press: #1D46B4;
+  --on-ink: #EDECE8;
+  --scrim: rgba(20, 20, 16, .55);
+  --font: "Bodoni Moda", "Bodoni 72", Didot, "Didot LT STD", Georgia, serif;
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --step-sub: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
+  --step-display: clamp(3.25rem, 5.6vw, 5.5rem);
+  --m: clamp(16px, 2.2vw, 28px);
+  --header-h: 64px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  color-scheme: light;
+  interpolate-size: allow-keywords;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--field); color: var(--ink); font-family: var(--font); font-optical-sizing: auto; font-size: var(--step-body); line-height: 1.5; letter-spacing: 0.005em; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+input, textarea, select { caret-color: var(--accent); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+img, video { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; letter-spacing: -0.02em; line-height: 0.95; text-wrap: balance; }
+h3 { font-size: var(--step-lead); line-height: 1.15; }
+p { margin: 0; }
+.wrap { padding-left: max(var(--m), env(safe-area-inset-left, 0px)); padding-right: max(var(--m), env(safe-area-inset-right, 0px)); }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: lining-nums tabular-nums; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.dia { display: inline-block; width: 10px; height: 10px; background: currentColor; transform: rotate(45deg); margin: 0 .7em .12em; vertical-align: middle; }
+
+/* Un solo botón: rectángulo plano. Azul para cotizar, tinta para lo demás. */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 48px; padding: 0 1.25rem; border: 0; border-radius: 0; background: var(--accent); color: var(--accent-ink); font-weight: 500; font-size: var(--step-small); letter-spacing: .01em; text-decoration: none; cursor: pointer; transition: transform 140ms var(--ease-out), background-color 180ms ease; }
+.btn:active { transform: scale(0.97); }
+.btn.ink { background: var(--ink); color: var(--paper); }
+.btn.quiet { background: var(--surface); color: var(--ink); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+@media (hover: hover) and (pointer: fine) { .btn:hover { background: var(--accent-press); } .btn.ink:hover { background: #3A3930; } .btn.quiet:hover { background: #C8C7C2; } }
+.tlink { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-thickness: .06em; text-underline-offset: .2em; font-weight: 500; }
+
+.draft { background: var(--ink); color: var(--on-ink); font-size: var(--step-small); }
+.draft .wrap { padding-block: .45rem; }
+
+/* Fila superior sobre el campo */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--field); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; height: var(--header-h); background: var(--field); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; }
+.mono { font-size: var(--step-lead); font-style: italic; text-decoration: none; letter-spacing: -0.02em; }
+nav.links { display: flex; gap: 2rem; font-size: var(--step-small); }
+nav.links a { text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { nav.links a:hover { text-decoration: underline; text-underline-offset: .25em; } }
+header.top .right { display: flex; justify-content: flex-end; align-items: center; gap: 1.4rem; font-size: var(--step-small); }
+@media (max-width: 860px) { nav.links { display: none; } header.top { grid-template-columns: auto 1fr; } #loginBtn { display: none; } }
+
+/* Portada: la tapa de la carpeta, cortada por el borde de la pantalla */
+.cover-sec { position: relative; padding-top: clamp(40px, 11vh, 120px); padding-bottom: clamp(96px, 12vw, 160px); }
+/* El suelo de la portada: una oficina de gobierno impresa en tinta azul */
+.cover-ground { position: absolute; left: 0; right: 0; top: 0; height: calc(100svh - var(--header-h) - 34px); min-height: 520px; background: var(--accent); overflow: clip; }
+/* La oficina que se amuebla, impresa en tinta azul (la misma animación del borrador C). El filtro y la mezcla van en el grupo,
+   así el fundido entre fotos y video no aclara la imagen. */
+.print { position: absolute; inset: 0; filter: grayscale(1) contrast(1.12) brightness(1.03); mix-blend-mode: screen; }
+.print .ly { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1600ms ease; }
+.print .ly.on { opacity: 1; }
+.gtag { position: absolute; left: max(var(--m), env(safe-area-inset-left, 0px)); bottom: 18px; z-index: 1; background: var(--paper); color: var(--ink); padding: 6px 12px; font-size: var(--step-small); font-style: italic; }
+.cover { z-index: 1; }
+.plate img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.card { background: var(--paper); position: relative; }
+.cover { width: min(720px, 50vw); margin: 0 auto; aspect-ratio: 5 / 7; padding: 56px; text-align: center; display: flex; flex-direction: column; align-items: center;
+  /* taste-skill-ignore: máscara de las cuatro esquinas recortadas de la tapa */
+  -webkit-mask: radial-gradient(circle 22px at 0 0, transparent 98%, #000) top left / 51% 51% no-repeat, radial-gradient(circle 22px at 100% 0, transparent 98%, #000) top right / 51% 51% no-repeat, radial-gradient(circle 22px at 0 100%, transparent 98%, #000) bottom left / 51% 51% no-repeat, radial-gradient(circle 22px at 100% 100%, transparent 98%, #000) bottom right / 51% 51% no-repeat; /* taste-skill-ignore */
+          mask: radial-gradient(circle 22px at 0 0, transparent 98%, #000) top left / 51% 51% no-repeat, radial-gradient(circle 22px at 100% 0, transparent 98%, #000) top right / 51% 51% no-repeat, radial-gradient(circle 22px at 0 100%, transparent 98%, #000) bottom left / 51% 51% no-repeat, radial-gradient(circle 22px at 100% 100%, transparent 98%, #000) bottom right / 51% 51% no-repeat; /* taste-skill-ignore */ }
+.cover h1 { font-size: var(--step-display); font-style: italic; line-height: 0.95; letter-spacing: -0.025em; width: 100%; margin-top: 8px; }
+.cover h1 .l { display: block; overflow: clip; padding-bottom: .1em; margin-bottom: -.1em; }
+.cover h1 .l > span { display: block; }
+.cover h1 .l1 > span { transform: translateX(-9%); }
+.cover h1 .l2 > span { transform: translateX(9%); }
+.cover .what { margin-top: 26px; font-size: clamp(1.125rem, 1rem + 0.3vw, 1.25rem); line-height: 1.45; max-width: 36ch; }
+.cover .details { margin-top: 22px; font-size: var(--step-small); line-height: 1.5; color: var(--ink); display: grid; justify-items: center; gap: 10px; }
+.cover .details .dia { margin: 0; }
+.plate { margin: 36px 0 0; width: 100%; position: relative; overflow: clip; }
+.blueprint { background: var(--accent); }
+.blueprint .print { position: relative; aspect-ratio: 2 / 1; filter: grayscale(1) contrast(1.08) brightness(1.04); }
+.blueprint .gtag { left: 10px; bottom: 10px; }
+.plate figcaption { font-size: var(--step-small); color: var(--muted); margin-top: 10px; font-style: italic; }
+.index { margin-top: 44px; display: grid; gap: 4px; font-size: var(--step-body); }
+.index a { text-decoration: none; padding: 4px 0; }
+@media (hover: hover) and (pointer: fine) { .index a:hover { color: var(--accent); } }
+.index .label { font-style: italic; color: var(--muted); font-size: var(--step-small); margin-bottom: 6px; }
+/* en tableta la tapa se ensancha para que el titular quepa en dos líneas */
+@media (min-width: 761px) and (max-width: 1100px) { .cover { width: min(660px, 72vw); } }
+@media (max-width: 760px) {
+  .cover-sec { padding-top: 56vw; }
+  .cover-ground .gtag { bottom: auto; top: 12px; }
+  .cover { width: calc(100% - 24px); padding: 40px 22px; aspect-ratio: auto; min-height: 120vw; }
+  .cover h1 { font-size: 12vw; }
+  .cover h1 .l1 > span, .cover h1 .l2 > span { transform: none; }
+  .cover .details { line-height: 1.7; }
+}
+
+/* Carta de la familia, con su talón para recortar */
+.letter-sec { position: relative; padding-block: clamp(72px, 9vw, 120px) clamp(120px, 14vw, 180px); }
+.sheet-wrap { width: min(640px, 100%); margin: 0 auto; position: relative; z-index: 2; }
+.sheet { background: var(--paper); padding: 60px; }
+.sheet .seal { width: 44px; height: 44px; border-radius: 50%; overflow: clip; }
+.sheet .seal img { width: 100%; height: 100%; object-fit: cover; }
+.sheet .body { margin-top: 28px; display: grid; gap: 1.1em; font-size: var(--step-body); line-height: 1.6; }
+.sheet .mark { background: #E3E8F7; box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .15em; }
+.sheet .sign { margin-top: 36px; font-style: italic; font-size: var(--step-lead); line-height: 1.2; }
+.sheet .role { font-size: var(--step-small); color: var(--muted); margin-top: 4px; }
+.stub { background: var(--paper); border-top: 5px dotted var(--field); min-height: 72px; padding: 14px 60px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap;
+  /* taste-skill-ignore: festón del borde inferior del talón */
+  -webkit-mask: radial-gradient(circle 8px at 50% 100%, transparent 98%, #000) bottom / 20px 100% repeat-x; /* taste-skill-ignore */
+          mask: radial-gradient(circle 8px at 50% 100%, transparent 98%, #000) bottom / 20px 100% repeat-x; /* taste-skill-ignore */
+  transform-origin: 0 0; transition: transform 400ms var(--ease-out); }
+.stub .mail { font-size: var(--step-lead); font-style: italic; }
+@media (hover: hover) and (pointer: fine) { .stub:hover { transform: rotate(-1.2deg) translateY(4px); } }
+.tipped { position: absolute; margin: 0; background: var(--paper); padding: 8px 8px 30px; width: clamp(200px, 19vw, 280px); z-index: 1; }
+.tipped img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.tipped figcaption { position: absolute; left: 10px; right: 10px; bottom: 6px; font-size: var(--step-small); font-style: italic; color: var(--muted); }
+.tipped.t1 { left: max(var(--m), calc(50% - 640px)); top: 22%; transform: rotate(-4deg); }
+.tipped.t2 { right: max(var(--m), calc(50% - 650px)); top: 48%; transform: rotate(3deg); }
+@media (max-width: 1180px) { .tipped.t1 { left: var(--m); } .tipped.t2 { right: var(--m); } .tipped { width: clamp(160px, 15vw, 220px); } }
+@media (max-width: 1000px) {
+  .letter-sec { padding-block: 72px; }
+  .tips { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0 auto 28px; width: min(640px, 100%); }
+  .tipped { position: relative; inset: auto !important; width: auto; }
+  .tipped.t1 { transform: rotate(-2deg); } .tipped.t2 { transform: rotate(2deg); }
+}
+@media (max-width: 640px) {
+  .letter-sec.wrap { padding-left: 0; padding-right: 0; }
+  .tips { padding: 0 max(16px, env(safe-area-inset-left, 0px)); }
+  .sheet { padding: 40px 24px; }
+  .stub { padding: 16px 24px 28px; flex-direction: column; align-items: stretch; }
+  .stub .btn { width: 100%; }
+}
+
+/* Catálogo: fotografía y su etiqueta, como pieza con su tarjeta de inventario */
+.gallery-sec { padding-block: clamp(96px, 12vw, 160px) clamp(72px, 9vw, 120px); }
+.sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem 2rem; flex-wrap: wrap; margin-bottom: 40px; }
+.sec-head h2 { font-size: var(--step-sub); }
+.sec-head p { max-width: 46ch; font-size: var(--step-body); }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 12px; }
+.tile { display: flex; flex-direction: column; border: 0; padding: 0; background: none; text-align: left; cursor: pointer; color: inherit; min-width: 0; }
+.tile .ph { display: block; aspect-ratio: 4 / 3; overflow: clip; background: var(--surface); }
+.tile .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
+.tile .tag { min-height: 92px; padding: 12px; display: grid; gap: 4px; font-size: var(--step-small); line-height: 1.3; font-variant-numeric: lining-nums tabular-nums; }
+.tile .tag .r1, .tile .tag .r2 { display: flex; justify-content: space-between; gap: 8px; }
+.tile .tag .r1 span { white-space: nowrap; }
+.tile .tag .r3 { font-style: italic; font-size: var(--step-body); line-height: 1.2; }
+.tile.p0 .tag { background: var(--ink); color: var(--paper); }
+.tile.p1 .tag { background: var(--paper); color: var(--ink); }
+.tile.p2 .tag { background: var(--accent); color: var(--accent-ink); }
+.tile.p3 .tag { background: var(--surface); color: var(--ink); }
+/* La pieza que más se vende abre el catálogo a doble ancho, con su video */
+.tile.feat { grid-column: span 2; }
+.tile.feat .ph { aspect-ratio: 2.7 / 1; position: relative; }
+.tile.feat .ph video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@media (hover: hover) and (pointer: fine) { .tile:hover .ph img { transform: scale(1.05); } }
+@media (max-width: 1000px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 8px; }
+  .tile .tag { min-height: 0; padding: 10px; }
+  .tile .tag .r1 { flex-wrap: wrap; row-gap: 0; }
+  .tile .tag .r1 span { flex: 1 0 40%; }
+  .tile .tag .r2 { display: none; }
+  .tile.feat .ph { aspect-ratio: 16 / 10; }
+}
+
+/* Precios: la palabra que llena la columna y barras que se abren; a un lado, la hoja de cotización */
+.prices-sec { padding-block: clamp(72px, 9vw, 120px); display: grid; grid-template-columns: minmax(0, 680px) minmax(0, 440px); justify-content: center; gap: clamp(40px, 5vw, 80px); align-items: start; }
+.list-col { container-type: inline-size; min-width: 0; }
+.giant { font-size: 31.5cqw; font-style: italic; line-height: 0.8; letter-spacing: -0.035em; margin-left: -0.04em; }
+.giant .gl { display: inline-block; }
+.list-col .intro { margin-top: 26px; max-width: 52ch; }
+.bars { margin-top: 22px; display: grid; gap: 6px; }
+.bars details { background: var(--surface); }
+.bars summary { list-style: none; min-height: 56px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; font-weight: 500; font-size: var(--step-body); }
+.bars summary::-webkit-details-marker { display: none; }
+.bars summary .n { color: var(--muted); font-weight: 400; font-size: var(--step-small); margin-left: .5em; }
+.plus { position: relative; width: 14px; height: 14px; flex: none; }
+.plus::before, .plus::after { content: ""; position: absolute; left: 0; top: 6px; width: 14px; height: 2px; background: currentColor; transition: transform 240ms var(--ease-out); }
+.plus::after { transform: rotate(90deg); }
+details[open] > summary .plus::after { transform: rotate(0deg); }
+.bars .panel { padding: 4px 18px 20px; display: grid; gap: 14px; }
+.it { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 4px 16px; align-items: center; }
+.it .nm b { font-weight: 500; display: block; }
+.it .nm span { font-size: var(--step-small); color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.it .pr { text-align: right; font-variant-numeric: lining-nums tabular-nums; }
+.it .pr b { font-weight: 500; display: block; white-space: nowrap; }
+.it .pr span { font-size: var(--step-small); color: var(--muted); white-space: nowrap; }
+.it .add { min-height: 40px; padding: 0 .9rem; }
+@media (max-width: 560px) { .it { grid-template-columns: minmax(0, 1fr) auto; } .it .add { grid-column: 1 / -1; justify-self: start; } }
+
+.slip { position: sticky; top: calc(var(--header-h) + 20px); background: var(--paper); padding: 32px 32px 28px; }
+.slip h3 { font-size: var(--step-sub); font-style: italic; }
+.slip .meta { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--step-small); color: var(--muted); margin-top: 10px; font-variant-numeric: lining-nums tabular-nums; }
+.slip .lines { margin-top: 22px; display: grid; gap: 4px; max-height: 44vh; overflow: auto; }
+.ql { display: grid; grid-template-columns: minmax(0, 1fr) 4.6rem auto 36px; gap: 10px; align-items: center; padding: 10px 10px; background: #EDEDE9; transition: background-color 900ms ease; }
+.ql.new { background: #DCE4F8; transition: none; }
+.ql .n b { display: block; font-weight: 500; font-size: var(--step-small); line-height: 1.25; }
+.ql .n span { font-size: 0.8125rem; color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.ql input { width: 100%; min-height: 40px; border: 0; background: var(--paper); text-align: center; font-variant-numeric: lining-nums tabular-nums; }
+.ql .i { font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; font-size: var(--step-small); }
+.ql .del { width: 36px; height: 36px; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--muted); }
+.ql .del svg { width: 18px; height: 18px; }
+.empty { padding: 18px; background: #EDEDE9; font-size: var(--step-small); display: grid; gap: 12px; justify-items: start; }
+.sums { margin-top: 18px; display: grid; gap: 6px; font-variant-numeric: lining-nums tabular-nums; }
+.sums div { display: flex; justify-content: space-between; gap: 1rem; }
+.sums .g { font-size: var(--step-lead); font-weight: 500; padding-top: 10px; margin-top: 6px; border-top: 3px solid var(--ink); }
+.slip .go { width: 100%; margin-top: 20px; min-height: 52px; font-size: var(--step-body); }
+.slip .fine { font-size: var(--step-small); color: var(--muted); margin-top: 12px; }
+@media (max-width: 1000px) { .prices-sec { grid-template-columns: minmax(0, 1fr); } .slip { position: static; } .slip .lines { max-height: none; } }
+@media (max-width: 560px) { .slip { padding: 26px 18px; margin: 0 calc(-1 * max(var(--m), env(safe-area-inset-left, 0px)) + 8px); } .ql { grid-template-columns: minmax(0, 1fr) 3.6rem 32px; } .ql .i { grid-column: 1; grid-row: 2; } }
+
+/* Cómo compra una dependencia: fila que se arrastra */
+.how-sec { padding-block: clamp(72px, 9vw, 120px); overflow: clip; }
+.how-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+.how-top h2 { font-size: var(--step-sub); }
+.arrows { display: flex; gap: 8px; }
+.arrows button { width: 48px; height: 48px; border: 0; background: var(--ink); color: var(--paper); cursor: pointer; display: grid; place-items: center; transition: transform 140ms var(--ease-out), opacity 200ms ease; }
+.arrows button:active { transform: scale(.94); }
+.arrows button[disabled] { opacity: .3; cursor: default; }
+.arrows svg { width: 22px; height: 22px; }
+.progress { height: 6px; background: var(--surface); margin-top: 22px; position: relative; }
+.progress span { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--ink); }
+.row { display: flex; gap: 32px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 34px max(var(--m), env(safe-area-inset-right, 0px)) 8px max(var(--m), env(safe-area-inset-left, 0px)); scroll-padding-left: max(var(--m), env(safe-area-inset-left, 0px)); scrollbar-width: none; }
+.row::-webkit-scrollbar { display: none; }
+.moment { flex: none; width: 280px; scroll-snap-align: start; display: flex; flex-direction: column; }
+.moment h3 { font-size: var(--step-body); font-weight: 700; line-height: 1.25; }
+.moment p { font-size: var(--step-small); color: var(--muted); margin-top: 8px; line-height: 1.5; }
+.moment .gap { flex: none; }
+.moment .ph { aspect-ratio: 4 / 5; overflow: clip; background: var(--surface); }
+.moment .ph img, .moment .ph video { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 760px) { .row { gap: 16px; } .moment { width: 72vw; } .arrows { display: none; } }
+
+/* Expediente: la lista impresa, inclinada y cortada por el borde */
+.proof-sec { background: var(--ink); height: clamp(820px, 118vh, 1140px); overflow: clip; padding-top: 96px; }
+.proof-card { width: min(780px, 56vw); margin: 0 auto; background: var(--paper); aspect-ratio: 5 / 7; padding: 56px; text-align: center; transform: rotate(1.5deg); }
+.proof-card h2 { font-size: var(--step-sub); }
+.proof-card .plate { margin-top: 30px; }
+
+.docs { margin-top: 28px; font-size: var(--step-body); line-height: 1.7; }
+.docs .dia { width: 8px; height: 8px; margin: 0 .55em .15em; }
+.proof-card .sub2 { margin-top: 34px; font-style: italic; color: var(--muted); font-size: var(--step-small); }
+.proof-card .who { margin-top: 6px; font-size: var(--step-body); line-height: 1.7; }
+.proof-card .acts { margin-top: 26px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .proof-sec { height: auto; max-height: 1180px; padding-top: 64px; }
+  .proof-card { width: calc(100% - 40px); padding: 30px 26px; transform: rotate(1deg); aspect-ratio: auto; min-height: 150vw; }
+  .proof-card h2 { font-size: var(--step-lead); }
+}
+
+/* Visita: la tarjeta sobre la planta */
+.visit-sec { position: relative; height: 150svh; }
+.visit-sec .media { position: sticky; top: 0; height: 100svh; overflow: clip; background: var(--ink); }
+.visit-sec .media video, .visit-sec .media img { width: 100%; height: 100%; object-fit: cover; }
+.visit-card { width: 380px; background: var(--paper); padding: 32px 32px 0; display: flex; flex-direction: column; border-radius: 8px; overflow: clip; z-index: 2; }
+.visit-card h2 { font-size: var(--step-lead); font-weight: 400; }
+.visit-card address { font-style: normal; margin-top: 14px; font-size: var(--step-small); line-height: 1.6; }
+.hours { margin-top: 18px; display: grid; gap: 4px; font-size: var(--step-small); font-variant-numeric: lining-nums tabular-nums; }
+.hours div { display: flex; justify-content: space-between; gap: 1rem; }
+.visit-card .tel { margin-top: 16px; font-size: var(--step-small); }
+.visit-card .btn { margin: 24px -32px 0; min-height: 52px; width: calc(100% + 64px); }
+.visit-sticky { position: absolute; inset: 0; pointer-events: none; }
+.visit-sticky .visit-card { pointer-events: auto; position: sticky; margin-left: auto; margin-right: max(60px, env(safe-area-inset-right, 0px)); top: calc(var(--header-h) + 40px); }
+.visit-sticky { padding-top: 60px; }
+@media (max-width: 760px) {
+  .visit-sec { height: auto; }
+  .visit-sec .media { position: relative; height: 70svh; }
+  .visit-sticky { position: relative; inset: auto; pointer-events: auto; margin-top: -80px; padding: 0 16px 64px; z-index: 2; }
+  .visit-sticky .visit-card { position: relative; float: none; top: auto; width: 100%; margin: 0; }
+  .visit-card .btn { min-height: 56px; }
+}
+
+/* Reverso de la carpeta, que aparece al final como un telón */
+footer.back { background: var(--accent); padding: 96px 0 64px; }
+main { position: relative; z-index: 1; background: var(--field); }
+/* Telón: con JavaScript y movimiento permitido, el reverso espera fijo detrás de la página y solo se muestra al final */
+.curtain footer.back { position: fixed; left: 0; right: 0; bottom: 0; z-index: 0; visibility: hidden; }
+.curtain footer.back.show { visibility: visible; }
+.back-card { max-width: 1180px; margin: 0 auto; min-height: 420px; background: var(--paper); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 96px 56px 26px;
+  /* taste-skill-ignore: festón de doce semicírculos del borde superior */
+  -webkit-mask: radial-gradient(circle 50px at 50% 0, transparent 98%, #000) 0 0 / 100px 100% repeat-x; /* taste-skill-ignore */
+          mask: radial-gradient(circle 50px at 50% 0, transparent 98%, #000) 0 0 / 100px 100% repeat-x; /* taste-skill-ignore */ }
+.back-card .sign { font-size: var(--step-sub); font-style: italic; line-height: 1.05; }
+.back-card .msg { margin-top: 1.1rem; max-width: 40ch; }
+.addr { display: grid; gap: 12px; align-content: start; font-size: var(--step-body); padding-top: 112px; position: relative; }
+.addr .row2 { display: block; }
+.stamp { position: absolute; top: 0; right: 0; width: 88px; padding: 6px; background: var(--paper); transform: rotate(4deg); outline: 1px solid rgba(38,37,30,.18); /* taste-skill-ignore: borde dentado del timbre */ }
+.stamp img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.imprint { grid-column: 1 / -1; text-align: center; font-size: var(--step-small); color: var(--muted); padding-top: 30px; }
+@media (max-width: 760px) {
+  footer.back { padding: 64px 0 40px; }
+  .back-card { grid-template-columns: 1fr; padding: 80px 24px 24px; gap: 28px; -webkit-mask-size: calc(100% / 6) 100%; mask-size: calc(100% / 6) 100%; }
+  .addr { padding-top: 0; }
+  .stamp { position: static; width: 64px; margin-bottom: 6px; }
+}
+
+/* Diálogos */
+dialog { border: 0; padding: 0; border-radius: 0; background: var(--paper); color: var(--ink); width: 100%; max-width: min(1080px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); }
+dialog::backdrop { background: var(--scrim); }
+dialog.sm { max-width: min(460px, calc(100vw - 24px)); }
+dialog.md { max-width: min(720px, calc(100vw - 24px)); }
+.dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 14px 20px; background: var(--paper); position: sticky; top: 0; z-index: 3; }
+.dlg-head h3 { font-size: var(--step-lead); font-style: italic; }
+.x { width: 44px; height: 44px; border: 0; background: var(--surface); cursor: pointer; display: grid; place-items: center; flex: none; }
+.x svg { width: 20px; height: 20px; }
+.dlg-body { padding: 4px 20px 22px; display: grid; gap: 16px; }
+.pd { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+.pd .media { position: relative; min-height: 420px; background: var(--surface); }
+.pd .media .v3d, .pd .media > img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pd .media > img { object-fit: cover; }
+.tabs { position: absolute; top: 12px; left: 12px; z-index: 2; display: flex; background: var(--paper); }
+.tabs button { min-height: 40px; padding: 0 .9rem; border: 0; background: transparent; cursor: pointer; font-weight: 500; font-size: var(--step-small); }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--paper); }
+.pd .side { padding: 18px 22px 24px; display: grid; gap: 16px; align-content: start; }
+.vsel { display: flex; gap: 6px; flex-wrap: wrap; }
+.vsel button { min-height: 40px; padding: 0 .9rem; border: 0; background: var(--surface); cursor: pointer; font-size: var(--step-small); }
+.vsel button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.ctl-name { font-size: var(--step-small); color: var(--muted); margin-bottom: 6px; }
+.swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+.sw { width: 40px; height: 40px; border: 1px solid rgba(38,37,30,.18); /* taste-skill-ignore: borde para la muestra blanca */ padding: 0; cursor: pointer; background-color: var(--c); transition: transform 140ms var(--ease-out); }
+.sw:active { transform: scale(.94); }
+.sw[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 3px; }
+.wood { background-image: var(--tex); background-size: cover; background-position: center; }
+.spec-dl { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 6px 14px; margin: 0; font-size: var(--step-small); }
+.spec-dl dt { color: var(--muted); }
+.spec-dl dd { margin: 0; }
+.qty { display: inline-flex; align-items: center; background: var(--surface); }
+.qty button { width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; font-size: 1.2rem; }
+.qty input { width: 3.6rem; min-height: 44px; text-align: center; border: 0; background: var(--paper); padding: 0; font-variant-numeric: lining-nums tabular-nums; }
+.pd .acts { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+@media (max-width: 760px) { .pd { grid-template-columns: 1fr; } .pd .media { min-height: 0; height: 76vw; } }
+.field { display: grid; gap: 6px; }
+.field label { font-size: var(--step-small); color: var(--muted); }
+.field input, .field select, .field textarea { min-height: 48px; border: 0; padding: 0 12px; background: #EDEDE9; width: 100%; font-size: 16px; }
+.field textarea { padding: 10px 12px; min-height: 84px; resize: vertical; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fields .full { grid-column: 1 / -1; }
+@media (max-width: 560px) { .fields { grid-template-columns: 1fr; } }
+.social { display: grid; gap: 8px; }
+.social .btn { justify-content: flex-start; background: var(--surface); color: var(--ink); font-size: var(--step-body); }
+.social .ico { width: 28px; height: 28px; display: grid; place-items: center; background: var(--ink); color: var(--paper); font-style: normal; font-weight: 600; }
+.note { font-size: var(--step-small); color: var(--muted); }
+.errline { color: #A3271B; font-size: var(--step-small); }
+.okbox { background: #DCE4F8; padding: 16px 18px; }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 14px 18px; z-index: 60; max-width: calc(100vw - 32px); font-size: var(--step-small); }
+
+/* Movimiento: todo visible sin JavaScript; los estados ocultos viven bajo html.js y sin reducción de movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  .js .cover { animation: card-in 1100ms var(--ease-expo) both; }
+  .js .cover-ground .print { animation: ground-in 2600ms var(--ease-soft) both; }
+  .js .cover h1 .l > span > span { display: block; transform: translateY(105%); animation: rise-line 1000ms var(--ease-expo) forwards; animation-delay: calc(300ms + var(--i, 0) * 110ms); }
+  .js .cover .what, .js .cover .details, .js .cover .plate { opacity: 0; animation: rise 800ms var(--ease-out) forwards; animation-delay: var(--d, 560ms); }
+  .js [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-expo); transition-delay: var(--d, 0ms); }
+  .js [data-reveal].in { opacity: 1; transform: none; }
+  .js .giant .gl { transform: translateY(40%); opacity: 0; transition: transform 900ms var(--ease-expo), opacity 600ms ease; transition-delay: calc(var(--i, 0) * 45ms); }
+  .js .giant.in .gl { transform: none; opacity: 1; }
+  .bars details::details-content { block-size: 0; overflow-y: clip; transition: block-size 380ms var(--ease-out), content-visibility 380ms allow-discrete; }
+  .bars details[open]::details-content { block-size: auto; }
+  @supports (animation-timeline: view()) {
+    .drift img { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    @keyframes drift { from { transform: scale(1.14) translateY(-3%); } to { transform: scale(1.02) translateY(3%); } }
+    .proof-card { animation: tilt linear both; animation-timeline: view(); animation-range: entry 0% cover 45%; }
+    @keyframes tilt { from { transform: rotate(5deg) translateY(80px); } to { transform: rotate(1.5deg); } }
+  }
+}
+@keyframes card-in { from { transform: translateY(90px); } to { transform: none; } }
+@keyframes ground-in { from { transform: scale(1.1); } to { transform: none; } }
+@keyframes rise-line { to { transform: none; } }
+@keyframes rise { to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<div class="draft"><div class="wrap">Borrador B de 3: proveedor de gobierno. Fotos hechas con IA; los datos entre corchetes están por confirmar.</div></div>
+
+<header class="top wrap" id="top">
+  <a class="mono" href="#inicio" aria-label="JOME, inicio">JOME</a>
+  <nav class="links" aria-label="Principal"><a href="#catalogo">Catálogo</a><a href="#precios">Precios</a><a href="#expediente">Expediente</a></nav>
+  <div class="right"><button class="tlink" id="loginBtn" type="button">Entrar</button><a class="btn" href="#precios">Pedir cotización</a></div>
+</header>
+
+<main id="inicio">
+  <section class="cover-sec" aria-labelledby="h1">
+    <div class="cover-ground" id="ground">
+      <div class="print" aria-hidden="true">
+        <img class="ly on" src="../img/esp-vacia-l.webp" alt="" width="1800" height="1018" data-tag="Una oficina vacía" data-hold="3600" fetchpriority="high">
+        <video class="ly" muted playsinline preload="none" poster="../img/video-amueblar-poster.webp" data-tag="Amueblando"><source src="../vid/video-amueblar.mp4" type="video/mp4"></video>
+        <img class="ly" src="../img/esp-amueblada-l.webp" alt="" width="1800" height="1018" loading="lazy" data-tag="La misma oficina, con mobiliario JOME" data-hold="5600">
+      </div>
+      <span class="gtag" id="groundTag" aria-hidden="true">Una oficina vacía</span>
+    </div>
+    <article class="card cover">
+      <h1 id="h1"><span class="l l1"><span><span style="--i:0">Mobiliario</span></span></span><span class="l l2"><span><span style="--i:1">para gobierno</span></span></span></h1>
+      <p class="what" style="--d:560ms">Lockers, anaqueles, racks y archiveros metálicos, escritorios y estaciones de trabajo, directo de fábrica para dependencias de gobierno.</p>
+      <p class="details" style="--d:640ms"><span>Carpeta de proveedor 2026</span><i class="dia" aria-hidden="true"></i><span>Partida 511, muebles de oficina y estantería</span><i class="dia" aria-hidden="true"></i><span>Lámina, melamina y acero hechos en [Ciudad], Jalisco</span></p>
+      <figure class="plate drift" style="--d:760ms"><img src="../img/coleccion-m.webp" alt="Juego de escritorio en L, mesa de juntas, archivero y librero de nogal con base negra en una oficina blanca" width="960" height="543"></figure>
+      <nav class="index" aria-label="Contenido de la carpeta">
+        <span class="label">En esta carpeta</span>
+        <a href="#carta">Carta de la familia</a>
+        <a href="#catalogo">Catálogo de línea con fichas técnicas</a>
+        <a href="#precios">Precios por partida y cotización formal</a>
+        <a href="#compra">Cómo compra una dependencia</a>
+        <a href="#expediente">Expediente del proveedor</a>
+        <a href="#visita">Visita a la planta</a>
+      </nav>
+    </article>
+  </section>
+
+  <section class="letter-sec wrap" id="carta" aria-label="Carta de la familia JOME">
+    <div class="tips">
+      <figure class="tipped t1" data-reveal><img src="../img/hist-inicios-m.webp" alt="El primer taller: bancos de madera, serruchos y herramientas colgadas" loading="lazy" width="960" height="723"><figcaption>El primer taller, [año]</figcaption></figure>
+      <figure class="tipped t2" data-reveal style="--d:120ms"><img src="../img/fab-planta-m.webp" alt="La planta de JOME con un camión cargando muebles emplayados" loading="lazy" width="960" height="543"><figcaption>La planta hoy</figcaption></figure>
+    </div>
+    <div class="sheet-wrap" data-reveal>
+      <div class="sheet">
+        <div class="seal"><img src="../img/hist-manos-m.webp" alt="" loading="lazy" width="960" height="723"></div>
+        <div class="body">
+          <p>Desde [año] hacemos muebles para oficinas que trabajan todo el día: ventanillas de atención, direcciones, archivos, almacenes, vestidores de personal y salas de juntas.</p>
+          <p>Somos una fábrica familiar en [Ciudad], Jalisco. Doblamos y pintamos la lámina, cortamos la melamina, soldamos el tubular y armamos cada pieza en nuestra planta, así que el precio que le cotizamos es <span class="mark">precio de fábrica</span>.</p>
+          <p>Conocemos el camino de una compra pública: requisición, cotización formal, orden de compra y acta de entrega. Cada cotización sale con folio, vigencia y fichas técnicas, lista para su expediente.</p>
+          <p>Si su área necesita otra medida u otro color, lo fabricamos con los mismos materiales y en el mismo plazo.</p>
+        </div>
+        <p class="sign">[Nombre de quien firma]</p>
+        <p class="role">Dirección general, JOME</p>
+      </div>
+      <div class="stub">
+        <span class="mail" id="mailTxt">gobierno@[dominio]</span>
+        <button class="btn ink" type="button" id="copyMail">Copiar correo</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-sec wrap" id="catalogo" aria-labelledby="h-cat">
+    <div class="sec-head">
+      <h2 id="h-cat" data-reveal>Catálogo de línea</h2>
+      <p class="muted" data-reveal style="--d:80ms">Veintiocho modelos y treinta y tres medidas que fabricamos todo el año, empezando por la lámina, que es lo que más se compra. Toque una ficha para ver el mueble en 3D, elegir colores y descargar su ficha técnica.</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="prices-sec wrap" id="precios" aria-labelledby="h-pre">
+    <div class="list-col">
+      <h2 class="giant" id="h-pre" aria-label="Precios"></h2>
+      <p class="intro">Precio unitario antes de IVA, como lo pide una requisición. Desde 10 piezas iguales baja 7 % y desde 50 le hacemos precio especial. Agregue partidas y descargue la cotización formal.</p>
+      <div class="bars" id="bars"></div>
+    </div>
+    <aside class="slip" id="slip" aria-labelledby="h-slip">
+      <h3 id="h-slip">Cotización</h3>
+      <div class="meta"><span id="folio">COT-2026-0000</span><span id="fecha"></span></div>
+      <div class="lines" id="qLines" aria-live="polite"></div>
+      <div class="sums" id="qSums"></div>
+      <button class="btn go" type="button" id="toForm">Llenar datos y descargar PDF</button>
+      <p class="fine">Vigencia de 30 días. Incluye flete e instalación en [zona de cobertura].</p>
+    </aside>
+  </section>
+
+  <section class="how-sec" id="compra" aria-labelledby="h-how">
+    <div class="wrap">
+      <div class="how-top">
+        <h2 id="h-how" data-reveal>Cómo compra una dependencia</h2>
+        <div class="arrows"><button type="button" id="prev" aria-label="Momento anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" id="next" aria-label="Momento siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="prog"></span></div>
+    </div>
+    <div class="row" id="row" tabindex="0" aria-label="Siete momentos de una compra, de la requisición a la factura"></div>
+  </section>
+
+  <section class="proof-sec" id="expediente" aria-labelledby="h-exp">
+    <article class="proof-card">
+      <h2 id="h-exp">Expediente del proveedor</h2>
+      <figure class="plate blueprint" id="archSala">
+        <div class="print">
+          <img class="ly on" src="../img/esp-archivo-vacio-m.webp" alt="Un cuarto de archivo vacío" loading="lazy" width="960" height="543" data-tag="El archivo, vacío" data-hold="2800">
+          <video class="ly" muted playsinline preload="none" poster="../img/video-archivo-poster.webp" data-tag="Llegan anaqueles y archiveros" aria-label="El archivo se llena de anaqueles con cajas y archiveros metálicos"><source src="../vid/video-archivo.mp4" type="video/mp4"></video>
+          <img class="ly" src="../img/esp-archivo-metal-m.webp" alt="Archivo con anaqueles de lámina llenos de cajas y una fila de archiveros metálicos grises" loading="lazy" width="960" height="543" data-tag="Con anaqueles y archiveros JOME" data-hold="5200">
+        </div>
+        <span class="gtag" id="archTag" aria-hidden="true">El archivo, vacío</span>
+      </figure>
+      <p class="docs">Constancia de situación fiscal<i class="dia" aria-hidden="true"></i>Opinión de cumplimiento 32-D<i class="dia" aria-hidden="true"></i>Registro en [padrón de proveedores]<i class="dia" aria-hidden="true"></i>Acta constitutiva<i class="dia" aria-hidden="true"></i>Poder del representante legal<i class="dia" aria-hidden="true"></i>Comprobante de domicilio<i class="dia" aria-hidden="true"></i>Fichas técnicas por partida<i class="dia" aria-hidden="true"></i>Carta de garantía de [X] años</p>
+      <p class="sub2">Han comprado a JOME</p>
+      <p class="who">[Dependencia federal]<i class="dia" aria-hidden="true"></i>[Gobierno del estado]<i class="dia" aria-hidden="true"></i>[Ayuntamiento]<i class="dia" aria-hidden="true"></i>[Universidad pública]</p>
+      <div class="acts"><button class="btn ink" type="button" id="expPdf">Descargar índice del expediente</button><a class="btn quiet" href="#catalogo">Ver fichas técnicas</a></div>
+    </article>
+  </section>
+
+  <section class="visit-sec" id="visita" aria-labelledby="h-vis">
+    <div class="media"><video id="plantVideo" muted loop playsinline preload="metadata" poster="../img/video-planta-poster.webp" aria-label="La planta de JOME por fuera, con tarimas emplayadas y un camión de entrega"><source src="../vid/video-planta.mp4" type="video/mp4"></video></div>
+    <div class="visit-sticky">
+      <div class="visit-card">
+        <h2 id="h-vis">Visite la planta</h2>
+        <address>[Calle y número], [colonia]<br>[Ciudad], Jalisco, C.P. [00000]</address>
+        <div class="hours"><div><span>Lunes a viernes</span><span>8:00 a 17:00</span></div><div><span>Sábado</span><span>9:00 a 13:00</span></div><div><span>Domingo</span><span>Cerrado</span></div></div>
+        <p class="tel">Teléfono y WhatsApp: [33 0000 0000]</p>
+        <button class="btn ink" type="button" id="visitBtn">Agendar visita</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="back">
+  <div class="wrap">
+    <div class="back-card">
+      <div>
+        <p class="sign">Gracias por su tiempo</p>
+        <p class="msg">Esta carpeta se actualiza cada mes con precios, fichas y documentos vigentes. Para una licitación o una adjudicación directa, le enviamos la versión firmada.</p>
+      </div>
+      <div class="addr">
+        <div class="stamp"><img src="../img/fab-planta-m.webp" alt="" loading="lazy" width="960" height="543"></div>
+        <span>gobierno@[dominio]</span>
+        <span>WhatsApp [33 0000 0000]</span>
+        <span>[Calle y número], [colonia]</span>
+        <span>[Ciudad], Jalisco</span>
+      </div>
+      <p class="imprint">© 2026 Grupo Industrial JOME. Borrador B de 3, precios de muestra para presentar a la familia.</p>
+    </div>
+  </div>
+</footer>
+
+<dialog id="pdDlg" aria-labelledby="pdName">
+  <div class="dlg-head"><h3 id="pdName">Mueble</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="pd">
+    <div class="media">
+      <div class="tabs" role="tablist" aria-label="Vista"><button type="button" role="tab" id="tab3d" aria-selected="true">3D</button><button type="button" role="tab" id="tabPh" aria-selected="false">Foto</button></div>
+      <div class="v3d" id="pdStage"></div>
+      <img id="pdImg" alt="" hidden>
+    </div>
+    <div class="side">
+      <div class="vsel" id="pdVar" role="group" aria-label="Medida"></div>
+      <dl class="spec-dl" id="pdSpecs"></dl>
+      <div id="pdRoles" style="display:grid;gap:12px"></div>
+      <div class="acts">
+        <div class="qty"><button type="button" id="pdMinus" aria-label="Quitar una pieza">−</button><input id="pdQty" type="number" min="1" value="1" inputmode="numeric" aria-label="Cantidad"><button type="button" id="pdPlus" aria-label="Agregar una pieza">+</button></div>
+        <button class="btn" type="button" id="pdAdd">Agregar a la cotización</button>
+      </div>
+      <div class="acts"><button class="tlink" type="button" id="pdFicha">Descargar ficha técnica en PDF</button></div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="formDlg" class="md" aria-labelledby="formT">
+  <div class="dlg-head"><h3 id="formT">Datos de la dependencia</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="dlg-body" id="qForm" novalidate>
+    <div class="fields">
+      <div class="field full"><label for="fDep">Dependencia o institución</label><input id="fDep" type="text" autocomplete="organization"></div>
+      <div class="field"><label for="fArea">Área requirente</label><input id="fArea" type="text"></div>
+      <div class="field"><label for="fRfc">RFC de la dependencia</label><input id="fRfc" type="text" maxlength="13" style="text-transform:uppercase"></div>
+      <div class="field"><label for="fNom">Nombre de contacto</label><input id="fNom" type="text" autocomplete="name"></div>
+      <div class="field"><label for="fCargo">Cargo</label><input id="fCargo" type="text"></div>
+      <div class="field"><label for="fMail">Correo</label><input id="fMail" type="email" autocomplete="email"></div>
+      <div class="field"><label for="fTel">Teléfono</label><input id="fTel" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="fCp">C.P. de entrega</label><input id="fCp" type="text" inputmode="numeric" maxlength="5"></div>
+      <div class="field"><label for="fVig">Vigencia</label><select id="fVig"><option value="30">30 días naturales</option><option value="15">15 días naturales</option><option value="60">60 días naturales</option></select></div>
+      <div class="field full"><label for="fObs">Observaciones</label><textarea id="fObs" placeholder="Colores, lugar de entrega, número de requisición"></textarea></div>
+    </div>
+    <p class="errline" id="qErr" hidden></p>
+    <div id="qMsg"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="submit">Descargar cotización en PDF</button><button class="btn ink" type="button" id="qSend">Enviar a JOME</button></div>
+    <p class="note">Borrador: el PDF se genera aquí mismo con los precios de muestra; el envío no manda nada todavía.</p>
+  </form>
+</dialog>
+
+<dialog id="loginDlg" class="sm" aria-labelledby="loginT">
+  <div class="dlg-head"><h3 id="loginT">Inicie sesión</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dlg-body">
+    <p id="loginWhy">Con su cuenta guardamos sus cotizaciones y los datos de su dependencia.</p>
+    <div class="social">
+      <button class="btn" type="button" data-login="Google"><i class="ico" aria-hidden="true">G</i>Continuar con Google</button>
+      <button class="btn" type="button" data-login="Facebook"><i class="ico" aria-hidden="true">f</i>Continuar con Facebook</button>
+      <button class="btn" type="button" data-login="correo"><i class="ico" aria-hidden="true">@</i>Continuar con correo institucional</button>
+    </div>
+    <p class="note">Borrador: aquí se abrirá la ventana de Google o Facebook. Por ahora entra una cuenta de prueba.</p>
+  </div>
+</dialog>
+
+<dialog id="visitDlg" class="sm" aria-labelledby="visitT">
+  <div class="dlg-head"><h3 id="visitT">Agendar visita</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="dlg-body" id="vForm" novalidate>
+    <div class="field"><label for="vNom">Nombre</label><input id="vNom" type="text" autocomplete="name"></div>
+    <div class="field"><label for="vDep">Dependencia</label><input id="vDep" type="text"></div>
+    <div class="field"><label for="vDia">Día que le acomoda</label><input id="vDia" type="date"></div>
+    <p class="errline" id="vErr" hidden></p>
+    <div id="vMsg"></div>
+    <button class="btn ink" type="submit">Pedir cita</button>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/* Catálogo de muestra JOME: medidas típicas de mobiliario de gobierno, precios de muestra con IVA incluido. */
+window.JOME = (function () {
+  var colores = {
+    nogal:  { nombre: 'Nogal',        hex: '#8B5E3C', wood: true,  canto: '#5E3E26' },
+    roble:  { nombre: 'Roble claro',  hex: '#C9A77C', wood: true,  canto: '#A9875E' },
+    blanco: { nombre: 'Blanco',       hex: '#ECECE8', wood: false, canto: '#C9CAC6' },
+    gris:   { nombre: 'Gris grafito', hex: '#4B5055', wood: false, canto: '#33373B' },
+    negro:  { nombre: 'Negro',        hex: '#26282B', wood: false, canto: '#17181A' }
+  };
+  var bases = {
+    negro:  { nombre: 'Negro',         hex: '#1F2022' },
+    gris:   { nombre: 'Gris aluminio', hex: '#9A9EA3' },
+    blanco: { nombre: 'Blanco',        hex: '#E6E6E3' }
+  };
+  /* Pintura electrostática en polvo de la línea metálica (lockers, anaqueles, archiveros y gabinetes de lámina). */
+  var pinturas = {
+    grisclaro: { nombre: 'Gris claro',  hex: '#C2C5C6' },
+    oxford:    { nombre: 'Gris oxford', hex: '#4A4E53' },
+    negro:     { nombre: 'Negro mate',  hex: '#232427' },
+    blanco:    { nombre: 'Blanco',      hex: '#E8E9E6' },
+    arena:     { nombre: 'Arena',       hex: '#CDC1A3' },
+    azul:      { nombre: 'Azul',        hex: '#234A92' },
+    naranja:   { nombre: 'Naranja',     hex: '#E2581E' }
+  };
+  var roles = {
+    cubierta: 'Cubierta',
+    casco: 'Casco y faldón',
+    frentes: 'Frentes y entrepaños',
+    base: 'Base tubular',
+    cuerpo: 'Cuerpo',
+    puertas: 'Puertas y frentes',
+    postes: 'Postes',
+    entrepanos: 'Entrepaños',
+    marcos: 'Marcos',
+    vigas: 'Largueros y entrepaños'
+  };
+  /* La línea metálica va primero: es lo que más se vende. */
+  var familias = [
+    { id: 'lockers',          nombre: 'Lockers',              img: 'locker-6',          metal: true },
+    { id: 'anaqueles',        nombre: 'Anaqueles',            img: 'anaquel-esqueleto', metal: true },
+    { id: 'racks',            nombre: 'Racks de carga',       img: 'rack-carga-media',  metal: true },
+    { id: 'archiveros-metal', nombre: 'Archiveros metálicos', img: 'archivero-metal-4', metal: true },
+    { id: 'gabinetes',        nombre: 'Gabinetes metálicos',  img: 'gabinete-universal', metal: true },
+    { id: 'escritorios',   nombre: 'Escritorios',           img: 'escritorio-recto' },
+    { id: 'escritorios-l', nombre: 'Escritorios en L',      img: 'escritorio-l' },
+    { id: 'juntas',        nombre: 'Mesas de juntas',       img: 'mesa-juntas' },
+    { id: 'estaciones',    nombre: 'Estaciones de trabajo', img: 'estacion-4' },
+    { id: 'libreros',      nombre: 'Libreros',              img: 'librero' },
+    { id: 'archiveros',    nombre: 'Archiveros',            img: 'archivero' },
+    { id: 'cocinetas',     nombre: 'Cocinetas',             img: 'cocineta' }
+  ];
+
+  var T21 = 'Base de tubular rectangular 2x1" calibre 18, pintura electrostática';
+  var T22 = 'Base de tubular cuadrado 2x2" calibre 18, pintura electrostática';
+  var C28 = 'Cubierta de melamina de 28 mm con canto de PVC de 2 mm';
+  var M16 = 'Casco de melamina de 16 mm con canto de PVC';
+  var NIV = 'Niveladores de 1" para piso irregular';
+  var PEP = 'Pintura electrostática en polvo epóxica-poliéster, horneada';
+  var L2220 = 'Cuerpo de lámina rolada en frío calibre 22 y puertas calibre 20';
+  var VENT = 'Ventilas troqueladas en cada puerta';
+  var CAND = 'Portacandado y portaetiqueta en cada puerta';
+  var ANG = 'Ajuste de altura cada 2.5 cm; tornillería y regatones incluidos';
+  var RMAR = 'Marcos de lámina calibre 14 con perforación tipo lágrima y contravientos atornillados';
+  var RLAR = 'Largueros escalonados calibre 14 con seguro de pasador';
+  var RENT = 'Entrepaños de lámina calibre 20 en paneles';
+  var ARMS = ['Cuerpo de lámina calibre 22 y frentes calibre 20', 'Correderas de extensión con balero para 35 kg', 'Portaetiqueta y jaladera en cada gaveta', 'Chapa general con dos llaves', PEP];
+
+  var productos = [
+    /* Línea metálica: lámina de acero doblada, soldada y pintada en la misma planta. */
+    { clave: 'LOC-3', familia: 'lockers', linea: 'metal', nombre: 'Locker de 3 puertas', medidas: [38, 45, 180], precio: 3290, img: 'locker-3',
+      modelo: { tipo: 'locker', w: 380, d: 450, h: 1800, cols: 1, filas: 3 },
+      specs: [L2220, PEP, VENT, CAND, 'Zoclo de 10 cm; se puede anclar a muro'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'LOC-6', familia: 'lockers', linea: 'metal', nombre: 'Locker de 6 puertas', medidas: [76, 45, 180], precio: 5890, img: 'locker-6', destacado: true,
+      modelo: { tipo: 'locker', w: 760, d: 450, h: 1800, cols: 2, filas: 3 },
+      specs: [L2220, PEP, VENT, CAND, 'Dos columnas de 3 puertas; zoclo de 10 cm'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'LOC-12', familia: 'lockers', linea: 'metal', nombre: 'Locker de 12 puertas', medidas: [114, 45, 180], precio: 9490, img: 'locker-12',
+      modelo: { tipo: 'locker', w: 1140, d: 450, h: 1800, cols: 3, filas: 4 },
+      specs: [L2220, PEP, VENT, CAND, 'Tres columnas de 4 puertas; zoclo de 10 cm'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'azul' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'LOC-R', familia: 'lockers', linea: 'metal', nombre: 'Locker ropero de 2 puertas', medidas: [76, 45, 180], precio: 4990, img: 'locker-ropero',
+      modelo: { tipo: 'locker', w: 760, d: 450, h: 1800, cols: 2, filas: 1 },
+      specs: [L2220, PEP, 'Repisa superior y tubo para gancho en cada puerta', 'Ventilas troqueladas arriba y abajo', CAND], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'oxford', puertas: 'oxford' }, entrega: '3 a 5 días hábiles' },
+
+    { clave: 'ANA-5L', variante: 'Esqueleto, 90 cm', familia: 'anaqueles', linea: 'metal', nombre: 'Anaquel esqueleto de 5 entrepaños', medidas: [90, 45, 200], precio: 1390, img: 'anaquel-esqueleto',
+      modelo: { tipo: 'anaquel', w: 900, d: 450, h: 2000, entrepanos: 5 },
+      specs: ['Postes de ángulo ranurado calibre 14', 'Entrepaños de lámina calibre 22 con 4 dobleces', 'Carga de 80 kg por entrepaño', ANG, PEP], roles: ['postes', 'entrepanos'], defaults: { postes: 'oxford', entrepanos: 'oxford' }, entrega: '2 a 3 días hábiles' },
+    { clave: 'ANA-5M', variante: 'Mediano, 92 cm', familia: 'anaqueles', linea: 'metal', nombre: 'Anaquel de 5 entrepaños', medidas: [92, 45, 220], precio: 1990, img: 'anaquel', destacado: true,
+      modelo: { tipo: 'anaquel', w: 920, d: 450, h: 2200, entrepanos: 5 },
+      specs: ['Postes de ángulo ranurado calibre 14', 'Entrepaños de lámina calibre 20 con 4 dobleces', 'Carga de 120 kg por entrepaño', ANG, PEP], roles: ['postes', 'entrepanos'], defaults: { postes: 'grisclaro', entrepanos: 'grisclaro' }, entrega: '2 a 3 días hábiles' },
+    { clave: 'ANA-5R', familia: 'anaqueles', linea: 'metal', nombre: 'Anaquel reforzado de 5 entrepaños', medidas: [92, 60, 220], precio: 3290, img: 'anaquel-reforzado',
+      modelo: { tipo: 'anaquel', w: 920, d: 600, h: 2200, entrepanos: 5, reforzado: true },
+      specs: ['Postes de ángulo ranurado calibre 12', 'Entrepaños de lámina calibre 18 con refuerzo central', 'Carga de 200 kg por entrepaño', ANG, PEP], roles: ['postes', 'entrepanos'], defaults: { postes: 'oxford', entrepanos: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+
+    { clave: 'RAC-150', variante: '150 cm', familia: 'racks', linea: 'metal', nombre: 'Rack de carga media de 3 niveles', medidas: [150, 60, 200], precio: 4690, img: 'rack-carga-media',
+      modelo: { tipo: 'rack', w: 1500, d: 600, h: 2000, niveles: 3 },
+      specs: [RMAR, RLAR, RENT, 'Carga de 300 kg por nivel, repartida', PEP], roles: ['marcos', 'vigas'], defaults: { marcos: 'azul', vigas: 'naranja' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'RAC-200', variante: '200 cm', familia: 'racks', linea: 'metal', nombre: 'Rack de carga media de 3 niveles', medidas: [200, 60, 200], precio: 5890, img: 'rack-carga-media', destacado: true,
+      modelo: { tipo: 'rack', w: 2000, d: 600, h: 2000, niveles: 3 },
+      specs: [RMAR, RLAR, RENT, 'Carga de 400 kg por nivel, repartida', PEP], roles: ['marcos', 'vigas'], defaults: { marcos: 'azul', vigas: 'naranja' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'ARM-4C', variante: 'Carta', familia: 'archiveros-metal', linea: 'metal', nombre: 'Archivero metálico de 4 gavetas carta', medidas: [47, 63, 132], precio: 3890, img: 'archivero-metal-4', destacado: true,
+      modelo: { tipo: 'archiveroMetal', w: 470, d: 630, h: 1320, cajones: 4 },
+      specs: ['Gavetas para folder tamaño carta'].concat(ARMS), roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'ARM-4O', variante: 'Oficio', familia: 'archiveros-metal', linea: 'metal', nombre: 'Archivero metálico de 4 gavetas oficio', medidas: [52, 63, 132], precio: 4290, img: 'archivero-metal-4',
+      modelo: { tipo: 'archiveroMetal', w: 520, d: 630, h: 1320, cajones: 4 },
+      specs: ['Gavetas para folder tamaño oficio'].concat(ARMS), roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'ARM-2', familia: 'archiveros-metal', linea: 'metal', nombre: 'Archivero metálico de 2 gavetas', medidas: [52, 63, 72], precio: 2490, img: 'archivero-metal-2',
+      modelo: { tipo: 'archiveroMetal', w: 520, d: 630, h: 720, cajones: 2 },
+      specs: ['Gavetas para folder tamaño carta y oficio'].concat(ARMS), roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'arena', puertas: 'arena' }, entrega: '3 a 5 días hábiles' },
+
+    { clave: 'GAB-U', familia: 'gabinetes', linea: 'metal', nombre: 'Gabinete universal de 2 puertas', medidas: [90, 45, 180], precio: 4890, img: 'gabinete-universal', destacado: true,
+      modelo: { tipo: 'gabinete', w: 900, d: 450, h: 1800, entrepanos: 4, abierta: true },
+      specs: [L2220, '4 entrepaños ajustables de lámina calibre 20', 'Jaladera con chapa de cilindro', PEP, 'Niveladores'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'GAB-B', familia: 'gabinetes', linea: 'metal', nombre: 'Gabinete bajo de 2 puertas', medidas: [90, 45, 90], precio: 3090, img: 'gabinete-bajo',
+      modelo: { tipo: 'gabinete', w: 900, d: 450, h: 900, entrepanos: 1 },
+      specs: [L2220, '1 entrepaño ajustable de lámina calibre 20', 'Jaladera con chapa de cilindro', PEP, 'Cubierta lisa para impresora o papelería'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'negro', puertas: 'negro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ESC-M', familia: 'escritorios', linea: 'metal', nombre: 'Escritorio metálico secretarial', medidas: [120, 60, 75], precio: 4290, img: 'escritorio-metalico',
+      modelo: { tipo: 'escritorioMetal', w: 1200, d: 600, h: 750 },
+      specs: ['Cubierta de lámina calibre 18 con orilla redondeada', 'Pedestal de 3 cajones: papelero, intermedio y archivo', 'Correderas de extensión con balero', 'Faldón frontal de lámina y chapa general', PEP], roles: ['cubierta', 'cuerpo'], defaults: { cubierta: 'grisclaro', cuerpo: 'oxford' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'ESC-120', familia: 'escritorios', nombre: 'Escritorio recto 120', medidas: [120, 60, 75], precio: 3190, img: 'escritorio-recto',
+      modelo: { tipo: 'escritorio', w: 1200, d: 600, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Faldón de melamina de 16 mm', NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', base: 'negro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ESC-150', familia: 'escritorios', nombre: 'Escritorio recto 150', medidas: [150, 60, 75], precio: 3690, img: 'escritorio-recto', destacado: true,
+      modelo: { tipo: 'escritorio', w: 1500, d: 600, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Faldón de melamina de 16 mm', NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', base: 'negro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ESC-180', familia: 'escritorios', nombre: 'Escritorio ejecutivo 180', medidas: [180, 75, 75], precio: 4890, img: 'escritorio-ejecutivo',
+      modelo: { tipo: 'escritorio', w: 1800, d: 750, h: 750, perfil: '2x2' },
+      specs: [C28, T22, 'Faldón de melamina de 16 mm', NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+
+    { clave: 'ESL-160', familia: 'escritorios-l', nombre: 'Escritorio en L 160 con cajonera', medidas: [160, 150, 75], precio: 8490, img: 'escritorio-l', destacado: true,
+      modelo: { tipo: 'escritorioL', w: 1600, d: 700, h: 750, rl: 800, rd: 500 },
+      specs: [C28, T21, 'Lateral de 80 x 50 cm', 'Cajonera fija de 3 cajones con correderas de extensión', NIV], roles: ['cubierta', 'casco', 'frentes', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', frentes: 'gris', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'ESL-180', familia: 'escritorios-l', nombre: 'Escritorio en L 180 con cajonera', medidas: [180, 160, 75], precio: 9690, img: 'escritorio-l-nogal',
+      modelo: { tipo: 'escritorioL', w: 1800, d: 750, h: 750, rl: 850, rd: 500 },
+      specs: [C28, T21, 'Lateral de 85 x 50 cm', 'Cajonera fija de 3 cajones con correderas de extensión', NIV], roles: ['cubierta', 'casco', 'frentes', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', frentes: 'nogal', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+
+    { clave: 'MJ-180', familia: 'juntas', nombre: 'Mesa de juntas para 6', medidas: [180, 90, 75], precio: 6290, img: 'mesa-juntas',
+      modelo: { tipo: 'mesa', w: 1800, d: 900, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Pasacables central', NIV], roles: ['cubierta', 'base'], defaults: { cubierta: 'nogal', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'MJ-240', familia: 'juntas', nombre: 'Mesa de juntas para 8', medidas: [240, 110, 75], precio: 8990, img: 'mesa-juntas', destacado: true,
+      modelo: { tipo: 'mesa', w: 2400, d: 1100, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Pasacables central', NIV], roles: ['cubierta', 'base'], defaults: { cubierta: 'nogal', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'MJ-300', familia: 'juntas', nombre: 'Mesa de juntas para 10', medidas: [300, 120, 75], precio: 11890, img: 'mesa-juntas-10',
+      modelo: { tipo: 'mesa', w: 3000, d: 1200, h: 750, perfil: '2x2' },
+      specs: [C28, T22, 'Cubierta en dos piezas con unión oculta', 'Pasacables central', NIV], roles: ['cubierta', 'base'], defaults: { cubierta: 'nogal', base: 'negro' }, entrega: '10 a 12 días hábiles' },
+
+    { clave: 'EST-2', familia: 'estaciones', nombre: 'Estación para 2 personas', medidas: [120, 120, 75], precio: 8790, img: 'estacion-2',
+      modelo: { tipo: 'estacion', puestos: 2, w: 1200, d: 600, h: 750 },
+      specs: ['Cubiertas de melamina de 28 mm de 120 x 60 cm por puesto', 'Divisor de melamina de 16 mm entre puestos', T21, NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'EST-4', familia: 'estaciones', nombre: 'Estación para 4 personas', medidas: [240, 120, 75], precio: 16490, img: 'estacion-4', destacado: true,
+      modelo: { tipo: 'estacion', puestos: 4, w: 1200, d: 600, h: 750 },
+      specs: ['Cubiertas de melamina de 28 mm de 120 x 60 cm por puesto', 'Divisor de melamina de 16 mm entre puestos', T21, NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', base: 'negro' }, entrega: '10 a 12 días hábiles' },
+    { clave: 'EST-6', familia: 'estaciones', nombre: 'Estación para 6 personas', medidas: [360, 120, 75], precio: 23890, img: 'estacion-6',
+      modelo: { tipo: 'estacion', puestos: 6, w: 1200, d: 600, h: 750 },
+      specs: ['Cubiertas de melamina de 28 mm de 120 x 60 cm por puesto', 'Divisor de melamina de 16 mm entre puestos', T21, NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', base: 'negro' }, entrega: '12 a 15 días hábiles' },
+
+    { clave: 'LIB-80', familia: 'libreros', nombre: 'Librero con puertas', medidas: [80, 35, 180], precio: 4290, img: 'librero', destacado: true,
+      modelo: { tipo: 'librero', w: 800, d: 350, h: 1800, puertas: true },
+      specs: [M16, '3 entrepaños ajustables', '2 puertas inferiores con bisagra de cierre', 'Zoclo y niveladores'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'LIB-80A', familia: 'libreros', nombre: 'Librero abierto', medidas: [80, 35, 180], precio: 3190, img: 'librero-abierto',
+      modelo: { tipo: 'librero', w: 800, d: 350, h: 1800, puertas: false },
+      specs: [M16, '4 entrepaños ajustables', 'Zoclo y niveladores'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'ARC-3', familia: 'archiveros', nombre: 'Archivero de 3 gavetas', medidas: [50, 60, 105], precio: 4690, img: 'archivero', destacado: true,
+      modelo: { tipo: 'archivero', w: 500, d: 600, h: 1050, cajones: 3 },
+      specs: [M16, 'Gavetas para folder tamaño carta y oficio', 'Correderas de extensión total para 40 kg', 'Chapa general'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ARC-4', familia: 'archiveros', nombre: 'Archivero de 4 gavetas', medidas: [50, 60, 135], precio: 5890, img: 'archivero-4',
+      modelo: { tipo: 'archivero', w: 500, d: 600, h: 1350, cajones: 4 },
+      specs: [M16, 'Gavetas para folder tamaño carta y oficio', 'Correderas de extensión total para 40 kg', 'Chapa general'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'CAJ-3', familia: 'archiveros', nombre: 'Cajonera móvil', medidas: [40, 50, 60], precio: 2590, img: 'cajonera',
+      modelo: { tipo: 'cajonera', w: 400, d: 500, h: 600 },
+      specs: [M16, '2 cajones papeleros y 1 gaveta', 'Rodajas de 1 1/2"', 'Chapa general'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'gris' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'COC-150', familia: 'cocinetas', nombre: 'Cocineta 150 con tarja', medidas: [150, 60, 90], precio: 12490, img: 'cocineta-150',
+      modelo: { tipo: 'cocineta', w: 1500, alacenas: false },
+      specs: ['Gabinete inferior de melamina de 16 mm', 'Cubierta postformada de 28 mm', 'Tarja de acero inoxidable con llave', 'Puertas con bisagra de cierre'], roles: ['casco', 'frentes', 'cubierta'], defaults: { casco: 'blanco', frentes: 'nogal', cubierta: 'gris' }, entrega: '10 a 12 días hábiles' },
+    { clave: 'COC-180', familia: 'cocinetas', nombre: 'Cocineta 180 con alacenas', medidas: [180, 60, 220], precio: 14890, img: 'cocineta', destacado: true,
+      modelo: { tipo: 'cocineta', w: 1800, alacenas: true },
+      specs: ['Gabinete inferior y alacenas de melamina de 16 mm', 'Cubierta postformada de 28 mm', 'Tarja de acero inoxidable con llave', 'Puertas con bisagra de cierre'], roles: ['casco', 'frentes', 'cubierta'], defaults: { casco: 'blanco', frentes: 'nogal', cubierta: 'gris' }, entrega: '10 a 12 días hábiles' }
+  ];
+
+  var porClave = {};
+  /* Campo de color de la ficha de cada pieza (contraste con el mueble recortado). */
+  var campos = { 'LOC-3': 'amarillo', 'LOC-6': 'nogal', 'LOC-12': 'perla', 'LOC-R': 'amarillo', 'ANA-5L': 'amarillo', 'RAC-150': 'perla', 'RAC-200': 'perla', 'ANA-5M': 'nogal', 'ANA-5R': 'amarillo',
+    'ARM-4C': 'roble', 'ARM-4O': 'nogal', 'ARM-2': 'nogal', 'GAB-U': 'amarillo', 'GAB-B': 'perla', 'ESC-M': 'roble',
+    'ESC-120': 'amarillo', 'ESC-150': 'perla', 'ESC-180': 'roble', 'ESL-160': 'nogal', 'ESL-180': 'perla', 'MJ-180': 'amarillo',
+    'MJ-240': 'perla', 'MJ-300': 'roble', 'EST-2': 'nogal', 'EST-4': 'roble', 'EST-6': 'amarillo', 'LIB-80': 'perla', 'LIB-80A': 'amarillo',
+    'ARC-3': 'roble', 'ARC-4': 'perla', 'CAJ-3': 'amarillo', 'COC-150': 'perla', 'COC-180': 'roble' };
+  productos.forEach(function (p) {
+    porClave[p.clave] = p;
+    p.foto = '../img/' + p.img + '-m.webp';
+    p.cut = '../img/cut-' + p.img + '.webp';
+    p.campo = campos[p.clave] || 'perla';
+  });
+
+  /* Paleta de cada rol: la línea metálica usa pintura en polvo en todas sus partes;
+     la de melamina usa los colores de tablero y la base tubular su propia pintura. */
+  function paleta(p, role) {
+    if (p && p.linea === 'metal') return pinturas;
+    return role === 'base' ? bases : colores;
+  }
+  function color(p, role, id) {
+    var pal = paleta(p, role);
+    return pal[id] || pal[Object.keys(pal)[0]];
+  }
+  var metalicos = productos.filter(function (p) { return p.linea === 'metal'; });
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('es-MX');
+  }
+  function fmtCent(n) {
+    return '$' + n.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  /* Precio por volumen: de 1 a 9 piezas precio de lista; de 10 a 49, 7 % menos; desde 50, cotización especial. */
+  var tramos = [
+    { desde: 1, hasta: 9, factor: 1, texto: '1 a 9 piezas' },
+    { desde: 10, hasta: 49, factor: 0.93, texto: '10 a 49 piezas' },
+    { desde: 50, hasta: Infinity, factor: 0.93, texto: '50 piezas o más', cotizar: true }
+  ];
+  function tramo(qty) {
+    for (var i = 0; i < tramos.length; i++) if (qty >= tramos[i].desde && qty <= tramos[i].hasta) return tramos[i];
+    return tramos[0];
+  }
+  function precioUnitario(p, qty) {
+    return Math.round(p.precio * tramo(qty || 1).factor);
+  }
+
+  /* Estado por los dos primeros dígitos del código postal. */
+  var cpEstados = [
+    [1, 16, 'Ciudad de México'], [20, 20, 'Aguascalientes'], [21, 22, 'Baja California'], [23, 23, 'Baja California Sur'],
+    [24, 24, 'Campeche'], [25, 27, 'Coahuila'], [28, 28, 'Colima'], [29, 30, 'Chiapas'], [31, 33, 'Chihuahua'],
+    [34, 35, 'Durango'], [36, 38, 'Guanajuato'], [39, 41, 'Guerrero'], [42, 43, 'Hidalgo'], [44, 49, 'Jalisco'],
+    [50, 57, 'Estado de México'], [58, 61, 'Michoacán'], [62, 62, 'Morelos'], [63, 63, 'Nayarit'], [64, 67, 'Nuevo León'],
+    [68, 71, 'Oaxaca'], [72, 75, 'Puebla'], [76, 76, 'Querétaro'], [77, 77, 'Quintana Roo'], [78, 79, 'San Luis Potosí'],
+    [80, 82, 'Sinaloa'], [83, 85, 'Sonora'], [86, 86, 'Tabasco'], [87, 89, 'Tamaulipas'], [90, 90, 'Tlaxcala'],
+    [91, 96, 'Veracruz'], [97, 97, 'Yucatán'], [98, 99, 'Zacatecas']
+  ];
+  var fabrica = { estado: 'Jalisco', vecinos: ['Nayarit', 'Colima', 'Michoacán', 'Zacatecas', 'Aguascalientes', 'Guanajuato'] };
+  function estadoDeCP(cp) {
+    if (!/^\d{5}$/.test(cp)) return null;
+    var n = parseInt(cp.slice(0, 2), 10);
+    for (var i = 0; i < cpEstados.length; i++) if (n >= cpEstados[i][0] && n <= cpEstados[i][1]) return cpEstados[i][2];
+    return null;
+  }
+  /* Tarifas de muestra por zona. */
+  function envio(cp, subtotal) {
+    var estado = estadoDeCP(cp);
+    if (!estado) return null;
+    if (estado === fabrica.estado) {
+      var gratis = subtotal >= 15000;
+      return { estado: estado, zona: 'Zona local', costo: gratis ? 0 : 450, dias: '1 a 2 días hábiles', nota: gratis ? 'Envío sin costo en pedidos desde $15,000.' : 'Sin costo desde $15,000.' };
+    }
+    if (fabrica.vecinos.indexOf(estado) >= 0) return { estado: estado, zona: 'Zona regional', costo: 890, dias: '2 a 4 días hábiles', nota: 'Entrega con armado básico.' };
+    return { estado: estado, zona: 'Zona nacional', costo: 1690, dias: '4 a 8 días hábiles', nota: 'Pedidos grandes van en flete consolidado; lo cotizamos aparte.' };
+  }
+
+  /* Estimado para muebles a la medida: escala el precio del producto de línea más cercano por área y suma 15 % por fabricación especial. */
+  var referencia = { escritorio: 'ESC-150', escritorioL: 'ESL-160', mesa: 'MJ-240', estacion: 'EST-4', librero: 'LIB-80', archivero: 'ARC-3', cajonera: 'CAJ-3', cocineta: 'COC-180',
+    locker: 'LOC-6', anaquel: 'ANA-5M', archiveroMetal: 'ARM-4C', gabinete: 'GAB-U', escritorioMetal: 'ESC-M', rack: 'RAC-200' };
+  var verticales = ['librero', 'archivero', 'cajonera', 'locker', 'gabinete', 'archiveroMetal'];
+  function estimadoMedida(tipo, cm, extra) {
+    var ref = porClave[referencia[tipo]];
+    if (!ref) return null;
+    var r = ref.medidas, a, a0;
+    if (verticales.indexOf(tipo) >= 0) { a = cm[0] * cm[2]; a0 = r[0] * r[2]; }
+    else if (tipo === 'rack') { a = cm[0] * ((extra && extra.entrepanos) || 3) * (cm[2] / 200); a0 = r[0] * 3; }
+    else if (tipo === 'anaquel') { a = cm[0] * cm[1] * ((extra && extra.entrepanos) || 5) * (cm[2] / 220); a0 = r[0] * r[1] * 5; }
+    else if (tipo === 'cocineta') { a = cm[0]; a0 = r[0]; }
+    else if (tipo === 'estacion') { a = (extra && extra.puestos ? extra.puestos : 4); a0 = 4; }
+    else { a = cm[0] * cm[1]; a0 = r[0] * r[1]; }
+    var base = ref.precio * Math.pow(a / a0, 0.85) * 1.15;
+    return { min: Math.round(base * 0.92 / 10) * 10, max: Math.round(base * 1.1 / 10) * 10, referencia: ref };
+  }
+
+  return {
+    colores: colores, bases: bases, pinturas: pinturas, roles: roles, familias: familias, productos: productos, porClave: porClave,
+    paleta: paleta, color: color, metalicos: metalicos,
+    fmt: fmt, fmtCent: fmtCent, tramos: tramos, tramo: tramo, precioUnitario: precioUnitario,
+    estadoDeCP: estadoDeCP, envio: envio, fabrica: fabrica, estimadoMedida: estimadoMedida, referencia: referencia
+  };
+})();
+
+</script>
+<script>
+/* Visor 3D paramétrico JOME: arma cada mueble desde sus medidas (mm) con piezas de melamina y tubular. Requiere THREE (r128) y window.JOME. */
+window.JOME3D = (function () {
+  var MM = 0.001;
+  var hasGL = (function () {
+    try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl'))); } catch (e) { return false; }
+  })();
+
+  function lin(hex) { return new THREE.Color(hex).convertSRGBToLinear(); }
+
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  var texCache = {};
+  function woodTexture(id, hex) {
+    if (texCache[id]) return texCache[id];
+    var c = document.createElement('canvas'); c.width = 1024; c.height = 256;
+    var g = c.getContext('2d'); var r = rng(id.length * 9973 + 17);
+    g.fillStyle = hex; g.fillRect(0, 0, 1024, 256);
+    for (var i = 0; i < 46; i++) {
+      var y0 = r() * 256, h = 4 + r() * 18;
+      g.fillStyle = r() < 0.5 ? 'rgba(60,30,10,' + (0.03 + r() * 0.05) + ')' : 'rgba(255,235,210,' + (0.02 + r() * 0.05) + ')';
+      g.fillRect(0, y0, 1024, h);
+    }
+    for (var j = 0; j < 170; j++) {
+      var y = r() * 256, amp = 1.5 + r() * 5, f = 0.003 + r() * 0.01, ph = r() * 6.28, dark = r() < 0.65;
+      g.strokeStyle = dark ? 'rgba(45,22,6,' + (0.05 + r() * 0.14) + ')' : 'rgba(255,238,215,' + (0.04 + r() * 0.08) + ')';
+      g.lineWidth = 0.5 + r() * 1.6;
+      g.beginPath();
+      for (var x = 0; x <= 1024; x += 8) {
+        var yy = y + Math.sin(x * f + ph) * amp + Math.sin(x * f * 3.3 + ph * 1.7) * amp * 0.35;
+        if (x === 0) g.moveTo(x, yy); else g.lineTo(x, yy);
+      }
+      g.stroke();
+    }
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.encoding = THREE.sRGBEncoding; t.anisotropy = 4;
+    texCache[id] = t;
+    return t;
+  }
+
+  var matCache = {};
+  function surface(id) {
+    var k = 's:' + id; if (matCache[k]) return matCache[k];
+    var c = JOME.colores[id] || JOME.colores.blanco, m;
+    if (c.wood) m = new THREE.MeshStandardMaterial({ map: woodTexture(id, c.hex), roughness: 0.6, metalness: 0 });
+    else m = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.5, metalness: 0 });
+    return (matCache[k] = m);
+  }
+  function canto(id) {
+    var k = 'c:' + id; if (matCache[k]) return matCache[k];
+    var c = JOME.colores[id] || JOME.colores.blanco;
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.canto), roughness: 0.4 }));
+  }
+  function paint(id) {
+    var k = 'p:' + id; if (matCache[k]) return matCache[k];
+    var c = JOME.bases[id] || JOME.bases.negro;
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.42, metalness: 0.35 }));
+  }
+  /* Pintura en polvo de la línea metálica: acabado satinado, un poco de brillo de metal. */
+  function steel(id) {
+    var k = 'st:' + id; if (matCache[k]) return matCache[k];
+    var c = (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.46, metalness: 0.3 }));
+  }
+  /* Poste de ángulo ranurado: la textura repite una ranura larga y un barreno cada 75 mm. */
+  function slotTexture() {
+    if (texCache.slot) return texCache.slot;
+    var c = document.createElement('canvas'); c.width = 32; c.height = 64;
+    var g = c.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 32, 64);
+    g.fillStyle = '#3a3c3f';
+    g.beginPath(); g.moveTo(13, 8); g.lineTo(19, 8); g.arc(16, 30, 3, 0, Math.PI); g.lineTo(13, 8); g.fill();
+    g.fillRect(13, 8, 6, 22);
+    g.beginPath(); g.arc(16, 48, 3.2, 0, Math.PI * 2); g.fill();
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4;
+    return (texCache.slot = t);
+  }
+  /* Marco de rack: perforación tipo lágrima cada 50 mm */
+  function tearTexture() {
+    if (texCache.tear) return texCache.tear;
+    var c = document.createElement('canvas'); c.width = 32; c.height = 64;
+    var g = c.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 32, 64);
+    g.fillStyle = '#2b2d30';
+    g.beginPath(); g.arc(16, 24, 7, Math.PI * 0.12, Math.PI * 0.88, true); g.lineTo(16, 46); g.closePath(); g.fill();
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4;
+    return (texCache.tear = t);
+  }
+  function postSteel(id, h, kind) {
+    var k = 'post:' + id + ':' + h + ':' + (kind || 'ranura'); if (matCache[k]) return matCache[k];
+    var c = (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
+    var t = (kind === 'lagrima' ? tearTexture() : slotTexture()).clone(); t.needsUpdate = true; t.repeat.set(1, Math.max(1, Math.round(h / (kind === 'lagrima' ? 50 : 75))));
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), map: t, roughness: 0.5, metalness: 0.3 }));
+  }
+  function fixed(k, hex, rough, metal) {
+    if (matCache[k]) return matCache[k];
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(hex), roughness: rough, metalness: metal }));
+  }
+
+  /* Construcción. y es la altura desde el piso; z positivo mira al usuario. */
+  function Builder(group) { this.g = group; }
+  Builder.prototype.box = function (w, h, d, mat, x, yb, z) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w * MM, h * MM, d * MM), mat);
+    m.position.set(x * MM, (yb + h / 2) * MM, z * MM);
+    m.castShadow = true; m.receiveShadow = true;
+    this.g.add(m); return m;
+  };
+  /* Tablero con canto: axis = eje del espesor ('x', 'y' o 'z'). */
+  Builder.prototype.panel = function (axis, w, h, d, colorId, x, yb, z) {
+    var f = surface(colorId), e = canto(colorId), mats;
+    if (axis === 'y') mats = [e, e, f, f, e, e];
+    else if (axis === 'x') mats = [f, f, e, e, e, e];
+    else mats = [e, e, e, e, f, f];
+    return this.box(w, h, d, mats, x, yb, z);
+  };
+  Builder.prototype.cyl = function (r, h, mat, x, yb, z, axis) {
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r * MM, r * MM, h * MM, 20), mat);
+    if (axis === 'x') { m.rotation.z = Math.PI / 2; m.position.set(x * MM, yb * MM, z * MM); }
+    else if (axis === 'z') { m.rotation.x = Math.PI / 2; m.position.set(x * MM, yb * MM, z * MM); }
+    else m.position.set(x * MM, (yb + h / 2) * MM, z * MM);
+    m.castShadow = true; this.g.add(m); return m;
+  };
+  Builder.prototype.handle = function (len, x, y, z, vertical) {
+    var mat = fixed('handle', '#B9BDC1', 0.25, 0.9);
+    if (vertical) {
+      this.box(12, len, 12, mat, x, y - len / 2, z + 22);
+      this.box(10, 10, 22, mat, x, y + len / 2 - 14, z + 10);
+      this.box(10, 10, 22, mat, x, y - len / 2 + 4, z + 10);
+    } else {
+      this.cyl(6, len, mat, x, y, z + 24, 'x');
+      this.box(10, 10, 24, mat, x - len / 2 + 10, y - 5, z + 12);
+      this.box(10, 10, 24, mat, x + len / 2 - 10, y - 5, z + 12);
+    }
+  };
+  /* Marco cerrado de tubular en el plano y-z, en x. */
+  Builder.prototype.frameZ = function (x, zc, depth, height, prof, baseId) {
+    var m = paint(baseId), pw = prof === '2x2' ? 50 : 25, pd = 50, lev = 12;
+    var z1 = zc - depth / 2 + pd / 2, z2 = zc + depth / 2 - pd / 2;
+    this.box(pw, height - lev - 50, pd, m, x, lev + 25, z1);
+    this.box(pw, height - lev - 50, pd, m, x, lev + 25, z2);
+    this.box(pw, 25, depth, m, x, lev, zc);
+    this.box(pw, 25, depth, m, x, height - 25, zc);
+    var black = fixed('lev', '#121314', 0.6, 0);
+    this.cyl(14, lev, black, x, 0, z1);
+    this.cyl(14, lev, black, x, 0, z2);
+  };
+  Builder.prototype.frameX = function (z, xc, width, height, prof, baseId) {
+    var m = paint(baseId), pw = prof === '2x2' ? 50 : 25, pd = 50, lev = 12;
+    var x1 = xc - width / 2 + pd / 2, x2 = xc + width / 2 - pd / 2;
+    this.box(pd, height - lev - 50, pw, m, x1, lev + 25, z);
+    this.box(pd, height - lev - 50, pw, m, x2, lev + 25, z);
+    this.box(width, 25, pw, m, xc, lev, z);
+    this.box(width, 25, pw, m, xc, height - 25, z);
+    var black = fixed('lev', '#121314', 0.6, 0);
+    this.cyl(14, lev, black, x1, 0, z);
+    this.cyl(14, lev, black, x2, 0, z);
+  };
+  /* Cuerpo de cajonera o archivero con frentes. */
+  Builder.prototype.cajones = function (x, z, w, d, h, n, c, yb, conRuedas) {
+    var t = 16, zoc = 50, y0 = (yb || 0), body = y0, fb;
+    if (conRuedas) {
+      var rm = fixed('lev', '#121314', 0.6, 0);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (s) {
+        var m = new THREE.Mesh(new THREE.SphereGeometry(19 * MM, 16, 12), rm);
+        m.position.set((x + s[0] * (w / 2 - 40)) * MM, (y0 + 19) * MM, (z + s[1] * (d / 2 - 40)) * MM); m.castShadow = true; this.g.add(m);
+      }, this);
+      body = y0 + 40; fb = body;
+      this.panel('y', w - 2 * t, t, d, c.casco, x, body, z);
+    } else {
+      this.box(w - 2 * t, zoc, t, fixed('zoclo', '#2A2C2E', 0.7, 0), x, y0, z + d / 2 - 30);
+      this.panel('y', w - 2 * t, t, d, c.casco, x, y0 + zoc, z);
+      fb = y0 + zoc;
+    }
+    this.panel('x', t, y0 + h - t - body, d, c.casco, x - w / 2 + t / 2, body, z);
+    this.panel('x', t, y0 + h - t - body, d, c.casco, x + w / 2 - t / 2, body, z);
+    this.panel('y', w, t, d, c.casco, x, y0 + h - t, z);
+    var gap = 3, avail = (y0 + h - t) - fb - gap * (n + 1), fh = avail / n, top = y0 + h - t - gap;
+    for (var i = 0; i < n; i++) {
+      var yb2 = top - (i + 1) * fh - i * gap;
+      this.panel('z', w - 4, fh, 18, c.frentes, x, yb2, z + d / 2 + 9);
+      this.handle(Math.min(160, w - 120), x, yb2 + fh * 0.72, z + d / 2 + 18);
+      if (i === 0 && !conRuedas) this.cyl(9, 8, fixed('handle', '#B9BDC1', 0.25, 0.9), x + w / 2 - 60, yb2 + fh * 0.72, z + d / 2 + 22, 'z');
+    }
+  };
+
+  /* Ventilas troqueladas: ranuras oscuras con su ceja de lámina, sobre la cara frontal en zf. */
+  Builder.prototype.louvers = function (mat, x, yTop, zf, w, n) {
+    var dark = fixed('slot', '#232527', 0.85, 0);
+    for (var i = 0; i < n; i++) {
+      var y = yTop - i * 15;
+      this.box(w, 5, 2, dark, x, y, zf + 1);
+      this.box(w, 4, 6, mat, x, y + 5, zf + 3);
+    }
+  };
+  Builder.prototype.levelers = function (w, d, inset) {
+    var black = fixed('lev', '#121314', 0.6, 0), g = inset || 40;
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (q) { this.cyl(14, 12, black, q[0] * (w / 2 - g), 0, q[1] * (d / 2 - g)); }, this);
+  };
+  /* Caja de lámina: laterales, techo, piso y fondo de 1 mm a escala (8 mm para que se vea el canto). */
+  Builder.prototype.shell = function (w, d, h, y0, mat) {
+    var t = 8;
+    this.box(t, h - y0, d, mat, -w / 2 + t / 2, y0, 0);
+    this.box(t, h - y0, d, mat, w / 2 - t / 2, y0, 0);
+    this.box(w, t, d, mat, 0, h - t, 0);
+    this.box(w - 2 * t, t, d, mat, 0, y0, 0);
+    this.box(w - 2 * t, h - y0, t, mat, 0, y0, -d / 2 + t / 2);
+    return t;
+  };
+
+  var build = {
+    locker: function (b, s, c) {
+      var cols = s.cols || 1, filas = s.filas || 1, w = s.w, d = s.d, h = s.h, zoc = 100, gap = 6;
+      var body = steel(c.cuerpo), door = steel(c.puertas), chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), plate = fixed('plate', '#DADDDF', 0.3, 0.75);
+      b.box(w - 16, zoc, d - 30, body, 0, 0, -15);
+      var t = b.shell(w, d, h, zoc, body), cw = (w - 2 * t) / cols;
+      for (var i = 1; i < cols; i++) b.box(t, h - zoc - 2 * t, d - 16, body, -w / 2 + t + i * cw, zoc + t, -8);
+      var dh = (h - zoc - t - gap) / filas, zf = d / 2 + 14;
+      for (var ci = 0; ci < cols; ci++) for (var fi = 0; fi < filas; fi++) {
+        var x = -w / 2 + t + cw * ci + cw / 2, yb = zoc + gap + fi * dh, dw = cw - gap, hh = dh - gap, lw = Math.min(150, dw * 0.56);
+        b.box(dw, hh, 14, door, x, yb, d / 2 + 7);
+        var tall = hh > 900, nl = tall ? 6 : (hh > 380 ? 4 : 3);
+        b.louvers(door, x, yb + hh - (tall ? 90 : 60), zf, lw, nl);
+        if (tall) b.louvers(door, x, yb + 200, zf, lw, nl);
+        else if (hh > 380) b.louvers(door, x, yb + 100, zf, lw, 3);
+        b.box(64, 22, 3, plate, x, yb + hh - (tall ? 60 : 36), zf);
+        var hx = x + dw / 2 - 42, hy = yb + (tall ? hh * 0.52 : hh * 0.45);
+        b.box(30, 110, 5, chrome, hx, hy - 55, zf);
+        b.box(12, 34, 16, chrome, hx, hy - 17, zf + 4);
+      }
+    },
+    anaquel: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.entrepanos || 5, ang = s.reforzado ? 45 : 38, tk = s.reforzado ? 3 : 2;
+      var post = postSteel(c.postes, h), shelf = steel(c.entrepanos), cap = fixed('lev', '#121314', 0.6, 0);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (q) {
+        b.box(ang, h - 10, tk, post, q[0] * (w / 2 - ang / 2), 10, q[1] * (d / 2 - tk / 2));
+        b.box(tk, h - 10, ang, post, q[0] * (w / 2 - tk / 2), 10, q[1] * (d / 2 - ang / 2));
+        b.box(ang + 4, 10, ang + 4, cap, q[0] * (w / 2 - ang / 2), 0, q[1] * (d / 2 - ang / 2));
+      });
+      var lip = s.reforzado ? 40 : 30, low = 130, top = h - 30;
+      for (var i = 0; i < n; i++) {
+        var y = low + (top - low) * i / (n - 1);
+        b.box(w - 2 * tk, 3, d - 2 * tk, shelf, 0, y, 0);
+        b.box(w - 2 * tk, lip, 3, shelf, 0, y - lip + 3, d / 2 - tk - 1.5);
+        b.box(w - 2 * tk, lip, 3, shelf, 0, y - lip + 3, -d / 2 + tk + 1.5);
+        b.box(3, lip, d - 2 * tk, shelf, -w / 2 + tk + 1.5, y - lip + 3, 0);
+        b.box(3, lip, d - 2 * tk, shelf, w / 2 - tk - 1.5, y - lip + 3, 0);
+        if (s.reforzado) b.box(w - 2 * tk - 8, 24, 30, shelf, 0, y - 24, 0);
+      }
+    },
+    rack: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.niveles || 3, uw = 75, ud = 55, span = d - ud;
+      var up = postSteel(c.marcos, h, 'lagrima'), frame = steel(c.marcos), beam = steel(c.vigas), plate = fixed('lev', '#121314', 0.6, 0);
+      var xs = [-w / 2 + uw / 2, w / 2 - uw / 2], zs = [-d / 2 + ud / 2, d / 2 - ud / 2];
+      xs.forEach(function (x) {
+        zs.forEach(function (z) { b.box(uw, h - 6, ud, up, x, 6, z); b.box(uw + 30, 6, ud + 30, plate, x, 0, z); });
+        /* contravientos: travesaños arriba y abajo y diagonales en zigzag entre los dos postes del marco */
+        b.box(28, 28, span, frame, x, 150, 0);
+        b.box(28, 28, span, frame, x, h - 180, 0);
+        var segs = Math.max(2, Math.round((h - 330) / 560)), sh = (h - 330) / segs, len = Math.sqrt(span * span + sh * sh);
+        for (var i = 0; i < segs; i++) {
+          var m = b.box(22, 22, len, frame, x, 164 + i * sh + sh / 2 - 11, 0);
+          m.rotation.x = (i % 2 ? 1 : -1) * Math.atan2(sh, span);
+        }
+      });
+      var bw = w - 2 * uw, low = 140, top = h - 140, np = Math.max(2, Math.round(bw / 480)), pw = bw / np;
+      for (var k = 0; k < n; k++) {
+        var y = n === 1 ? low : low + (top - low) * k / (n - 1);
+        zs.forEach(function (z) { b.box(bw, 100, 50, beam, 0, y - 100, z); });
+        for (var j = 0; j < np; j++) b.box(pw - 8, 14, span + 40, beam, -bw / 2 + pw * j + pw / 2, y, 0);
+      }
+    },
+    gabinete: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.entrepanos || 4, y0 = 12, body = steel(c.cuerpo), door = steel(c.puertas);
+      b.levelers(w, d);
+      var t = b.shell(w, d, h, y0, body);
+      for (var i = 1; i <= n; i++) {
+        var y = y0 + (h - y0 - t) * i / (n + 1);
+        b.box(w - 2 * t - 4, 3, d - 40, body, 0, y, -12);
+        b.box(w - 2 * t - 4, 26, 3, body, 0, y - 23, d / 2 - 34);
+      }
+      var dw = (w - 6) / 2 - 1, dh = h - y0 - 6, zc = d / 2 + 7, hl = Math.min(160, dh * 0.3), hy = y0 + 3 + dh * (h > 1200 ? 0.52 : 0.6);
+      /* puerta derecha cerrada con jaladera y chapa; la izquierda abierta en el gabinete alto para ver los entrepaños */
+      b.box(dw, dh, 14, door, dw / 2 + 1, y0 + 3, zc);
+      b.handle(hl, 34, hy, d / 2 + 14, true);
+      b.cyl(9, 8, fixed('handle', '#B9BDC1', 0.25, 0.9), 34, hy + hl / 2 + 30, d / 2 + 18, 'z');
+      if (s.abierta) {
+        var sub = new THREE.Group(), sb = new Builder(sub);
+        sb.box(dw, dh, 14, door, dw / 2, y0 + 3, 7);
+        sub.position.set((-w / 2 + 1) * MM, 0, (d / 2) * MM);
+        sub.rotation.y = -1.45;
+        b.g.add(sub);
+      } else {
+        b.box(dw, dh, 14, door, -dw / 2 - 1, y0 + 3, zc);
+      }
+    },
+    archiveroMetal: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.cajones || 4, zoc = 50, body = steel(c.cuerpo), front = steel(c.puertas);
+      var chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), plate = fixed('plate', '#DADDDF', 0.3, 0.75);
+      b.box(w - 30, zoc, d - 40, fixed('zoclo', '#2A2C2E', 0.7, 0), 0, 0, -20);
+      var t = b.shell(w, d, h, zoc, body), band = 46, gap = 4;
+      b.box(w, band, 4, body, 0, h - band, d / 2 + 2);
+      b.cyl(9, 8, chrome, w / 2 - 50, h - band / 2, d / 2 + 6, 'z');
+      var avail = h - band - zoc - t - gap * (n + 1), fh = avail / n, topY = h - band - gap;
+      for (var i = 0; i < n; i++) {
+        var yb = topY - (i + 1) * fh - i * gap, zf = d / 2 + 18;
+        b.box(w - 2 * t - 4, fh, 18, front, 0, yb, d / 2 + 9);
+        b.box(96, 34, 3, plate, 0, yb + fh * 0.74, zf);
+        b.box(Math.min(170, w - 160), 18, 12, chrome, 0, yb + fh * 0.5, zf + 2);
+      }
+    },
+    escritorioMetal: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, top = steel(c.cubierta), body = steel(c.cuerpo), chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), pw = 400, px = w / 2 - pw / 2 - 20;
+      b.box(w, 26, d, top, 0, h - 26, 0);
+      b.box(w - 8, 10, d - 8, body, 0, h - 36, 0);
+      b.box(26, h - 36, d - 50, body, -w / 2 + 40, 0, -10);
+      b.box(w - pw - 90, 440, 8, body, -pw / 2 - 15, h - 36 - 440, -d / 2 + 60);
+      b.box(pw, h - 36 - 20, d - 50, body, px, 20, -10);
+      b.levelers(w - 40, d - 60, 30);
+      var hs = [150, 160, h - 36 - 20 - 150 - 160 - 4 * 5], yb = h - 36 - 5, zf = d / 2 - 35 + 14;
+      hs.forEach(function (fh, i) {
+        yb -= fh;
+        b.box(pw - 12, fh, 14, body, px, yb, d / 2 - 35 + 7);
+        b.box(130, 16, 12, chrome, px, yb + fh * (i === 2 ? 0.8 : 0.55), zf + 2);
+        if (i === 0) b.cyl(8, 8, chrome, px + pw / 2 - 45, yb + fh * 0.55, zf + 4, 'z');
+        yb -= 5;
+      });
+    },
+    escritorio: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, ins = s.perfil === '2x2' ? 60 : 50;
+      b.panel('y', w, 28, d, c.cubierta, 0, h - 28, 0);
+      b.frameZ(-w / 2 + ins, 0, d - 60, h - 28, s.perfil, c.base);
+      b.frameZ(w / 2 - ins, 0, d - 60, h - 28, s.perfil, c.base);
+      b.box(w - 2 * ins, 50, 25, paint(c.base), 0, h - 28 - 75, -d / 2 + 55);
+      b.panel('z', w - 2 * ins - 40, 360, 16, c.casco, 0, h - 28 - 400, -d / 2 + 90);
+    },
+    escritorioL: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, rl = s.rl, rd = s.rd;
+      b.panel('y', w, 28, d, c.cubierta, 0, h - 28, 0);
+      b.panel('y', rd, 28, rl, c.cubierta, w / 2 - rd / 2, h - 28, d / 2 + rl / 2);
+      b.frameZ(-w / 2 + 50, 0, d - 60, h - 28, '2x1', c.base);
+      b.frameZ(w / 2 - 50, 0, d - 60, h - 28, '2x1', c.base);
+      b.box(w - 100, 50, 25, paint(c.base), 0, h - 28 - 75, -d / 2 + 55);
+      b.panel('z', w - 160, 360, 16, c.casco, 0, h - 28 - 400, -d / 2 + 90);
+      var sub = new THREE.Group(), sb = new Builder(sub), cw = Math.min(440, rl - 60);
+      sb.cajones(0, 0, cw, rd - 40, h - 28 - 4, 3, c);
+      sub.rotation.y = -Math.PI / 2;
+      sub.position.set((w / 2 - rd / 2) * MM, 0, (d / 2 + rl - cw / 2 - 20) * MM);
+      b.g.add(sub);
+    },
+    mesa: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, off = Math.min(380, w * 0.18);
+      b.panel('y', w, 28, d, c.cubierta, 0, h - 28, 0);
+      var grom = fixed('grom', '#151617', 0.5, 0.2);
+      b.cyl(40, 3, grom, 0, h, 0);
+      b.frameZ(-w / 2 + off, 0, d - 220, h - 28, s.perfil, c.base);
+      b.frameZ(w / 2 - off, 0, d - 220, h - 28, s.perfil, c.base);
+      b.box(w - 2 * off, s.perfil === '2x2' ? 50 : 50, s.perfil === '2x2' ? 50 : 25, paint(c.base), 0, h - 28 - 90, 0);
+    },
+    estacion: function (b, s, c) {
+      var cols = Math.max(1, Math.round(s.puestos / 2)), w = s.w, d = s.d, h = s.h, total = cols * w;
+      for (var i = 0; i < cols; i++) {
+        var x = -total / 2 + w / 2 + i * w;
+        b.panel('y', w - 4, 28, d - 2, c.cubierta, x, h - 28, d / 2);
+        b.panel('y', w - 4, 28, d - 2, c.cubierta, x, h - 28, -d / 2);
+      }
+      for (var k = 0; k <= cols; k++) {
+        var fx = -total / 2 + k * w + (k === 0 ? 40 : k === cols ? -40 : 0);
+        b.frameZ(fx, 0, 2 * d - 80, h - 28, '2x1', c.base);
+      }
+      b.panel('z', total - 20, 380, 16, c.casco, 0, h, 0);
+      b.box(total - 20, 20, 24, paint(c.base), 0, h + 380, 0);
+      b.box(total - 80, 50, 25, paint(c.base), 0, h - 28 - 75, 0);
+    },
+    librero: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, t = 16, zoc = 60;
+      b.box(w - 2 * t, zoc, t, fixed('zoclo', '#2A2C2E', 0.7, 0), 0, 0, d / 2 - 30);
+      b.panel('x', t, h, d, c.casco, -w / 2 + t / 2, 0, 0);
+      b.panel('x', t, h, d, c.casco, w / 2 - t / 2, 0, 0);
+      b.panel('y', w - 2 * t, t, d, c.casco, 0, h - t, 0);
+      b.panel('y', w - 2 * t, t, d, c.casco, 0, zoc, 0);
+      b.panel('z', w - 2 * t, h - zoc - t, 6, c.casco, 0, zoc + t, -d / 2 + 3);
+      var doorH = s.puertas ? 760 : 0, shelfStart = zoc + t + doorH, n = s.puertas ? 3 : 4;
+      if (s.puertas) {
+        b.panel('y', w - 2 * t, t, d - 20, c.frentes, 0, zoc + t + doorH - t, -10);
+        var dw = (w - 4) / 2 - 2;
+        b.panel('z', dw, doorH - 6, 18, c.frentes, -dw / 2 - 1, zoc + 3, d / 2 + 9);
+        b.panel('z', dw, doorH - 6, 18, c.frentes, dw / 2 + 1, zoc + 3, d / 2 + 9);
+        b.handle(120, -40, zoc + doorH - 120, d / 2 + 18, true);
+        b.handle(120, 40, zoc + doorH - 120, d / 2 + 18, true);
+      }
+      var span = (h - t) - shelfStart;
+      for (var i = 1; i < n; i++) b.panel('y', w - 2 * t, t, d - 20, c.frentes, 0, shelfStart + span * i / n, -10);
+    },
+    archivero: function (b, s, c) { b.cajones(0, 0, s.w, s.d, s.h, s.cajones, c); },
+    cajonera: function (b, s, c) { b.cajones(0, 0, s.w, s.d, s.h, 3, c, 0, true); },
+    cocineta: function (b, s, c) {
+      var w = s.w, d = 600, t = 16, h = 870, zoc = 100;
+      b.box(w - 2 * t, zoc, t, fixed('zoclo', '#2A2C2E', 0.7, 0), 0, 0, d / 2 - 50);
+      b.panel('x', t, h - 30, d - 20, c.casco, -w / 2 + t / 2, 0, -10);
+      b.panel('x', t, h - 30, d - 20, c.casco, w / 2 - t / 2, 0, -10);
+      b.panel('y', w - 2 * t, t, d - 20, c.casco, 0, zoc, -10);
+      b.panel('z', w - 2 * t, h - 30 - zoc, 6, c.casco, 0, zoc, -d / 2 + 3);
+      b.panel('y', w + 20, 30, d + 20, c.cubierta, 0, h - 30, 0);
+      var steel = fixed('steel', '#C9CDD1', 0.22, 0.95);
+      var sx = w / 2 - 330;
+      b.box(500, 2, 400, fixed('sinkin', '#7D8286', 0.35, 0.9), sx, h, 10);
+      b.box(520, 6, 20, steel, sx, h, -200); b.box(520, 6, 20, steel, sx, h, 220);
+      b.box(20, 6, 420, steel, sx - 260, h, 10); b.box(20, 6, 420, steel, sx + 260, h, 10);
+      b.cyl(14, 230, steel, sx, h, -250);
+      b.box(24, 24, 170, steel, sx, h + 206, -175);
+      var n = Math.max(2, Math.round(w / 450)), dw = (w - 6) / n - 3, fh = h - 30 - zoc - 6;
+      for (var i = 0; i < n; i++) {
+        var x = -w / 2 + 3 + dw / 2 + i * (dw + 3);
+        b.panel('z', dw, fh, 18, c.frentes, x, zoc + 3, d / 2 + 9);
+        b.handle(120, x + (i % 2 ? -dw / 2 + 50 : dw / 2 - 50), zoc + fh - 110, d / 2 + 18, true);
+      }
+      if (s.alacenas) {
+        var uy = 1500, uh = 700, ud = 350;
+        b.panel('z', w, 1500 - h + uh - 40, 16, c.casco, 0, h, -d / 2 + 8);
+        b.panel('x', t, uh, ud, c.casco, -w / 2 + t / 2, uy, -d / 2 + 16 + ud / 2);
+        b.panel('x', t, uh, ud, c.casco, w / 2 - t / 2, uy, -d / 2 + 16 + ud / 2);
+        b.panel('y', w - 2 * t, t, ud, c.casco, 0, uy, -d / 2 + 16 + ud / 2);
+        b.panel('y', w - 2 * t, t, ud, c.casco, 0, uy + uh - t, -d / 2 + 16 + ud / 2);
+        for (var j = 0; j < n; j++) {
+          var ux = -w / 2 + 3 + dw / 2 + j * (dw + 3);
+          b.panel('z', dw, uh - 6, 18, c.frentes, ux, uy + 3, -d / 2 + 16 + ud + 9);
+          b.handle(120, ux + (j % 2 ? -dw / 2 + 50 : dw / 2 - 50), uy + 120, -d / 2 + 16 + ud + 18, true);
+        }
+      }
+    }
+  };
+
+  function envMap(renderer) {
+    var pm = new THREE.PMREMGenerator(renderer);
+    var sc = new THREE.Scene();
+    var room = new THREE.Mesh(new THREE.BoxGeometry(20, 10, 20), new THREE.MeshBasicMaterial({ color: 0x8a8d90, side: THREE.BackSide }));
+    room.position.y = 4; sc.add(room);
+    function light(w, h, x, y, z, ry, s) {
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(s, s, s) }));
+      m.position.set(x, y, z); m.lookAt(0, 1, 0); sc.add(m);
+    }
+    light(8, 4, -6, 6, 3, 0, 6);
+    light(6, 3, 6, 5, -2, 0, 3);
+    light(10, 2, 0, 8.5, 0, 0, 2.5);
+    var rt = pm.fromScene(sc, 0.04);
+    pm.dispose();
+    return rt.texture;
+  }
+
+  function mount(el, opts) {
+    opts = opts || {};
+    if (!hasGL || !window.THREE) { if (opts.onFail) opts.onFail(); return null; }
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' }); }
+    catch (e) { if (opts.onFail) opts.onFail(); return null; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setClearColor(0x000000, 0);
+    var cv = renderer.domElement; cv.style.display = 'block'; cv.style.width = '100%'; cv.style.height = '100%'; cv.style.touchAction = 'pan-y';
+    cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', opts.label || 'Modelo 3D del mueble');
+    el.appendChild(cv);
+
+    var scene = new THREE.Scene();
+    scene.environment = envMap(renderer);
+    var cam = new THREE.PerspectiveCamera(32, 1, 0.05, 60);
+    var sun = new THREE.DirectionalLight(0xffffff, 1.6);
+    sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.bias = -0.0004; sun.shadow.radius = 4;
+    scene.add(sun); scene.add(sun.target);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x9a9690, 0.25));
+    var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: opts.shadow || 0.2 }));
+    ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+    var group = new THREE.Group(); scene.add(group);
+    var yaw = opts.yaw != null ? opts.yaw : 0.62, pitch = opts.pitch != null ? opts.pitch : 0.32, zoom = 1, center = new THREE.Vector3(), radius = 1;
+    var auto = opts.autoRotate !== false && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var dirty = true, visible = true, raf = 0, pop = 1, lastSpec = null;
+
+    var dims = new THREE.Vector3(1, 1, 1);
+    function place() {
+      /* encuadre por caja: el ancho que ocupa al girar y el alto visto con la inclinación de la cámara,
+         con el ángulo vertical u horizontal que sea más cerrado; así no se corta ni un locker alto en un marco ancho */
+      var hv = cam.fov * Math.PI / 360, hh = Math.atan(Math.tan(hv) * cam.aspect);
+      var hd = Math.sqrt(dims.x * dims.x + dims.z * dims.z) / 2;
+      var vy = (dims.y * Math.cos(pitch) + 2 * hd * Math.sin(pitch)) / 2;
+      var dist = (Math.max(vy / Math.tan(hv), hd / Math.tan(hh)) + hd * 0.55) * 1.02 * zoom;
+      cam.position.set(center.x + dist * Math.cos(pitch) * Math.sin(yaw), center.y + dist * Math.sin(pitch), center.z + dist * Math.cos(pitch) * Math.cos(yaw));
+      cam.lookAt(center);
+    }
+    function size() {
+      var w = el.clientWidth || 300, h = el.clientHeight || 220;
+      renderer.setSize(w, h, false); cam.aspect = w / h;
+      cam.fov = w / h < 1 ? 40 : 32; cam.updateProjectionMatrix(); dirty = true;
+    }
+    function clear() {
+      group.traverse(function (m) { if (m.geometry) m.geometry.dispose(); });
+      while (group.children.length) group.remove(group.children[0]);
+    }
+    function set(spec, colors) {
+      lastSpec = { spec: spec, colors: colors };
+      clear();
+      var b = new Builder(group);
+      (build[spec.tipo] || build.escritorio)(b, spec, colors);
+      var box = new THREE.Box3().setFromObject(group), s = new THREE.Vector3();
+      box.getSize(s); box.getCenter(center); dims.copy(s);
+      center.y = s.y * (s.y > 1.1 * Math.max(s.x, s.z) ? 0.5 : 0.42);
+      radius = Math.max(0.35, Math.sqrt(s.x * s.x + s.y * s.y + s.z * s.z) / 2);
+      var r = radius * 1.6;
+      sun.position.set(center.x - r * 0.9, r * 2.2, center.z + r * 1.1); sun.target.position.copy(center);
+      var sc = sun.shadow.camera; sc.left = -r; sc.right = r; sc.top = r; sc.bottom = -r; sc.near = 0.1; sc.far = r * 6; sc.updateProjectionMatrix();
+      pop = 0.965; dirty = true; place(); kick();
+    }
+    function frame() {
+      raf = 0;
+      if (!visible) return;
+      if (auto) { yaw += 0.0032; dirty = true; }
+      if (pop < 1) { pop = Math.min(1, pop + 0.006); group.scale.setScalar(pop); dirty = true; }
+      if (dirty) { place(); renderer.render(scene, cam); dirty = false; }
+      if (auto || pop < 1) raf = requestAnimationFrame(frame);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+
+    var pts = {}, lastPinch = 0, dragging = false, moved = 0;
+    cv.addEventListener('pointerdown', function (e) {
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY }; dragging = true; moved = 0;
+      if (e.pointerType === 'mouse') cv.setPointerCapture(e.pointerId);
+      auto = false; if (opts.onInteract) opts.onInteract();
+    });
+    cv.addEventListener('pointermove', function (e) {
+      var p = pts[e.pointerId]; if (!p) return;
+      var ids = Object.keys(pts);
+      if (ids.length === 2) {
+        var a = pts[ids[0]], c2 = pts[ids[1]]; p.x = e.clientX; p.y = e.clientY;
+        var dd = Math.hypot(a.x - c2.x, a.y - c2.y);
+        if (lastPinch) { zoom = Math.max(0.55, Math.min(1.7, zoom * lastPinch / dd)); }
+        lastPinch = dd; dirty = true; kick(); return;
+      }
+      var dx = e.clientX - p.x, dy = e.clientY - p.y; p.x = e.clientX; p.y = e.clientY; moved += Math.abs(dx) + Math.abs(dy);
+      yaw -= dx * 0.009;
+      if (e.pointerType === 'mouse') pitch = Math.max(0.04, Math.min(1.25, pitch + dy * 0.006));
+      dirty = true; kick();
+    });
+    function up(e) { delete pts[e.pointerId]; lastPinch = 0; if (!Object.keys(pts).length) dragging = false; }
+    cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up); cv.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') up(e); });
+    cv.addEventListener('wheel', function (e) {
+      if (!opts.wheelZoom) return;
+      e.preventDefault(); zoom = Math.max(0.55, Math.min(1.7, zoom * (1 + Math.sign(e.deltaY) * 0.08))); dirty = true; kick();
+    }, { passive: false });
+
+    var ro = window.ResizeObserver ? new ResizeObserver(function () { size(); kick(); }) : null;
+    if (ro) ro.observe(el); else window.addEventListener('resize', function () { size(); kick(); });
+    var io = window.IntersectionObserver ? new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) { dirty = true; kick(); } }) : null;
+    if (io) io.observe(el);
+    size();
+
+    return {
+      set: set,
+      view: function (y, p) { yaw = y; pitch = p; zoom = 1; dirty = true; kick(); },
+      zoomBy: function (f) { zoom = Math.max(0.55, Math.min(1.7, zoom * f)); dirty = true; kick(); },
+      spin: function (on) { auto = on && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); kick(); },
+      snapshot: function () { renderer.render(scene, cam); return cv.toDataURL('image/png'); },
+      destroy: function () {
+        if (raf) cancelAnimationFrame(raf); if (ro) ro.disconnect(); if (io) io.disconnect();
+        clear(); renderer.dispose(); if (cv.parentNode) cv.parentNode.removeChild(cv);
+      }
+    };
+  }
+
+  function colorsFor(p, chosen) {
+    var c = {}, d = p.defaults || {};
+    if (p.linea === 'metal') {
+      (p.roles || []).forEach(function (k) { c[k] = (chosen && chosen[k]) || d[k] || 'grisclaro'; });
+      return c;
+    }
+    ['cubierta', 'casco', 'frentes'].forEach(function (k) { c[k] = (chosen && chosen[k]) || d[k] || d.casco || d.cubierta || 'gris'; });
+    c.base = (chosen && chosen.base) || d.base || 'negro';
+    return c;
+  }
+
+  return { mount: mount, supported: hasGL, colorsFor: colorsFor };
+})();
+
+</script>
+<script>
+/* Sala JOME: capas (foto, video, foto…) que se funden una tras otra, como la oficina vacía que se amuebla.
+   Cada capa lleva .ly; data-tag es el letrero que la acompaña y data-hold los milisegundos que se queda una foto.
+   Un video avanza al terminar. Se detiene fuera de pantalla y con la pestaña oculta; con movimiento reducido se queda en una sola capa.
+   Uso: JOME_SALA(raiz, { tag: elementoDelLetrero, still: capaFija, delay: msAntesDeEmpezar }) */
+window.JOME_SALA = function (root, opts) {
+  opts = opts || {};
+  if (!root) return null;
+  var layers = Array.prototype.slice.call(root.querySelectorAll('.ly'));
+  var tag = opts.tag || null, k = 0, timer = 0, visible = false, hidden = false, started = false, played = false;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!layers.length) return null;
+  function isVid(l) { return !!l && l.tagName === 'VIDEO'; }
+  function label(i) {
+    if (tag) tag.textContent = layers[i].getAttribute('data-tag') || '';
+    if (opts.onShow) opts.onShow(i, layers[i]);
+  }
+  if (reduce) {
+    var still = opts.still != null ? opts.still : 0;
+    layers.forEach(function (l, i) { l.classList.toggle('on', i === still); });
+    label(still);
+    return null;
+  }
+  /* el video que sigue se empieza a cargar mientras se ve la capa anterior */
+  function prep(i) { var l = layers[i]; if (isVid(l) && !l.dataset.prep) { l.dataset.prep = '1'; l.preload = 'auto'; try { l.load(); } catch (e) {} } }
+  function run() {
+    clearTimeout(timer);
+    if (!visible || hidden) return;
+    var l = layers[k];
+    played = true;
+    if (isVid(l)) {
+      try { l.currentTime = 0; } catch (e) {}
+      var pr = l.play();
+      if (pr && pr.catch) pr.catch(function () { clearTimeout(timer); timer = setTimeout(next, 2600); });
+      var dur = isFinite(l.duration) && l.duration > 0 ? l.duration : 6;
+      timer = setTimeout(next, dur * 1000 + 2500); /* por si el video nunca avisa que terminó */
+    } else {
+      timer = setTimeout(next, +(l.getAttribute('data-hold') || 4600));
+    }
+  }
+  function show(i) {
+    k = i; played = false;
+    layers.forEach(function (l, j) {
+      l.classList.toggle('on', j === i);
+      if (j !== i && isVid(l)) { try { l.pause(); } catch (e) {} }
+    });
+    label(i);
+    prep((i + 1) % layers.length);
+    run();
+  }
+  function next() { show((k + 1) % layers.length); }
+  layers.forEach(function (l) { if (isVid(l)) l.addEventListener('ended', function () { if (layers[k] === l) next(); }); });
+  function pause() { clearTimeout(timer); var l = layers[k]; if (isVid(l)) { try { l.pause(); } catch (e) {} } }
+  /* al volver a la vista, un video que ya corrió salta a la capa siguiente: la habitación ya amueblada */
+  function resume() { if (!started) return; if (isVid(layers[k]) && played) next(); else run(); }
+  function start() {
+    started = true;
+    label(0); prep(isVid(layers[0]) ? 0 : 1);
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (visible && !hidden) show(0); }, opts.delay != null ? opts.delay : 1200);
+  }
+  document.addEventListener('visibilitychange', function () { hidden = document.hidden; if (hidden) pause(); else resume(); });
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (en) {
+      var v = en[0].isIntersecting;
+      if (v === visible) return;
+      visible = v;
+      if (!started) { if (v) start(); return; }
+      if (v) resume(); else pause();
+    }, { threshold: 0.15 }).observe(root);
+  } else { visible = true; start(); }
+  return { show: show, pause: pause, resume: resume };
+};
+
+</script>
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var has3d = JOME3D.supported && !!window.THREE;
+  function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+  function toast(m) { var t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, 2800); }
+  $$('[data-close]').forEach(function (b) { b.addEventListener('click', function () { b.closest('dialog').close(); }); });
+  var fmtC = JOME.fmtCent;
+  var sinIva = function (n) { return Math.round(n / 1.16 * 100) / 100; };
+  /* Muestras: cada rol usa su paleta (melamina, pintura de la base o pintura en polvo de la lámina) */
+  function colorName(r, id, p) { return JOME.color(p, r, id).nombre; }
+  function swatch(p, r, id) { var c = JOME.color(p, r, id), wood = !!c.wood; return 'style="--c:' + c.hex + (wood ? ';--tex:url(../img/sw-' + id + '.webp)' : '') + '" class="sw' + (wood ? ' wood' : '') + '"'; }
+  function fechaLarga(d) { return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' }); }
+
+  /* Portada y expediente: la oficina y el archivo se amueblan en tinta azul */
+  JOME_SALA($('#ground'), { tag: $('#groundTag'), still: 2, delay: 1400 });
+  JOME_SALA($('#archSala'), { tag: $('#archTag'), still: 2, delay: 400 });
+
+  /* Correo del talón */
+  $('#copyMail').addEventListener('click', function () {
+    var txt = $('#mailTxt').textContent;
+    var done = function () { toast('Correo copiado: ' + txt); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents($('#mailTxt')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('Correo seleccionado; cópielo con Ctrl+C.'); };
+    try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
+  });
+
+  /* Sesión simulada */
+  var session = store('jomeB2.session'), after = null;
+  function paintSession() { $('#loginBtn').textContent = session ? 'Mi cuenta' : 'Entrar'; }
+  function askLogin(why, then) { $('#loginWhy').textContent = why; after = then || null; $('#loginDlg').showModal(); }
+  $('#loginBtn').addEventListener('click', function () { if (session) { session = null; store('jomeB2.session', null); paintSession(); toast('Sesión de prueba cerrada'); } else askLogin('Con su cuenta guardamos sus cotizaciones y los datos de su dependencia.'); });
+  $$('[data-login]').forEach(function (b) { b.addEventListener('click', function () { session = { via: b.dataset.login }; store('jomeB2.session', session); paintSession(); $('#loginDlg').close(); toast('Sesión iniciada con ' + session.via + ' (prueba)'); if (after) { var f = after; after = null; setTimeout(f, 60); } }); });
+  paintSession();
+
+  /* Catálogo: fichas con etiqueta */
+  var models = [['LOC-6'], ['LOC-3'], ['LOC-12'], ['LOC-R'], ['ANA-5L', 'ANA-5M'], ['ANA-5R'], ['RAC-150', 'RAC-200'], ['ARM-4C', 'ARM-4O'], ['ARM-2'], ['GAB-U'], ['GAB-B'], ['ESC-M'],
+    ['ESC-120', 'ESC-150'], ['ESC-180'], ['ESL-160'], ['ESL-180'], ['MJ-180', 'MJ-240'], ['MJ-300'], ['EST-2'], ['EST-4'], ['EST-6'], ['LIB-80'], ['LIB-80A'], ['ARC-3'], ['ARC-4'], ['CAJ-3'], ['COC-150'], ['COC-180']];
+  var modelName = { 'ANA-5L': 'Anaquel de 5 entrepaños', 'RAC-150': 'Rack de carga media de 3 niveles', 'ARM-4C': 'Archivero metálico de 4 gavetas', 'ESC-120': 'Escritorio recto 120 y 150', 'MJ-180': 'Mesa de juntas para 6 y 8' };
+  $('#tiles').innerHTML = models.map(function (claves, i) {
+    var ps = claves.map(function (k) { return JOME.porClave[k]; }), p = ps[0], last = ps[ps.length - 1], nm = modelName[p.clave] || p.nombre;
+    var ancho = ps.length > 1 ? p.medidas[0] + '–' + last.medidas[0] : String(p.medidas[0]);
+    var clave = ps.length > 1 ? p.clave + '/' + last.clave.split('-')[1] : p.clave;
+    var pal = (i + Math.floor(i / 4)) % 4, feat = i === 0;
+    var ph = feat ? '<video data-auto muted loop playsinline preload="none" poster="../img/video-lockers-poster.webp"><source src="../vid/video-lockers.mp4" type="video/mp4"></video>' : '<img src="' + p.foto + '" alt="" loading="lazy" width="960" height="723">';
+    return '<button type="button" class="tile p' + pal + (feat ? ' feat' : '') + '" data-model="' + i + '" data-reveal style="--d:' + ((i % 4) * 70) + 'ms" aria-label="' + esc(nm) + ': ver en 3D y ficha técnica">' +
+      '<span class="ph">' + ph + '</span>' +
+      '<span class="tag"><span class="r1"><span>' + clave + '</span><span>A ' + ancho + '</span><span>F ' + p.medidas[1] + '</span><span>H ' + p.medidas[2] + '</span></span>' +
+      '<span class="r2"><span>Partida 511</span><span>' + esc(p.entrega) + '</span></span>' +
+      '<span class="r3">' + esc(feat ? nm + ', el que más se vende' : nm) + '</span></span></button>';
+  }).join('');
+  $$('#tiles [data-model]').forEach(function (b) { b.addEventListener('click', function () { openModel(+b.dataset.model); }); });
+
+  /* Precios: palabra gigante y barras por familia */
+  $('#h-pre').innerHTML = 'Precios'.split('').map(function (ch, i) { return '<span class="gl" aria-hidden="true" style="--i:' + i + '">' + ch + '</span>'; }).join('');
+  $('#bars').innerHTML = JOME.familias.map(function (f, k) {
+    var ps = JOME.productos.filter(function (p) { return p.familia === f.id; });
+    return '<details' + (k === 0 ? ' open' : '') + '><summary><span>' + esc(f.nombre) + '<span class="n">' + ps.length + (ps.length === 1 ? ' medida' : ' medidas') + '</span></span><span class="plus" aria-hidden="true"></span></summary><div class="panel">' +
+      ps.map(function (p) {
+        return '<div class="it"><div class="nm"><b>' + esc(p.nombre) + '</b><span>Clave ' + p.clave + ', ' + p.medidas.join(' × ') + ' cm</span></div>' +
+          '<div class="pr"><b>' + fmtC(sinIva(p.precio)) + ' + IVA</b><span>' + fmtC(p.precio) + ' con IVA</span></div>' +
+          '<button class="btn ink add" type="button" data-add="' + p.clave + '" aria-label="Agregar ' + esc(p.nombre) + ' a la cotización">Agregar</button></div>';
+      }).join('') + '</div></details>';
+  }).join('');
+  $$('#bars [data-add]').forEach(function (b) { b.addEventListener('click', function () { addLine(b.dataset.add, 1); }); });
+  /* el panel cerrado no ocupa lugar ni se lee */
+  $$('#bars details').forEach(function (d) { var pnl = d.querySelector('.panel'); pnl.hidden = !d.open; d.addEventListener('toggle', function () { pnl.hidden = !d.open; }); });
+
+  /* Cotización */
+  var lines = store('jomeB2.lines') || [];
+  var folio = store('jomeB2.folio') || ('COT-2026-' + String(500 + Math.floor(Math.random() * 400)).padStart(4, '0'));
+  store('jomeB2.folio', folio);
+  $('#folio').textContent = 'Folio ' + folio;
+  $('#fecha').textContent = fechaLarga(new Date());
+  var lastAdded = null;
+  function saveLines() { store('jomeB2.lines', lines); paintQuote(); }
+  function addLine(clave, qty, colors, silent) {
+    var l = lines.filter(function (x) { return x.clave === clave; })[0];
+    if (l) { l.qty += qty; if (colors) l.colors = colors; } else lines.push({ clave: clave, qty: qty, colors: colors || null });
+    lastAdded = clave; saveLines();
+    if (!silent) toast(qty + ' × ' + JOME.porClave[clave].nombre + ' en la cotización');
+  }
+  function quoteTotals() {
+    var sub = 0;
+    var rows = lines.map(function (l, i) { var p = JOME.porClave[l.clave], u = sinIva(JOME.precioUnitario(p, l.qty)), imp = Math.round(u * l.qty * 100) / 100; sub += imp; return { i: i, p: p, qty: l.qty, u: u, imp: imp, colors: l.colors }; });
+    sub = Math.round(sub * 100) / 100; var iva = Math.round(sub * 0.16 * 100) / 100;
+    return { rows: rows, sub: sub, iva: iva, total: Math.round((sub + iva) * 100) / 100 };
+  }
+  var shownTotal = 0;
+  function rollTotal(target) {
+    var el = $('#qTotal'); if (!el) return;
+    var from = shownTotal, t0 = performance.now(), dur = reduce ? 0 : 420;
+    function frame(now) { var k = dur ? Math.min(1, (now - t0) / dur) : 1; el.textContent = fmtC(Math.round((from + (target - from) * (1 - Math.pow(1 - k, 3))) * 100) / 100); if (k < 1) requestAnimationFrame(frame); else shownTotal = target; }
+    requestAnimationFrame(frame);
+  }
+  function paintQuote() {
+    var t = quoteTotals();
+    if (!lines.length) {
+      $('#qLines').innerHTML = '<div class="empty"><span>Aún no hay partidas. Agréguelas desde la lista de precios o desde el catálogo.</span><button class="btn quiet" type="button" id="exBtn">Cargar un ejemplo: 12 lockers, 10 archiveros metálicos, 8 anaqueles y 20 escritorios</button></div>';
+      $('#qSums').innerHTML = ''; $('#toForm').disabled = true; shownTotal = 0;
+      $('#exBtn').onclick = function () { addLine('LOC-6', 12, null, true); addLine('ARM-4C', 10, null, true); addLine('ANA-5M', 8, null, true); addLine('ESC-150', 20, null, true); toast('Ejemplo cargado en la cotización'); };
+      return;
+    }
+    $('#toForm').disabled = false;
+    $('#qLines').innerHTML = t.rows.map(function (r) {
+      return '<div class="ql' + (r.p.clave === lastAdded ? ' new' : '') + '"><div class="n"><b>' + (r.i + 1) + '. ' + esc(r.p.nombre) + '</b><span>' + r.p.clave + ', ' + fmtC(r.u) + ' + IVA c/u' + (JOME.tramo(r.qty).factor < 1 ? ', por volumen' : '') + '</span></div>' +
+        '<input type="number" min="1" value="' + r.qty + '" data-q="' + r.i + '" aria-label="Cantidad de la partida ' + (r.i + 1) + '"><span class="i">' + fmtC(r.imp) + '</span>' +
+        '<button class="del" type="button" data-del="' + r.i + '" aria-label="Quitar partida ' + (r.i + 1) + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>';
+    }).join('');
+    $('#qSums').innerHTML = '<div><span>Subtotal</span><span>' + fmtC(t.sub) + '</span></div><div><span>IVA 16 %</span><span>' + fmtC(t.iva) + '</span></div><div class="g"><span>Total</span><span id="qTotal">' + fmtC(shownTotal) + '</span></div>' +
+      (lines.some(function (l) { return l.qty >= 50; }) ? '<p class="note">Hay partidas de 50 piezas o más: al revisar su cotización le mejoramos el precio.</p>' : '');
+    rollTotal(t.total);
+    var fresh = $('#qLines .ql.new'); if (fresh) { requestAnimationFrame(function () { requestAnimationFrame(function () { fresh.classList.remove('new'); }); }); fresh.scrollIntoView({ block: 'nearest' }); }
+    lastAdded = null;
+    $$('#qLines [data-q]').forEach(function (inp) { inp.onchange = function () { lines[+inp.dataset.q].qty = Math.max(1, parseInt(inp.value, 10) || 1); saveLines(); }; });
+    $$('#qLines [data-del]').forEach(function (b) { b.onclick = function () { lines.splice(+b.dataset.del, 1); saveLines(); }; });
+  }
+  paintQuote();
+  $('#toForm').addEventListener('click', function () { $('#qErr').hidden = true; $('#qMsg').innerHTML = ''; $('#formDlg').showModal(); });
+
+  /* Formulario y PDF */
+  function readForm() {
+    return { dep: $('#fDep').value.trim(), area: $('#fArea').value.trim(), rfc: $('#fRfc').value.trim().toUpperCase(), nom: $('#fNom').value.trim(), cargo: $('#fCargo').value.trim(), mail: $('#fMail').value.trim(), tel: $('#fTel').value.trim(), cp: $('#fCp').value.trim(), vig: +$('#fVig').value, obs: $('#fObs').value.trim() };
+  }
+  function check(f) {
+    var miss = [];
+    if (!lines.length) miss.push('al menos una partida');
+    if (!f.dep) miss.push('dependencia'); if (!f.nom) miss.push('nombre de contacto');
+    if (!/^\S+@\S+\.\S+$/.test(f.mail)) miss.push('un correo válido');
+    if (f.rfc && !/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/.test(f.rfc)) miss.push('un RFC con formato válido');
+    if (f.cp && !JOME.estadoDeCP(f.cp)) miss.push('un código postal de 5 dígitos');
+    return miss;
+  }
+  function imgJpeg(src, w) {
+    return new Promise(function (res) {
+      if (!src) return res(null);
+      var im = new Image(); im.onload = function () { var c = document.createElement('canvas'); c.width = w; c.height = Math.round(w * im.height / im.width); var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height); try { res({ data: c.toDataURL('image/jpeg', 0.86), ratio: c.height / c.width }); } catch (e) { res(null); } };
+      im.onerror = function () { res(null); }; im.src = src;
+    });
+  }
+  function header(doc, title, sub) {
+    doc.setFont('times', 'bolditalic'); doc.setFontSize(22); doc.text('JOME', 18, 22);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(90); doc.text('Fábrica de muebles de oficina. [Razón social]. RFC [RFC de JOME].', 18, 28);
+    doc.setTextColor(20); doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.text(title, 197, 20, { align: 'right' });
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.text(sub, 197, 26, { align: 'right' });
+    doc.setDrawColor(36, 86, 214); doc.setLineWidth(0.8); doc.line(18, 32, 197, 32);
+  }
+  async function savePdf(doc, filename) {
+    var dl = null; try { if (window.claude && claude.use) dl = await claude.use('downloads'); } catch (e) {}
+    /* en la página publicada en su propio sitio el PDF se descarga directo */
+    if (!dl) { try { doc.save(filename); toast('PDF listo: ' + filename); return true; } catch (e) { toast('No se pudo descargar el PDF.'); return false; } }
+    try { await dl.save({ filename: filename, data: doc.output('blob') }); toast('PDF listo: ' + filename); return true; }
+    catch (e) { if (e && e.code === 'declined') toast('Descarga cancelada.'); else toast('No se pudo descargar el PDF.'); return false; }
+  }
+  async function quotePdf(f) {
+    var t = quoteTotals(), doc = new jspdf.jsPDF({ unit: 'mm', format: 'letter' }), now = new Date(), y;
+    var vence = new Date(now.getTime() + f.vig * 86400000);
+    header(doc, 'Cotización ' + folio, fechaLarga(now) + '. Vigente hasta el ' + fechaLarga(vence) + '.');
+    doc.setFontSize(10); y = 41;
+    [['Dependencia', f.dep], ['Área requirente', f.area || '—'], ['RFC', f.rfc || '—'], ['Atención', f.nom + (f.cargo ? ', ' + f.cargo : '')], ['Correo y teléfono', f.mail + (f.tel ? '. ' + f.tel : '')], ['Entrega', f.cp ? 'C.P. ' + f.cp + ' (' + JOME.estadoDeCP(f.cp) + ')' : 'Por definir'], ['Partida presupuestal', '511 Muebles de oficina y estantería']].forEach(function (r) {
+      doc.setFont('helvetica', 'bold'); doc.text(r[0] + ':', 18, y); doc.setFont('helvetica', 'normal'); doc.text(doc.splitTextToSize(r[1], 134), 61, y); y += 6;
+    });
+    y += 4;
+    var cols = [18, 30, 128, 145, 172, 197];
+    doc.setFillColor(36, 86, 214); doc.rect(18, y - 5, 179, 8, 'F'); doc.setTextColor(255); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
+    doc.text('Part.', cols[0] + 1, y); doc.text('Descripción', cols[1], y); doc.text('Cant.', cols[3] - 2, y, { align: 'right' }); doc.text('P. unitario', cols[4] - 2, y, { align: 'right' }); doc.text('Importe', cols[5] - 1, y, { align: 'right' });
+    doc.setTextColor(20); doc.setFont('helvetica', 'normal'); y += 8;
+    t.rows.forEach(function (r) {
+      var col = r.colors ? ' Colores: ' + r.p.roles.map(function (k) { return colorName(k, r.colors[k], r.p); }).join(', ') + '.' : '';
+      var desc = doc.splitTextToSize(r.p.nombre + '. Clave ' + r.p.clave + '. ' + r.p.medidas.join(' x ') + ' cm. ' + r.p.specs[0] + '.' + col, 92);
+      if (y + desc.length * 4.2 > 245) { doc.addPage(); y = 24; }
+      doc.text(String(r.i + 1), cols[0] + 2, y); doc.text(desc, cols[1], y);
+      doc.text(String(r.qty), cols[3] - 2, y, { align: 'right' }); doc.text(fmtC(r.u), cols[4] - 2, y, { align: 'right' }); doc.text(fmtC(r.imp), cols[5] - 1, y, { align: 'right' });
+      y += desc.length * 4.2 + 2; doc.setDrawColor(215); doc.setLineWidth(0.2); doc.line(18, y - 1.5, 197, y - 1.5); y += 3;
+    });
+    y += 2; doc.setFontSize(10);
+    [['Subtotal', t.sub], ['IVA 16 %', t.iva], ['Total', t.total]].forEach(function (r, i) {
+      doc.setFont('helvetica', i === 2 ? 'bold' : 'normal'); doc.text(r[0], 160, y, { align: 'right' }); doc.text(fmtC(r[1]), 197, y, { align: 'right' }); y += 6;
+    });
+    y += 4; doc.setFontSize(8.5); doc.setTextColor(80); doc.setFont('helvetica', 'normal');
+    var cond = ['Precios en pesos mexicanos. Vigencia de ' + f.vig + ' días naturales a partir de la fecha de emisión.', 'Tiempo de entrega: de 2 a 15 días hábiles según la partida, a partir de la orden de compra.', 'Incluye flete, maniobras e instalación en [zona de cobertura]. Entrega con acta de entrega-recepción.', 'Garantía de [X] años en estructura, herrajes y enchapado contra defectos de fabricación.', 'Forma de pago: transferencia a la cuenta de JOME contra entrega de factura CFDI 4.0.'];
+    if (f.obs) cond.push('Observaciones: ' + f.obs);
+    cond.forEach(function (c) { var l = doc.splitTextToSize('• ' + c, 179); doc.text(l, 18, y); y += l.length * 4 + 1; });
+    doc.setTextColor(20); y = Math.max(y + 18, 232); doc.setDrawColor(20); doc.line(18, y, 88, y); doc.setFontSize(9); doc.text('[Nombre y firma del representante de JOME]', 18, y + 5);
+    doc.setFontSize(7.5); doc.setTextColor(120); doc.text('Borrador generado desde la página de muestra. Datos de JOME pendientes.', 18, 270);
+    return savePdf(doc, 'Cotizacion-JOME-' + folio + '.pdf');
+  }
+  async function fichaPdf(p, colors) {
+    if (!window.jspdf) { toast('El generador de PDF no cargó.'); return; }
+    var doc = new jspdf.jsPDF({ unit: 'mm', format: 'letter' }), y;
+    header(doc, 'Ficha técnica ' + p.clave, fechaLarga(new Date()));
+    doc.setFont('times', 'italic'); doc.setFontSize(20); doc.text(p.nombre, 18, 46);
+    var im = await imgJpeg(p.foto, 900);
+    y = 52; if (im) { var w = 130, h = w * im.ratio; doc.addImage(im.data, 'JPEG', 18, y, w, h); y += h + 8; }
+    doc.setFontSize(10);
+    var c = colors || JOME3D.colorsFor(p);
+    [['Clave', p.clave], ['Medidas', p.medidas.join(' x ') + ' cm (ancho x fondo x alto)'], ['Materiales', p.specs.join('. ') + '.'], ['Colores', p.roles.map(function (r) { return JOME.roles[r] + ': ' + colorName(r, c[r], p); }).join('. ') + '.'], ['Entrega', p.entrega + ' a partir de la orden de compra.'], ['Precio de lista', fmtC(sinIva(p.precio)) + ' + IVA (' + fmtC(p.precio) + ' con IVA). Desde 10 piezas, ' + fmtC(sinIva(Math.round(p.precio * 0.93))) + ' + IVA c/u.'], ['Partida', '511 Muebles de oficina y estantería.']].forEach(function (r) {
+      doc.setFont('helvetica', 'bold'); doc.text(r[0], 18, y); doc.setFont('helvetica', 'normal'); var l = doc.splitTextToSize(r[1], 140); doc.text(l, 57, y); y += l.length * 4.6 + 3;
+    });
+    doc.setFontSize(7.5); doc.setTextColor(120); doc.text('Borrador generado desde la página de muestra. Imagen de referencia.', 18, 270);
+    savePdf(doc, 'Ficha-tecnica-JOME-' + p.clave + '.pdf');
+  }
+  async function expedientePdf() {
+    if (!window.jspdf) { toast('El generador de PDF no cargó.'); return; }
+    var doc = new jspdf.jsPDF({ unit: 'mm', format: 'letter' }), y = 46;
+    header(doc, 'Expediente del proveedor', fechaLarga(new Date()));
+    doc.setFont('times', 'italic'); doc.setFontSize(18); doc.text('Índice de documentos', 18, y); y += 10;
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5);
+    ['Constancia de situación fiscal (SAT)', 'Opinión de cumplimiento de obligaciones fiscales 32-D, positiva', 'Registro en [padrón de proveedores] con número y vigencia', 'Acta constitutiva', 'Poder del representante legal e identificación', 'Comprobante de domicilio fiscal', 'Fichas técnicas por partida (33 medidas de línea)', 'Carta de garantía de [X] años', 'Estados financieros [año], a solicitud del área de adquisiciones'].forEach(function (d, i) {
+      doc.text((i + 1) + '.  ' + d, 22, y); y += 8;
+    });
+    y += 6; doc.setFontSize(9); doc.setTextColor(80);
+    doc.text(doc.splitTextToSize('Los originales se comparten por correo institucional o en la visita a la planta. Datos entre corchetes por confirmar.', 175), 18, y);
+    doc.setFontSize(7.5); doc.setTextColor(120); doc.text('Borrador generado desde la página de muestra.', 18, 270);
+    savePdf(doc, 'Expediente-JOME-indice.pdf');
+  }
+  $('#qForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var f = readForm(), miss = check(f);
+    if (miss.length) { $('#qErr').textContent = 'Falta: ' + miss.join(', ') + '.'; $('#qErr').hidden = false; return; }
+    $('#qErr').hidden = true;
+    var go = function () { if (!window.jspdf) { toast('El generador de PDF no cargó.'); return; } quotePdf(f); };
+    if (!session) askLogin('Inicie sesión para descargar la cotización formal. Así queda guardada con su folio.', go); else go();
+  });
+  $('#qSend').addEventListener('click', function () {
+    var f = readForm(), miss = check(f);
+    if (miss.length) { $('#qErr').textContent = 'Falta: ' + miss.join(', ') + '.'; $('#qErr').hidden = false; return; }
+    $('#qErr').hidden = true;
+    var go = function () { $('#qMsg').innerHTML = '<div class="okbox"><b>Cotización ' + folio + ' enviada a JOME.</b><br>Le confirmamos la fecha de entrega en un día hábil en ' + esc(f.mail) + '. (Borrador: no se envió nada.)</div>'; };
+    if (!session) askLogin('Inicie sesión para enviar la cotización a JOME.', go); else go();
+  });
+  $('#expPdf').addEventListener('click', expedientePdf);
+
+  /* Ficha del mueble con 3D */
+  var pdV = null, pd = null;
+  function setTab(t) { var is3d = t === '3d' && !!pdV; $('#tab3d').setAttribute('aria-selected', is3d); $('#tabPh').setAttribute('aria-selected', !is3d); $('#pdStage').hidden = !is3d; $('#pdImg').hidden = is3d; }
+  $('#tab3d').onclick = function () { setTab('3d'); };
+  $('#tabPh').onclick = function () { setTab('ph'); };
+  function openModel(i) {
+    pd = { claves: models[i], k: 0, qty: 1 };
+    pd.colors = JOME3D.colorsFor(JOME.porClave[pd.claves[0]]);
+    $('#pdDlg').showModal();
+    if (!pdV && has3d) pdV = JOME3D.mount($('#pdStage'), { label: 'Mueble en 3D; arrástrelo para girarlo', wheelZoom: true });
+    paintPd(true);
+    setTab(pdV ? '3d' : 'ph');
+  }
+  function paintPd(rebuild) {
+    var p = JOME.porClave[pd.claves[pd.k]];
+    $('#pdName').textContent = p.nombre;
+    $('#pdVar').innerHTML = pd.claves.length > 1 ? pd.claves.map(function (k, j) { var q = JOME.porClave[k]; return '<button type="button" aria-pressed="' + (j === pd.k) + '" data-v="' + j + '">' + (q.variante || q.medidas[0] + ' cm') + '</button>'; }).join('') : '';
+    $('#pdVar').hidden = pd.claves.length < 2;
+    $$('#pdVar [data-v]').forEach(function (b) { b.onclick = function () { pd.k = +b.dataset.v; pd.colors = JOME3D.colorsFor(JOME.porClave[pd.claves[pd.k]], pd.colors); paintPd(true); }; });
+    $('#pdSpecs').innerHTML = '<dt>Clave</dt><dd class="num">' + p.clave + '</dd><dt>Medidas</dt><dd class="num">' + p.medidas.join(' × ') + ' cm</dd><dt>Materiales</dt><dd>' + p.specs.map(esc).join('. ') + '.</dd><dt>Entrega</dt><dd>' + esc(p.entrega) + '</dd><dt>Precio</dt><dd class="num">' + fmtC(sinIva(p.precio)) + ' + IVA; ' + fmtC(sinIva(Math.round(p.precio * 0.93))) + ' + IVA desde 10 piezas</dd>';
+    $('#pdRoles').innerHTML = p.roles.map(function (r) {
+      var ids = Object.keys(JOME.paleta(p, r)), cur = pd.colors[r];
+      return '<div><div class="ctl-name">' + JOME.roles[r] + ': ' + colorName(r, cur, p) + '</div><div class="swatches">' + ids.map(function (id) { return '<button type="button" ' + swatch(p, r, id) + ' aria-pressed="' + (id === cur) + '" aria-label="' + JOME.roles[r] + ' ' + colorName(r, id, p) + '" data-r="' + r + '" data-id="' + id + '"></button>'; }).join('') + '</div></div>';
+    }).join('');
+    $$('#pdRoles [data-r]').forEach(function (b) { b.onclick = function () { pd.colors[b.dataset.r] = b.dataset.id; if (pdV) setTab('3d'); paintPd(true); }; });
+    $('#pdImg').src = p.foto; $('#pdImg').alt = p.nombre;
+    $('#pdQty').value = pd.qty;
+    if (rebuild && pdV) pdV.set(p.modelo, pd.colors);
+  }
+  $('#pdQty').onchange = function () { pd.qty = Math.max(1, parseInt($('#pdQty').value, 10) || 1); $('#pdQty').value = pd.qty; };
+  $('#pdMinus').onclick = function () { pd.qty = Math.max(1, pd.qty - 1); $('#pdQty').value = pd.qty; };
+  $('#pdPlus').onclick = function () { pd.qty++; $('#pdQty').value = pd.qty; };
+  $('#pdAdd').onclick = function () { var p = JOME.porClave[pd.claves[pd.k]]; addLine(p.clave, pd.qty, Object.assign({}, pd.colors)); $('#pdDlg').close(); document.getElementById('precios').scrollIntoView(); };
+  $('#pdFicha').onclick = function () { fichaPdf(JOME.porClave[pd.claves[pd.k]], pd.colors); };
+
+  /* Cómo compra una dependencia */
+  var moments = [
+    ['Primero, la requisición', 'Nos envía la lista de partidas o la requisición de su área. Si no tiene medidas, vamos a medir sin costo.', 'c-plano', 96, 'Plano de oficina con la distribución de escritorios y una taza de café'],
+    ['Luego, la cotización', 'En un día hábil recibe la cotización formal en PDF, con folio, vigencia de 30 días y fichas técnicas.', 'croquis-escritorio', 140, 'Croquis a lápiz de un escritorio con sus medidas'],
+    ['Con la orden de compra', 'Confirmamos colores, fechas y lugar de entrega, y apartamos el material en la planta.', 'mat-muestras', 64, 'Muestras de melamina en nogal, roble, blanco, gris y negro'],
+    ['En la planta', 'Doblamos y pintamos la lámina, cortamos la melamina y soldamos el tubular. De 2 a 15 días hábiles según la partida.', 'video-lamina', 120, 'La dobladora le hace el doblez a la puerta de un locker'],
+    ['Antes de salir', 'Cada pieza se revisa, se empaca y se etiqueta con la partida y el área de destino.', 'fab-empaque', 80, 'Muebles emplayados sobre tarimas listos para el camión'],
+    ['El día de la entrega', 'Entregamos, armamos e instalamos. Firmamos el acta de entrega-recepción con su área.', 'fab-entrega', 132, 'Dos trabajadores de JOME cargando un escritorio hacia un edificio público'],
+    ['Al final, la factura', 'Factura CFDI 4.0 con el detalle de cada partida y carta de garantía de [X] años.', 'esp-atencion', 72, 'Oficina de atención ciudadana amueblada y en uso']
+  ];
+  $('#row').innerHTML = moments.map(function (m, i) {
+    var media = /^video-/.test(m[2]) ? '<video data-auto muted loop playsinline preload="none" poster="../img/' + m[2] + '-poster.webp" aria-label="' + esc(m[4]) + '"><source src="../vid/' + m[2] + '.mp4" type="video/mp4"></video>' : '<img src="../img/' + m[2] + '-m.webp" alt="' + esc(m[4]) + '" loading="lazy" width="960" height="723">';
+    return '<article class="moment" data-reveal style="--d:' + (i * 70) + 'ms"><h3>' + m[0] + '</h3><p>' + m[1] + '</p><div class="gap" style="height:' + m[3] + 'px"></div><div class="ph">' + media + '</div></article>';
+  }).join('');
+  var row = $('#row'), prog = $('#prog');
+  function step() { var c = row.querySelector('.moment'); return c ? c.getBoundingClientRect().width + parseFloat(getComputedStyle(row).columnGap || 32) : 300; }
+  function paintProg() { var max = row.scrollWidth - row.clientWidth; var k = max > 0 ? row.scrollLeft / max : 1; prog.style.width = Math.max(8, k * 100) + '%'; $('#prev').disabled = row.scrollLeft < 4; $('#next').disabled = row.scrollLeft > max - 4; }
+  row.addEventListener('scroll', function () { requestAnimationFrame(paintProg); }, { passive: true });
+  window.addEventListener('resize', paintProg);
+  $('#prev').onclick = function () { row.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }); };
+  $('#next').onclick = function () { row.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }); };
+  paintProg();
+
+  /* Visita */
+  $('#visitBtn').addEventListener('click', function () { $('#vErr').hidden = true; $('#vMsg').innerHTML = ''; $('#visitDlg').showModal(); });
+  $('#vForm').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!$('#vNom').value.trim() || !$('#vDia').value) { $('#vErr').textContent = 'Escriba su nombre y elija un día.'; $('#vErr').hidden = false; return; }
+    $('#vErr').hidden = true;
+    var d = new Date($('#vDia').value + 'T10:00:00');
+    $('#vMsg').innerHTML = '<div class="okbox">Listo. Le esperamos el ' + esc(fechaLarga(d)) + '; le confirmamos la hora por teléfono. (Borrador: no se envió nada.)</div>';
+  });
+
+  /* Aparición al entrar en pantalla, una sola vez */
+  if (window.IntersectionObserver && !reduce) {
+    var io = new IntersectionObserver(function (en) { en.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    $$('[data-reveal], .giant').forEach(function (el) { io.observe(el); });
+    /* las piezas de la fila horizontal aparecen juntas, porque quedan fuera del recorte */
+    new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { $$('#row .moment').forEach(function (m) { m.classList.add('in'); }); o.disconnect(); } }, { threshold: 0.1 }).observe(row);
+  } else $$('[data-reveal], .giant').forEach(function (el) { el.classList.add('in'); });
+
+  /* Telón del pie: el reverso queda fijo detrás y aparece cuando la página termina de subir */
+  var foot = $('footer.back'), mainEl = $('main');
+  function curtain() {
+    var on = !reduce && window.innerWidth > 760 && foot.offsetHeight < window.innerHeight - 40;
+    document.body.classList.toggle('curtain', on);
+    mainEl.style.marginBottom = on ? foot.offsetHeight + 'px' : '';
+    reveal();
+  }
+  function reveal() { if (!document.body.classList.contains('curtain')) return; foot.classList.toggle('show', mainEl.getBoundingClientRect().bottom < window.innerHeight + 2); }
+  window.addEventListener('scroll', function () { requestAnimationFrame(reveal); }, { passive: true });
+  window.addEventListener('resize', curtain);
+  curtain();
+
+  /* Videos en bucle (planta, lockers, dobladora): solo corren mientras se ven */
+  if (!reduce && window.IntersectionObserver) {
+    var vio = new IntersectionObserver(function (en) { en.forEach(function (e) { var v = e.target; if (e.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else v.pause(); }); }, { threshold: 0.2 });
+    $$('video[data-auto], #plantVideo').forEach(function (v) { vio.observe(v); });
+  }
+})();
+</script>
+</body>
+</html>
