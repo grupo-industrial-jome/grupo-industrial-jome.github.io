@@ -1014,6 +1014,18 @@ window.JOME3D = (function () {
     var t = (kind === 'lagrima' ? tearTexture() : slotTexture()).clone(); t.needsUpdate = true; t.repeat.set(1, Math.max(1, Math.round(h / (kind === 'lagrima' ? 50 : 75))));
     return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), map: t, roughness: 0.5, metalness: 0.3 }));
   }
+  /* Estructura de las estaciones de diseño: su propia carta de colores (JOME.marcos), mismo acabado de pintura en polvo. */
+  function frameSteel(id) {
+    var k = 'fs:' + id; if (matCache[k]) return matCache[k];
+    var c = (JOME.marcos && JOME.marcos[id]) || (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.44, metalness: 0.32 }));
+  }
+  /* Tela de la pantalla entre puestos: mate, sin brillo. */
+  function fabric(id) {
+    var k = 'tela:' + id; if (matCache[k]) return matCache[k];
+    var c = (JOME.telas && JOME.telas[id]) || { hex: '#9A9C9E' };
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.95, metalness: 0 }));
+  }
   function fixed(k, hex, rough, metal) {
     if (matCache[k]) return matCache[k];
     return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(hex), roughness: rough, metalness: metal }));
@@ -1129,7 +1141,128 @@ window.JOME3D = (function () {
     return t;
   };
 
+  /* Pieza recta entre dos puntos (mm): un tubo redondo (r1 arriba, r2 abajo), rectangular (w x d) o elíptico (r1, escala en z). */
+  Builder.prototype.strut = function (p1, p2, sec, mat) {
+    var a = new THREE.Vector3(p1[0], p1[1], p1[2]).multiplyScalar(MM), z = new THREE.Vector3(p2[0], p2[1], p2[2]).multiplyScalar(MM);
+    var dir = new THREE.Vector3().subVectors(a, z), len = dir.length(), geo;
+    if (sec.r1) geo = new THREE.CylinderGeometry(sec.r1 * MM, (sec.r2 || sec.r1) * MM, len, 28);
+    else geo = new THREE.BoxGeometry(sec.w * MM, len, sec.d * MM);
+    if (sec.ez) geo.scale(1, 1, sec.ez);
+    var m = new THREE.Mesh(geo, mat);
+    m.position.copy(a).add(z).multiplyScalar(0.5);
+    m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+    if (sec.twist) m.rotateY(sec.twist);
+    m.castShadow = true; m.receiveShadow = true; this.g.add(m); return m;
+  };
+  /* Pata de perfil: un polígono en el plano (u hacia afuera, y hacia arriba) extruido con espesor t en z. */
+  Builder.prototype.plate = function (pts, t, mat, x, z, sx) {
+    var sh = new THREE.Shape();
+    pts.forEach(function (p, i) { if (i) sh.lineTo(p[0] * MM, p[1] * MM); else sh.moveTo(p[0] * MM, p[1] * MM); });
+    var geo = new THREE.ExtrudeGeometry(sh, { depth: t * MM, bevelEnabled: false });
+    geo.translate(0, 0, -t * MM / 2);
+    var m = new THREE.Mesh(geo, mat);
+    m.position.set(x * MM, 0, z * MM); m.scale.x = sx;
+    m.castShadow = true; m.receiveShadow = true; this.g.add(m); return m;
+  };
+
+  /* Estaciones de diseño: bench de 2, 4 o 6 puestos (módulos de 120 cm con dos cubiertas de 60 de fondo), pantalla de tela,
+     charola central y una de diez estructuras. Las patas de los extremos llevan el diseño; entre módulos va un poste central. */
+  var PATAS = {
+    /* pata recta de tubo cuadrado 50 x 50 */
+    cuadrada: { inset: 25, zin: 45, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) { b.box(50, 685 - 12, 50, st, x, 12, z); b.cyl(14, 12, fixed('lev', '#121314', 0.6, 0), x, 0, z); });
+      return x; } },
+    /* marco cerrado de tubo pentagonal 55 x 75: dos postes, travesaño abajo a modo de patín */
+    marco: { inset: 28, zin: 50, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) { b.box(55, 685 - 55, 75, st, x, 55, z); });
+      b.box(55, 55, Math.abs(zs[0] - zs[1]) + 75, st, x, 0, 0);
+      zs.forEach(function (z) { b.box(60, 6, 90, fixed('lev', '#121314', 0.6, 0), x, -1, z); });
+      return x; } },
+    /* tubo diamante (cuadrado girado 45°) con funda de aluminio abajo */
+    diamante: { inset: 35, zin: 55, legs: function (b, x, sx, zs, st) {
+      var alu = fixed('alu', '#C9CCCF', 0.28, 0.9);
+      zs.forEach(function (z) { b.strut([x, 685, z], [x, 105, z], { w: 46, d: 46, twist: Math.PI / 4 }, st); b.cyl(30, 105, alu, x, 0, z); });
+      return x; } },
+    /* tubo gota con unión de aluminio */
+    gota: { inset: 35, zin: 55, legs: function (b, x, sx, zs, st) {
+      var alu = fixed('alu', '#C9CCCF', 0.28, 0.9);
+      zs.forEach(function (z) {
+        b.strut([x, 685, z], [x, 14, z], { r1: 26, ez: 1.55 }, st);
+        b.strut([x, 632, z], [x, 612, z], { r1: 28.5, ez: 1.55 }, alu);
+        b.cyl(15, 14, fixed('lev', '#121314', 0.6, 0), x, 0, z);
+      });
+      return x; } },
+    /* placa en trapecio que se abre hacia afuera, con pie */
+    trapecio: { inset: 200, zin: 70, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) { b.plate([[0, 685], [58, 685], [196, 42], [236, 42], [236, 0], [84, 0], [84, 42], [124, 42]], 42, st, x, z, sx); });
+      return x; } },
+    /* tubo redondo que se abre a lo ancho, regatón blanco */
+    redonda: { inset: 170, zin: 60, legs: function (b, x, sx, zs, st) {
+      var cap = fixed('capB', '#E9E9E6', 0.5, 0);
+      zs.forEach(function (z) { var f = x + sx * 150; b.strut([x, 690, z], [f, 18, z], { r1: 27, r2: 19 }, st); b.strut([f + sx * 1.2, 18, z], [f + sx * 2.5, 0, z], { r1: 19 }, cap); });
+      return x; } },
+    /* pata ancha en A de tubo rectangular */
+    a: { inset: 190, zin: 55, legs: function (b, x, sx, zs, st) {
+      var cap = fixed('capB', '#E9E9E6', 0.5, 0);
+      zs.forEach(function (z) { var f = x + sx * 175; b.strut([x, 690, z], [f, 20, z], { w: 72, d: 30 }, st); b.strut([f + sx * 1.4, 20, z], [f + sx * 2.6, 0, z], { w: 72, d: 30 }, cap); });
+      return x; } },
+    /* tubo cónico casi recto con rodilla y pie de aluminio */
+    aluminio: { inset: 95, zin: 60, legs: function (b, x, sx, zs, st) {
+      var alu = fixed('alu', '#C9CCCF', 0.28, 0.9);
+      zs.forEach(function (z) {
+        var k = [x + sx * 48, 118, z];
+        b.strut([x, 690, z], k, { r1: 27, r2: 21 }, st);
+        b.strut(k, [x + sx * 82, 16, z], { r1: 21, r2: 17 }, alu);
+        b.cyl(32, 10, alu, x + sx * 84, 0, z);
+      });
+      return x; } },
+    /* tubo redondo inclinado hacia afuera en las dos direcciones, punta redonda */
+    inclinada: { inset: 270, zin: 175, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) {
+        var sz = z > 0 ? 1 : -1, f = [x + sx * 200, 30, z + sz * 120];
+        b.strut([x, 700, z], f, { r1: 30 }, st);
+        var ball = new THREE.Mesh(new THREE.SphereGeometry(30 * MM, 20, 14), st);
+        ball.position.set(f[0] * MM, f[1] * MM, f[2] * MM); ball.castShadow = true; b.g.add(ball);
+      });
+      return x; } },
+    /* tubo rectangular inclinado en las dos direcciones */
+    rectInclinada: { inset: 250, zin: 160, legs: function (b, x, sx, zs, st) {
+      var cap = fixed('lev', '#121314', 0.6, 0);
+      zs.forEach(function (z) {
+        var sz = z > 0 ? 1 : -1, f = [x + sx * 180, 18, z + sz * 100];
+        b.strut([x, 700, z], f, { w: 62, d: 34 }, st);
+        b.strut(f, [f[0] + sx * 3, 0, f[2] + sz * 2], { w: 62, d: 34 }, cap);
+      });
+      return x; } }
+  };
+
   var build = {
+    estacionDiseno: function (b, s, c) {
+      var n = Math.max(2, s.puestos || 4), mods = Math.round(n / 2), mw = 1200, W = mods * mw, D = 1200, H = 750, t = 25;
+      var pata = PATAS[s.pata] || PATAS.cuadrada, st = frameSteel(c.estructura), gap = 30, td = D / 2 - gap / 2;
+      var zl = D / 2 - pata.zin, xe = W / 2 - pata.inset;
+      for (var i = 0; i < mods; i++) {
+        var xm = -W / 2 + mw / 2 + i * mw;
+        b.panel('y', mw - 4, t, td, c.cubierta, xm, H - t, gap / 2 + td / 2);
+        b.panel('y', mw - 4, t, td, c.cubierta, xm, H - t, -gap / 2 - td / 2);
+        /* pantalla de tela sobre su riel, entre las dos cubiertas */
+        b.box(mw - 140, 300, 22, fabric(c.pantalla), xm, H + 22, 0);
+        b.box(mw - 140, 22, 34, fixed('alu', '#C9CCCF', 0.28, 0.9), xm, H, 0);
+      }
+      /* extremos: la pata de cada modelo; travesaño bajo la cubierta y largueros al frente y atrás */
+      [-1, 1].forEach(function (sx) {
+        var x = pata.legs(b, sx * xe, sx, [zl, -zl], st);
+        b.box(40, 40, 2 * zl + 40, st, x, H - t - 40, 0);
+      });
+      [zl, -zl].forEach(function (z) { b.box(2 * xe, 40, 40, st, 0, H - t - 40, z); });
+      /* charola central para cables y postes entre módulos */
+      b.box(2 * xe - 40, 70, 150, st, 0, H - t - 110, 0);
+      for (var k = 1; k < mods; k++) {
+        var xk = -W / 2 + k * mw;
+        b.box(36, H - t - 110 - 12, 170, st, xk, 12, 0);
+        b.box(70, 12, 620, st, xk, 0, 0);
+      }
+    },
     locker: function (b, s, c) {
       var cols = s.cols || 1, filas = s.filas || 1, w = s.w, d = s.d, h = s.h, zoc = 100, gap = 6;
       var body = steel(c.cuerpo), door = steel(c.puertas), chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), plate = fixed('plate', '#DADDDF', 0.3, 0.75);
@@ -1491,7 +1624,7 @@ window.JOME3D = (function () {
 
   function colorsFor(p, chosen) {
     var c = {}, d = p.defaults || {};
-    if (p.linea === 'metal') {
+    if (p.linea === 'metal' || p.linea === 'diseno') {
       (p.roles || []).forEach(function (k) { c[k] = (chosen && chosen[k]) || d[k] || 'grisclaro'; });
       return c;
     }

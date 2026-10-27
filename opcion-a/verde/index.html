@@ -124,17 +124,25 @@ nav.main a { text-decoration: none; font-size: var(--step-small); font-weight: 5
 
 /* Portada: enunciado y mosaico de especímenes */
 .hero { display: grid; grid-template-columns: 7fr 5fr; min-height: clamp(640px, 92svh, 900px); margin-top: calc(-1 * var(--header-h)); }
-.hero-left { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: calc(var(--header-h) + clamp(24px, 5vh, 56px)) var(--m) clamp(32px, 6vh, 64px) max(var(--m), env(safe-area-inset-left, 0px)); }
+.hero-left { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: calc(var(--header-h) + clamp(24px, 5vh, 56px)) var(--m) clamp(32px, 6vh, 64px) max(var(--m), env(safe-area-inset-left, 0px)); background: var(--grafito); color: var(--on-dark); }
+.hero-top { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; }
 .hero h1 { font-size: var(--step-display); letter-spacing: -0.045em; line-height: 0.98; }
 .lines .line { display: block; overflow: clip; padding-bottom: .08em; margin-bottom: -.08em; }
 .lines [data-line] { display: block; }
 .hero-foot { display: flex; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
-/* La sala: la oficina vacía que se amuebla, en el hueco entre el titular y el texto (la misma animación que el borrador C) */
-.sala { position: relative; flex: 1 1 auto; min-height: 220px; overflow: clip; background: var(--surface); }
+/* La sala: la oficina vacía que se amuebla ocupa toda la columna; el titular, el texto y el botón van encima */
+.sala { position: absolute; inset: 0; z-index: -1; overflow: clip; background: var(--grafito); }
 .sala .ly { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1400ms ease; }
 .sala .ly.on { opacity: 1; }
-.sala-tag { position: absolute; left: 12px; bottom: 12px; z-index: 2; background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; max-width: calc(100% - 24px); }
-.hero-foot p { max-width: 34ch; font-size: var(--step-body); }
+/* velo: oscuro arriba (encabezado y titular) y abajo (texto y botón), casi limpio en medio para ver la oficina */
+.sala::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17, 18, 20, .7) 0%, rgba(17, 18, 20, .5) 26%, rgba(17, 18, 20, .14) 48%, rgba(17, 18, 20, .3) 66%, rgba(17, 18, 20, .8) 100%), linear-gradient(90deg, rgba(17, 18, 20, .28) 0%, rgba(17, 18, 20, 0) 60%); pointer-events: none; } /* taste-skill-ignore: velo neutro sobre el video para leer el texto */
+.sala-tag { background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; max-width: 100%; }
+.hero-foot .btn { flex: none; }
+@media (min-width: 761px) {
+  header.top:not(.solid) .l { color: var(--on-dark); }
+  header.top:not(.solid) .l :focus-visible { outline-color: var(--on-dark); }
+}
+.hero-foot p { max-width: 34ch; font-size: var(--step-body); text-wrap: pretty; }
 .hero-right { position: relative; background: var(--surface); overflow: clip; }
 /* Tres columnas de especímenes que suben y bajan despacio: la línea de producción vista desde arriba */
 .cols { position: absolute; inset: var(--header-h) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 max(var(--m), env(safe-area-inset-right, 0px)) 0 var(--m); }
@@ -150,8 +158,7 @@ nav.main a { text-decoration: none; font-size: var(--step-small); font-weight: 5
 @media (hover: hover) and (pointer: fine) { .spec:hover img { transform: scale(1.04); } .col:hover .track { animation-play-state: paused; } }
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; min-height: 0; }
-  .hero-left { padding-top: calc(var(--header-h) + 24px); gap: 1.5rem; }
-  .sala { flex: none; min-height: 0; aspect-ratio: 16 / 10; }
+  .hero-left { padding-top: calc(var(--header-h) + 28px); gap: 1.5rem; min-height: min(82svh, 720px); }
   .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); max-width: none; }
   .hero-foot { flex-direction: column; align-items: flex-start; }
   .hero-right { height: 118vw; }
@@ -199,6 +206,48 @@ nav.main a { text-decoration: none; font-size: var(--step-small); font-weight: 5
 }
 /* En el teléfono las siete pinturas caben en una fila */
 @media (max-width: 520px) { .lk .swatches { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; } .lk .swatches .sw { width: auto; height: auto; aspect-ratio: 1; } }
+
+/* Estaciones de diseño: la línea nueva de diez estructuras de color. Primero la película, luego el modelo y la estación en 3D */
+.linea { padding-block: clamp(80px, 10vw, 160px); }
+.ln-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; align-items: end; }
+.ln-head h2 { grid-column: 1 / span 7; }
+.ln-head .side { grid-column: 9 / span 4; }
+.ln-head .side p { color: var(--muted); max-width: 40ch; }
+.ln-facts dt { color: var(--muted); }
+.ln-film { position: relative; margin: 56px 0 0; aspect-ratio: 21 / 9; max-width: 100%; overflow: clip; background: var(--ink); }
+.ln-film .ly { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1200ms ease; }
+.ln-film .ly.on { opacity: 1; }
+.ln-film figcaption { position: absolute; left: 12px; bottom: 12px; z-index: 2; background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; }
+.ln-rail { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.ln-pick { border: 0; padding: 0; background: none; color: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 6px; min-width: 0; font-size: var(--step-small); }
+.ln-pick .th { position: relative; display: block; aspect-ratio: 4 / 3; max-width: 100%; background: var(--c); overflow: clip; outline: 2px solid transparent; outline-offset: 2px; transition: outline-color 160ms ease; }
+.ln-pick .th img { position: absolute; inset: 8%; width: 84%; height: 84%; object-fit: contain; transition: transform 400ms var(--ease-out); }
+.ln-pick[aria-pressed="true"] .th { outline-color: var(--ink); }
+.ln-pick b { font-size: var(--step-body); font-weight: 500; }
+.ln-pick small { color: var(--muted); line-height: 1.3; font-size: inherit; font-variant-numeric: tabular-nums; }
+@media (hover: hover) and (pointer: fine) { .ln-pick:hover .th img { transform: scale(1.05); } }
+.ln-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.ln-stage { grid-column: 1 / span 8; position: relative; min-height: 480px; background: var(--surface); }
+.ln-stage .v3d { position: absolute; inset: 0; }
+.ln-stage .fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+/* la clave del modelo, grande, como en la placa de la estructura */
+.ln-code { position: absolute; left: 18px; top: 10px; font-size: clamp(3rem, 2rem + 4vw, 6rem); font-weight: 500; letter-spacing: -0.06em; line-height: 1; pointer-events: none; }
+.ln-stage .tagline { position: absolute; right: 12px; bottom: 12px; z-index: 2; background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; transition: opacity 400ms ease; pointer-events: none; }
+.ln-ctl { grid-column: 9 / span 4; display: flex; flex-direction: column; gap: 16px; padding: 4px 0 0; min-width: 0; }
+.ln-ctl h3 { font-size: var(--step-lead); }
+.ln-ctl .desc { color: var(--muted); margin-top: .35rem; max-width: 38ch; }
+.ln-ctl .buy { margin-top: auto; padding-top: 24px; }
+@media (max-width: 1100px) { .ln-rail { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px 8px; } }
+@media (max-width: 960px) {
+  .ln-head, .ln-grid { grid-template-columns: minmax(0, 1fr); }
+  .ln-head h2, .ln-head .side, .ln-stage, .ln-ctl { grid-column: auto; }
+  .ln-stage { min-height: 0; aspect-ratio: 4 / 3; }
+  .ln-film { aspect-ratio: 16 / 10; margin-top: 40px; }
+}
+@media (max-width: 600px) {
+  .ln-rail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .ln-pick { flex: 0 0 40%; scroll-snap-align: start; }
+}
 
 /* Secciones */
 section.block { padding-block: var(--section); }
@@ -499,7 +548,7 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
   .js .hero [data-line] { transform: translateY(105%); animation: rise-line 900ms var(--ease-expo) forwards; animation-delay: calc(140ms + var(--i, 0) * 90ms); }
   .js .hero [data-load] { opacity: 0; transform: translateY(14px); animation: rise 600ms var(--ease-out) forwards; animation-delay: var(--d, 420ms); }
   .js .hero .col { clip-path: inset(100% 0 0 0); animation: shutter 1100ms var(--ease-in-out) forwards; animation-delay: calc(160ms + var(--i, 0) * 120ms); }
-  .js .hero .sala { clip-path: inset(100% 0 0 0); animation: shutter 900ms var(--ease-in-out) 120ms forwards; }
+  .js .hero .sala .ly { clip-path: inset(100% 0 0 0); animation: shutter 900ms var(--ease-in-out) 120ms forwards; }
   .js .track { animation: climb var(--dur, 70s) linear infinite; }
   .js .col:nth-child(2) .track { animation-direction: reverse; }
   .js [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-expo); transition-delay: var(--d, 0ms); }
@@ -524,7 +573,7 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
 <header class="top" id="top">
   <div class="l">
     <a class="wordmark" href="#inicio" aria-label="JOME, inicio">JOME</a>
-    <nav class="main" aria-label="Principal"><a href="#catalogo">Catálogo</a><a href="#fabrica">Fábrica</a><a href="#espacios">Espacios</a><a href="#medida">A la medida</a></nav>
+    <nav class="main" aria-label="Principal"><a href="#catalogo">Catálogo</a><a href="#estaciones">Estaciones</a><a href="#fabrica">Fábrica</a><a href="#espacios">Espacios</a><a href="#medida">A la medida</a></nav>
   </div>
   <div class="r">
     <button class="tlink" id="loginBtn" type="button">Entrar</button>
@@ -535,13 +584,15 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
 <main id="inicio">
   <section class="hero" aria-labelledby="h1">
     <div class="hero-left">
-      <h1 id="h1" class="lines"><span class="line"><span data-line style="--i:0">Muebles de oficina,</span></span><span class="line"><span data-line style="--i:1">de fábrica</span></span></h1>
+      <div class="hero-top">
+        <h1 id="h1" class="lines"><span class="line"><span data-line style="--i:0">Muebles de oficina,</span></span><span class="line"><span data-line style="--i:1">de fábrica</span></span></h1>
+        <span class="sala-tag" id="salaTag" aria-live="off" data-load style="--d:380ms">Tu oficina, hoy</span>
+      </div>
       <div class="sala" id="sala">
         <video class="ly on" muted playsinline preload="auto" poster="../../img/video-amueblar-poster.webp" data-tag="Tu oficina, hoy" data-tag2="Amueblando" data-tag2-at="0.9" data-wait="1300" aria-label="Una oficina vacía se va amueblando con estaciones, libreros y sillas"><source src="../../vid/video-amueblar.mp4" type="video/mp4"></video>
         <img class="ly" src="../../img/esp-amueblada-l.webp" alt="La misma oficina amueblada con estaciones de trabajo de nogal y base negra" width="1800" height="1018" loading="lazy" data-tag="La misma oficina, con estaciones JOME" data-hold="4200">
         <video class="ly" muted playsinline preload="none" poster="../../img/video-archivo-poster.webp" data-tag="Tu archivo, hoy" data-tag2="Llegan los anaqueles y archiveros" data-tag2-at="0.9" data-wait="1300" aria-label="Un cuarto de archivo vacío se llena de anaqueles con cajas y archiveros metálicos"><source src="../../vid/video-archivo.mp4" type="video/mp4"></video>
         <img class="ly" src="../../img/esp-archivo-metal-l.webp" alt="El mismo archivo con anaqueles de lámina llenos de cajas y archiveros metálicos grises" width="1800" height="1018" loading="lazy" data-tag="El mismo archivo, con lámina JOME" data-hold="4200">
-        <span class="sala-tag" id="salaTag" aria-live="off">Tu oficina, hoy</span>
       </div>
       <div class="hero-foot">
         <p data-load style="--d:420ms">Lockers, anaqueles, racks y archiveros de lámina, y escritorios y estaciones de melamina y acero, hechos en nuestra planta de [ciudad]. Precio con IVA, sin intermediarios.</p>
@@ -586,6 +637,43 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
         </div>
       </div>
       <div class="mfams" id="mfams"></div>
+    </div>
+  </section>
+
+  <section class="linea" id="estaciones" aria-labelledby="h-lin">
+    <div class="wrap">
+      <div class="ln-head">
+        <h2 id="h-lin" data-reveal>Estaciones de diseño</h2>
+        <div class="side" data-reveal style="--d:80ms">
+          <p>Diez estructuras de acero de color con la cubierta de melamina que elijas, para 2, 4 o 6 personas. Cada puesto lleva cubierta de 120 × 60 cm, pantalla de tela y charola para los cables.</p>
+          <dl class="mfacts ln-facts">
+            <div><dt>Modelos</dt><dd>10 estructuras</dd></div>
+            <div><dt>Puestos</dt><dd>2, 4 o 6</dd></div>
+            <div><dt>Estructura</dt><dd>11 colores</dd></div>
+            <div><dt>Entrega</dt><dd>7 a 18 días hábiles</dd></div>
+          </dl>
+        </div>
+      </div>
+      <figure class="ln-film" id="lnSala" data-reveal>
+        <video class="ly on" muted playsinline preload="none" poster="../../img/video-linea-poster.webp" data-tag="Diez estructuras, once colores" aria-label="Diez estructuras de escritorio de acero de colores formadas en un estudio"><source src="../../vid/video-linea.mp4" type="video/mp4"></video>
+        <video class="ly" muted playsinline preload="none" poster="../../img/video-estaciones-poster.webp" data-tag="Una oficina vacía" data-tag2="Llegan las estaciones de diseño" data-tag2-at="1" data-wait="1200" aria-label="Una oficina vacía se llena de estaciones con patas verdes, rojas y naranjas"><source src="../../vid/video-estaciones.mp4" type="video/mp4"></video>
+        <video class="ly" muted playsinline preload="none" poster="../../img/video-ensamble-poster.webp" data-tag="En la planta: la cubierta JOME sobre la estructura" data-wait="900" aria-label="En la fábrica, un trabajador baja la cubierta blanca sobre una estructura roja"><source src="../../vid/video-ensamble.mp4" type="video/mp4"></video>
+        <video class="ly" muted playsinline preload="none" poster="../../img/video-equipo-poster.webp" data-tag="Estación V50 para 4, en uso" aria-label="Cuatro personas trabajan en una estación con patas azules"><source src="../../vid/video-equipo.mp4" type="video/mp4"></video>
+        <video class="ly" muted playsinline preload="none" poster="../../img/video-giro-poster.webp" data-tag="Estación V28 para 4, de cerca" aria-label="La cámara rodea una estación con patas verde salvia y cubiertas de roble"><source src="../../vid/video-giro.mp4" type="video/mp4"></video>
+        <figcaption id="lnTag">Diez estructuras, once colores</figcaption>
+      </figure>
+      <div class="ln-rail" id="lnRail" role="group" aria-label="Modelo de estructura"></div>
+      <div class="ln-grid">
+        <div class="ln-stage" id="lnStage"><span class="ln-code" id="lnCode" aria-hidden="true">V28</span><span class="tagline" id="lnHint">Arrastra para girarla</span></div>
+        <div class="ln-ctl">
+          <div><h3 id="lnName">Estación V28 para 4</h3><p class="desc" id="lnDesc"></p></div>
+          <div><div class="ctl-name" id="lblLnN">Puestos</div><div class="seg" id="lnSeats" role="group" aria-labelledby="lblLnN"></div></div>
+          <div><div class="ctl-name" id="lblLnE">Estructura: <span id="lnEName"></span></div><div class="swatches" id="lnFrame" role="group" aria-labelledby="lblLnE"></div></div>
+          <div><div class="ctl-name" id="lblLnC">Cubierta: <span id="lnCName"></span></div><div class="swatches" id="lnTop" role="group" aria-labelledby="lblLnC"></div></div>
+          <div><div class="ctl-name" id="lblLnS">Pantalla: <span id="lnSName"></span></div><div class="swatches" id="lnScreen" role="group" aria-labelledby="lblLnS"></div></div>
+          <div class="buy"><div class="price" id="lnPrice"></div><button class="btn" id="lnAdd" type="button">Agregar al carrito</button></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -657,7 +745,7 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
   <section class="block wrap" id="catalogo" aria-labelledby="h-cat" style="padding-top:clamp(48px,6vw,96px)">
     <div class="cat-head">
       <h2 id="h-cat" data-reveal>Catálogo de línea</h2>
-      <p class="muted" data-reveal style="--d:80ms">Treinta y tres piezas que fabricamos todos los días; primero la lámina, que es lo que más sale. Toca cualquiera para verla en 3D y elegir sus colores.</p>
+      <p class="muted" data-reveal style="--d:80ms">Cuarenta y tres piezas: primero la lámina, que es lo que más sale, luego las estaciones de diseño y la melamina. Toca cualquiera para verla en 3D y elegir sus colores.</p>
     </div>
     <div class="filters" id="filters" role="group" aria-label="Filtrar por familia"></div>
     <div class="specimens" id="specimens"></div>
@@ -1098,6 +1186,93 @@ window.JOME = (function () {
 
 </script>
 <script>
+/* Línea de estaciones de diseño: diez estructuras de acero de color con cubiertas de melamina JOME.
+   Solo la usa la opción A. Se agrega al catálogo compartido (window.JOME) sin tocar las piezas de B y C.
+   Cada modelo se vende para 2, 4 o 6 puestos; el catálogo muestra el de 4 y las otras medidas viven en porClave. */
+(function (J) {
+  if (!J) return;
+  /* Carta de colores de la estructura: los siete de línea más cuatro de la línea de diseño. */
+  var marcos = {};
+  Object.keys(J.pinturas).forEach(function (k) { marcos[k] = J.pinturas[k]; });
+  marcos.rojo = { nombre: 'Rojo', hex: '#B3262A' };
+  marcos.terracota = { nombre: 'Terracota', hex: '#B4583A' };
+  marcos.mostaza = { nombre: 'Mostaza', hex: '#D4A12C' };
+  marcos.salvia = { nombre: 'Verde salvia', hex: '#7E9A84' };
+  /* Tela de la pantalla entre puestos */
+  var telas = {
+    gris:      { nombre: 'Gris perla', hex: '#A3A5A6' },
+    arena:     { nombre: 'Arena',      hex: '#CDBFA6' },
+    salvia:    { nombre: 'Salvia',     hex: '#8EA593' },
+    terracota: { nombre: 'Terracota',  hex: '#B86B48' },
+    azul:      { nombre: 'Azul',       hex: '#4E6D99' },
+    grafito:   { nombre: 'Grafito',    hex: '#4A4D51' }
+  };
+  J.marcos = marcos; J.telas = telas;
+  J.roles.estructura = 'Estructura';
+  J.roles.pantalla = 'Pantalla';
+
+  var paleta0 = J.paleta, color0 = J.color;
+  J.paleta = function (p, role) {
+    if (p && p.linea === 'diseno') return role === 'estructura' ? marcos : role === 'pantalla' ? telas : J.colores;
+    return paleta0(p, role);
+  };
+  J.color = function (p, role, id) {
+    if (p && p.linea === 'diseno') { var pal = J.paleta(p, role); return pal[id] || pal[Object.keys(pal)[0]]; }
+    return color0(p, role, id);
+  };
+
+  var C25 = 'Cubierta de melamina de 25 mm por puesto, 120 x 60 cm, con canto de PVC';
+  var PAN = 'Pantalla de tela entre puestos sobre riel de aluminio';
+  var VIG = 'Charola central para cables bajo las cubiertas';
+  var PEP = 'Pintura electrostática en polvo, horneada';
+
+  /* clave, pata, qué la distingue, precio para 4 (muestra, con IVA), colores, campo de la ficha, nombre corto de la pata */
+  var MODELOS = [
+    ['V19', 'gota', 'Pata recta de tubo gota con unión de aluminio', 21900, { estructura: 'oxford', cubierta: 'nogal', pantalla: 'arena' }, 'perla', 'Tubo gota'],
+    ['V21', 'trapecio', 'Pata de placa en trapecio con pie y salida de cables', 22900, { estructura: 'blanco', cubierta: 'blanco', pantalla: 'arena' }, 'roble', 'Trapecio'],
+    ['V28', 'redonda', 'Pata de tubo redondo que se abre a lo ancho, regatón blanco', 21490, { estructura: 'salvia', cubierta: 'roble', pantalla: 'arena' }, 'perla', 'Redonda abierta'],
+    ['V29', 'a', 'Pata ancha en A de tubo rectangular, regatón blanco', 20990, { estructura: 'rojo', cubierta: 'blanco', pantalla: 'gris' }, 'perla', 'En A'],
+    ['V40', 'aluminio', 'Pata cónica con rodilla y pie de aluminio', 23490, { estructura: 'terracota', cubierta: 'roble', pantalla: 'grafito' }, 'perla', 'Pie de aluminio'],
+    ['V46', 'diamante', 'Pata de tubo diamante con funda de aluminio', 19490, { estructura: 'negro', cubierta: 'roble', pantalla: 'azul' }, 'roble', 'Diamante'],
+    ['V50', 'inclinada', 'Pata redonda inclinada hacia afuera, punta redonda', 22490, { estructura: 'azul', cubierta: 'blanco', pantalla: 'gris' }, 'perla', 'Redonda inclinada'],
+    ['V3366', 'rectInclinada', 'Pata rectangular inclinada hacia afuera', 21990, { estructura: 'mostaza', cubierta: 'blanco', pantalla: 'salvia' }, 'nogal', 'Rectangular inclinada'],
+    ['A50', 'cuadrada', 'Pata recta de tubo cuadrado de 50 x 50 mm', 17990, { estructura: 'naranja', cubierta: 'blanco', pantalla: 'terracota' }, 'perla', 'Cuadrada 50'],
+    ['A55', 'marco', 'Marco cerrado de tubo de 55 x 75 mm, apoyo de patín', 18990, { estructura: 'grisclaro', cubierta: 'nogal', pantalla: 'gris' }, 'nogal', 'Marco cerrado']
+  ];
+  var PUESTOS = [[2, 0.56, '7 a 10 días hábiles'], [4, 1, '10 a 15 días hábiles'], [6, 1.42, '12 a 18 días hábiles']];
+
+  var fam = { id: 'estaciones-diseno', nombre: 'Estaciones de diseño', img: 'est-v28', diseno: true };
+  var at = 0; J.familias.forEach(function (f, i) { if (f.metal) at = i + 1; });
+  J.familias.splice(at, 0, fam);
+
+  var lista = [];
+  MODELOS.forEach(function (m) {
+    PUESTOS.forEach(function (pp) {
+      var n = pp[0], slug = m[0].toLowerCase();
+      var p = {
+        clave: m[0] + '-' + n, serie: m[0], pata: m[1], familia: fam.id, linea: 'diseno',
+        nombre: 'Estación ' + m[0] + ' para ' + n, variante: n + ' puestos',
+        medidas: [n / 2 * 120, 120, 75], precio: Math.round(m[3] * pp[1] / 10) * 10,
+        img: 'est-' + slug, modelo: { tipo: 'estacionDiseno', pata: m[1], puestos: n },
+        specs: [m[2], C25, PAN, VIG, PEP, 'Niveladores para piso irregular'],
+        roles: ['estructura', 'cubierta', 'pantalla'], defaults: m[4], entrega: pp[2], resumen: m[2], corta: m[6]
+      };
+      p.cut = '../../img/cut-est-' + slug + '.webp';
+      p.foto = p.cut; /* la foto de la ficha es el mismo render, sobre su campo de color */
+      p.campo = m[5];
+      J.porClave[p.clave] = p;
+      if (n === 4) lista.push(p);
+    });
+  });
+  /* el catálogo lista la de 4 puestos de cada modelo, justo después de la lámina */
+  var pos = 0; J.productos.forEach(function (p, i) { if (p.linea === 'metal') pos = i + 1; });
+  Array.prototype.splice.apply(J.productos, [pos, 0].concat(lista));
+  J.diseno = { modelos: MODELOS.map(function (m) { return { serie: m[0], pata: m[1], resumen: m[2], precio4: m[3], defaults: m[4], campo: m[5], corta: m[6] }; }), puestos: [2, 4, 6], familia: fam };
+  J.referencia.estacionDiseno = 'V50-4';
+})(window.JOME);
+
+</script>
+<script>
 /* Visor 3D paramétrico JOME: arma cada mueble desde sus medidas (mm) con piezas de melamina y tubular. Requiere THREE (r128) y window.JOME. */
 window.JOME3D = (function () {
   var MM = 0.001;
@@ -1199,6 +1374,18 @@ window.JOME3D = (function () {
     var c = (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
     var t = (kind === 'lagrima' ? tearTexture() : slotTexture()).clone(); t.needsUpdate = true; t.repeat.set(1, Math.max(1, Math.round(h / (kind === 'lagrima' ? 50 : 75))));
     return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), map: t, roughness: 0.5, metalness: 0.3 }));
+  }
+  /* Estructura de las estaciones de diseño: su propia carta de colores (JOME.marcos), mismo acabado de pintura en polvo. */
+  function frameSteel(id) {
+    var k = 'fs:' + id; if (matCache[k]) return matCache[k];
+    var c = (JOME.marcos && JOME.marcos[id]) || (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.44, metalness: 0.32 }));
+  }
+  /* Tela de la pantalla entre puestos: mate, sin brillo. */
+  function fabric(id) {
+    var k = 'tela:' + id; if (matCache[k]) return matCache[k];
+    var c = (JOME.telas && JOME.telas[id]) || { hex: '#9A9C9E' };
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.95, metalness: 0 }));
   }
   function fixed(k, hex, rough, metal) {
     if (matCache[k]) return matCache[k];
@@ -1315,7 +1502,128 @@ window.JOME3D = (function () {
     return t;
   };
 
+  /* Pieza recta entre dos puntos (mm): un tubo redondo (r1 arriba, r2 abajo), rectangular (w x d) o elíptico (r1, escala en z). */
+  Builder.prototype.strut = function (p1, p2, sec, mat) {
+    var a = new THREE.Vector3(p1[0], p1[1], p1[2]).multiplyScalar(MM), z = new THREE.Vector3(p2[0], p2[1], p2[2]).multiplyScalar(MM);
+    var dir = new THREE.Vector3().subVectors(a, z), len = dir.length(), geo;
+    if (sec.r1) geo = new THREE.CylinderGeometry(sec.r1 * MM, (sec.r2 || sec.r1) * MM, len, 28);
+    else geo = new THREE.BoxGeometry(sec.w * MM, len, sec.d * MM);
+    if (sec.ez) geo.scale(1, 1, sec.ez);
+    var m = new THREE.Mesh(geo, mat);
+    m.position.copy(a).add(z).multiplyScalar(0.5);
+    m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+    if (sec.twist) m.rotateY(sec.twist);
+    m.castShadow = true; m.receiveShadow = true; this.g.add(m); return m;
+  };
+  /* Pata de perfil: un polígono en el plano (u hacia afuera, y hacia arriba) extruido con espesor t en z. */
+  Builder.prototype.plate = function (pts, t, mat, x, z, sx) {
+    var sh = new THREE.Shape();
+    pts.forEach(function (p, i) { if (i) sh.lineTo(p[0] * MM, p[1] * MM); else sh.moveTo(p[0] * MM, p[1] * MM); });
+    var geo = new THREE.ExtrudeGeometry(sh, { depth: t * MM, bevelEnabled: false });
+    geo.translate(0, 0, -t * MM / 2);
+    var m = new THREE.Mesh(geo, mat);
+    m.position.set(x * MM, 0, z * MM); m.scale.x = sx;
+    m.castShadow = true; m.receiveShadow = true; this.g.add(m); return m;
+  };
+
+  /* Estaciones de diseño: bench de 2, 4 o 6 puestos (módulos de 120 cm con dos cubiertas de 60 de fondo), pantalla de tela,
+     charola central y una de diez estructuras. Las patas de los extremos llevan el diseño; entre módulos va un poste central. */
+  var PATAS = {
+    /* pata recta de tubo cuadrado 50 x 50 */
+    cuadrada: { inset: 25, zin: 45, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) { b.box(50, 685 - 12, 50, st, x, 12, z); b.cyl(14, 12, fixed('lev', '#121314', 0.6, 0), x, 0, z); });
+      return x; } },
+    /* marco cerrado de tubo pentagonal 55 x 75: dos postes, travesaño abajo a modo de patín */
+    marco: { inset: 28, zin: 50, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) { b.box(55, 685 - 55, 75, st, x, 55, z); });
+      b.box(55, 55, Math.abs(zs[0] - zs[1]) + 75, st, x, 0, 0);
+      zs.forEach(function (z) { b.box(60, 6, 90, fixed('lev', '#121314', 0.6, 0), x, -1, z); });
+      return x; } },
+    /* tubo diamante (cuadrado girado 45°) con funda de aluminio abajo */
+    diamante: { inset: 35, zin: 55, legs: function (b, x, sx, zs, st) {
+      var alu = fixed('alu', '#C9CCCF', 0.28, 0.9);
+      zs.forEach(function (z) { b.strut([x, 685, z], [x, 105, z], { w: 46, d: 46, twist: Math.PI / 4 }, st); b.cyl(30, 105, alu, x, 0, z); });
+      return x; } },
+    /* tubo gota con unión de aluminio */
+    gota: { inset: 35, zin: 55, legs: function (b, x, sx, zs, st) {
+      var alu = fixed('alu', '#C9CCCF', 0.28, 0.9);
+      zs.forEach(function (z) {
+        b.strut([x, 685, z], [x, 14, z], { r1: 26, ez: 1.55 }, st);
+        b.strut([x, 632, z], [x, 612, z], { r1: 28.5, ez: 1.55 }, alu);
+        b.cyl(15, 14, fixed('lev', '#121314', 0.6, 0), x, 0, z);
+      });
+      return x; } },
+    /* placa en trapecio que se abre hacia afuera, con pie */
+    trapecio: { inset: 200, zin: 70, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) { b.plate([[0, 685], [58, 685], [196, 42], [236, 42], [236, 0], [84, 0], [84, 42], [124, 42]], 42, st, x, z, sx); });
+      return x; } },
+    /* tubo redondo que se abre a lo ancho, regatón blanco */
+    redonda: { inset: 170, zin: 60, legs: function (b, x, sx, zs, st) {
+      var cap = fixed('capB', '#E9E9E6', 0.5, 0);
+      zs.forEach(function (z) { var f = x + sx * 150; b.strut([x, 690, z], [f, 18, z], { r1: 27, r2: 19 }, st); b.strut([f + sx * 1.2, 18, z], [f + sx * 2.5, 0, z], { r1: 19 }, cap); });
+      return x; } },
+    /* pata ancha en A de tubo rectangular */
+    a: { inset: 190, zin: 55, legs: function (b, x, sx, zs, st) {
+      var cap = fixed('capB', '#E9E9E6', 0.5, 0);
+      zs.forEach(function (z) { var f = x + sx * 175; b.strut([x, 690, z], [f, 20, z], { w: 72, d: 30 }, st); b.strut([f + sx * 1.4, 20, z], [f + sx * 2.6, 0, z], { w: 72, d: 30 }, cap); });
+      return x; } },
+    /* tubo cónico casi recto con rodilla y pie de aluminio */
+    aluminio: { inset: 95, zin: 60, legs: function (b, x, sx, zs, st) {
+      var alu = fixed('alu', '#C9CCCF', 0.28, 0.9);
+      zs.forEach(function (z) {
+        var k = [x + sx * 48, 118, z];
+        b.strut([x, 690, z], k, { r1: 27, r2: 21 }, st);
+        b.strut(k, [x + sx * 82, 16, z], { r1: 21, r2: 17 }, alu);
+        b.cyl(32, 10, alu, x + sx * 84, 0, z);
+      });
+      return x; } },
+    /* tubo redondo inclinado hacia afuera en las dos direcciones, punta redonda */
+    inclinada: { inset: 270, zin: 175, legs: function (b, x, sx, zs, st) {
+      zs.forEach(function (z) {
+        var sz = z > 0 ? 1 : -1, f = [x + sx * 200, 30, z + sz * 120];
+        b.strut([x, 700, z], f, { r1: 30 }, st);
+        var ball = new THREE.Mesh(new THREE.SphereGeometry(30 * MM, 20, 14), st);
+        ball.position.set(f[0] * MM, f[1] * MM, f[2] * MM); ball.castShadow = true; b.g.add(ball);
+      });
+      return x; } },
+    /* tubo rectangular inclinado en las dos direcciones */
+    rectInclinada: { inset: 250, zin: 160, legs: function (b, x, sx, zs, st) {
+      var cap = fixed('lev', '#121314', 0.6, 0);
+      zs.forEach(function (z) {
+        var sz = z > 0 ? 1 : -1, f = [x + sx * 180, 18, z + sz * 100];
+        b.strut([x, 700, z], f, { w: 62, d: 34 }, st);
+        b.strut(f, [f[0] + sx * 3, 0, f[2] + sz * 2], { w: 62, d: 34 }, cap);
+      });
+      return x; } }
+  };
+
   var build = {
+    estacionDiseno: function (b, s, c) {
+      var n = Math.max(2, s.puestos || 4), mods = Math.round(n / 2), mw = 1200, W = mods * mw, D = 1200, H = 750, t = 25;
+      var pata = PATAS[s.pata] || PATAS.cuadrada, st = frameSteel(c.estructura), gap = 30, td = D / 2 - gap / 2;
+      var zl = D / 2 - pata.zin, xe = W / 2 - pata.inset;
+      for (var i = 0; i < mods; i++) {
+        var xm = -W / 2 + mw / 2 + i * mw;
+        b.panel('y', mw - 4, t, td, c.cubierta, xm, H - t, gap / 2 + td / 2);
+        b.panel('y', mw - 4, t, td, c.cubierta, xm, H - t, -gap / 2 - td / 2);
+        /* pantalla de tela sobre su riel, entre las dos cubiertas */
+        b.box(mw - 140, 300, 22, fabric(c.pantalla), xm, H + 22, 0);
+        b.box(mw - 140, 22, 34, fixed('alu', '#C9CCCF', 0.28, 0.9), xm, H, 0);
+      }
+      /* extremos: la pata de cada modelo; travesaño bajo la cubierta y largueros al frente y atrás */
+      [-1, 1].forEach(function (sx) {
+        var x = pata.legs(b, sx * xe, sx, [zl, -zl], st);
+        b.box(40, 40, 2 * zl + 40, st, x, H - t - 40, 0);
+      });
+      [zl, -zl].forEach(function (z) { b.box(2 * xe, 40, 40, st, 0, H - t - 40, z); });
+      /* charola central para cables y postes entre módulos */
+      b.box(2 * xe - 40, 70, 150, st, 0, H - t - 110, 0);
+      for (var k = 1; k < mods; k++) {
+        var xk = -W / 2 + k * mw;
+        b.box(36, H - t - 110 - 12, 170, st, xk, 12, 0);
+        b.box(70, 12, 620, st, xk, 0, 0);
+      }
+    },
     locker: function (b, s, c) {
       var cols = s.cols || 1, filas = s.filas || 1, w = s.w, d = s.d, h = s.h, zoc = 100, gap = 6;
       var body = steel(c.cuerpo), door = steel(c.puertas), chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), plate = fixed('plate', '#DADDDF', 0.3, 0.75);
@@ -1677,7 +1985,7 @@ window.JOME3D = (function () {
 
   function colorsFor(p, chosen) {
     var c = {}, d = p.defaults || {};
-    if (p.linea === 'metal') {
+    if (p.linea === 'metal' || p.linea === 'diseno') {
       (p.roles || []).forEach(function (k) { c[k] = (chosen && chosen[k]) || d[k] || 'grisclaro'; });
       return c;
     }
@@ -1802,8 +2110,8 @@ window.JOME_SALA = function (root, opts) {
 
   /* Portada: tres columnas del catálogo en movimiento. La segunda copia de cada columna solo completa el ciclo y no se anuncia. */
   var heroCols = [
-    { dur: 104, items: [['LOC-6', 'nogal', 'Locker 6 puertas'], ['ESC-150', 'roble', 'Escritorio 150'], ['ANA-5R', 'campo', 'Anaquel reforzado'], ['ARM-4C', 'roble', 'Archivero metálico'], ['EST-2', 'nogal', 'Estación de 2'], ['LOC-12', 'perla', 'Locker 12 puertas'], ['MJ-240', 'campo', 'Juntas para 8'], ['RAC-200', 'perla', 'Rack de carga media'], ['LIB-80', 'campo', 'Librero con puertas'], ['ESL-180', 'perla', 'Escritorio en L 180']] },
-    { dur: 120, items: [['LOC-3', 'campo', 'Locker 3 puertas'], ['ESL-160', 'perla', 'Escritorio en L 160'], ['ARM-2', 'nogal', 'Archivero 2 gavetas'], ['ANA-5L', 'campo', 'Anaquel esqueleto'], ['ESC-180', 'roble', 'Ejecutivo 180'], ['LOC-R', 'campo', 'Locker ropero'], ['ARC-4', 'roble', 'Archivero 4 gavetas'], ['GAB-U', 'nogal', 'Gabinete universal'], ['EST-4', 'perla', 'Estación de 4'], ['ESC-M', 'roble', 'Escritorio metálico']] }
+    { dur: 104, items: [['LOC-6', 'nogal', 'Locker 6 puertas'], ['V28-4', 'roble', 'Estación V28'], ['ESC-150', 'roble', 'Escritorio 150'], ['ANA-5R', 'campo', 'Anaquel reforzado'], ['ARM-4C', 'roble', 'Archivero metálico'], ['EST-2', 'nogal', 'Estación de 2'], ['LOC-12', 'perla', 'Locker 12 puertas'], ['MJ-240', 'campo', 'Juntas para 8'], ['RAC-200', 'perla', 'Rack de carga media'], ['LIB-80', 'campo', 'Librero con puertas'], ['ESL-180', 'perla', 'Escritorio en L 180']] },
+    { dur: 120, items: [['LOC-3', 'campo', 'Locker 3 puertas'], ['V29-4', 'perla', 'Estación V29'], ['ESL-160', 'perla', 'Escritorio en L 160'], ['ARM-2', 'nogal', 'Archivero 2 gavetas'], ['ANA-5L', 'campo', 'Anaquel esqueleto'], ['ESC-180', 'roble', 'Ejecutivo 180'], ['LOC-R', 'campo', 'Locker ropero'], ['ARC-4', 'roble', 'Archivero 4 gavetas'], ['GAB-U', 'nogal', 'Gabinete universal'], ['EST-4', 'perla', 'Estación de 4'], ['ESC-M', 'roble', 'Escritorio metálico']] }
   ];
   var darkFields = { nogal: 1, grafito: 1 };
   function heroTile(m, copy, first) {
@@ -1986,6 +2294,52 @@ window.JOME_SALA = function (root, opts) {
   if (window.IntersectionObserver) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { mountLk(); o.disconnect(); } }, { rootMargin: '300px 0px' }).observe($('#lkStage'));
   else mountLk();
   $('#lkAdd').onclick = function () { addToCart(JOME.porClave[lk.clave], lkColors(), 1); };
+  /* Estaciones de diseño: modelo, puestos y colores; la estación en 3D con su precio */
+  var LN = JOME.diseno, ln = { serie: 'V28', n: 4, c: null }, lnV = null;
+  function lnP() { return JOME.porClave[ln.serie + '-' + ln.n]; }
+  ln.c = Object.assign({}, lnP().defaults);
+  function lnColors() { return JOME3D.colorsFor(lnP(), ln.c); }
+  $('#lnRail').innerHTML = LN.modelos.map(function (m) {
+    var q = JOME.porClave[m.serie + '-2'];
+    return '<button type="button" class="ln-pick" aria-pressed="' + (m.serie === ln.serie) + '" data-s="' + m.serie + '"><span class="th" style="--c:' + field(m.campo) + '"><img src="' + q.cut + '" alt="" loading="lazy" width="900" height="620"></span><b>' + m.serie + '</b><small>' + esc(m.corta) + '<br>desde ' + JOME.fmt(q.precio) + '</small></button>';
+  }).join('');
+  $$('#lnRail .ln-pick').forEach(function (b) {
+    b.onclick = function () { if (ln.serie === b.dataset.s) return; ln.serie = b.dataset.s; ln.c = Object.assign({}, lnP().defaults); paintLn(true); };
+  });
+  function mountLn() {
+    if (lnV) return;
+    if (has3d) lnV = JOME3D.mount($('#lnStage'), { label: 'Estación en 3D; arrástrala para girarla', yaw: 0.8, pitch: 0.3, onInteract: function () { $('#lnHint').style.opacity = 0; } });
+    if (lnV) { lnV.set(lnP().modelo, lnColors()); return; }
+    if (!$('#lnStage img')) { var i = new Image(); i.className = 'fallback'; i.src = lnP().cut; i.alt = lnP().nombre; $('#lnStage').appendChild(i); $('#lnHint').hidden = true; }
+  }
+  function lnSwatches(el, role, ids, cur, key) {
+    var p = lnP();
+    el.innerHTML = ids.map(function (id) { return '<button type="button" ' + swatch(p, role, id) + ' aria-pressed="' + (id === cur) + '" aria-label="' + JOME.roles[role] + ' ' + colorName(role, id, p) + '" data-v="' + id + '"></button>'; }).join('');
+    $$('button', el).forEach(function (b) { b.onclick = function () { ln.c[key] = b.dataset.v; paintLn(true); }; });
+  }
+  function paintLn(rebuild) {
+    var p = lnP();
+    $$('#lnRail .ln-pick').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.s === ln.serie)); });
+    $('#lnCode').textContent = ln.serie;
+    $('#lnName').textContent = p.nombre; $('#lnDesc').textContent = p.resumen + '.';
+    $('#lnSeats').innerHTML = LN.puestos.map(function (n) { return '<button type="button" aria-pressed="' + (n === ln.n) + '" data-n="' + n + '">' + n + ' puestos</button>'; }).join('');
+    $$('#lnSeats button').forEach(function (b) { b.onclick = function () { ln.n = +b.dataset.n; paintLn(true); }; });
+    lnSwatches($('#lnFrame'), 'estructura', Object.keys(JOME.marcos), ln.c.estructura, 'estructura');
+    lnSwatches($('#lnTop'), 'cubierta', Object.keys(JOME.colores), ln.c.cubierta, 'cubierta');
+    lnSwatches($('#lnScreen'), 'pantalla', Object.keys(JOME.telas), ln.c.pantalla, 'pantalla');
+    $('#lnEName').textContent = colorName('estructura', ln.c.estructura, p);
+    $('#lnCName').textContent = colorName('cubierta', ln.c.cubierta, p);
+    $('#lnSName').textContent = colorName('pantalla', ln.c.pantalla, p);
+    $('#lnPrice').innerHTML = JOME.fmt(p.precio) + '<small>Con IVA. ' + p.medidas.join(' × ') + ' cm. Entrega ' + p.entrega + '.</small>';
+    if (rebuild && lnV) lnV.set(p.modelo, lnColors());
+    if (rebuild && !lnV) { var im = $('#lnStage img'); if (im) { im.src = p.cut; im.alt = p.nombre; } }
+  }
+  paintLn(false);
+  if (window.IntersectionObserver) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { mountLn(); o.disconnect(); } }, { rootMargin: '300px 0px' }).observe($('#lnStage'));
+  else mountLn();
+  $('#lnAdd').onclick = function () { addToCart(lnP(), lnColors(), 1); };
+  JOME_SALA($('#lnSala'), { tag: $('#lnTag'), still: 4, delay: 300 });
+
 
   /* Las cuatro familias de lámina: llevan al catálogo ya filtrado */
   var mf = [['lockers', 'LOC-6', 'nogal'], ['anaqueles', 'ANA-5L', 'campo'], ['racks', 'RAC-200', 'perla'], ['archiveros-metal', 'ARM-4C', 'roble']];
@@ -1996,8 +2350,8 @@ window.JOME_SALA = function (root, opts) {
   }).join('');
 
   /* Catálogo */
-  var fam = 'todos', dobles = { 'ESC-150': 1, 'EST-4': 1 };
-  var cortos = { 'lockers': 'Lockers', 'anaqueles': 'Anaqueles', 'racks': 'Racks', 'archiveros-metal': 'Archiveros metálicos', 'gabinetes': 'Gabinetes', 'escritorios': 'Escritorios', 'escritorios-l': 'En L', 'juntas': 'Juntas', 'estaciones': 'Estaciones', 'libreros': 'Libreros', 'archiveros': 'Archiveros', 'cocinetas': 'Cocinetas' };
+  var fam = 'todos', dobles = { 'ESC-150': 1, 'EST-4': 1, 'V28-4': 1 };
+  var cortos = { 'estaciones-diseno': 'De diseño', 'lockers': 'Lockers', 'anaqueles': 'Anaqueles', 'racks': 'Racks', 'archiveros-metal': 'Archiveros metálicos', 'gabinetes': 'Gabinetes', 'escritorios': 'Escritorios', 'escritorios-l': 'En L', 'juntas': 'Juntas', 'estaciones': 'Estaciones', 'libreros': 'Libreros', 'archiveros': 'Archiveros', 'cocinetas': 'Cocinetas' };
   function paintFilters() {
     var counts = {}; JOME.productos.forEach(function (p) { counts[p.familia] = (counts[p.familia] || 0) + 1; });
     $('#filters').innerHTML = '<button type="button" data-f="todos" aria-pressed="' + (fam === 'todos') + '">Todo<span>' + JOME.productos.length + '</span></button>' +
