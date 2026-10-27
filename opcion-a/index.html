@@ -15,7 +15,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://grupo-industrial-jome.github.io/opcion-a/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F2C21A'/%3E%3Ctext x='32' y='47' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='42' text-anchor='middle' fill='%231C1D1F'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231F4FA8'/%3E%3Ctext x='32' y='47' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='42' text-anchor='middle' fill='%23F6F6F4'%3EJ%3C/text%3E%3C/svg%3E">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Grupo Industrial JOME, opción A</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,13 +29,22 @@
   --surface: #E2E1DC;     /* un tono abajo */
   --ink: #1C1D1F;         /* acero pintado */
   --muted: #55585B;
-  --accent: #F2C21A;      /* amarillo de piso de fábrica */
-  --accent-ink: #1C1D1F;
+  /* Paleta azul (la de inicio): el azul de los marcos de rack, pintura de línea. Las otras dos, abajo. */
+  --accent: #1F4FA8;
+  --accent-ink: #F6F6F4;
+  --accent-hover: #2A5DBD;
+  --accent-soft: #CBD7EC;  /* estados abiertos o elegidos: preguntas, escalones de precio, forma de pago */
+  --campo: #1F4FA8;        /* el campo de color de los especímenes que antes era amarillo */
+  --campo-ink: #F6F6F4;
+  --pin: #9EBBF2;          /* la fábrica en el mapa, sobre nogal */
   --roble: #D5B68D;
   --perla: #C8CBC9;
-  --amarillo: #F2C21A;
   --nogal: #7A5237;
   --grafito: #44484C;
+  --roble-ink: var(--ink);
+  --perla-ink: var(--ink);
+  --nogal-ink: var(--on-dark);
+  --grafito-ink: var(--on-dark);
   --paper: #F6F6F4;
   --on-dark: #F3F3F1;
   --scrim: rgba(18, 19, 21, .55);
@@ -56,6 +65,10 @@
   --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
   color-scheme: light;
 }
+/* Naranja: el de los largueros del rack */
+:root[data-paleta="naranja"] { --accent: #E2581E; --accent-ink: #1C1D1F; --accent-hover: #EF6A2C; --accent-soft: #F7CDB6; --campo: #E2581E; --campo-ink: #1C1D1F; --pin: #FF9A5E; }
+/* Verde bosque: va con el nogal y con el gris de la lámina */
+:root[data-paleta="verde"] { --accent: #2E5B47; --accent-ink: #F6F6F4; --accent-hover: #3A6C56; --accent-soft: #C9D8CC; --campo: #2E5B47; --campo-ink: #F6F6F4; --pin: #A8D5A0; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -80,12 +93,18 @@ p { margin: 0; }
 .btn:active { transform: scale(0.97); }
 .btn.dark { background: var(--ink); color: var(--ground); }
 .btn[disabled] { opacity: .45; cursor: not-allowed; }
-@media (hover: hover) and (pointer: fine) { .btn:hover { background: #FFD43B; } .btn.dark:hover { background: #33363A; } }
+@media (hover: hover) and (pointer: fine) { .btn:hover { background: var(--accent-hover); } .btn.dark:hover { background: #33363A; } }
 .tlink { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-thickness: .07em; text-underline-offset: .22em; text-decoration-color: currentColor; font-weight: 500; }
 @media (hover: hover) and (pointer: fine) { .tlink { text-decoration-color: transparent; transition: text-decoration-color 180ms ease; } .tlink:hover { text-decoration-color: currentColor; } }
 
 .draft { background: var(--ink); color: var(--on-dark); font-size: var(--step-small); }
-.draft .wrap { padding-block: .45rem; }
+.draft .wrap { padding-block: .45rem; display: flex; justify-content: space-between; align-items: center; gap: 6px 20px; flex-wrap: wrap; }
+/* Selector de paleta para la encuesta: vive en la franja del borrador, no en el diseño */
+.paletas { display: flex; align-items: center; gap: 6px; }
+.paletas > span { color: rgba(243, 243, 241, .72); margin-right: 4px; }
+.paletas button { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 0 10px; border: 0; background: rgba(255, 255, 255, .08); color: var(--on-dark); font-size: var(--step-small); font-weight: 500; cursor: pointer; }
+.paletas button::before { content: ""; width: 12px; height: 12px; background: var(--sw); border: 1px solid rgba(255, 255, 255, .35); /* taste-skill-ignore: borde para ver la muestra sobre la franja oscura */ }
+.paletas button[aria-pressed="true"] { background: var(--on-dark); color: var(--ink); }
 
 /* Encabezado */
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--ground); }
@@ -122,7 +141,7 @@ nav.main a { text-decoration: none; font-size: var(--step-small); font-weight: 5
 .col { position: relative; overflow: clip; }
 .track { display: flex; flex-direction: column; gap: 12px; padding-bottom: 12px; }
 .col:nth-child(2) .track { margin-top: -46%; }
-.spec { position: relative; aspect-ratio: 4 / 5; background: var(--c, var(--perla)); overflow: clip; border: 0; padding: 0; cursor: pointer; display: block; width: 100%; text-align: left; color: var(--ink); }
+.spec { position: relative; aspect-ratio: 4 / 5; background: var(--c, var(--perla)); overflow: clip; border: 0; padding: 0; cursor: pointer; display: block; width: 100%; text-align: left; color: var(--ci, var(--ink)); }
 .spec img { position: absolute; inset: 9%; width: 82%; height: 82%; object-fit: contain; transition: transform 500ms var(--ease-out); }
 .spec.on-dark { color: var(--on-dark); }
 .tile-label { position: absolute; left: 12px; right: 12px; bottom: 10px; display: flex; justify-content: space-between; gap: 8px; font-size: var(--step-small); font-weight: 500; line-height: 1.2; }
@@ -157,7 +176,7 @@ nav.main a { text-decoration: none; font-size: var(--step-small); font-weight: 5
 .metal-video .ly.on { opacity: 1; }
 .metal-video figcaption, .lk .tagline { position: absolute; left: 12px; bottom: 12px; z-index: 2; background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; }
 .lk { grid-column: 8 / span 5; background: var(--ground); color: var(--ink); display: flex; flex-direction: column; min-width: 0; }
-.lk .stage { position: relative; flex: 1 1 auto; min-height: 360px; background: var(--amarillo); }
+.lk .stage { position: relative; flex: 1 1 auto; min-height: 360px; background: var(--campo); }
 .lk .stage .v3d { position: absolute; inset: 0; }
 .lk .stage .fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 8%; }
 .lk .tagline { left: auto; right: 12px; transition: opacity 400ms ease; pointer-events: none; }
@@ -362,7 +381,7 @@ section.tight-top { padding-top: 0; }
 .faq h2 { grid-column: 1 / span 4; position: sticky; top: 96px; align-self: start; }
 .faq .tiles { grid-column: 5 / -1; display: grid; gap: 8px; }
 .faq details { background: var(--surface); transition: background-color 200ms ease; }
-.faq details[open] { background: var(--accent); }
+.faq details[open] { background: var(--accent-soft); }
 .faq summary { list-style: none; min-height: 72px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; font-size: var(--step-ui); font-weight: 500; letter-spacing: -0.015em; }
 .faq summary::-webkit-details-marker { display: none; }
 .plus { position: relative; width: 16px; height: 16px; flex: none; }
@@ -431,7 +450,7 @@ dialog.md { max-width: min(640px, calc(100vw - 24px)); }
 .qty input { width: 3.4rem; min-height: 44px; text-align: center; border: 0; background: var(--paper); padding: 0; font-variant-numeric: tabular-nums; }
 .tiers { display: grid; gap: 2px; font-size: var(--step-small); }
 .tiers div { display: flex; justify-content: space-between; padding: 6px 10px; background: var(--surface); }
-.tiers div.on { background: var(--accent); }
+.tiers div.on { background: var(--accent-soft); }
 @media (max-width: 760px) { .pd { grid-template-columns: 1fr; } .pd .media { min-height: 0; height: 78vw; } }
 .drawer-scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 40; }
 aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100vw); background: var(--ground); z-index: 41; display: flex; flex-direction: column; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) 0; }
@@ -466,10 +485,10 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
 .note { font-size: var(--step-small); color: var(--muted); }
 .pay-opt { display: grid; gap: 8px; }
 .pay-opt label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; padding: 14px; background: var(--surface); cursor: pointer; }
-.pay-opt label:has(input:checked) { background: var(--accent); }
+.pay-opt label:has(input:checked) { background: var(--accent-soft); }
 .pay-opt input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--ink); }
 .pay-opt small { display: block; color: var(--muted); }
-.okbox { background: var(--accent); padding: 18px; }
+.okbox { background: var(--accent-soft); padding: 18px; }
 .errline { color: #A3271B; font-size: var(--step-small); }
 .spin { width: 40px; height: 40px; border: 4px solid var(--surface); border-top-color: var(--ink); border-radius: 50%; animation: spin .9s linear infinite; margin: 1rem auto; }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -480,7 +499,7 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
   .js .hero [data-line] { transform: translateY(105%); animation: rise-line 900ms var(--ease-expo) forwards; animation-delay: calc(140ms + var(--i, 0) * 90ms); }
   .js .hero [data-load] { opacity: 0; transform: translateY(14px); animation: rise 600ms var(--ease-out) forwards; animation-delay: var(--d, 420ms); }
   .js .hero .col { clip-path: inset(100% 0 0 0); animation: shutter 1100ms var(--ease-in-out) forwards; animation-delay: calc(160ms + var(--i, 0) * 120ms); }
-  .js .hero .sala { clip-path: inset(100% 0 0 0); animation: shutter 1100ms var(--ease-in-out) 300ms forwards; }
+  .js .hero .sala { clip-path: inset(100% 0 0 0); animation: shutter 900ms var(--ease-in-out) 120ms forwards; }
   .js .track { animation: climb var(--dur, 70s) linear infinite; }
   .js .col:nth-child(2) .track { animation-direction: reverse; }
   .js [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-expo); transition-delay: var(--d, 0ms); }
@@ -498,7 +517,9 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
 </style>
 </head>
 <body>
-<div class="draft"><div class="wrap">Borrador A de 3: tienda de fábrica. Fotos hechas con IA y precios de muestra.</div></div>
+<script>/* la paleta llega en el enlace (#naranja) o en la página; se pone antes de pintar */try{var h=location.hash.slice(1);if(/^(azul|naranja|verde)$/.test(h))document.documentElement.setAttribute('data-paleta',h)}catch(e){}</script>
+<div class="draft"><div class="wrap"><span>Borrador A de 3: tienda de fábrica. Fotos hechas con IA y precios de muestra.</span>
+  <span class="paletas" role="group" aria-label="Paleta de color para comparar"><span>Paleta</span><button type="button" data-pal="azul" style="--sw:#1F4FA8">Azul</button><button type="button" data-pal="naranja" style="--sw:#E2581E">Naranja</button><button type="button" data-pal="verde" style="--sw:#2E5B47">Verde</button></span></div></div>
 
 <header class="top" id="top">
   <div class="l">
@@ -516,12 +537,10 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
     <div class="hero-left">
       <h1 id="h1" class="lines"><span class="line"><span data-line style="--i:0">Muebles de oficina,</span></span><span class="line"><span data-line style="--i:1">de fábrica</span></span></h1>
       <div class="sala" id="sala">
-        <img class="ly on" src="../img/esp-vacia-l.webp" alt="Oficina vacía con ventanales y piso de concreto pulido" width="1800" height="1018" data-tag="Tu oficina, hoy" data-hold="3600" fetchpriority="high">
-        <video class="ly" muted playsinline preload="none" poster="../img/video-amueblar-poster.webp" data-tag="Amueblando" aria-label="La misma oficina se va amueblando con estaciones, libreros y sillas"><source src="../vid/video-amueblar.mp4" type="video/mp4"></video>
-        <img class="ly" src="../img/esp-amueblada-l.webp" alt="La misma oficina amueblada con estaciones de trabajo de nogal y base negra" width="1800" height="1018" loading="lazy" data-tag="La misma oficina, con estaciones JOME" data-hold="5000">
-        <img class="ly" src="../img/esp-archivo-vacio-l.webp" alt="Un cuarto de archivo vacío" width="1800" height="1018" loading="lazy" data-tag="Tu archivo, hoy" data-hold="3200">
-        <video class="ly" muted playsinline preload="none" poster="../img/video-archivo-poster.webp" data-tag="Llegan los anaqueles y archiveros" aria-label="El cuarto de archivo se llena de anaqueles con cajas y archiveros metálicos"><source src="../vid/video-archivo.mp4" type="video/mp4"></video>
-        <img class="ly" src="../img/esp-archivo-metal-l.webp" alt="El mismo archivo con anaqueles de lámina llenos de cajas y archiveros metálicos grises" width="1800" height="1018" loading="lazy" data-tag="El mismo archivo, con lámina JOME" data-hold="5000">
+        <video class="ly on" muted playsinline preload="auto" poster="../img/video-amueblar-poster.webp" data-tag="Tu oficina, hoy" data-tag2="Amueblando" data-tag2-at="0.9" data-wait="1300" aria-label="Una oficina vacía se va amueblando con estaciones, libreros y sillas"><source src="../vid/video-amueblar.mp4" type="video/mp4"></video>
+        <img class="ly" src="../img/esp-amueblada-l.webp" alt="La misma oficina amueblada con estaciones de trabajo de nogal y base negra" width="1800" height="1018" loading="lazy" data-tag="La misma oficina, con estaciones JOME" data-hold="4200">
+        <video class="ly" muted playsinline preload="none" poster="../img/video-archivo-poster.webp" data-tag="Tu archivo, hoy" data-tag2="Llegan los anaqueles y archiveros" data-tag2-at="0.9" data-wait="1300" aria-label="Un cuarto de archivo vacío se llena de anaqueles con cajas y archiveros metálicos"><source src="../vid/video-archivo.mp4" type="video/mp4"></video>
+        <img class="ly" src="../img/esp-archivo-metal-l.webp" alt="El mismo archivo con anaqueles de lámina llenos de cajas y archiveros metálicos grises" width="1800" height="1018" loading="lazy" data-tag="El mismo archivo, con lámina JOME" data-hold="4200">
         <span class="sala-tag" id="salaTag" aria-live="off">Tu oficina, hoy</span>
       </div>
       <div class="hero-foot">
@@ -580,7 +599,7 @@ aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 1
       </div>
       <div class="about-side" data-reveal style="--d:220ms">
         <div class="map-tile">
-          <svg viewBox="0 0 1000 662" role="img" aria-label="Mapa de México con la ubicación de la fábrica en Jalisco"><path fill="rgba(243,243,241,.92)" d="M0 18 L53 11 L76 18 L201 60 L294 60 L294 44 L350 45 L399 83 L419 122 L459 144 L485 115 L518 116 L535 133 L554 169 L581 198 L594 238 L620 248 L647 256 L644 306 L637 331 L634 389 L650 432 L680 471 L693 497 L723 515 L749 536 L792 525 L809 522 L835 518 L861 497 L878 475 L881 435 L904 421 L954 414 L990 410 L1000 428 L980 457 L977 486 L967 525 L950 522 L931 542 L922 547 L862 547 L862 567 L848 567 L881 608 L838 612 L822 641 L818 662 L795 641 L749 608 L723 605 L680 623 L660 615 L614 601 L568 583 L531 565 L492 543 L452 529 L422 500 L399 486 L376 453 L393 446 L389 414 L376 381 L353 353 L320 317 L310 306 L281 281 L264 266 L254 238 L234 216 L205 184 L182 158 L172 151 L155 122 L132 86 L119 61 L96 54 L76 43 L76 72 L86 101 L116 130 L119 148 L142 180 L158 205 L182 230 L191 252 L211 295 L224 317 L248 335 L238 363 L228 345 L201 320 L165 302 L162 270 L135 238 L116 227 L99 205 L99 184 L66 187 L96 169 L83 133 L43 108 L33 79 L17 40 L0 18 Z"/><circle cx="454" cy="444" r="16" fill="#F2C21A"/><circle cx="454" cy="444" r="32" fill="none" stroke="#F2C21A" stroke-width="4"/></svg>
+          <svg viewBox="0 0 1000 662" role="img" aria-label="Mapa de México con la ubicación de la fábrica en Jalisco"><path fill="rgba(243,243,241,.92)" d="M0 18 L53 11 L76 18 L201 60 L294 60 L294 44 L350 45 L399 83 L419 122 L459 144 L485 115 L518 116 L535 133 L554 169 L581 198 L594 238 L620 248 L647 256 L644 306 L637 331 L634 389 L650 432 L680 471 L693 497 L723 515 L749 536 L792 525 L809 522 L835 518 L861 497 L878 475 L881 435 L904 421 L954 414 L990 410 L1000 428 L980 457 L977 486 L967 525 L950 522 L931 542 L922 547 L862 547 L862 567 L848 567 L881 608 L838 612 L822 641 L818 662 L795 641 L749 608 L723 605 L680 623 L660 615 L614 601 L568 583 L531 565 L492 543 L452 529 L422 500 L399 486 L376 453 L393 446 L389 414 L376 381 L353 353 L320 317 L310 306 L281 281 L264 266 L254 238 L234 216 L205 184 L182 158 L172 151 L155 122 L132 86 L119 61 L96 54 L76 43 L76 72 L86 101 L116 130 L119 148 L142 180 L158 205 L182 230 L191 252 L211 295 L224 317 L248 335 L238 363 L228 345 L201 320 L165 302 L162 270 L135 238 L116 227 L99 205 L99 184 L66 187 L96 169 L83 133 L43 108 L33 79 L17 40 L0 18 Z"/><circle cx="454" cy="444" r="16" style="fill:var(--pin)"/><circle cx="454" cy="444" r="32" fill="none" style="stroke:var(--pin)" stroke-width="4"/></svg>
           <span class="pin-label">[Ciudad], Jalisco</span>
         </div>
         <dl class="facts">
@@ -1558,7 +1577,7 @@ window.JOME3D = (function () {
     sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.bias = -0.0004; sun.shadow.radius = 4;
     scene.add(sun); scene.add(sun.target);
     scene.add(new THREE.HemisphereLight(0xffffff, 0x9a9690, 0.25));
-    var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: opts.shadow || 0.2 }));
+    var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: opts.shadow || 0.2 })); /* taste-skill-ignore: sombra en el piso del visor 3D, no es una sombra de caja */
     ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 
     var group = new THREE.Group(); scene.add(group);
@@ -1696,21 +1715,35 @@ window.JOME_SALA = function (root, opts) {
   }
   /* el video que sigue se empieza a cargar mientras se ve la capa anterior */
   function prep(i) { var l = layers[i]; if (isVid(l) && !l.dataset.prep) { l.dataset.prep = '1'; l.preload = 'auto'; try { l.load(); } catch (e) {} } }
+  /* data-wait: milisegundos que el video se queda en su primer cuadro (el póster) antes de correr; no aplica la primera vez */
+  var first = true, waitT = 0;
   function run() {
-    clearTimeout(timer);
+    clearTimeout(timer); clearTimeout(waitT);
     if (!visible || hidden) return;
     var l = layers[k];
     played = true;
     if (isVid(l)) {
+      var w = first ? 0 : +(l.getAttribute('data-wait') || 0);
       try { l.currentTime = 0; } catch (e) {}
-      var pr = l.play();
-      if (pr && pr.catch) pr.catch(function () { clearTimeout(timer); timer = setTimeout(next, 2600); });
+      waitT = setTimeout(function () {
+        if (layers[k] !== l || !visible || hidden) return;
+        var pr = l.play();
+        if (pr && pr.catch) pr.catch(function () { clearTimeout(timer); timer = setTimeout(next, 2600); });
+      }, w);
       var dur = isFinite(l.duration) && l.duration > 0 ? l.duration : 6;
-      timer = setTimeout(next, dur * 1000 + 2500); /* por si el video nunca avisa que terminó */
+      timer = setTimeout(next, w + dur * 1000 + 2500); /* por si el video nunca avisa que terminó */
     } else {
       timer = setTimeout(next, +(l.getAttribute('data-hold') || 4600));
     }
+    first = false;
   }
+  /* data-tag2 y data-tag2-at: el letrero cambia a medio video (de "Tu oficina, hoy" a "Amueblando") */
+  layers.forEach(function (l) {
+    if (!isVid(l) || !l.hasAttribute('data-tag2')) return;
+    l.addEventListener('timeupdate', function () {
+      if (tag && layers[k] === l && l.currentTime >= +(l.getAttribute('data-tag2-at') || 1)) tag.textContent = l.getAttribute('data-tag2');
+    });
+  });
   function show(i) {
     k = i; played = false;
     layers.forEach(function (l, j) {
@@ -1723,7 +1756,7 @@ window.JOME_SALA = function (root, opts) {
   }
   function next() { show((k + 1) % layers.length); }
   layers.forEach(function (l) { if (isVid(l)) l.addEventListener('ended', function () { if (layers[k] === l) next(); }); });
-  function pause() { clearTimeout(timer); var l = layers[k]; if (isVid(l)) { try { l.pause(); } catch (e) {} } }
+  function pause() { clearTimeout(timer); clearTimeout(waitT); var l = layers[k]; if (isVid(l)) { try { l.pause(); } catch (e) {} } }
   /* al volver a la vista, un video que ya corrió salta a la capa siguiente: la habitación ya amueblada */
   function resume() { if (!started) return; if (isVid(layers[k]) && played) next(); else run(); }
   function start() {
@@ -1755,7 +1788,9 @@ window.JOME_SALA = function (root, opts) {
   var has3d = JOME3D.supported && !!window.THREE;
   function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
   function toast(m) { var t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, 2600); }
-  function field(id) { return 'var(--' + id + ')'; }
+  /* campo de color de cada espécimen; el viejo 'amarillo' del catálogo ahora es el color de acento de la paleta */
+  function field(id) { if (id === 'amarillo') id = 'campo'; return 'var(--' + id + ')'; }
+  function fieldInk(id) { if (id === 'amarillo') id = 'campo'; return 'var(--' + id + '-ink)'; }
   /* Muestras de color: cada rol usa su paleta (melamina, pintura de la base o pintura en polvo de la lámina) */
   function swatch(p, r, id) { var c = JOME.color(p, r, id), wood = !!c.wood; return 'style="--c:' + c.hex + (wood ? ';--tex:url(../img/sw-' + id + '.webp)' : '') + '" class="sw' + (wood ? ' wood' : '') + '"'; }
   function colorName(r, id, p) { return JOME.color(p, r, id).nombre; }
@@ -1767,13 +1802,13 @@ window.JOME_SALA = function (root, opts) {
 
   /* Portada: tres columnas del catálogo en movimiento. La segunda copia de cada columna solo completa el ciclo y no se anuncia. */
   var heroCols = [
-    { dur: 104, items: [['LOC-6', 'nogal', 'Locker 6 puertas'], ['ESC-150', 'roble', 'Escritorio 150'], ['ANA-5R', 'amarillo', 'Anaquel reforzado'], ['ARM-4C', 'roble', 'Archivero metálico'], ['EST-2', 'nogal', 'Estación de 2'], ['LOC-12', 'perla', 'Locker 12 puertas'], ['MJ-240', 'amarillo', 'Juntas para 8'], ['RAC-200', 'perla', 'Rack de carga media'], ['LIB-80', 'amarillo', 'Librero con puertas'], ['ESL-180', 'perla', 'Escritorio en L 180']] },
-    { dur: 120, items: [['LOC-3', 'amarillo', 'Locker 3 puertas'], ['ESL-160', 'perla', 'Escritorio en L 160'], ['ARM-2', 'nogal', 'Archivero 2 gavetas'], ['ANA-5L', 'amarillo', 'Anaquel esqueleto'], ['ESC-180', 'roble', 'Ejecutivo 180'], ['LOC-R', 'amarillo', 'Locker ropero'], ['ARC-4', 'roble', 'Archivero 4 gavetas'], ['GAB-U', 'nogal', 'Gabinete universal'], ['EST-4', 'perla', 'Estación de 4'], ['ESC-M', 'roble', 'Escritorio metálico']] }
+    { dur: 104, items: [['LOC-6', 'nogal', 'Locker 6 puertas'], ['ESC-150', 'roble', 'Escritorio 150'], ['ANA-5R', 'campo', 'Anaquel reforzado'], ['ARM-4C', 'roble', 'Archivero metálico'], ['EST-2', 'nogal', 'Estación de 2'], ['LOC-12', 'perla', 'Locker 12 puertas'], ['MJ-240', 'campo', 'Juntas para 8'], ['RAC-200', 'perla', 'Rack de carga media'], ['LIB-80', 'campo', 'Librero con puertas'], ['ESL-180', 'perla', 'Escritorio en L 180']] },
+    { dur: 120, items: [['LOC-3', 'campo', 'Locker 3 puertas'], ['ESL-160', 'perla', 'Escritorio en L 160'], ['ARM-2', 'nogal', 'Archivero 2 gavetas'], ['ANA-5L', 'campo', 'Anaquel esqueleto'], ['ESC-180', 'roble', 'Ejecutivo 180'], ['LOC-R', 'campo', 'Locker ropero'], ['ARC-4', 'roble', 'Archivero 4 gavetas'], ['GAB-U', 'nogal', 'Gabinete universal'], ['EST-4', 'perla', 'Estación de 4'], ['ESC-M', 'roble', 'Escritorio metálico']] }
   ];
   var darkFields = { nogal: 1, grafito: 1 };
   function heroTile(m, copy, first) {
     var p = JOME.porClave[m[0]];
-    return '<button type="button" class="spec' + (darkFields[m[1]] ? ' on-dark' : '') + '" style="--c:' + field(m[1]) + '" data-open="' + p.clave + '"' +
+    return '<button type="button" class="spec' + (darkFields[m[1]] ? ' on-dark' : '') + '" style="--c:' + field(m[1]) + ';--ci:' + fieldInk(m[1]) + '" data-open="' + p.clave + '"' +
       (copy ? ' aria-hidden="true" tabindex="-1"' : ' aria-label="' + esc(p.nombre) + ', ' + JOME.fmt(p.precio) + '"') + '><img src="' + p.cut + '" alt=""' + (first ? ' fetchpriority="high"' : '') + '>' +
       '<span class="tile-label" aria-hidden="true"><span>' + esc(m[2] || p.nombre) + '</span><span>' + JOME.fmt(p.precio) + '</span></span></button>';
   }
@@ -1784,7 +1819,22 @@ window.JOME_SALA = function (root, opts) {
   }).join('');
 
   /* La sala de la portada: oficina vacía, amueblando, terminada; luego el archivo con anaqueles */
-  JOME_SALA($('#sala'), { tag: $('#salaTag'), still: 2, delay: 900 });
+  JOME_SALA($('#sala'), { tag: $('#salaTag'), still: 1, delay: 250 });
+  /* Paleta: azul de inicio; naranja y verde para comparar. Cambia los colores al momento, sin recargar */
+  (function () {
+    var root = document.documentElement, names = ['azul', 'naranja', 'verde'];
+    function mark() { var cur = root.getAttribute('data-paleta') || 'azul'; $$('[data-pal]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-pal') === cur)); }); }
+    $$('[data-pal]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var n = b.getAttribute('data-pal');
+        if (names.indexOf(n) < 0) return;
+        if (n === 'azul') root.removeAttribute('data-paleta'); else root.setAttribute('data-paleta', n);
+        try { history.replaceState(null, '', '#' + n); } catch (e) {}
+        mark();
+      });
+    });
+    mark();
+  })();
   /* Lámina: el pasillo de lockers y la bodega que se llena de racks */
   JOME_SALA($('#metalSala'), { tag: $('#metalTag'), still: 3, delay: 300 });
 
@@ -1938,11 +1988,11 @@ window.JOME_SALA = function (root, opts) {
   $('#lkAdd').onclick = function () { addToCart(JOME.porClave[lk.clave], lkColors(), 1); };
 
   /* Las cuatro familias de lámina: llevan al catálogo ya filtrado */
-  var mf = [['lockers', 'LOC-6', 'nogal'], ['anaqueles', 'ANA-5L', 'amarillo'], ['racks', 'RAC-200', 'perla'], ['archiveros-metal', 'ARM-4C', 'roble']];
+  var mf = [['lockers', 'LOC-6', 'nogal'], ['anaqueles', 'ANA-5L', 'campo'], ['racks', 'RAC-200', 'perla'], ['archiveros-metal', 'ARM-4C', 'roble']];
   $('#mfams').innerHTML = mf.map(function (m, i) {
     var f = JOME.familias.filter(function (x) { return x.id === m[0]; })[0], ps = JOME.productos.filter(function (p) { return p.familia === m[0]; });
     var desde = Math.min.apply(null, ps.map(function (p) { return p.precio; }));
-    return '<button type="button" class="mfam" data-mf="' + m[0] + '" data-reveal style="--d:' + (i * 70) + 'ms"><span class="spec' + (m[2] === 'nogal' ? ' on-dark' : '') + '" style="--c:' + field(m[2]) + '"><img src="' + JOME.porClave[m[1]].cut + '" alt="" loading="lazy"></span><b>' + esc(f.nombre) + '</b><span>' + ps.length + (ps.length === 1 ? ' modelo' : ' modelos') + ', desde ' + JOME.fmt(desde) + '</span></button>';
+    return '<button type="button" class="mfam" data-mf="' + m[0] + '" data-reveal style="--d:' + (i * 70) + 'ms"><span class="spec' + (m[2] === 'nogal' ? ' on-dark' : '') + '" style="--c:' + field(m[2]) + ';--ci:' + fieldInk(m[2]) + '"><img src="' + JOME.porClave[m[1]].cut + '" alt="" loading="lazy"></span><b>' + esc(f.nombre) + '</b><span>' + ps.length + (ps.length === 1 ? ' modelo' : ' modelos') + ', desde ' + JOME.fmt(desde) + '</span></button>';
   }).join('');
 
   /* Catálogo */

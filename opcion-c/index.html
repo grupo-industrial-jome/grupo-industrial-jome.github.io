@@ -1385,7 +1385,7 @@ window.JOME3D = (function () {
     sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.bias = -0.0004; sun.shadow.radius = 4;
     scene.add(sun); scene.add(sun.target);
     scene.add(new THREE.HemisphereLight(0xffffff, 0x9a9690, 0.25));
-    var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: opts.shadow || 0.2 }));
+    var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: opts.shadow || 0.2 })); /* taste-skill-ignore: sombra en el piso del visor 3D, no es una sombra de caja */
     ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
 
     var group = new THREE.Group(); scene.add(group);
@@ -1523,21 +1523,35 @@ window.JOME_SALA = function (root, opts) {
   }
   /* el video que sigue se empieza a cargar mientras se ve la capa anterior */
   function prep(i) { var l = layers[i]; if (isVid(l) && !l.dataset.prep) { l.dataset.prep = '1'; l.preload = 'auto'; try { l.load(); } catch (e) {} } }
+  /* data-wait: milisegundos que el video se queda en su primer cuadro (el póster) antes de correr; no aplica la primera vez */
+  var first = true, waitT = 0;
   function run() {
-    clearTimeout(timer);
+    clearTimeout(timer); clearTimeout(waitT);
     if (!visible || hidden) return;
     var l = layers[k];
     played = true;
     if (isVid(l)) {
+      var w = first ? 0 : +(l.getAttribute('data-wait') || 0);
       try { l.currentTime = 0; } catch (e) {}
-      var pr = l.play();
-      if (pr && pr.catch) pr.catch(function () { clearTimeout(timer); timer = setTimeout(next, 2600); });
+      waitT = setTimeout(function () {
+        if (layers[k] !== l || !visible || hidden) return;
+        var pr = l.play();
+        if (pr && pr.catch) pr.catch(function () { clearTimeout(timer); timer = setTimeout(next, 2600); });
+      }, w);
       var dur = isFinite(l.duration) && l.duration > 0 ? l.duration : 6;
-      timer = setTimeout(next, dur * 1000 + 2500); /* por si el video nunca avisa que terminó */
+      timer = setTimeout(next, w + dur * 1000 + 2500); /* por si el video nunca avisa que terminó */
     } else {
       timer = setTimeout(next, +(l.getAttribute('data-hold') || 4600));
     }
+    first = false;
   }
+  /* data-tag2 y data-tag2-at: el letrero cambia a medio video (de "Tu oficina, hoy" a "Amueblando") */
+  layers.forEach(function (l) {
+    if (!isVid(l) || !l.hasAttribute('data-tag2')) return;
+    l.addEventListener('timeupdate', function () {
+      if (tag && layers[k] === l && l.currentTime >= +(l.getAttribute('data-tag2-at') || 1)) tag.textContent = l.getAttribute('data-tag2');
+    });
+  });
   function show(i) {
     k = i; played = false;
     layers.forEach(function (l, j) {
@@ -1550,7 +1564,7 @@ window.JOME_SALA = function (root, opts) {
   }
   function next() { show((k + 1) % layers.length); }
   layers.forEach(function (l) { if (isVid(l)) l.addEventListener('ended', function () { if (layers[k] === l) next(); }); });
-  function pause() { clearTimeout(timer); var l = layers[k]; if (isVid(l)) { try { l.pause(); } catch (e) {} } }
+  function pause() { clearTimeout(timer); clearTimeout(waitT); var l = layers[k]; if (isVid(l)) { try { l.pause(); } catch (e) {} } }
   /* al volver a la vista, un video que ya corrió salta a la capa siguiente: la habitación ya amueblada */
   function resume() { if (!started) return; if (isVid(layers[k]) && played) next(); else run(); }
   function start() {

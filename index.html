@@ -16,18 +16,20 @@
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://grupo-industrial-jome.github.io/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23F2C21A'/%3E%3Ctext x='32' y='47' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='42' text-anchor='middle' fill='%231C1D1F'%3EJ%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%231F4FA8'/%3E%3Ctext x='32' y='47' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='42' text-anchor='middle' fill='%23F6F6F4'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
 <style>
-/* La portada que reparte a las tres opciones: el mismo blanco melamina y amarillo de fábrica de la opción A */
+/* La portada que reparte a las tres opciones: el mismo blanco melamina y el azul de la opción A */
 :root {
   --ground: #EFEEEA;
   --surface: #E2E1DC;
   --ink: #1C1D1F;
   --muted: #55585B;
-  --accent: #F2C21A;
+  --accent: #1F4FA8;
+  --accent-ink: #F6F6F4;
+  --accent-hover: #2A5DBD;
   --m: clamp(16px, 2.4vw, 32px);
   color-scheme: light;
 }
@@ -48,9 +50,16 @@ h1 { margin: clamp(48px, 8vw, 112px) 0 0; font-size: clamp(2.5rem, 6vw, 5.5rem);
 .opt h2 { margin: 0; font-size: clamp(1.5rem, 1.2rem + 0.9vw, 2rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
 .opt p { margin: 0; color: var(--muted); max-width: 38ch; }
 .opt .go { margin-top: auto; padding-top: 16px; }
-.opt .go span { display: inline-block; background: var(--accent); padding: 12px 16px; font-weight: 500; transition: background-color 180ms ease; }
-@media (hover: hover) and (pointer: fine) { .opt:hover .go span { background: #FFD43B; } }
+.opt .go span { display: inline-block; background: var(--accent); color: var(--accent-ink); padding: 12px 16px; font-weight: 500; transition: background-color 180ms ease; }
+@media (hover: hover) and (pointer: fine) { .opt:hover .go span { background: var(--accent-hover); } }
 .opt:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+/* La opción A en tres paletas, cada una con su enlace para la encuesta */
+.pals { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+.pals p { margin: 0 8px 0 0; color: var(--muted); }
+.pals a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 16px; background: var(--surface); color: inherit; text-decoration: none; font-weight: 500; }
+.pals a::before { content: ""; width: 16px; height: 16px; background: var(--sw); }
+@media (hover: hover) and (pointer: fine) { .pals a:hover { background: #D6D5CF; } }
+.pals a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 footer { margin-top: 56px; font-size: 0.875rem; color: var(--muted); }
 @media (max-width: 900px) { .options { grid-template-columns: minmax(0, 1fr); } }
 </style>
@@ -73,6 +82,12 @@ footer { margin-top: 56px; font-size: 0.875rem; color: var(--muted); }
       <img src="og/opcion-c.jpg" alt="Portada de la opción C: tu mueble desde una foto, junto a una oficina que se amuebla" width="1200" height="630" loading="lazy">
       <span class="txt"><span class="k">Opción C</span><h2>Cotiza con foto</h2><p>El cliente sube la foto de un mueble y lo ve en 3D con un precio estimado.</p><span class="go"><span>Ver la opción C</span></span></span>
     </a>
+  </div>
+  <div class="pals">
+    <p>La opción A en otra paleta, para comparar:</p>
+    <a href="opcion-a/azul/" style="--sw:#1F4FA8">Azul</a>
+    <a href="opcion-a/naranja/" style="--sw:#E2581E">Naranja</a>
+    <a href="opcion-a/verde/" style="--sw:#2E5B47">Verde</a>
   </div>
   <footer>© 2026 Grupo Industrial JOME. Muebles de oficina, lockers, anaqueles y racks hechos en México.</footer>
 </div>

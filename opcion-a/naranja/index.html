@@ -1,0 +1,2139 @@
+<!doctype html>
+<html lang="es-MX" data-paleta="naranja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Opción A, tienda de fábrica: lockers, anaqueles y racks de lámina al frente, catálogo con 3D, carrito y pago.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Grupo Industrial JOME">
+<meta property="og:title" content="Grupo Industrial JOME, opción A en naranja">
+<meta property="og:description" content="Opción A, tienda de fábrica: lockers, anaqueles y racks de lámina al frente, catálogo con 3D, carrito y pago.">
+<meta property="og:image" content="https://grupo-industrial-jome.github.io/og/opcion-a-naranja.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://grupo-industrial-jome.github.io/opcion-a/naranja/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23E2581E'/%3E%3Ctext x='32' y='47' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='42' text-anchor='middle' fill='%231C1D1F'%3EJ%3C/text%3E%3C/svg%3E">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Grupo Industrial JOME, opción A en naranja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+/* Layout: catálogo de especímenes. Cada mueble, recortado, vive solo sobre un campo plano de su propia melamina; los capítulos cambian de campo completo. */
+:root {
+  --ground: #EFEEEA;      /* blanco melamina */
+  --surface: #E2E1DC;     /* un tono abajo */
+  --ink: #1C1D1F;         /* acero pintado */
+  --muted: #55585B;
+  /* Paleta azul (la de inicio): el azul de los marcos de rack, pintura de línea. Las otras dos, abajo. */
+  --accent: #1F4FA8;
+  --accent-ink: #F6F6F4;
+  --accent-hover: #2A5DBD;
+  --accent-soft: #CBD7EC;  /* estados abiertos o elegidos: preguntas, escalones de precio, forma de pago */
+  --campo: #1F4FA8;        /* el campo de color de los especímenes que antes era amarillo */
+  --campo-ink: #F6F6F4;
+  --pin: #9EBBF2;          /* la fábrica en el mapa, sobre nogal */
+  --roble: #D5B68D;
+  --perla: #C8CBC9;
+  --nogal: #7A5237;
+  --grafito: #44484C;
+  --roble-ink: var(--ink);
+  --perla-ink: var(--ink);
+  --nogal-ink: var(--on-dark);
+  --grafito-ink: var(--on-dark);
+  --paper: #F6F6F4;
+  --on-dark: #F3F3F1;
+  --scrim: rgba(18, 19, 21, .55);
+  --font: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-sub: clamp(1.75rem, 1.4rem + 1.2vw, 2.5rem);
+  --step-ui: 1.25rem;
+  --step-display: clamp(2.6rem, 5.8vw, 6.25rem);
+  --m: clamp(16px, 2.4vw, 32px);
+  --section: clamp(96px, 13vw, 200px);
+  --header-h: 72px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  color-scheme: light;
+}
+/* Naranja: el de los largueros del rack */
+:root[data-paleta="naranja"] { --accent: #E2581E; --accent-ink: #1C1D1F; --accent-hover: #EF6A2C; --accent-soft: #F7CDB6; --campo: #E2581E; --campo-ink: #1C1D1F; --pin: #FF9A5E; }
+/* Verde bosque: va con el nogal y con el gris de la lámina */
+:root[data-paleta="verde"] { --accent: #2E5B47; --accent-ink: #F6F6F4; --accent-hover: #3A6C56; --accent-soft: #C9D8CC; --campo: #2E5B47; --campo-ink: #F6F6F4; --pin: #A8D5A0; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--ground); color: var(--ink); font-family: var(--font); font-size: var(--step-body); line-height: 1.45; letter-spacing: -0.005em; font-weight: 400; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+input, textarea { caret-color: var(--ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+img, video { display: block; max-width: 100%; height: auto; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; letter-spacing: -0.05em; line-height: 0.95; text-wrap: balance; }
+h2 { font-size: var(--step-head); }
+h3 { font-size: var(--step-lead); letter-spacing: -0.02em; line-height: 1.15; }
+p { margin: 0; }
+.wrap { padding-left: max(var(--m), env(safe-area-inset-left, 0px)); padding-right: max(var(--m), env(safe-area-inset-right, 0px)); }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Botones: rectángulo plano, una sola forma en toda la página */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 52px; padding: 0 1.4rem; border: 0; border-radius: 0; background: var(--accent); color: var(--accent-ink); font-weight: 500; font-size: var(--step-body); text-decoration: none; cursor: pointer; transition: transform 140ms var(--ease-out), background-color 180ms ease; }
+.btn:active { transform: scale(0.97); }
+.btn.dark { background: var(--ink); color: var(--ground); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+@media (hover: hover) and (pointer: fine) { .btn:hover { background: var(--accent-hover); } .btn.dark:hover { background: #33363A; } }
+.tlink { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-thickness: .07em; text-underline-offset: .22em; text-decoration-color: currentColor; font-weight: 500; }
+@media (hover: hover) and (pointer: fine) { .tlink { text-decoration-color: transparent; transition: text-decoration-color 180ms ease; } .tlink:hover { text-decoration-color: currentColor; } }
+
+.draft { background: var(--ink); color: var(--on-dark); font-size: var(--step-small); }
+.draft .wrap { padding-block: .45rem; display: flex; justify-content: space-between; align-items: center; gap: 6px 20px; flex-wrap: wrap; }
+/* Selector de paleta para la encuesta: vive en la franja del borrador, no en el diseño */
+.paletas { display: flex; align-items: center; gap: 6px; }
+.paletas > span { color: rgba(243, 243, 241, .72); margin-right: 4px; }
+.paletas button { display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 0 10px; border: 0; background: rgba(255, 255, 255, .08); color: var(--on-dark); font-size: var(--step-small); font-weight: 500; cursor: pointer; }
+.paletas button::before { content: ""; width: 12px; height: 12px; background: var(--sw); border: 1px solid rgba(255, 255, 255, .35); /* taste-skill-ignore: borde para ver la muestra sobre la franja oscura */ }
+.paletas button[aria-pressed="true"] { background: var(--on-dark); color: var(--ink); }
+
+/* Encabezado */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--ground); }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; height: var(--header-h); display: grid; grid-template-columns: 1fr 1fr; transition: background-color 240ms ease; }
+header.top.solid { background: var(--ground); }
+header.top .l, header.top .r { display: flex; align-items: center; gap: 1.6rem; }
+header.top .l { padding-left: max(var(--m), env(safe-area-inset-left, 0px)); }
+header.top .r { justify-content: flex-end; padding-right: max(var(--m), env(safe-area-inset-right, 0px)); padding-left: var(--m); }
+.wordmark { font-size: var(--step-ui); font-weight: 500; letter-spacing: -0.04em; text-decoration: none; }
+nav.main { display: flex; gap: 1.5rem; }
+nav.main a { text-decoration: none; font-size: var(--step-small); font-weight: 500; }
+@media (hover: hover) and (pointer: fine) { nav.main a:hover { text-decoration: underline; text-underline-offset: .25em; } }
+.cart-btn { min-height: 44px; padding: 0 1rem; font-size: var(--step-small); }
+.cart-btn .n { font-variant-numeric: tabular-nums; }
+@media (max-width: 1080px) { nav.main { display: none; } }
+@media (max-width: 760px) { header.top { grid-template-columns: auto 1fr; } header.top.solid, header.top { background: var(--ground); } #loginBtn { display: none; } }
+
+/* Portada: enunciado y mosaico de especímenes */
+.hero { display: grid; grid-template-columns: 7fr 5fr; min-height: clamp(640px, 92svh, 900px); margin-top: calc(-1 * var(--header-h)); }
+.hero-left { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: calc(var(--header-h) + clamp(24px, 5vh, 56px)) var(--m) clamp(32px, 6vh, 64px) max(var(--m), env(safe-area-inset-left, 0px)); }
+.hero h1 { font-size: var(--step-display); letter-spacing: -0.045em; line-height: 0.98; }
+.lines .line { display: block; overflow: clip; padding-bottom: .08em; margin-bottom: -.08em; }
+.lines [data-line] { display: block; }
+.hero-foot { display: flex; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; }
+/* La sala: la oficina vacía que se amuebla, en el hueco entre el titular y el texto (la misma animación que el borrador C) */
+.sala { position: relative; flex: 1 1 auto; min-height: 220px; overflow: clip; background: var(--surface); }
+.sala .ly { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1400ms ease; }
+.sala .ly.on { opacity: 1; }
+.sala-tag { position: absolute; left: 12px; bottom: 12px; z-index: 2; background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; max-width: calc(100% - 24px); }
+.hero-foot p { max-width: 34ch; font-size: var(--step-body); }
+.hero-right { position: relative; background: var(--surface); overflow: clip; }
+/* Tres columnas de especímenes que suben y bajan despacio: la línea de producción vista desde arriba */
+.cols { position: absolute; inset: var(--header-h) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 max(var(--m), env(safe-area-inset-right, 0px)) 0 var(--m); }
+.col { position: relative; overflow: clip; }
+.track { display: flex; flex-direction: column; gap: 12px; padding-bottom: 12px; }
+.col:nth-child(2) .track { margin-top: -46%; }
+.spec { position: relative; aspect-ratio: 4 / 5; background: var(--c, var(--perla)); overflow: clip; border: 0; padding: 0; cursor: pointer; display: block; width: 100%; text-align: left; color: var(--ci, var(--ink)); }
+.spec img { position: absolute; inset: 9%; width: 82%; height: 82%; object-fit: contain; transition: transform 500ms var(--ease-out); }
+.spec.on-dark { color: var(--on-dark); }
+.tile-label { position: absolute; left: 12px; right: 12px; bottom: 10px; display: flex; justify-content: space-between; gap: 8px; font-size: var(--step-small); font-weight: 500; line-height: 1.2; }
+.tile-label span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.col .spec img { inset: 8% 9% 15%; height: 77%; }
+@media (hover: hover) and (pointer: fine) { .spec:hover img { transform: scale(1.04); } .col:hover .track { animation-play-state: paused; } }
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-left { padding-top: calc(var(--header-h) + 24px); gap: 1.5rem; }
+  .sala { flex: none; min-height: 0; aspect-ratio: 16 / 10; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); max-width: none; }
+  .hero-foot { flex-direction: column; align-items: flex-start; }
+  .hero-right { height: 118vw; }
+  .cols { inset: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding: 0 max(var(--m), env(safe-area-inset-right, 0px)) 0 max(var(--m), env(safe-area-inset-left, 0px)); }
+  .tile-label { flex-direction: column; gap: 0; left: 10px; right: 10px; bottom: 8px; }
+  .col .spec img { inset: 7% 8% 24%; height: 69%; }
+  .track { gap: 8px; padding-bottom: 8px; }
+}
+
+/* Lámina: lo que más se vende, sobre campo de acero pintado */
+.metal { background: var(--grafito); color: var(--on-dark); padding-block: clamp(80px, 10vw, 160px); }
+.metal-head { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; align-items: end; }
+.metal-head h2 { grid-column: 1 / span 7; }
+.metal-head .side { grid-column: 9 / span 4; }
+.metal-head .side p { color: rgba(243, 243, 241, .86); max-width: 40ch; }
+.mfacts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 16px; margin: 22px 0 0; }
+.mfacts dt { font-size: var(--step-small); color: rgba(243, 243, 241, .72); }
+.mfacts dd { margin: 2px 0 0; font-weight: 500; }
+.metal-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; margin-top: 56px; }
+.metal-video { grid-column: 1 / span 7; margin: 0; position: relative; overflow: clip; background: var(--ink); min-height: 460px; }
+.metal-video .ly { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1200ms ease; }
+.metal-video .ly.on { opacity: 1; }
+.metal-video figcaption, .lk .tagline { position: absolute; left: 12px; bottom: 12px; z-index: 2; background: var(--paper); color: var(--ink); padding: 8px 12px; font-size: var(--step-small); font-weight: 500; }
+.lk { grid-column: 8 / span 5; background: var(--ground); color: var(--ink); display: flex; flex-direction: column; min-width: 0; }
+.lk .stage { position: relative; flex: 1 1 auto; min-height: 360px; background: var(--campo); }
+.lk .stage .v3d { position: absolute; inset: 0; }
+.lk .stage .fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+.lk .tagline { left: auto; right: 12px; transition: opacity 400ms ease; pointer-events: none; }
+.lk .ctl { padding: 18px 18px 20px; display: grid; gap: 14px; }
+.lk .seg button { min-width: 0; }
+.lk .buy { margin-top: 18px; }
+.mfams { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.mfam { border: 0; padding: 0; background: none; color: inherit; text-align: left; cursor: pointer; display: flex; flex-direction: column; min-width: 0; }
+.mfam .spec { aspect-ratio: 1; pointer-events: none; }
+.mfam .spec img { inset: 8% 10% 10%; width: 80%; height: 82%; }
+.mfam b { margin-top: 12px; font-weight: 500; font-size: var(--step-ui); letter-spacing: -0.02em; }
+.mfam span { font-size: var(--step-small); color: rgba(243, 243, 241, .78); font-variant-numeric: tabular-nums; }
+@media (hover: hover) and (pointer: fine) { .mfam:hover .spec img { transform: scale(1.04); } }
+@media (max-width: 960px) {
+  .metal-head, .metal-grid { grid-template-columns: minmax(0, 1fr); }
+  .metal-head h2, .metal-head .side, .metal-video, .lk { grid-column: auto; }
+  .metal-video { min-height: 0; aspect-ratio: 16 / 10; }
+  .lk .stage { min-height: 0; aspect-ratio: 1 / 1.05; flex: none; }
+  .mfams { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* En el teléfono las siete pinturas caben en una fila */
+@media (max-width: 520px) { .lk .swatches { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; } .lk .swatches .sw { width: auto; height: auto; aspect-ratio: 1; } }
+
+/* Secciones */
+section.block { padding-block: var(--section); }
+section.tight-top { padding-top: 0; }
+.sec-lead { font-size: var(--step-lead); line-height: 1.3; letter-spacing: -0.015em; max-width: 34ch; margin-top: 1.4rem; }
+
+/* La familia: foto ancha, campo de color, datos */
+.about-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; margin-top: 72px; align-items: start; }
+.about-photo { grid-column: 1 / span 8; position: relative; aspect-ratio: 16 / 10; overflow: clip; background: var(--surface); }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-photo p { position: absolute; top: 0; right: 0; width: min(320px, 46%); background: var(--paper); padding: 20px; font-size: var(--step-small); line-height: 1.5; color: var(--ink); }
+.about-side { grid-column: 9 / span 4; display: grid; gap: 22px; }
+.map-tile { background: var(--nogal); color: var(--on-dark); aspect-ratio: 16 / 10; display: grid; place-items: center; position: relative; padding: 8% 10%; }
+.map-tile svg { width: 100%; height: auto; }
+.map-tile .pin-label { position: absolute; left: 16px; bottom: 12px; font-size: var(--step-small); }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; margin: 0; }
+.facts dt { font-size: var(--step-small); color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-size: var(--step-body); font-weight: 500; }
+.about-strip { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.about-strip figure { margin: 0; }
+.about-strip img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.about-strip figcaption { font-size: var(--step-small); color: var(--muted); margin-top: 8px; }
+.about-strip .s1 { grid-column: 1 / span 4; } .about-strip .s2 { grid-column: 5 / span 4; } .about-strip .s3 { grid-column: 9 / span 4; }
+@media (max-width: 860px) {
+  .about-grid, .about-strip { grid-template-columns: 1fr; }
+  .about-photo, .about-side, .about-strip figure { grid-column: auto !important; }
+  .about-photo { aspect-ratio: auto; overflow: visible; background: none; }
+  .about-photo img { aspect-ratio: 4 / 3; height: auto; }
+  .about-photo p { position: static; width: auto; padding: 16px 0 0; background: none; font-size: var(--step-body); }
+  .map-tile { aspect-ratio: 3 / 2; }
+}
+
+/* Escaparate: una corrida de marcos, uno levantado (el escritorio en 3D) */
+.showcase { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.show-side { grid-column: 1 / span 3; display: flex; flex-direction: column; justify-content: space-between; gap: 2.5rem; padding-right: 8px; }
+.show-side h2 { font-size: var(--step-sub); letter-spacing: -0.03em; line-height: 1.05; }
+.controls { display: grid; gap: 1.1rem; }
+.ctl-name { font-size: var(--step-small); color: var(--muted); margin-bottom: .45rem; }
+.seg { display: flex; gap: 6px; flex-wrap: wrap; }
+.seg button { min-height: 44px; min-width: 64px; padding: 0 .8rem; border: 0; background: var(--surface); cursor: pointer; font-variant-numeric: tabular-nums; font-weight: 500; transition: background-color 180ms ease, color 180ms ease; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+.sw { width: 44px; height: 44px; border: 1px solid rgba(0,0,0,.14); /* taste-skill-ignore: borde para ver la muestra blanca sobre melamina blanca */ padding: 0; cursor: pointer; background-color: var(--c); transition: transform 140ms var(--ease-out); }
+.sw:active { transform: scale(.94); }
+.sw[aria-pressed="true"] { outline: 2px solid var(--ink); outline-offset: 3px; }
+/* Las muestras de madera usan un recorte real de la melamina */
+.wood { background-image: var(--tex); background-size: cover; background-position: center; }
+.buy { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px 16px; flex-wrap: wrap; margin-top: 18px; }
+.price { font-size: var(--step-sub); font-weight: 500; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.price small { display: block; font-size: var(--step-small); color: var(--muted); letter-spacing: 0; margin-top: .35rem; font-weight: 400; }
+.run-wrap { grid-column: 4 / -1; overflow: clip; margin-right: calc(-1 * max(var(--m), env(safe-area-inset-right, 0px))); }
+.run { display: flex; align-items: flex-end; gap: 6px; }
+.frame { flex: none; margin: 0; }
+.frame .pic { height: 30vh; min-height: 200px; background: var(--surface); overflow: clip; }
+.frame .pic img { height: 100%; width: auto; }
+.frame figcaption { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--step-small); margin-top: 8px; padding-right: 4px; }
+.frame figcaption span:last-child { color: var(--muted); }
+.frame.lifted .pic { height: 66vh; min-height: 440px; width: min(58vw, 820px); position: relative; background: var(--perla); }
+.frame.lifted .v3d { position: absolute; inset: 0; }
+.frame.lifted .hint { position: absolute; left: 14px; bottom: 12px; font-size: var(--step-small); pointer-events: none; transition: opacity 400ms ease; z-index: 1; }
+.frame.lifted .fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 8%; }
+@media (max-width: 960px) {
+  .showcase { grid-template-columns: minmax(0, 1fr); }
+  .show-side, .run-wrap { grid-column: auto; }
+  .show-side { display: contents; }
+  .show-side > div:first-child { order: 0; }
+  .run-wrap { order: 1; margin-right: 0; overflow: visible; margin-top: 8px; }
+  .controls { order: 2; margin-top: 10px; }
+  .run { flex-direction: column; align-items: stretch; gap: 0; }
+  .frame.lifted .pic { width: 100%; height: 86vw; min-height: 0; max-height: 560px; }
+  .run-rest { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 8px; margin-top: 18px; }
+  .run-rest .frame .pic { height: auto; min-height: 0; aspect-ratio: 1; }
+  .run-rest .frame .pic img { width: 100%; height: 100%; object-fit: cover; }
+  .run-rest .frame figcaption { flex-direction: column; gap: 0; }
+}
+@media (min-width: 961px) { .run-rest { display: contents; } }
+
+/* Catálogo de especímenes */
+.cat-head p { max-width: 44ch; margin-top: 1rem; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; margin: 2.2rem 0 1.6rem; }
+.filters button { min-height: 44px; padding: 0 1rem; border: 0; background: var(--surface); cursor: pointer; font-weight: 500; font-size: var(--step-small); transition: background-color 180ms ease, color 180ms ease; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+.filters button span { margin-left: .35rem; color: var(--muted); }
+.filters button[aria-pressed="true"] span { color: inherit; opacity: .7; }
+.specimens { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 12px; grid-auto-flow: dense; container-type: inline-size; }
+.item { display: flex; flex-direction: column; min-width: 0; }
+/* Todas las fichas miden lo mismo de alto; la doble ocupa dos columnas y queda apaisada, como el escritorio que muestra */
+.item .spec { aspect-ratio: auto; width: 100%; height: calc((100cqw - 36px) / 4 * 1.25); }
+.item.double { grid-column: span 2; }
+.item.double .spec img { inset: 8% 7%; width: 86%; height: 84%; }
+.item .meta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; margin-top: 12px; align-items: baseline; }
+.item .meta h3 { font-size: var(--step-ui); grid-column: 1; }
+.item .meta .pr { grid-column: 2; grid-row: 1; font-weight: 500; font-variant-numeric: tabular-nums; }
+.item .meta .dims { grid-column: 1; color: var(--muted); font-size: var(--step-small); font-variant-numeric: tabular-nums; }
+.item .meta .add { grid-column: 2; grid-row: 2; font-size: var(--step-small); min-height: 32px; }
+@media (max-width: 1100px) { .specimens { grid-template-columns: repeat(3, minmax(0, 1fr)); } .item .spec { height: calc((100cqw - 24px) / 3 * 1.25); } }
+@media (max-width: 700px) { .item .meta { grid-template-columns: minmax(0, 1fr); } .item .meta .pr, .item .meta .add { grid-column: 1; grid-row: auto; } .item .meta .add { justify-self: start; min-height: 40px; }
+  .specimens { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 8px; } .item .spec { height: calc((100cqw - 8px) / 2 * 1.25); } .item.double { grid-column: 1 / -1; } .item.double .spec { height: calc((100cqw - 8px) / 2 * 1.05); } }
+
+/* Así se hace: mosaicos que crecen */
+.how { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 10px; align-items: end; position: relative; }
+.how h2 { position: absolute; top: 0; left: 0; width: 40%; }
+.stage { display: flex; flex-direction: column; }
+.stage .pic { overflow: clip; background: var(--c); }
+.stage .pic img { width: 100%; height: 100%; object-fit: cover; }
+.stage h3 { margin-top: 14px; font-size: var(--step-ui); }
+.stage p { color: var(--muted); font-size: var(--step-body); margin-top: 6px; max-width: 34ch; }
+.st1 { grid-column: span 2; } .st1 .pic { height: 30vh; min-height: 200px; }
+.st2 { grid-column: span 3; } .st2 .pic { height: 40vh; min-height: 260px; }
+.st3 { grid-column: span 3; } .st3 .pic { height: 50vh; min-height: 320px; }
+.st4 { grid-column: span 4; } .st4 .pic { height: 62vh; min-height: 380px; }
+.how-top { display: none; }
+@media (max-width: 860px) {
+  .how { grid-template-columns: 1fr; gap: 28px; }
+  .how h2 { position: static; width: auto; }
+  .how-top { display: none; }
+  .st1, .st2, .st3, .st4 { grid-column: auto; }
+  .st1 .pic { height: 46vw; min-height: 0; } .st2 .pic { height: 56vw; min-height: 0; } .st3 .pic { height: 66vw; min-height: 0; } .st4 .pic { height: 78vw; min-height: 0; }
+}
+
+/* La fábrica en tres fotos que se cubren */
+.interlock { display: grid; grid-template-columns: 58% 260px; position: relative; z-index: 2; margin-bottom: -4.8em; }
+.interlock p { grid-column: 2; font-size: var(--step-small); line-height: 1.45; color: var(--on-dark); background: var(--ink); padding: 14px 16px; }
+.curtain { height: 400svh; position: relative; }
+.curtain .shot { position: sticky; top: 0; height: 100svh; overflow: clip; background: var(--ink); margin: 0; }
+.curtain .shot img, .curtain .shot video { width: 100%; height: 100%; object-fit: cover; }
+.curtain .shot figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 60px max(var(--m), env(safe-area-inset-left, 0px)) 22px; color: #fff; font-size: var(--step-small); background: rgba(12, 12, 13, .45); height: 120px; display: flex; align-items: flex-end; }
+@media (max-width: 760px) { .curtain { height: 352svh; } .curtain .shot { height: 88svh; } .interlock { grid-template-columns: 1fr; margin-bottom: -4.2em; } .interlock p { grid-column: 1; width: 64%; } }
+
+/* Espacios: foto fija y lista activa */
+.spaces { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.spaces .photo { grid-column: 1 / span 5; position: sticky; top: 12vh; align-self: start; aspect-ratio: 4 / 5; overflow: clip; background: var(--surface); }
+.spaces .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 300ms ease; }
+.spaces .photo img.on { opacity: 1; }
+.spaces .list { grid-column: 7 / span 5; }
+.spaces h2 { font-size: var(--step-sub); margin-bottom: 48px; }
+.row { width: 100%; border: 0; background: none; text-align: left; padding: 0; cursor: pointer; display: block; }
+.row .r1 { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 58px; }
+.row .nm { font-size: var(--step-ui); letter-spacing: -0.02em; font-weight: 500; color: var(--muted); transition: color 200ms ease; }
+.row .pv { font-size: var(--step-small); color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+.row .ds { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 300ms var(--ease-out); }
+.row .ds > span { overflow: hidden; font-size: var(--step-small); max-width: 38ch; color: var(--ink); }
+.row.on .nm { color: var(--ink); }
+.row.on .ds { grid-template-rows: 1fr; }
+.row.on .ds > span { padding-bottom: 14px; }
+@media (max-width: 860px) {
+  .spaces { grid-template-columns: 1fr; }
+  .spaces .photo { grid-column: auto; position: sticky; top: calc(var(--header-h) + env(safe-area-inset-top, 0px)); aspect-ratio: auto; height: 38svh; z-index: 2; }
+  .spaces .list { grid-column: auto; }
+  .spaces h2 { margin: 28px 0 12px; }
+}
+
+/* Recibo por partes */
+.receipt-sec { background: var(--grafito); color: var(--on-dark); overflow: clip; }
+.receipt { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.receipt .txt { grid-column: 1 / span 6; padding-top: 96px; padding-bottom: 96px; }
+.receipt .txt p { margin-top: 1.4rem; max-width: 44ch; color: rgba(243, 243, 241, .85); }
+.picks { display: grid; gap: 10px; margin: 2rem 0; max-width: 540px; }
+.pick { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: rgba(255,255,255,.07); padding: 8px 10px 8px 8px; }
+.pick img { width: 56px; height: 56px; object-fit: contain; background: var(--c); padding: 4px; }
+.pick b { font-weight: 500; display: block; }
+.pick small { color: rgba(243, 243, 241, .75); font-size: var(--step-small); }
+.stepper { display: inline-flex; align-items: center; background: rgba(0,0,0,.25); }
+.stepper button { width: 44px; height: 44px; border: 0; background: transparent; color: var(--on-dark); font-size: var(--step-ui); cursor: pointer; }
+.stepper output { min-width: 2.4rem; text-align: center; font-variant-numeric: tabular-nums; }
+.slip { grid-column: 8 / span 4; background: var(--paper); color: var(--ink); padding: 28px 28px 60px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), 95% 100%, 90% calc(100% - 14px), 85% 100%, 80% calc(100% - 14px), 75% 100%, 70% calc(100% - 14px), 65% 100%, 60% calc(100% - 14px), 55% 100%, 50% calc(100% - 14px), 45% 100%, 40% calc(100% - 14px), 35% 100%, 30% calc(100% - 14px), 25% 100%, 20% calc(100% - 14px), 15% 100%, 10% calc(100% - 14px), 5% 100%, 0 calc(100% - 14px)); }
+.slip .ttl { text-align: center; font-size: var(--step-ui); font-weight: 500; }
+.slip .sub { text-align: center; font-size: var(--step-small); color: var(--muted); margin-top: 2px; }
+.slip .lines-r { display: grid; gap: 14px; margin-top: 26px; font-variant-numeric: tabular-nums; }
+.slip .lr { display: flex; justify-content: space-between; gap: 1rem; font-size: var(--step-small); }
+.slip .lr span:last-child { white-space: nowrap; }
+.slip .lr.disc { color: #23683F; }
+.slip .bar { height: 4px; background: var(--ink); margin: 22px 0 14px; }
+.slip .tot { text-align: right; font-size: var(--step-sub); font-weight: 500; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.slip .tot small { display: block; font-size: var(--step-small); letter-spacing: 0; color: var(--muted); font-weight: 400; }
+@media (max-width: 960px) { .receipt { grid-template-columns: 1fr; } .receipt .txt, .slip { grid-column: auto; } .receipt .txt { padding: 72px 0 28px; display: flex; flex-direction: column; } .receipt .txt .btn { width: 100%; order: 9; } .slip { width: 86%; justify-self: center; margin-bottom: 72px; } }
+
+/* Preguntas: acordeón de mosaicos llenos */
+.faq { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+.faq h2 { grid-column: 1 / span 4; position: sticky; top: 96px; align-self: start; }
+.faq .tiles { grid-column: 5 / -1; display: grid; gap: 8px; }
+.faq details { background: var(--surface); transition: background-color 200ms ease; }
+.faq details[open] { background: var(--accent-soft); }
+.faq summary { list-style: none; min-height: 72px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; cursor: pointer; font-size: var(--step-ui); font-weight: 500; letter-spacing: -0.015em; }
+.faq summary::-webkit-details-marker { display: none; }
+.plus { position: relative; width: 16px; height: 16px; flex: none; }
+.plus::before, .plus::after { content: ""; position: absolute; left: 0; top: 6.5px; width: 16px; height: 3px; background: currentColor; transition: transform 240ms var(--ease-out); }
+.plus::after { transform: rotate(90deg); }
+details[open] .plus::after { transform: rotate(0deg); }
+.faq details p { padding: 0 24px 24px; max-width: 52ch; font-size: var(--step-body); }
+@media (max-width: 860px) { .faq { grid-template-columns: 1fr; } .faq h2, .faq .tiles { grid-column: auto; position: static; } .faq summary { font-size: var(--step-body); min-height: 64px; padding: 14px 20px; } .faq details p { padding: 0 20px 20px; font-size: 16px; } }
+
+/* Cupón para recortar: a la medida */
+.coupon-sec { padding-block: 120px; }
+.coupon { display: grid; grid-template-columns: 46% 54%; background: var(--nogal); color: var(--on-dark); margin: 0 auto; max-width: 1180px; position: relative;
+  /* taste-skill-ignore: máscara que perfora las muescas del cupón, no es un relleno */
+  -webkit-mask: radial-gradient(circle 14px at 46% 0, transparent 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle 14px at 46% 100%, transparent 98%, #000) bottom / 100% 51% no-repeat; /* taste-skill-ignore */
+          mask: radial-gradient(circle 14px at 46% 0, transparent 98%, #000) top / 100% 51% no-repeat, radial-gradient(circle 14px at 46% 100%, transparent 98%, #000) bottom / 100% 51% no-repeat; /* taste-skill-ignore */ }
+.coupon .left { padding: 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; border-right: 5px dotted var(--ground); }
+.coupon h2 { font-size: var(--step-sub); }
+.coupon form { padding: 48px; display: grid; gap: 10px; }
+.coupon input { width: 100%; min-height: 52px; padding: 0 16px; border: 0; background: rgba(255,255,255,.14); color: var(--on-dark); font-size: 16px; }
+.coupon input::placeholder { color: rgba(243,243,241,.78); }
+.coupon .submit { min-height: 56px; border: 0; background: var(--ink); color: var(--on-dark); font-weight: 500; cursor: pointer; margin-top: 6px; transition: transform 140ms var(--ease-out); }
+.coupon .submit:active { transform: scale(.98); }
+.coupon .ok { display: none; font-size: 16px; }
+.coupon.sent .ok { display: block; }
+.coupon .err { color: #FFE2D3; font-size: var(--step-small); min-height: 1.2em; }
+@media (max-width: 860px) {
+  .coupon { grid-template-columns: 1fr; margin: 0 -4px; -webkit-mask: radial-gradient(circle 14px at 0 42%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 14px at 100% 42%, transparent 98%, #000) right / 51% 100% no-repeat; mask: radial-gradient(circle 14px at 0 42%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 14px at 100% 42%, transparent 98%, #000) right / 51% 100% no-repeat; } /* taste-skill-ignore: máscara de forma */
+  .coupon .left { border-right: 0; border-bottom: 5px dotted var(--ground); padding: 32px 24px; }
+  .coupon form { padding: 24px; }
+  .coupon input, .coupon .submit { min-height: 54px; }
+}
+
+/* Pie: el reverso de la tarjeta */
+footer.back { background: var(--grafito); padding: 96px 0 0; }
+.card-back { max-width: 1180px; margin: 0 auto; background: var(--paper); color: var(--ink); display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 88px 56px 28px; position: relative;
+  -webkit-mask: radial-gradient(circle 50px at 50% 0, transparent 98%, #000) 0 0 / 100px 100% repeat-x; mask: radial-gradient(circle 50px at 50% 0, transparent 98%, #000) 0 0 / 100px 100% repeat-x; } /* taste-skill-ignore: máscara de forma */
+.card-back .sign { font-size: var(--step-sub); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05; }
+.card-back .msg { margin-top: 1.2rem; max-width: 40ch; }
+.addr { display: grid; gap: 12px; font-size: var(--step-body); align-content: start; padding-top: 112px; position: relative; }
+.stamp { position: absolute; top: 0; right: 0; width: 88px; padding: 6px; background: var(--paper); outline: 1px solid rgba(0,0,0,.14); transform: rotate(3deg); }
+.stamp img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.imprint { grid-column: 1 / -1; text-align: center; font-size: var(--step-small); color: var(--muted); padding-top: 32px; }
+@media (max-width: 760px) { .card-back { grid-template-columns: 1fr; padding: 80px 24px 24px; gap: 28px; } .addr { padding-top: 0; font-size: var(--step-body); } .stamp { top: -4px; width: 64px; } }
+
+/* Diálogos y carrito */
+dialog { border: 0; padding: 0; border-radius: 0; background: var(--ground); color: var(--ink); width: 100%; max-width: min(1080px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); }
+dialog::backdrop { background: var(--scrim); }
+dialog.sm { max-width: min(460px, calc(100vw - 24px)); }
+dialog.md { max-width: min(640px, calc(100vw - 24px)); }
+.dlg-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 14px 20px; background: var(--ground); position: sticky; top: 0; z-index: 3; }
+.dlg-head h3 { font-size: var(--step-ui); }
+.x { width: 44px; height: 44px; border: 0; background: var(--surface); cursor: pointer; display: grid; place-items: center; }
+.x svg { width: 20px; height: 20px; }
+.dlg-body { padding: 20px; display: grid; gap: 16px; }
+.pd { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+.pd .media { position: relative; min-height: 400px; background: var(--c, var(--perla)); }
+.pd .media .v3d, .pd .media > img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pd .media > img { object-fit: contain; padding: 6%; }
+.tabs { position: absolute; top: 12px; left: 12px; z-index: 2; display: flex; background: var(--ground); }
+.tabs button { min-height: 40px; padding: 0 .9rem; border: 0; background: transparent; cursor: pointer; font-weight: 500; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--ground); }
+.pd .side { padding: 20px; display: grid; gap: 16px; align-content: start; }
+.pd .specs { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: var(--step-small); display: grid; gap: 4px; }
+.qty { display: inline-flex; align-items: center; background: var(--surface); }
+.qty button { width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; font-size: 1.2rem; }
+.qty input { width: 3.4rem; min-height: 44px; text-align: center; border: 0; background: var(--paper); padding: 0; font-variant-numeric: tabular-nums; }
+.tiers { display: grid; gap: 2px; font-size: var(--step-small); }
+.tiers div { display: flex; justify-content: space-between; padding: 6px 10px; background: var(--surface); }
+.tiers div.on { background: var(--accent-soft); }
+@media (max-width: 760px) { .pd { grid-template-columns: 1fr; } .pd .media { min-height: 0; height: 78vw; } }
+.drawer-scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 40; }
+aside.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100vw); background: var(--ground); z-index: 41; display: flex; flex-direction: column; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) 0; }
+@media (prefers-reduced-motion: no-preference) {
+  aside.drawer:not([hidden]) { animation: drawer-in 300ms var(--ease-out); }
+  .drawer-scrim:not([hidden]) { animation: fade-in 220ms ease; }
+}
+@keyframes drawer-in { from { transform: translateX(100%); } }
+@keyframes fade-in { from { opacity: 0; } }
+.drawer .items { flex: 1; overflow: auto; padding: 8px 20px; display: grid; gap: 6px; align-content: start; }
+.ci { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; padding: 12px 0; }
+.ci img { width: 64px; height: 64px; object-fit: contain; background: var(--c); padding: 4px; }
+.ci h4 { font-size: 1rem; letter-spacing: -0.01em; line-height: 1.2; }
+.ci .m { font-size: var(--step-small); color: var(--muted); }
+.ci .lt { font-weight: 500; font-variant-numeric: tabular-nums; }
+.ci .r2 { display: flex; gap: 12px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+.ci .qty button { width: 38px; height: 38px; } .ci .qty input { width: 2.8rem; min-height: 38px; }
+.drawer .totals { padding: 16px 20px 20px; display: grid; gap: 8px; background: var(--surface); }
+.trow { display: flex; justify-content: space-between; gap: 1rem; font-variant-numeric: tabular-nums; }
+.trow.big { font-size: var(--step-ui); font-weight: 500; }
+.cp-row { display: flex; gap: 6px; }
+.cp-row input { flex: 1; min-width: 0; min-height: 46px; border: 0; padding: 0 12px; background: var(--paper); letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: var(--step-small); color: var(--muted); }
+.field input, .field select { min-height: 48px; border: 0; padding: 0 12px; background: var(--paper); width: 100%; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fields .full { grid-column: 1 / -1; }
+@media (max-width: 520px) { .fields { grid-template-columns: 1fr; } }
+.social { display: grid; gap: 8px; }
+.social .btn { justify-content: flex-start; background: var(--surface); }
+.social .ico { width: 28px; height: 28px; display: grid; place-items: center; background: var(--ink); color: var(--ground); font-weight: 500; }
+.note { font-size: var(--step-small); color: var(--muted); }
+.pay-opt { display: grid; gap: 8px; }
+.pay-opt label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; padding: 14px; background: var(--surface); cursor: pointer; }
+.pay-opt label:has(input:checked) { background: var(--accent-soft); }
+.pay-opt input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--ink); }
+.pay-opt small { display: block; color: var(--muted); }
+.okbox { background: var(--accent-soft); padding: 18px; }
+.errline { color: #A3271B; font-size: var(--step-small); }
+.spin { width: 40px; height: 40px; border: 4px solid var(--surface); border-top-color: var(--ink); border-radius: 50%; animation: spin .9s linear infinite; margin: 1rem auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--ground); padding: 14px 18px; z-index: 60; font-weight: 500; max-width: calc(100vw - 32px); }
+
+/* Movimiento: todo es visible sin JavaScript; los estados ocultos viven bajo html.js y sin reducción de movimiento */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero [data-line] { transform: translateY(105%); animation: rise-line 900ms var(--ease-expo) forwards; animation-delay: calc(140ms + var(--i, 0) * 90ms); }
+  .js .hero [data-load] { opacity: 0; transform: translateY(14px); animation: rise 600ms var(--ease-out) forwards; animation-delay: var(--d, 420ms); }
+  .js .hero .col { clip-path: inset(100% 0 0 0); animation: shutter 1100ms var(--ease-in-out) forwards; animation-delay: calc(160ms + var(--i, 0) * 120ms); }
+  .js .hero .sala { clip-path: inset(100% 0 0 0); animation: shutter 900ms var(--ease-in-out) 120ms forwards; }
+  .js .track { animation: climb var(--dur, 70s) linear infinite; }
+  .js .col:nth-child(2) .track { animation-direction: reverse; }
+  .js [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-expo); transition-delay: var(--d, 0ms); }
+  .js [data-reveal].in { opacity: 1; transform: none; }
+  @supports (animation-timeline: view()) {
+    .drift { animation: drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    @keyframes drift { from { transform: translateY(-4%) scale(1.08); } to { transform: translateY(4%) scale(1.08); } }
+  }
+}
+@keyframes rise-line { to { transform: none; } }
+@keyframes rise { to { opacity: 1; transform: none; } }
+@keyframes shutter { to { clip-path: inset(0); } }
+@keyframes settle { to { transform: none; } }
+@keyframes climb { to { transform: translateY(-50%); } }
+</style>
+</head>
+<body>
+<script>/* la paleta llega en el enlace (#naranja) o en la página; se pone antes de pintar */try{var h=location.hash.slice(1);if(/^(azul|naranja|verde)$/.test(h))document.documentElement.setAttribute('data-paleta',h)}catch(e){}</script>
+<div class="draft"><div class="wrap"><span>Borrador A de 3: tienda de fábrica. Fotos hechas con IA y precios de muestra.</span>
+  <span class="paletas" role="group" aria-label="Paleta de color para comparar"><span>Paleta</span><button type="button" data-pal="azul" style="--sw:#1F4FA8">Azul</button><button type="button" data-pal="naranja" style="--sw:#E2581E">Naranja</button><button type="button" data-pal="verde" style="--sw:#2E5B47">Verde</button></span></div></div>
+
+<header class="top" id="top">
+  <div class="l">
+    <a class="wordmark" href="#inicio" aria-label="JOME, inicio">JOME</a>
+    <nav class="main" aria-label="Principal"><a href="#catalogo">Catálogo</a><a href="#fabrica">Fábrica</a><a href="#espacios">Espacios</a><a href="#medida">A la medida</a></nav>
+  </div>
+  <div class="r">
+    <button class="tlink" id="loginBtn" type="button">Entrar</button>
+    <button class="btn cart-btn" id="cartBtn" type="button" aria-label="Abrir carrito">Carrito <span class="n" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero-left">
+      <h1 id="h1" class="lines"><span class="line"><span data-line style="--i:0">Muebles de oficina,</span></span><span class="line"><span data-line style="--i:1">de fábrica</span></span></h1>
+      <div class="sala" id="sala">
+        <video class="ly on" muted playsinline preload="auto" poster="../../img/video-amueblar-poster.webp" data-tag="Tu oficina, hoy" data-tag2="Amueblando" data-tag2-at="0.9" data-wait="1300" aria-label="Una oficina vacía se va amueblando con estaciones, libreros y sillas"><source src="../../vid/video-amueblar.mp4" type="video/mp4"></video>
+        <img class="ly" src="../../img/esp-amueblada-l.webp" alt="La misma oficina amueblada con estaciones de trabajo de nogal y base negra" width="1800" height="1018" loading="lazy" data-tag="La misma oficina, con estaciones JOME" data-hold="4200">
+        <video class="ly" muted playsinline preload="none" poster="../../img/video-archivo-poster.webp" data-tag="Tu archivo, hoy" data-tag2="Llegan los anaqueles y archiveros" data-tag2-at="0.9" data-wait="1300" aria-label="Un cuarto de archivo vacío se llena de anaqueles con cajas y archiveros metálicos"><source src="../../vid/video-archivo.mp4" type="video/mp4"></video>
+        <img class="ly" src="../../img/esp-archivo-metal-l.webp" alt="El mismo archivo con anaqueles de lámina llenos de cajas y archiveros metálicos grises" width="1800" height="1018" loading="lazy" data-tag="El mismo archivo, con lámina JOME" data-hold="4200">
+        <span class="sala-tag" id="salaTag" aria-live="off">Tu oficina, hoy</span>
+      </div>
+      <div class="hero-foot">
+        <p data-load style="--d:420ms">Lockers, anaqueles, racks y archiveros de lámina, y escritorios y estaciones de melamina y acero, hechos en nuestra planta de [ciudad]. Precio con IVA, sin intermediarios.</p>
+        <a class="btn" href="#catalogo" data-load style="--d:500ms">Ver catálogo</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="cols" id="heroCols"></div>
+    </div>
+  </section>
+
+  <section class="metal" id="lamina" aria-labelledby="h-lam">
+    <div class="wrap">
+      <div class="metal-head">
+        <h2 id="h-lam" data-reveal>Lo que más se vende: lámina</h2>
+        <div class="side" data-reveal style="--d:80ms">
+          <p>Lockers, anaqueles, racks de carga, archiveros y gabinetes de lámina de acero. Los doblamos, los soldamos y los pintamos con polvo electrostático en la misma planta, y casi siempre hay en existencia.</p>
+          <dl class="mfacts">
+            <div><dt>Lámina</dt><dd>Calibre 22 y 20</dd></div>
+            <div><dt>Pintura</dt><dd>En polvo, horneada</dd></div>
+            <div><dt>Colores</dt><dd>7 de línea</dd></div>
+            <div><dt>Entrega</dt><dd>2 a 5 días hábiles</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="metal-grid">
+        <figure class="metal-video" id="metalSala" data-reveal>
+          <video class="ly on" muted playsinline preload="none" poster="../../img/video-lockers-poster.webp" data-tag="Vestidor de personal con lockers de 3 puertas" aria-label="Pasillo de vestidores con lockers grises de tres puertas"><source src="../../vid/video-lockers.mp4" type="video/mp4"></video>
+          <img class="ly" src="../../img/esp-bodega-vacia-l.webp" alt="Una bodega vacía con piso de concreto y líneas amarillas" width="1800" height="1018" loading="lazy" data-tag="Una bodega vacía" data-hold="2600">
+          <video class="ly" muted playsinline preload="none" poster="../../img/video-bodega-poster.webp" data-tag="Llegan los racks y los anaqueles" aria-label="La bodega se llena de racks azules con largueros naranjas y anaqueles grises"><source src="../../vid/video-bodega.mp4" type="video/mp4"></video>
+          <img class="ly" src="../../img/esp-bodega-l.webp" alt="La misma bodega con racks de carga azules y naranjas llenos de cajas, y anaqueles esqueleto grises" width="1800" height="1018" loading="lazy" data-tag="La misma bodega, con racks y anaqueles JOME" data-hold="5000">
+          <figcaption id="metalTag">Vestidor de personal con lockers de 3 puertas</figcaption>
+        </figure>
+        <div class="lk" data-reveal style="--d:120ms">
+          <div class="stage" id="lkStage"><span class="tagline" id="lkHint">Arrastra para girarlo</span></div>
+          <div class="ctl">
+            <div><div class="ctl-name" id="lblLk">Locker</div><div class="seg" id="lkSizes" role="group" aria-labelledby="lblLk"></div></div>
+            <div><div class="ctl-name" id="lblLkC">Cuerpo: <span id="lkCName">Gris claro</span></div><div class="swatches" id="lkBody" role="group" aria-labelledby="lblLkC"></div></div>
+            <div><div class="ctl-name" id="lblLkP">Puertas: <span id="lkPName">Gris claro</span></div><div class="swatches" id="lkDoor" role="group" aria-labelledby="lblLkP"></div></div>
+            <div class="buy"><div class="price" id="lkPrice">$5,890<small>Con IVA. 76 × 45 × 180 cm</small></div><button class="btn" id="lkAdd" type="button">Agregar al carrito</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="mfams" id="mfams"></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="fabrica" aria-labelledby="h-fam">
+    <h2 id="h-fam" data-reveal>Una fábrica de familia</h2>
+    <p class="sec-lead" data-reveal style="--d:80ms">JOME empezó como el taller de carpintería de [nombre de los abuelos] en [año]. Hoy doblamos lámina, cortamos, canteamos, soldamos y pintamos cada pieza en nuestra planta, y la vendemos directo.</p>
+    <div class="about-grid">
+      <div class="about-photo" data-reveal style="--d:140ms">
+        <img src="../../img/fab-planta-l.webp" alt="La planta de JOME al atardecer, con un camión cargando muebles empacados" loading="lazy" width="1800" height="1018">
+        <p>Dos generaciones con el mismo oficio: medir, cortar y armar muebles que aguantan el uso diario de una oficina de gobierno.</p>
+      </div>
+      <div class="about-side" data-reveal style="--d:220ms">
+        <div class="map-tile">
+          <svg viewBox="0 0 1000 662" role="img" aria-label="Mapa de México con la ubicación de la fábrica en Jalisco"><path fill="rgba(243,243,241,.92)" d="M0 18 L53 11 L76 18 L201 60 L294 60 L294 44 L350 45 L399 83 L419 122 L459 144 L485 115 L518 116 L535 133 L554 169 L581 198 L594 238 L620 248 L647 256 L644 306 L637 331 L634 389 L650 432 L680 471 L693 497 L723 515 L749 536 L792 525 L809 522 L835 518 L861 497 L878 475 L881 435 L904 421 L954 414 L990 410 L1000 428 L980 457 L977 486 L967 525 L950 522 L931 542 L922 547 L862 547 L862 567 L848 567 L881 608 L838 612 L822 641 L818 662 L795 641 L749 608 L723 605 L680 623 L660 615 L614 601 L568 583 L531 565 L492 543 L452 529 L422 500 L399 486 L376 453 L393 446 L389 414 L376 381 L353 353 L320 317 L310 306 L281 281 L264 266 L254 238 L234 216 L205 184 L182 158 L172 151 L155 122 L132 86 L119 61 L96 54 L76 43 L76 72 L86 101 L116 130 L119 148 L142 180 L158 205 L182 230 L191 252 L211 295 L224 317 L248 335 L238 363 L228 345 L201 320 L165 302 L162 270 L135 238 L116 227 L99 205 L99 184 L66 187 L96 169 L83 133 L43 108 L33 79 L17 40 L0 18 Z"/><circle cx="454" cy="444" r="16" style="fill:var(--pin)"/><circle cx="454" cy="444" r="32" fill="none" style="stroke:var(--pin)" stroke-width="4"/></svg>
+          <span class="pin-label">[Ciudad], Jalisco</span>
+        </div>
+        <dl class="facts">
+          <div><dt>Desde</dt><dd>[año]</dd></div>
+          <div><dt>Planta</dt><dd>[m²]</dd></div>
+          <div><dt>Capacidad</dt><dd>[piezas] al mes</dd></div>
+          <div><dt>Entrega</dt><dd>2 a 15 días hábiles</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="about-strip">
+      <figure class="s1" data-reveal><img src="../../img/hist-inicios-m.webp" alt="Un taller de carpintería pequeño, con bancos de madera y herramientas en la pared" loading="lazy" width="960" height="720"><figcaption>Así empezó: un banco, un serrucho y mucho cuidado.</figcaption></figure>
+      <figure class="s2" data-reveal style="--d:80ms"><img src="../../img/hist-manos-m.webp" alt="Manos de un carpintero marcando un tablero de melamina con lápiz y escuadra" loading="lazy" width="960" height="720"><figcaption>El trazo se sigue revisando a mano.</figcaption></figure>
+      <figure class="s3" data-reveal style="--d:160ms"><img src="../../img/fab-bodega-m.webp" alt="Bodega con tableros de melamina en nogal, blanco y gris acomodados en racks" loading="lazy" width="960" height="543"><figcaption>Hoy: tableros de melamina en cinco colores de línea.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="block wrap tight-top" id="configura" aria-labelledby="h-conf">
+    <div class="showcase">
+      <div class="show-side">
+        <div data-reveal>
+          <h2 id="h-conf">Elige tu escritorio</h2>
+          <p class="muted" style="margin-top:.9rem;font-size:var(--step-small);max-width:28ch">Cambia medida y colores, y gíralo con el dedo. Es el mismo modelo con el que cotizamos en la fábrica.</p>
+          <p style="margin-top:1rem"><a class="tlink" href="#catalogo" data-fam="escritorios">Ver todos los escritorios</a></p>
+        </div>
+        <div class="controls" data-reveal style="--d:120ms">
+          <div><div class="ctl-name" id="lblMedida">Medida</div><div class="seg" id="cfgSizes" role="group" aria-labelledby="lblMedida"></div></div>
+          <div><div class="ctl-name" id="lblCub">Cubierta: <span id="cubName">Nogal</span></div><div class="swatches" id="cfgTop" role="group" aria-labelledby="lblCub"></div></div>
+          <div><div class="ctl-name" id="lblBase">Base: <span id="baseName">Negro</span></div><div class="swatches" id="cfgBase" role="group" aria-labelledby="lblBase"></div></div>
+          <div class="buy">
+            <div class="price" id="cfgPrice">$3,690<small>Con IVA. 150 × 60 × 75 cm</small></div>
+            <button class="btn" id="cfgAdd" type="button">Agregar al carrito</button>
+          </div>
+        </div>
+      </div>
+      <div class="run-wrap">
+        <div class="run">
+          <figure class="frame lifted" data-reveal>
+            <div class="pic" id="cfgStage"><span class="hint" id="cfgHint">Arrastra para girarlo</span></div>
+            <figcaption><span id="cfgName">Escritorio recto 150</span><span id="cfgDims">150 × 60 × 75 cm</span></figcaption>
+          </figure>
+          <div class="run-rest">
+            <figure class="frame" data-reveal="follow" style="--d:60ms"><div class="pic"><img src="../../img/escritorio-recto-m.webp" alt="Escritorio recto de nogal con base tubular negra" loading="lazy" width="960" height="723"></div><figcaption><span>Así llega</span><span>armado en zona local</span></figcaption></figure>
+            <figure class="frame" data-reveal="follow" style="--d:120ms"><div class="pic"><img src="../../img/mat-canto-m.webp" alt="Esquina de una cubierta de nogal con canto negro de PVC" loading="lazy" width="960" height="960"></div><figcaption><span>Canto de PVC</span><span>2 mm</span></figcaption></figure>
+            <figure class="frame" data-reveal="follow" style="--d:180ms"><div class="pic"><img src="../../img/mat-perfiles-m.webp" alt="Cortes de tubo de acero rectangular y cuadrado pintados de negro" loading="lazy" width="960" height="960"></div><figcaption><span>Tubular</span><span>2x1" y 2x2", cal. 18</span></figcaption></figure>
+            <figure class="frame" data-reveal="follow" style="--d:240ms"><div class="pic"><img src="../../img/mat-muestras-m.webp" alt="Muestras de melamina en nogal, roble, blanco, gris y negro" loading="lazy" width="960" height="960"></div><figcaption><span>Melamina</span><span>5 colores de línea</span></figcaption></figure>
+            <figure class="frame" data-reveal="follow" style="--d:300ms"><div class="pic"><img src="../../img/mat-herrajes-m.webp" alt="Correderas, bisagras, jaladeras y niveladores acomodados sobre una mesa" loading="lazy" width="960" height="960"></div><figcaption><span>Herrajes</span><span>correderas de extensión</span></figcaption></figure>
+            <figure class="frame" data-reveal="follow" style="--d:360ms"><div class="pic"><img src="../../img/fab-medicion-m.webp" alt="Manos midiendo con flexómetro el borde de una cubierta de nogal" loading="lazy" width="960" height="720"></div><figcaption><span>Revisión</span><span>pieza por pieza</span></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="catalogo" aria-labelledby="h-cat" style="padding-top:clamp(48px,6vw,96px)">
+    <div class="cat-head">
+      <h2 id="h-cat" data-reveal>Catálogo de línea</h2>
+      <p class="muted" data-reveal style="--d:80ms">Treinta y tres piezas que fabricamos todos los días; primero la lámina, que es lo que más sale. Toca cualquiera para verla en 3D y elegir sus colores.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrar por familia"></div>
+    <div class="specimens" id="specimens"></div>
+  </section>
+
+  <section class="block wrap" id="proceso" aria-labelledby="h-how" style="padding-bottom:clamp(64px,8vw,120px)">
+    <div class="how">
+      <h2 id="h-how" data-reveal>Así se hace un escritorio</h2>
+      <div class="how-top" aria-hidden="true"></div>
+      <div class="stage st1" data-reveal><div class="pic" style="--c:var(--roble)"><img src="../../img/fab-bodega-m.webp" alt="Tableros de melamina en la bodega" loading="lazy" width="960" height="543"></div><h3>Tablero</h3><p>Melamina de 16 y 28 mm en hojas de 244 × 122 cm. El color se elige antes de cortar.</p></div>
+      <div class="stage st2" data-reveal style="--d:90ms"><div class="pic" style="--c:var(--perla)"><img src="../../img/fab-canteado-m.webp" alt="Canteadora pegando canto negro a un tablero de nogal" loading="lazy" width="960" height="543"></div><h3>Corte y canto</h3><p>La seccionadora corta cada pieza y la canteadora le pega canto de PVC de 2 mm.</p></div>
+      <div class="stage st3" data-reveal style="--d:180ms"><div class="pic" style="--c:var(--grafito)"><img src="../../img/fab-soldadura-m.webp" alt="Soldador uniendo un marco de tubo negro entre chispas" loading="lazy" width="960" height="543"></div><h3>Base de acero</h3><p>Tubular de 2x1" calibre 18, cortado, soldado y con pintura electrostática.</p></div>
+      <div class="stage st4" data-reveal style="--d:270ms"><div class="pic" style="--c:var(--nogal)"><img src="../../img/fab-armado-m.webp" alt="Manos armando un escritorio con desarmador y herrajes" loading="lazy" width="960" height="720"></div><h3>Armado</h3><p>Cubierta y base se unen con herrajes de acero. Se mide, se revisa y se empaca.</p></div>
+    </div>
+  </section>
+
+  <div class="interlock wrap"><p>Todo pasa bajo el mismo techo: de la hoja de lámina o de melamina al camión que la entrega en tu oficina.</p></div>
+  <section class="curtain" aria-label="La fábrica en cuatro momentos">
+    <figure class="shot"><video data-auto muted loop playsinline preload="none" poster="../../img/video-lamina-poster.webp" aria-label="La dobladora le hace el doblez a la puerta de un locker"><source src="../../vid/video-lamina.mp4" type="video/mp4"></video><figcaption>La dobladora, dándole el doblez a la puerta de un locker</figcaption></figure>
+    <figure class="shot"><video data-auto muted loop playsinline preload="none" poster="../../img/video-taller-poster.webp" aria-label="La seccionadora cortando un tablero de melamina"><source src="../../vid/video-taller.mp4" type="video/mp4"></video><figcaption>La seccionadora, a media mañana</figcaption></figure>
+    <figure class="shot"><video data-auto muted loop playsinline preload="none" poster="../../img/video-polvo-poster.webp" aria-label="Puertas de locker recién pintadas en polvo, colgadas camino al horno"><source src="../../vid/video-polvo.mp4" type="video/mp4"></video><figcaption>Puertas recién pintadas en polvo, camino al horno</figcaption></figure>
+    <figure class="shot"><img class="drift" src="../../img/fab-empaque-l.webp" alt="Muebles emplayados sobre tarimas listos para enviarse" loading="lazy" width="1800" height="1018"><figcaption>Un pedido emplayado, listo para el camión</figcaption></figure>
+  </section>
+
+  <section class="block wrap" id="espacios" aria-labelledby="h-esp">
+    <div class="spaces">
+      <div class="photo" id="spPhoto" aria-hidden="true"></div>
+      <div class="list">
+        <h2 id="h-esp" data-reveal>Oficinas que amueblamos</h2>
+        <div id="spList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="receipt-sec" id="volumen" aria-labelledby="h-vol">
+    <div class="wrap receipt">
+      <div class="txt">
+        <h2 id="h-vol" data-reveal>Equipa una oficina completa</h2>
+        <p data-reveal style="--d:80ms">Arma tu pedido por piezas. Desde 10 piezas iguales el precio baja 7 % solo; desde 50, te mandamos una cotización especial.</p>
+        <div class="picks" id="picks"></div>
+        <button class="btn" id="volAdd" type="button">Agregar todo al carrito</button>
+      </div>
+      <div class="slip" aria-live="polite">
+        <div class="ttl">JOME</div>
+        <div class="sub">Pedido de oficina, precios con IVA</div>
+        <div class="lines-r" id="slipLines"></div>
+        <div class="bar"></div>
+        <div class="tot" id="slipTot">$0<small>Total con IVA</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="preguntas" aria-labelledby="h-faq">
+    <div class="faq">
+      <h2 id="h-faq">Preguntas</h2>
+      <div class="tiles">
+        <details name="faq" open><summary>¿Dan factura?<span class="plus" aria-hidden="true"></span></summary><p>Sí, CFDI 4.0. Al pagar captura tu RFC, razón social, régimen fiscal y uso del CFDI. La factura llega a tu correo el mismo día.</p></details>
+        <details name="faq"><summary>¿Tienen lockers y anaqueles en existencia?<span class="plus" aria-hidden="true"></span></summary><p>Casi siempre. Lockers, anaqueles, racks y archiveros metálicos se fabrican por lote, así que salen en 2 a 5 días hábiles. Un color fuera de línea tarda unos días más.</p></details>
+        <details name="faq"><summary>¿Cómo puedo pagar?<span class="plus" aria-hidden="true"></span></summary><p>Con tarjeta de crédito o débito, en efectivo en OXXO o a meses, por Mercado Pago. También con transferencia SPEI; el pedido entra a producción cuando se refleja el pago.</p></details>
+        <details name="faq"><summary>¿Llegan armados?<span class="plus" aria-hidden="true"></span></summary><p>En la zona metropolitana de [ciudad], sí. Fuera de ella van desarmados para proteger las piezas, con herrajes, instructivo y un video de armado.</p></details>
+        <details name="faq"><summary>¿Cuánto tarda mi pedido?<span class="plus" aria-hidden="true"></span></summary><p>La lámina sale en 2 a 7 días hábiles y la melamina en 5 a 15, según la pieza. Cada ficha dice su tiempo de entrega.</p></details>
+        <details name="faq"><summary>¿Cuánto cuesta el envío?<span class="plus" aria-hidden="true"></span></summary><p>Se calcula con tu código postal en el carrito. En Jalisco es sin costo desde $15,000; en estados vecinos cuesta $890 y en el resto del país, $1,690.</p></details>
+        <details name="faq"><summary>¿Qué garantía tienen?<span class="plus" aria-hidden="true"></span></summary><p>[X] años en estructura, herrajes y enchapado contra defectos de fabricación.</p></details>
+        <details name="faq"><summary>¿Hacen muebles a la medida?<span class="plus" aria-hidden="true"></span></summary><p>Sí, con los mismos materiales. Usa el cupón de abajo o mándanos una foto por WhatsApp.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="coupon-sec wrap" id="medida" aria-labelledby="h-med">
+    <div class="coupon" id="coupon">
+      <div class="left">
+        <h2 id="h-med">Cotiza un mueble a la medida</h2>
+        <p>Mándanos medidas aproximadas y te respondemos en un día hábil por WhatsApp.</p>
+      </div>
+      <form id="cform" novalidate>
+        <label class="sr" for="c1">Qué mueble necesitas</label><input id="c1" type="text" placeholder="Qué mueble necesitas" autocomplete="off">
+        <label class="sr" for="c2">Medidas aproximadas</label><input id="c2" type="text" placeholder="Medidas aproximadas, en cm">
+        <label class="sr" for="c3">Tu nombre</label><input id="c3" type="text" placeholder="Tu nombre" autocomplete="name">
+        <label class="sr" for="c4">WhatsApp</label><input id="c4" type="tel" placeholder="WhatsApp" autocomplete="tel" inputmode="tel">
+        <p class="err" id="cerr" aria-live="polite"></p>
+        <button class="submit" type="submit">Pedir cotización</button>
+        <p class="ok" role="status">Listo. Te escribimos por WhatsApp en un día hábil. (Borrador: no se envió nada.)</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="back">
+  <div class="wrap">
+    <div class="card-back">
+      <div>
+        <p class="sign">Te esperamos en la fábrica</p>
+        <p class="msg">Puedes venir a ver los acabados con cita. Te enseñamos la melamina, el canto y la base antes de que pidas.</p>
+      </div>
+      <div class="addr">
+        <div class="stamp"><img src="../../img/hist-manos-m.webp" alt="" loading="lazy" width="960" height="720"></div>
+        <span>WhatsApp: [número]</span>
+        <span>ventas@[dominio]</span>
+        <span>[Calle y número], [colonia]</span>
+        <span>[Ciudad], Jalisco</span>
+      </div>
+      <p class="imprint">© 2026 Grupo Industrial JOME, muebles de oficina hechos en México. Borrador A de 3 para presentar a la familia.</p>
+    </div>
+  </div>
+</footer>
+
+<dialog id="pdDlg" aria-labelledby="pdName">
+  <div class="dlg-head"><h3 id="pdName">Producto</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="pd">
+    <div class="media" id="pdMedia">
+      <div class="tabs" role="tablist" aria-label="Vista"><button type="button" role="tab" id="tab3d" aria-selected="true">3D</button><button type="button" role="tab" id="tabPh" aria-selected="false">Foto</button></div>
+      <div class="v3d" id="pdStage"></div>
+      <img id="pdImg" alt="" hidden>
+    </div>
+    <div class="side">
+      <div><span class="muted num" id="pdClave" style="font-size:var(--step-small)"></span><div class="muted num" id="pdDims" style="font-size:var(--step-small)"></div></div>
+      <div id="pdRoles" style="display:grid;gap:14px"></div>
+      <ul class="specs" id="pdSpecs"></ul>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div class="qty"><button type="button" id="pdMinus" aria-label="Quitar una pieza">−</button><input id="pdQty" type="number" min="1" value="1" inputmode="numeric" aria-label="Cantidad"><button type="button" id="pdPlus" aria-label="Agregar una pieza">+</button></div>
+        <span class="muted" id="pdEntrega" style="font-size:var(--step-small)"></span>
+      </div>
+      <div class="tiers" id="pdTiers"></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap"><div class="price" id="pdPrice"></div><button class="btn" id="pdAdd" type="button">Agregar al carrito</button></div>
+    </div>
+  </div>
+</dialog>
+
+<div class="drawer-scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Carrito">
+  <div class="dlg-head"><h3>Tu carrito</h3><button class="x" type="button" id="drawerClose" aria-label="Cerrar carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="items" id="items"></div>
+  <div class="totals" id="totals"></div>
+</aside>
+
+<dialog id="loginDlg" class="sm" aria-labelledby="loginT">
+  <div class="dlg-head"><h3 id="loginT">Inicia sesión</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dlg-body">
+    <p id="loginWhy">Tu cuenta guarda tus pedidos y tus datos de factura.</p>
+    <div class="social">
+      <button class="btn" type="button" data-login="Google"><span class="ico" aria-hidden="true">G</span>Continuar con Google</button>
+      <button class="btn" type="button" data-login="Facebook"><span class="ico" aria-hidden="true">f</span>Continuar con Facebook</button>
+      <button class="btn" type="button" data-login="correo"><span class="ico" aria-hidden="true">@</span>Continuar con correo</button>
+    </div>
+    <p class="note">Borrador: aquí se abrirá la ventana de Google o Facebook. Por ahora entra una cuenta de prueba.</p>
+  </div>
+</dialog>
+
+<dialog id="payDlg" class="md" aria-labelledby="payT">
+  <div class="dlg-head"><h3 id="payT">Entrega y pago</h3><button class="x" type="button" data-close aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dlg-body" id="payBody"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* Catálogo de muestra JOME: medidas típicas de mobiliario de gobierno, precios de muestra con IVA incluido. */
+window.JOME = (function () {
+  var colores = {
+    nogal:  { nombre: 'Nogal',        hex: '#8B5E3C', wood: true,  canto: '#5E3E26' },
+    roble:  { nombre: 'Roble claro',  hex: '#C9A77C', wood: true,  canto: '#A9875E' },
+    blanco: { nombre: 'Blanco',       hex: '#ECECE8', wood: false, canto: '#C9CAC6' },
+    gris:   { nombre: 'Gris grafito', hex: '#4B5055', wood: false, canto: '#33373B' },
+    negro:  { nombre: 'Negro',        hex: '#26282B', wood: false, canto: '#17181A' }
+  };
+  var bases = {
+    negro:  { nombre: 'Negro',         hex: '#1F2022' },
+    gris:   { nombre: 'Gris aluminio', hex: '#9A9EA3' },
+    blanco: { nombre: 'Blanco',        hex: '#E6E6E3' }
+  };
+  /* Pintura electrostática en polvo de la línea metálica (lockers, anaqueles, archiveros y gabinetes de lámina). */
+  var pinturas = {
+    grisclaro: { nombre: 'Gris claro',  hex: '#C2C5C6' },
+    oxford:    { nombre: 'Gris oxford', hex: '#4A4E53' },
+    negro:     { nombre: 'Negro mate',  hex: '#232427' },
+    blanco:    { nombre: 'Blanco',      hex: '#E8E9E6' },
+    arena:     { nombre: 'Arena',       hex: '#CDC1A3' },
+    azul:      { nombre: 'Azul',        hex: '#234A92' },
+    naranja:   { nombre: 'Naranja',     hex: '#E2581E' }
+  };
+  var roles = {
+    cubierta: 'Cubierta',
+    casco: 'Casco y faldón',
+    frentes: 'Frentes y entrepaños',
+    base: 'Base tubular',
+    cuerpo: 'Cuerpo',
+    puertas: 'Puertas y frentes',
+    postes: 'Postes',
+    entrepanos: 'Entrepaños',
+    marcos: 'Marcos',
+    vigas: 'Largueros y entrepaños'
+  };
+  /* La línea metálica va primero: es lo que más se vende. */
+  var familias = [
+    { id: 'lockers',          nombre: 'Lockers',              img: 'locker-6',          metal: true },
+    { id: 'anaqueles',        nombre: 'Anaqueles',            img: 'anaquel-esqueleto', metal: true },
+    { id: 'racks',            nombre: 'Racks de carga',       img: 'rack-carga-media',  metal: true },
+    { id: 'archiveros-metal', nombre: 'Archiveros metálicos', img: 'archivero-metal-4', metal: true },
+    { id: 'gabinetes',        nombre: 'Gabinetes metálicos',  img: 'gabinete-universal', metal: true },
+    { id: 'escritorios',   nombre: 'Escritorios',           img: 'escritorio-recto' },
+    { id: 'escritorios-l', nombre: 'Escritorios en L',      img: 'escritorio-l' },
+    { id: 'juntas',        nombre: 'Mesas de juntas',       img: 'mesa-juntas' },
+    { id: 'estaciones',    nombre: 'Estaciones de trabajo', img: 'estacion-4' },
+    { id: 'libreros',      nombre: 'Libreros',              img: 'librero' },
+    { id: 'archiveros',    nombre: 'Archiveros',            img: 'archivero' },
+    { id: 'cocinetas',     nombre: 'Cocinetas',             img: 'cocineta' }
+  ];
+
+  var T21 = 'Base de tubular rectangular 2x1" calibre 18, pintura electrostática';
+  var T22 = 'Base de tubular cuadrado 2x2" calibre 18, pintura electrostática';
+  var C28 = 'Cubierta de melamina de 28 mm con canto de PVC de 2 mm';
+  var M16 = 'Casco de melamina de 16 mm con canto de PVC';
+  var NIV = 'Niveladores de 1" para piso irregular';
+  var PEP = 'Pintura electrostática en polvo epóxica-poliéster, horneada';
+  var L2220 = 'Cuerpo de lámina rolada en frío calibre 22 y puertas calibre 20';
+  var VENT = 'Ventilas troqueladas en cada puerta';
+  var CAND = 'Portacandado y portaetiqueta en cada puerta';
+  var ANG = 'Ajuste de altura cada 2.5 cm; tornillería y regatones incluidos';
+  var RMAR = 'Marcos de lámina calibre 14 con perforación tipo lágrima y contravientos atornillados';
+  var RLAR = 'Largueros escalonados calibre 14 con seguro de pasador';
+  var RENT = 'Entrepaños de lámina calibre 20 en paneles';
+  var ARMS = ['Cuerpo de lámina calibre 22 y frentes calibre 20', 'Correderas de extensión con balero para 35 kg', 'Portaetiqueta y jaladera en cada gaveta', 'Chapa general con dos llaves', PEP];
+
+  var productos = [
+    /* Línea metálica: lámina de acero doblada, soldada y pintada en la misma planta. */
+    { clave: 'LOC-3', familia: 'lockers', linea: 'metal', nombre: 'Locker de 3 puertas', medidas: [38, 45, 180], precio: 3290, img: 'locker-3',
+      modelo: { tipo: 'locker', w: 380, d: 450, h: 1800, cols: 1, filas: 3 },
+      specs: [L2220, PEP, VENT, CAND, 'Zoclo de 10 cm; se puede anclar a muro'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'LOC-6', familia: 'lockers', linea: 'metal', nombre: 'Locker de 6 puertas', medidas: [76, 45, 180], precio: 5890, img: 'locker-6', destacado: true,
+      modelo: { tipo: 'locker', w: 760, d: 450, h: 1800, cols: 2, filas: 3 },
+      specs: [L2220, PEP, VENT, CAND, 'Dos columnas de 3 puertas; zoclo de 10 cm'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'LOC-12', familia: 'lockers', linea: 'metal', nombre: 'Locker de 12 puertas', medidas: [114, 45, 180], precio: 9490, img: 'locker-12',
+      modelo: { tipo: 'locker', w: 1140, d: 450, h: 1800, cols: 3, filas: 4 },
+      specs: [L2220, PEP, VENT, CAND, 'Tres columnas de 4 puertas; zoclo de 10 cm'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'azul' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'LOC-R', familia: 'lockers', linea: 'metal', nombre: 'Locker ropero de 2 puertas', medidas: [76, 45, 180], precio: 4990, img: 'locker-ropero',
+      modelo: { tipo: 'locker', w: 760, d: 450, h: 1800, cols: 2, filas: 1 },
+      specs: [L2220, PEP, 'Repisa superior y tubo para gancho en cada puerta', 'Ventilas troqueladas arriba y abajo', CAND], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'oxford', puertas: 'oxford' }, entrega: '3 a 5 días hábiles' },
+
+    { clave: 'ANA-5L', variante: 'Esqueleto, 90 cm', familia: 'anaqueles', linea: 'metal', nombre: 'Anaquel esqueleto de 5 entrepaños', medidas: [90, 45, 200], precio: 1390, img: 'anaquel-esqueleto',
+      modelo: { tipo: 'anaquel', w: 900, d: 450, h: 2000, entrepanos: 5 },
+      specs: ['Postes de ángulo ranurado calibre 14', 'Entrepaños de lámina calibre 22 con 4 dobleces', 'Carga de 80 kg por entrepaño', ANG, PEP], roles: ['postes', 'entrepanos'], defaults: { postes: 'oxford', entrepanos: 'oxford' }, entrega: '2 a 3 días hábiles' },
+    { clave: 'ANA-5M', variante: 'Mediano, 92 cm', familia: 'anaqueles', linea: 'metal', nombre: 'Anaquel de 5 entrepaños', medidas: [92, 45, 220], precio: 1990, img: 'anaquel', destacado: true,
+      modelo: { tipo: 'anaquel', w: 920, d: 450, h: 2200, entrepanos: 5 },
+      specs: ['Postes de ángulo ranurado calibre 14', 'Entrepaños de lámina calibre 20 con 4 dobleces', 'Carga de 120 kg por entrepaño', ANG, PEP], roles: ['postes', 'entrepanos'], defaults: { postes: 'grisclaro', entrepanos: 'grisclaro' }, entrega: '2 a 3 días hábiles' },
+    { clave: 'ANA-5R', familia: 'anaqueles', linea: 'metal', nombre: 'Anaquel reforzado de 5 entrepaños', medidas: [92, 60, 220], precio: 3290, img: 'anaquel-reforzado',
+      modelo: { tipo: 'anaquel', w: 920, d: 600, h: 2200, entrepanos: 5, reforzado: true },
+      specs: ['Postes de ángulo ranurado calibre 12', 'Entrepaños de lámina calibre 18 con refuerzo central', 'Carga de 200 kg por entrepaño', ANG, PEP], roles: ['postes', 'entrepanos'], defaults: { postes: 'oxford', entrepanos: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+
+    { clave: 'RAC-150', variante: '150 cm', familia: 'racks', linea: 'metal', nombre: 'Rack de carga media de 3 niveles', medidas: [150, 60, 200], precio: 4690, img: 'rack-carga-media',
+      modelo: { tipo: 'rack', w: 1500, d: 600, h: 2000, niveles: 3 },
+      specs: [RMAR, RLAR, RENT, 'Carga de 300 kg por nivel, repartida', PEP], roles: ['marcos', 'vigas'], defaults: { marcos: 'azul', vigas: 'naranja' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'RAC-200', variante: '200 cm', familia: 'racks', linea: 'metal', nombre: 'Rack de carga media de 3 niveles', medidas: [200, 60, 200], precio: 5890, img: 'rack-carga-media', destacado: true,
+      modelo: { tipo: 'rack', w: 2000, d: 600, h: 2000, niveles: 3 },
+      specs: [RMAR, RLAR, RENT, 'Carga de 400 kg por nivel, repartida', PEP], roles: ['marcos', 'vigas'], defaults: { marcos: 'azul', vigas: 'naranja' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'ARM-4C', variante: 'Carta', familia: 'archiveros-metal', linea: 'metal', nombre: 'Archivero metálico de 4 gavetas carta', medidas: [47, 63, 132], precio: 3890, img: 'archivero-metal-4', destacado: true,
+      modelo: { tipo: 'archiveroMetal', w: 470, d: 630, h: 1320, cajones: 4 },
+      specs: ['Gavetas para folder tamaño carta'].concat(ARMS), roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'ARM-4O', variante: 'Oficio', familia: 'archiveros-metal', linea: 'metal', nombre: 'Archivero metálico de 4 gavetas oficio', medidas: [52, 63, 132], precio: 4290, img: 'archivero-metal-4',
+      modelo: { tipo: 'archiveroMetal', w: 520, d: 630, h: 1320, cajones: 4 },
+      specs: ['Gavetas para folder tamaño oficio'].concat(ARMS), roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '3 a 5 días hábiles' },
+    { clave: 'ARM-2', familia: 'archiveros-metal', linea: 'metal', nombre: 'Archivero metálico de 2 gavetas', medidas: [52, 63, 72], precio: 2490, img: 'archivero-metal-2',
+      modelo: { tipo: 'archiveroMetal', w: 520, d: 630, h: 720, cajones: 2 },
+      specs: ['Gavetas para folder tamaño carta y oficio'].concat(ARMS), roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'arena', puertas: 'arena' }, entrega: '3 a 5 días hábiles' },
+
+    { clave: 'GAB-U', familia: 'gabinetes', linea: 'metal', nombre: 'Gabinete universal de 2 puertas', medidas: [90, 45, 180], precio: 4890, img: 'gabinete-universal', destacado: true,
+      modelo: { tipo: 'gabinete', w: 900, d: 450, h: 1800, entrepanos: 4, abierta: true },
+      specs: [L2220, '4 entrepaños ajustables de lámina calibre 20', 'Jaladera con chapa de cilindro', PEP, 'Niveladores'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'grisclaro', puertas: 'grisclaro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'GAB-B', familia: 'gabinetes', linea: 'metal', nombre: 'Gabinete bajo de 2 puertas', medidas: [90, 45, 90], precio: 3090, img: 'gabinete-bajo',
+      modelo: { tipo: 'gabinete', w: 900, d: 450, h: 900, entrepanos: 1 },
+      specs: [L2220, '1 entrepaño ajustable de lámina calibre 20', 'Jaladera con chapa de cilindro', PEP, 'Cubierta lisa para impresora o papelería'], roles: ['cuerpo', 'puertas'], defaults: { cuerpo: 'negro', puertas: 'negro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ESC-M', familia: 'escritorios', linea: 'metal', nombre: 'Escritorio metálico secretarial', medidas: [120, 60, 75], precio: 4290, img: 'escritorio-metalico',
+      modelo: { tipo: 'escritorioMetal', w: 1200, d: 600, h: 750 },
+      specs: ['Cubierta de lámina calibre 18 con orilla redondeada', 'Pedestal de 3 cajones: papelero, intermedio y archivo', 'Correderas de extensión con balero', 'Faldón frontal de lámina y chapa general', PEP], roles: ['cubierta', 'cuerpo'], defaults: { cubierta: 'grisclaro', cuerpo: 'oxford' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'ESC-120', familia: 'escritorios', nombre: 'Escritorio recto 120', medidas: [120, 60, 75], precio: 3190, img: 'escritorio-recto',
+      modelo: { tipo: 'escritorio', w: 1200, d: 600, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Faldón de melamina de 16 mm', NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', base: 'negro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ESC-150', familia: 'escritorios', nombre: 'Escritorio recto 150', medidas: [150, 60, 75], precio: 3690, img: 'escritorio-recto', destacado: true,
+      modelo: { tipo: 'escritorio', w: 1500, d: 600, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Faldón de melamina de 16 mm', NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', base: 'negro' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ESC-180', familia: 'escritorios', nombre: 'Escritorio ejecutivo 180', medidas: [180, 75, 75], precio: 4890, img: 'escritorio-ejecutivo',
+      modelo: { tipo: 'escritorio', w: 1800, d: 750, h: 750, perfil: '2x2' },
+      specs: [C28, T22, 'Faldón de melamina de 16 mm', NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+
+    { clave: 'ESL-160', familia: 'escritorios-l', nombre: 'Escritorio en L 160 con cajonera', medidas: [160, 150, 75], precio: 8490, img: 'escritorio-l', destacado: true,
+      modelo: { tipo: 'escritorioL', w: 1600, d: 700, h: 750, rl: 800, rd: 500 },
+      specs: [C28, T21, 'Lateral de 80 x 50 cm', 'Cajonera fija de 3 cajones con correderas de extensión', NIV], roles: ['cubierta', 'casco', 'frentes', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', frentes: 'gris', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'ESL-180', familia: 'escritorios-l', nombre: 'Escritorio en L 180 con cajonera', medidas: [180, 160, 75], precio: 9690, img: 'escritorio-l-nogal',
+      modelo: { tipo: 'escritorioL', w: 1800, d: 750, h: 750, rl: 850, rd: 500 },
+      specs: [C28, T21, 'Lateral de 85 x 50 cm', 'Cajonera fija de 3 cajones con correderas de extensión', NIV], roles: ['cubierta', 'casco', 'frentes', 'base'], defaults: { cubierta: 'nogal', casco: 'gris', frentes: 'nogal', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+
+    { clave: 'MJ-180', familia: 'juntas', nombre: 'Mesa de juntas para 6', medidas: [180, 90, 75], precio: 6290, img: 'mesa-juntas',
+      modelo: { tipo: 'mesa', w: 1800, d: 900, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Pasacables central', NIV], roles: ['cubierta', 'base'], defaults: { cubierta: 'nogal', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'MJ-240', familia: 'juntas', nombre: 'Mesa de juntas para 8', medidas: [240, 110, 75], precio: 8990, img: 'mesa-juntas', destacado: true,
+      modelo: { tipo: 'mesa', w: 2400, d: 1100, h: 750, perfil: '2x1' },
+      specs: [C28, T21, 'Pasacables central', NIV], roles: ['cubierta', 'base'], defaults: { cubierta: 'nogal', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'MJ-300', familia: 'juntas', nombre: 'Mesa de juntas para 10', medidas: [300, 120, 75], precio: 11890, img: 'mesa-juntas-10',
+      modelo: { tipo: 'mesa', w: 3000, d: 1200, h: 750, perfil: '2x2' },
+      specs: [C28, T22, 'Cubierta en dos piezas con unión oculta', 'Pasacables central', NIV], roles: ['cubierta', 'base'], defaults: { cubierta: 'nogal', base: 'negro' }, entrega: '10 a 12 días hábiles' },
+
+    { clave: 'EST-2', familia: 'estaciones', nombre: 'Estación para 2 personas', medidas: [120, 120, 75], precio: 8790, img: 'estacion-2',
+      modelo: { tipo: 'estacion', puestos: 2, w: 1200, d: 600, h: 750 },
+      specs: ['Cubiertas de melamina de 28 mm de 120 x 60 cm por puesto', 'Divisor de melamina de 16 mm entre puestos', T21, NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', base: 'negro' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'EST-4', familia: 'estaciones', nombre: 'Estación para 4 personas', medidas: [240, 120, 75], precio: 16490, img: 'estacion-4', destacado: true,
+      modelo: { tipo: 'estacion', puestos: 4, w: 1200, d: 600, h: 750 },
+      specs: ['Cubiertas de melamina de 28 mm de 120 x 60 cm por puesto', 'Divisor de melamina de 16 mm entre puestos', T21, NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', base: 'negro' }, entrega: '10 a 12 días hábiles' },
+    { clave: 'EST-6', familia: 'estaciones', nombre: 'Estación para 6 personas', medidas: [360, 120, 75], precio: 23890, img: 'estacion-6',
+      modelo: { tipo: 'estacion', puestos: 6, w: 1200, d: 600, h: 750 },
+      specs: ['Cubiertas de melamina de 28 mm de 120 x 60 cm por puesto', 'Divisor de melamina de 16 mm entre puestos', T21, NIV], roles: ['cubierta', 'casco', 'base'], defaults: { cubierta: 'blanco', casco: 'gris', base: 'negro' }, entrega: '12 a 15 días hábiles' },
+
+    { clave: 'LIB-80', familia: 'libreros', nombre: 'Librero con puertas', medidas: [80, 35, 180], precio: 4290, img: 'librero', destacado: true,
+      modelo: { tipo: 'librero', w: 800, d: 350, h: 1800, puertas: true },
+      specs: [M16, '3 entrepaños ajustables', '2 puertas inferiores con bisagra de cierre', 'Zoclo y niveladores'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'LIB-80A', familia: 'libreros', nombre: 'Librero abierto', medidas: [80, 35, 180], precio: 3190, img: 'librero-abierto',
+      modelo: { tipo: 'librero', w: 800, d: 350, h: 1800, puertas: false },
+      specs: [M16, '4 entrepaños ajustables', 'Zoclo y niveladores'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'ARC-3', familia: 'archiveros', nombre: 'Archivero de 3 gavetas', medidas: [50, 60, 105], precio: 4690, img: 'archivero', destacado: true,
+      modelo: { tipo: 'archivero', w: 500, d: 600, h: 1050, cajones: 3 },
+      specs: [M16, 'Gavetas para folder tamaño carta y oficio', 'Correderas de extensión total para 40 kg', 'Chapa general'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '5 a 7 días hábiles' },
+    { clave: 'ARC-4', familia: 'archiveros', nombre: 'Archivero de 4 gavetas', medidas: [50, 60, 135], precio: 5890, img: 'archivero-4',
+      modelo: { tipo: 'archivero', w: 500, d: 600, h: 1350, cajones: 4 },
+      specs: [M16, 'Gavetas para folder tamaño carta y oficio', 'Correderas de extensión total para 40 kg', 'Chapa general'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'nogal' }, entrega: '7 a 10 días hábiles' },
+    { clave: 'CAJ-3', familia: 'archiveros', nombre: 'Cajonera móvil', medidas: [40, 50, 60], precio: 2590, img: 'cajonera',
+      modelo: { tipo: 'cajonera', w: 400, d: 500, h: 600 },
+      specs: [M16, '2 cajones papeleros y 1 gaveta', 'Rodajas de 1 1/2"', 'Chapa general'], roles: ['casco', 'frentes'], defaults: { casco: 'gris', frentes: 'gris' }, entrega: '5 a 7 días hábiles' },
+
+    { clave: 'COC-150', familia: 'cocinetas', nombre: 'Cocineta 150 con tarja', medidas: [150, 60, 90], precio: 12490, img: 'cocineta-150',
+      modelo: { tipo: 'cocineta', w: 1500, alacenas: false },
+      specs: ['Gabinete inferior de melamina de 16 mm', 'Cubierta postformada de 28 mm', 'Tarja de acero inoxidable con llave', 'Puertas con bisagra de cierre'], roles: ['casco', 'frentes', 'cubierta'], defaults: { casco: 'blanco', frentes: 'nogal', cubierta: 'gris' }, entrega: '10 a 12 días hábiles' },
+    { clave: 'COC-180', familia: 'cocinetas', nombre: 'Cocineta 180 con alacenas', medidas: [180, 60, 220], precio: 14890, img: 'cocineta', destacado: true,
+      modelo: { tipo: 'cocineta', w: 1800, alacenas: true },
+      specs: ['Gabinete inferior y alacenas de melamina de 16 mm', 'Cubierta postformada de 28 mm', 'Tarja de acero inoxidable con llave', 'Puertas con bisagra de cierre'], roles: ['casco', 'frentes', 'cubierta'], defaults: { casco: 'blanco', frentes: 'nogal', cubierta: 'gris' }, entrega: '10 a 12 días hábiles' }
+  ];
+
+  var porClave = {};
+  /* Campo de color de la ficha de cada pieza (contraste con el mueble recortado). */
+  var campos = { 'LOC-3': 'amarillo', 'LOC-6': 'nogal', 'LOC-12': 'perla', 'LOC-R': 'amarillo', 'ANA-5L': 'amarillo', 'RAC-150': 'perla', 'RAC-200': 'perla', 'ANA-5M': 'nogal', 'ANA-5R': 'amarillo',
+    'ARM-4C': 'roble', 'ARM-4O': 'nogal', 'ARM-2': 'nogal', 'GAB-U': 'amarillo', 'GAB-B': 'perla', 'ESC-M': 'roble',
+    'ESC-120': 'amarillo', 'ESC-150': 'perla', 'ESC-180': 'roble', 'ESL-160': 'nogal', 'ESL-180': 'perla', 'MJ-180': 'amarillo',
+    'MJ-240': 'perla', 'MJ-300': 'roble', 'EST-2': 'nogal', 'EST-4': 'roble', 'EST-6': 'amarillo', 'LIB-80': 'perla', 'LIB-80A': 'amarillo',
+    'ARC-3': 'roble', 'ARC-4': 'perla', 'CAJ-3': 'amarillo', 'COC-150': 'perla', 'COC-180': 'roble' };
+  productos.forEach(function (p) {
+    porClave[p.clave] = p;
+    p.foto = '../../img/' + p.img + '-m.webp';
+    p.cut = '../../img/cut-' + p.img + '.webp';
+    p.campo = campos[p.clave] || 'perla';
+  });
+
+  /* Paleta de cada rol: la línea metálica usa pintura en polvo en todas sus partes;
+     la de melamina usa los colores de tablero y la base tubular su propia pintura. */
+  function paleta(p, role) {
+    if (p && p.linea === 'metal') return pinturas;
+    return role === 'base' ? bases : colores;
+  }
+  function color(p, role, id) {
+    var pal = paleta(p, role);
+    return pal[id] || pal[Object.keys(pal)[0]];
+  }
+  var metalicos = productos.filter(function (p) { return p.linea === 'metal'; });
+
+  function fmt(n) {
+    return '$' + Math.round(n).toLocaleString('es-MX');
+  }
+  function fmtCent(n) {
+    return '$' + n.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  /* Precio por volumen: de 1 a 9 piezas precio de lista; de 10 a 49, 7 % menos; desde 50, cotización especial. */
+  var tramos = [
+    { desde: 1, hasta: 9, factor: 1, texto: '1 a 9 piezas' },
+    { desde: 10, hasta: 49, factor: 0.93, texto: '10 a 49 piezas' },
+    { desde: 50, hasta: Infinity, factor: 0.93, texto: '50 piezas o más', cotizar: true }
+  ];
+  function tramo(qty) {
+    for (var i = 0; i < tramos.length; i++) if (qty >= tramos[i].desde && qty <= tramos[i].hasta) return tramos[i];
+    return tramos[0];
+  }
+  function precioUnitario(p, qty) {
+    return Math.round(p.precio * tramo(qty || 1).factor);
+  }
+
+  /* Estado por los dos primeros dígitos del código postal. */
+  var cpEstados = [
+    [1, 16, 'Ciudad de México'], [20, 20, 'Aguascalientes'], [21, 22, 'Baja California'], [23, 23, 'Baja California Sur'],
+    [24, 24, 'Campeche'], [25, 27, 'Coahuila'], [28, 28, 'Colima'], [29, 30, 'Chiapas'], [31, 33, 'Chihuahua'],
+    [34, 35, 'Durango'], [36, 38, 'Guanajuato'], [39, 41, 'Guerrero'], [42, 43, 'Hidalgo'], [44, 49, 'Jalisco'],
+    [50, 57, 'Estado de México'], [58, 61, 'Michoacán'], [62, 62, 'Morelos'], [63, 63, 'Nayarit'], [64, 67, 'Nuevo León'],
+    [68, 71, 'Oaxaca'], [72, 75, 'Puebla'], [76, 76, 'Querétaro'], [77, 77, 'Quintana Roo'], [78, 79, 'San Luis Potosí'],
+    [80, 82, 'Sinaloa'], [83, 85, 'Sonora'], [86, 86, 'Tabasco'], [87, 89, 'Tamaulipas'], [90, 90, 'Tlaxcala'],
+    [91, 96, 'Veracruz'], [97, 97, 'Yucatán'], [98, 99, 'Zacatecas']
+  ];
+  var fabrica = { estado: 'Jalisco', vecinos: ['Nayarit', 'Colima', 'Michoacán', 'Zacatecas', 'Aguascalientes', 'Guanajuato'] };
+  function estadoDeCP(cp) {
+    if (!/^\d{5}$/.test(cp)) return null;
+    var n = parseInt(cp.slice(0, 2), 10);
+    for (var i = 0; i < cpEstados.length; i++) if (n >= cpEstados[i][0] && n <= cpEstados[i][1]) return cpEstados[i][2];
+    return null;
+  }
+  /* Tarifas de muestra por zona. */
+  function envio(cp, subtotal) {
+    var estado = estadoDeCP(cp);
+    if (!estado) return null;
+    if (estado === fabrica.estado) {
+      var gratis = subtotal >= 15000;
+      return { estado: estado, zona: 'Zona local', costo: gratis ? 0 : 450, dias: '1 a 2 días hábiles', nota: gratis ? 'Envío sin costo en pedidos desde $15,000.' : 'Sin costo desde $15,000.' };
+    }
+    if (fabrica.vecinos.indexOf(estado) >= 0) return { estado: estado, zona: 'Zona regional', costo: 890, dias: '2 a 4 días hábiles', nota: 'Entrega con armado básico.' };
+    return { estado: estado, zona: 'Zona nacional', costo: 1690, dias: '4 a 8 días hábiles', nota: 'Pedidos grandes van en flete consolidado; lo cotizamos aparte.' };
+  }
+
+  /* Estimado para muebles a la medida: escala el precio del producto de línea más cercano por área y suma 15 % por fabricación especial. */
+  var referencia = { escritorio: 'ESC-150', escritorioL: 'ESL-160', mesa: 'MJ-240', estacion: 'EST-4', librero: 'LIB-80', archivero: 'ARC-3', cajonera: 'CAJ-3', cocineta: 'COC-180',
+    locker: 'LOC-6', anaquel: 'ANA-5M', archiveroMetal: 'ARM-4C', gabinete: 'GAB-U', escritorioMetal: 'ESC-M', rack: 'RAC-200' };
+  var verticales = ['librero', 'archivero', 'cajonera', 'locker', 'gabinete', 'archiveroMetal'];
+  function estimadoMedida(tipo, cm, extra) {
+    var ref = porClave[referencia[tipo]];
+    if (!ref) return null;
+    var r = ref.medidas, a, a0;
+    if (verticales.indexOf(tipo) >= 0) { a = cm[0] * cm[2]; a0 = r[0] * r[2]; }
+    else if (tipo === 'rack') { a = cm[0] * ((extra && extra.entrepanos) || 3) * (cm[2] / 200); a0 = r[0] * 3; }
+    else if (tipo === 'anaquel') { a = cm[0] * cm[1] * ((extra && extra.entrepanos) || 5) * (cm[2] / 220); a0 = r[0] * r[1] * 5; }
+    else if (tipo === 'cocineta') { a = cm[0]; a0 = r[0]; }
+    else if (tipo === 'estacion') { a = (extra && extra.puestos ? extra.puestos : 4); a0 = 4; }
+    else { a = cm[0] * cm[1]; a0 = r[0] * r[1]; }
+    var base = ref.precio * Math.pow(a / a0, 0.85) * 1.15;
+    return { min: Math.round(base * 0.92 / 10) * 10, max: Math.round(base * 1.1 / 10) * 10, referencia: ref };
+  }
+
+  return {
+    colores: colores, bases: bases, pinturas: pinturas, roles: roles, familias: familias, productos: productos, porClave: porClave,
+    paleta: paleta, color: color, metalicos: metalicos,
+    fmt: fmt, fmtCent: fmtCent, tramos: tramos, tramo: tramo, precioUnitario: precioUnitario,
+    estadoDeCP: estadoDeCP, envio: envio, fabrica: fabrica, estimadoMedida: estimadoMedida, referencia: referencia
+  };
+})();
+
+</script>
+<script>
+/* Visor 3D paramétrico JOME: arma cada mueble desde sus medidas (mm) con piezas de melamina y tubular. Requiere THREE (r128) y window.JOME. */
+window.JOME3D = (function () {
+  var MM = 0.001;
+  var hasGL = (function () {
+    try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl'))); } catch (e) { return false; }
+  })();
+
+  function lin(hex) { return new THREE.Color(hex).convertSRGBToLinear(); }
+
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+      var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  var texCache = {};
+  function woodTexture(id, hex) {
+    if (texCache[id]) return texCache[id];
+    var c = document.createElement('canvas'); c.width = 1024; c.height = 256;
+    var g = c.getContext('2d'); var r = rng(id.length * 9973 + 17);
+    g.fillStyle = hex; g.fillRect(0, 0, 1024, 256);
+    for (var i = 0; i < 46; i++) {
+      var y0 = r() * 256, h = 4 + r() * 18;
+      g.fillStyle = r() < 0.5 ? 'rgba(60,30,10,' + (0.03 + r() * 0.05) + ')' : 'rgba(255,235,210,' + (0.02 + r() * 0.05) + ')';
+      g.fillRect(0, y0, 1024, h);
+    }
+    for (var j = 0; j < 170; j++) {
+      var y = r() * 256, amp = 1.5 + r() * 5, f = 0.003 + r() * 0.01, ph = r() * 6.28, dark = r() < 0.65;
+      g.strokeStyle = dark ? 'rgba(45,22,6,' + (0.05 + r() * 0.14) + ')' : 'rgba(255,238,215,' + (0.04 + r() * 0.08) + ')';
+      g.lineWidth = 0.5 + r() * 1.6;
+      g.beginPath();
+      for (var x = 0; x <= 1024; x += 8) {
+        var yy = y + Math.sin(x * f + ph) * amp + Math.sin(x * f * 3.3 + ph * 1.7) * amp * 0.35;
+        if (x === 0) g.moveTo(x, yy); else g.lineTo(x, yy);
+      }
+      g.stroke();
+    }
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.encoding = THREE.sRGBEncoding; t.anisotropy = 4;
+    texCache[id] = t;
+    return t;
+  }
+
+  var matCache = {};
+  function surface(id) {
+    var k = 's:' + id; if (matCache[k]) return matCache[k];
+    var c = JOME.colores[id] || JOME.colores.blanco, m;
+    if (c.wood) m = new THREE.MeshStandardMaterial({ map: woodTexture(id, c.hex), roughness: 0.6, metalness: 0 });
+    else m = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.5, metalness: 0 });
+    return (matCache[k] = m);
+  }
+  function canto(id) {
+    var k = 'c:' + id; if (matCache[k]) return matCache[k];
+    var c = JOME.colores[id] || JOME.colores.blanco;
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.canto), roughness: 0.4 }));
+  }
+  function paint(id) {
+    var k = 'p:' + id; if (matCache[k]) return matCache[k];
+    var c = JOME.bases[id] || JOME.bases.negro;
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.42, metalness: 0.35 }));
+  }
+  /* Pintura en polvo de la línea metálica: acabado satinado, un poco de brillo de metal. */
+  function steel(id) {
+    var k = 'st:' + id; if (matCache[k]) return matCache[k];
+    var c = (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), roughness: 0.46, metalness: 0.3 }));
+  }
+  /* Poste de ángulo ranurado: la textura repite una ranura larga y un barreno cada 75 mm. */
+  function slotTexture() {
+    if (texCache.slot) return texCache.slot;
+    var c = document.createElement('canvas'); c.width = 32; c.height = 64;
+    var g = c.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 32, 64);
+    g.fillStyle = '#3a3c3f';
+    g.beginPath(); g.moveTo(13, 8); g.lineTo(19, 8); g.arc(16, 30, 3, 0, Math.PI); g.lineTo(13, 8); g.fill();
+    g.fillRect(13, 8, 6, 22);
+    g.beginPath(); g.arc(16, 48, 3.2, 0, Math.PI * 2); g.fill();
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4;
+    return (texCache.slot = t);
+  }
+  /* Marco de rack: perforación tipo lágrima cada 50 mm */
+  function tearTexture() {
+    if (texCache.tear) return texCache.tear;
+    var c = document.createElement('canvas'); c.width = 32; c.height = 64;
+    var g = c.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 32, 64);
+    g.fillStyle = '#2b2d30';
+    g.beginPath(); g.arc(16, 24, 7, Math.PI * 0.12, Math.PI * 0.88, true); g.lineTo(16, 46); g.closePath(); g.fill();
+    var t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4;
+    return (texCache.tear = t);
+  }
+  function postSteel(id, h, kind) {
+    var k = 'post:' + id + ':' + h + ':' + (kind || 'ranura'); if (matCache[k]) return matCache[k];
+    var c = (JOME.pinturas && JOME.pinturas[id]) || { hex: '#C2C5C6' };
+    var t = (kind === 'lagrima' ? tearTexture() : slotTexture()).clone(); t.needsUpdate = true; t.repeat.set(1, Math.max(1, Math.round(h / (kind === 'lagrima' ? 50 : 75))));
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(c.hex), map: t, roughness: 0.5, metalness: 0.3 }));
+  }
+  function fixed(k, hex, rough, metal) {
+    if (matCache[k]) return matCache[k];
+    return (matCache[k] = new THREE.MeshStandardMaterial({ color: lin(hex), roughness: rough, metalness: metal }));
+  }
+
+  /* Construcción. y es la altura desde el piso; z positivo mira al usuario. */
+  function Builder(group) { this.g = group; }
+  Builder.prototype.box = function (w, h, d, mat, x, yb, z) {
+    var m = new THREE.Mesh(new THREE.BoxGeometry(w * MM, h * MM, d * MM), mat);
+    m.position.set(x * MM, (yb + h / 2) * MM, z * MM);
+    m.castShadow = true; m.receiveShadow = true;
+    this.g.add(m); return m;
+  };
+  /* Tablero con canto: axis = eje del espesor ('x', 'y' o 'z'). */
+  Builder.prototype.panel = function (axis, w, h, d, colorId, x, yb, z) {
+    var f = surface(colorId), e = canto(colorId), mats;
+    if (axis === 'y') mats = [e, e, f, f, e, e];
+    else if (axis === 'x') mats = [f, f, e, e, e, e];
+    else mats = [e, e, e, e, f, f];
+    return this.box(w, h, d, mats, x, yb, z);
+  };
+  Builder.prototype.cyl = function (r, h, mat, x, yb, z, axis) {
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r * MM, r * MM, h * MM, 20), mat);
+    if (axis === 'x') { m.rotation.z = Math.PI / 2; m.position.set(x * MM, yb * MM, z * MM); }
+    else if (axis === 'z') { m.rotation.x = Math.PI / 2; m.position.set(x * MM, yb * MM, z * MM); }
+    else m.position.set(x * MM, (yb + h / 2) * MM, z * MM);
+    m.castShadow = true; this.g.add(m); return m;
+  };
+  Builder.prototype.handle = function (len, x, y, z, vertical) {
+    var mat = fixed('handle', '#B9BDC1', 0.25, 0.9);
+    if (vertical) {
+      this.box(12, len, 12, mat, x, y - len / 2, z + 22);
+      this.box(10, 10, 22, mat, x, y + len / 2 - 14, z + 10);
+      this.box(10, 10, 22, mat, x, y - len / 2 + 4, z + 10);
+    } else {
+      this.cyl(6, len, mat, x, y, z + 24, 'x');
+      this.box(10, 10, 24, mat, x - len / 2 + 10, y - 5, z + 12);
+      this.box(10, 10, 24, mat, x + len / 2 - 10, y - 5, z + 12);
+    }
+  };
+  /* Marco cerrado de tubular en el plano y-z, en x. */
+  Builder.prototype.frameZ = function (x, zc, depth, height, prof, baseId) {
+    var m = paint(baseId), pw = prof === '2x2' ? 50 : 25, pd = 50, lev = 12;
+    var z1 = zc - depth / 2 + pd / 2, z2 = zc + depth / 2 - pd / 2;
+    this.box(pw, height - lev - 50, pd, m, x, lev + 25, z1);
+    this.box(pw, height - lev - 50, pd, m, x, lev + 25, z2);
+    this.box(pw, 25, depth, m, x, lev, zc);
+    this.box(pw, 25, depth, m, x, height - 25, zc);
+    var black = fixed('lev', '#121314', 0.6, 0);
+    this.cyl(14, lev, black, x, 0, z1);
+    this.cyl(14, lev, black, x, 0, z2);
+  };
+  Builder.prototype.frameX = function (z, xc, width, height, prof, baseId) {
+    var m = paint(baseId), pw = prof === '2x2' ? 50 : 25, pd = 50, lev = 12;
+    var x1 = xc - width / 2 + pd / 2, x2 = xc + width / 2 - pd / 2;
+    this.box(pd, height - lev - 50, pw, m, x1, lev + 25, z);
+    this.box(pd, height - lev - 50, pw, m, x2, lev + 25, z);
+    this.box(width, 25, pw, m, xc, lev, z);
+    this.box(width, 25, pw, m, xc, height - 25, z);
+    var black = fixed('lev', '#121314', 0.6, 0);
+    this.cyl(14, lev, black, x1, 0, z);
+    this.cyl(14, lev, black, x2, 0, z);
+  };
+  /* Cuerpo de cajonera o archivero con frentes. */
+  Builder.prototype.cajones = function (x, z, w, d, h, n, c, yb, conRuedas) {
+    var t = 16, zoc = 50, y0 = (yb || 0), body = y0, fb;
+    if (conRuedas) {
+      var rm = fixed('lev', '#121314', 0.6, 0);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (s) {
+        var m = new THREE.Mesh(new THREE.SphereGeometry(19 * MM, 16, 12), rm);
+        m.position.set((x + s[0] * (w / 2 - 40)) * MM, (y0 + 19) * MM, (z + s[1] * (d / 2 - 40)) * MM); m.castShadow = true; this.g.add(m);
+      }, this);
+      body = y0 + 40; fb = body;
+      this.panel('y', w - 2 * t, t, d, c.casco, x, body, z);
+    } else {
+      this.box(w - 2 * t, zoc, t, fixed('zoclo', '#2A2C2E', 0.7, 0), x, y0, z + d / 2 - 30);
+      this.panel('y', w - 2 * t, t, d, c.casco, x, y0 + zoc, z);
+      fb = y0 + zoc;
+    }
+    this.panel('x', t, y0 + h - t - body, d, c.casco, x - w / 2 + t / 2, body, z);
+    this.panel('x', t, y0 + h - t - body, d, c.casco, x + w / 2 - t / 2, body, z);
+    this.panel('y', w, t, d, c.casco, x, y0 + h - t, z);
+    var gap = 3, avail = (y0 + h - t) - fb - gap * (n + 1), fh = avail / n, top = y0 + h - t - gap;
+    for (var i = 0; i < n; i++) {
+      var yb2 = top - (i + 1) * fh - i * gap;
+      this.panel('z', w - 4, fh, 18, c.frentes, x, yb2, z + d / 2 + 9);
+      this.handle(Math.min(160, w - 120), x, yb2 + fh * 0.72, z + d / 2 + 18);
+      if (i === 0 && !conRuedas) this.cyl(9, 8, fixed('handle', '#B9BDC1', 0.25, 0.9), x + w / 2 - 60, yb2 + fh * 0.72, z + d / 2 + 22, 'z');
+    }
+  };
+
+  /* Ventilas troqueladas: ranuras oscuras con su ceja de lámina, sobre la cara frontal en zf. */
+  Builder.prototype.louvers = function (mat, x, yTop, zf, w, n) {
+    var dark = fixed('slot', '#232527', 0.85, 0);
+    for (var i = 0; i < n; i++) {
+      var y = yTop - i * 15;
+      this.box(w, 5, 2, dark, x, y, zf + 1);
+      this.box(w, 4, 6, mat, x, y + 5, zf + 3);
+    }
+  };
+  Builder.prototype.levelers = function (w, d, inset) {
+    var black = fixed('lev', '#121314', 0.6, 0), g = inset || 40;
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (q) { this.cyl(14, 12, black, q[0] * (w / 2 - g), 0, q[1] * (d / 2 - g)); }, this);
+  };
+  /* Caja de lámina: laterales, techo, piso y fondo de 1 mm a escala (8 mm para que se vea el canto). */
+  Builder.prototype.shell = function (w, d, h, y0, mat) {
+    var t = 8;
+    this.box(t, h - y0, d, mat, -w / 2 + t / 2, y0, 0);
+    this.box(t, h - y0, d, mat, w / 2 - t / 2, y0, 0);
+    this.box(w, t, d, mat, 0, h - t, 0);
+    this.box(w - 2 * t, t, d, mat, 0, y0, 0);
+    this.box(w - 2 * t, h - y0, t, mat, 0, y0, -d / 2 + t / 2);
+    return t;
+  };
+
+  var build = {
+    locker: function (b, s, c) {
+      var cols = s.cols || 1, filas = s.filas || 1, w = s.w, d = s.d, h = s.h, zoc = 100, gap = 6;
+      var body = steel(c.cuerpo), door = steel(c.puertas), chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), plate = fixed('plate', '#DADDDF', 0.3, 0.75);
+      b.box(w - 16, zoc, d - 30, body, 0, 0, -15);
+      var t = b.shell(w, d, h, zoc, body), cw = (w - 2 * t) / cols;
+      for (var i = 1; i < cols; i++) b.box(t, h - zoc - 2 * t, d - 16, body, -w / 2 + t + i * cw, zoc + t, -8);
+      var dh = (h - zoc - t - gap) / filas, zf = d / 2 + 14;
+      for (var ci = 0; ci < cols; ci++) for (var fi = 0; fi < filas; fi++) {
+        var x = -w / 2 + t + cw * ci + cw / 2, yb = zoc + gap + fi * dh, dw = cw - gap, hh = dh - gap, lw = Math.min(150, dw * 0.56);
+        b.box(dw, hh, 14, door, x, yb, d / 2 + 7);
+        var tall = hh > 900, nl = tall ? 6 : (hh > 380 ? 4 : 3);
+        b.louvers(door, x, yb + hh - (tall ? 90 : 60), zf, lw, nl);
+        if (tall) b.louvers(door, x, yb + 200, zf, lw, nl);
+        else if (hh > 380) b.louvers(door, x, yb + 100, zf, lw, 3);
+        b.box(64, 22, 3, plate, x, yb + hh - (tall ? 60 : 36), zf);
+        var hx = x + dw / 2 - 42, hy = yb + (tall ? hh * 0.52 : hh * 0.45);
+        b.box(30, 110, 5, chrome, hx, hy - 55, zf);
+        b.box(12, 34, 16, chrome, hx, hy - 17, zf + 4);
+      }
+    },
+    anaquel: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.entrepanos || 5, ang = s.reforzado ? 45 : 38, tk = s.reforzado ? 3 : 2;
+      var post = postSteel(c.postes, h), shelf = steel(c.entrepanos), cap = fixed('lev', '#121314', 0.6, 0);
+      [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (q) {
+        b.box(ang, h - 10, tk, post, q[0] * (w / 2 - ang / 2), 10, q[1] * (d / 2 - tk / 2));
+        b.box(tk, h - 10, ang, post, q[0] * (w / 2 - tk / 2), 10, q[1] * (d / 2 - ang / 2));
+        b.box(ang + 4, 10, ang + 4, cap, q[0] * (w / 2 - ang / 2), 0, q[1] * (d / 2 - ang / 2));
+      });
+      var lip = s.reforzado ? 40 : 30, low = 130, top = h - 30;
+      for (var i = 0; i < n; i++) {
+        var y = low + (top - low) * i / (n - 1);
+        b.box(w - 2 * tk, 3, d - 2 * tk, shelf, 0, y, 0);
+        b.box(w - 2 * tk, lip, 3, shelf, 0, y - lip + 3, d / 2 - tk - 1.5);
+        b.box(w - 2 * tk, lip, 3, shelf, 0, y - lip + 3, -d / 2 + tk + 1.5);
+        b.box(3, lip, d - 2 * tk, shelf, -w / 2 + tk + 1.5, y - lip + 3, 0);
+        b.box(3, lip, d - 2 * tk, shelf, w / 2 - tk - 1.5, y - lip + 3, 0);
+        if (s.reforzado) b.box(w - 2 * tk - 8, 24, 30, shelf, 0, y - 24, 0);
+      }
+    },
+    rack: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.niveles || 3, uw = 75, ud = 55, span = d - ud;
+      var up = postSteel(c.marcos, h, 'lagrima'), frame = steel(c.marcos), beam = steel(c.vigas), plate = fixed('lev', '#121314', 0.6, 0);
+      var xs = [-w / 2 + uw / 2, w / 2 - uw / 2], zs = [-d / 2 + ud / 2, d / 2 - ud / 2];
+      xs.forEach(function (x) {
+        zs.forEach(function (z) { b.box(uw, h - 6, ud, up, x, 6, z); b.box(uw + 30, 6, ud + 30, plate, x, 0, z); });
+        /* contravientos: travesaños arriba y abajo y diagonales en zigzag entre los dos postes del marco */
+        b.box(28, 28, span, frame, x, 150, 0);
+        b.box(28, 28, span, frame, x, h - 180, 0);
+        var segs = Math.max(2, Math.round((h - 330) / 560)), sh = (h - 330) / segs, len = Math.sqrt(span * span + sh * sh);
+        for (var i = 0; i < segs; i++) {
+          var m = b.box(22, 22, len, frame, x, 164 + i * sh + sh / 2 - 11, 0);
+          m.rotation.x = (i % 2 ? 1 : -1) * Math.atan2(sh, span);
+        }
+      });
+      var bw = w - 2 * uw, low = 140, top = h - 140, np = Math.max(2, Math.round(bw / 480)), pw = bw / np;
+      for (var k = 0; k < n; k++) {
+        var y = n === 1 ? low : low + (top - low) * k / (n - 1);
+        zs.forEach(function (z) { b.box(bw, 100, 50, beam, 0, y - 100, z); });
+        for (var j = 0; j < np; j++) b.box(pw - 8, 14, span + 40, beam, -bw / 2 + pw * j + pw / 2, y, 0);
+      }
+    },
+    gabinete: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.entrepanos || 4, y0 = 12, body = steel(c.cuerpo), door = steel(c.puertas);
+      b.levelers(w, d);
+      var t = b.shell(w, d, h, y0, body);
+      for (var i = 1; i <= n; i++) {
+        var y = y0 + (h - y0 - t) * i / (n + 1);
+        b.box(w - 2 * t - 4, 3, d - 40, body, 0, y, -12);
+        b.box(w - 2 * t - 4, 26, 3, body, 0, y - 23, d / 2 - 34);
+      }
+      var dw = (w - 6) / 2 - 1, dh = h - y0 - 6, zc = d / 2 + 7, hl = Math.min(160, dh * 0.3), hy = y0 + 3 + dh * (h > 1200 ? 0.52 : 0.6);
+      /* puerta derecha cerrada con jaladera y chapa; la izquierda abierta en el gabinete alto para ver los entrepaños */
+      b.box(dw, dh, 14, door, dw / 2 + 1, y0 + 3, zc);
+      b.handle(hl, 34, hy, d / 2 + 14, true);
+      b.cyl(9, 8, fixed('handle', '#B9BDC1', 0.25, 0.9), 34, hy + hl / 2 + 30, d / 2 + 18, 'z');
+      if (s.abierta) {
+        var sub = new THREE.Group(), sb = new Builder(sub);
+        sb.box(dw, dh, 14, door, dw / 2, y0 + 3, 7);
+        sub.position.set((-w / 2 + 1) * MM, 0, (d / 2) * MM);
+        sub.rotation.y = -1.45;
+        b.g.add(sub);
+      } else {
+        b.box(dw, dh, 14, door, -dw / 2 - 1, y0 + 3, zc);
+      }
+    },
+    archiveroMetal: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, n = s.cajones || 4, zoc = 50, body = steel(c.cuerpo), front = steel(c.puertas);
+      var chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), plate = fixed('plate', '#DADDDF', 0.3, 0.75);
+      b.box(w - 30, zoc, d - 40, fixed('zoclo', '#2A2C2E', 0.7, 0), 0, 0, -20);
+      var t = b.shell(w, d, h, zoc, body), band = 46, gap = 4;
+      b.box(w, band, 4, body, 0, h - band, d / 2 + 2);
+      b.cyl(9, 8, chrome, w / 2 - 50, h - band / 2, d / 2 + 6, 'z');
+      var avail = h - band - zoc - t - gap * (n + 1), fh = avail / n, topY = h - band - gap;
+      for (var i = 0; i < n; i++) {
+        var yb = topY - (i + 1) * fh - i * gap, zf = d / 2 + 18;
+        b.box(w - 2 * t - 4, fh, 18, front, 0, yb, d / 2 + 9);
+        b.box(96, 34, 3, plate, 0, yb + fh * 0.74, zf);
+        b.box(Math.min(170, w - 160), 18, 12, chrome, 0, yb + fh * 0.5, zf + 2);
+      }
+    },
+    escritorioMetal: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, top = steel(c.cubierta), body = steel(c.cuerpo), chrome = fixed('handle', '#B9BDC1', 0.25, 0.9), pw = 400, px = w / 2 - pw / 2 - 20;
+      b.box(w, 26, d, top, 0, h - 26, 0);
+      b.box(w - 8, 10, d - 8, body, 0, h - 36, 0);
+      b.box(26, h - 36, d - 50, body, -w / 2 + 40, 0, -10);
+      b.box(w - pw - 90, 440, 8, body, -pw / 2 - 15, h - 36 - 440, -d / 2 + 60);
+      b.box(pw, h - 36 - 20, d - 50, body, px, 20, -10);
+      b.levelers(w - 40, d - 60, 30);
+      var hs = [150, 160, h - 36 - 20 - 150 - 160 - 4 * 5], yb = h - 36 - 5, zf = d / 2 - 35 + 14;
+      hs.forEach(function (fh, i) {
+        yb -= fh;
+        b.box(pw - 12, fh, 14, body, px, yb, d / 2 - 35 + 7);
+        b.box(130, 16, 12, chrome, px, yb + fh * (i === 2 ? 0.8 : 0.55), zf + 2);
+        if (i === 0) b.cyl(8, 8, chrome, px + pw / 2 - 45, yb + fh * 0.55, zf + 4, 'z');
+        yb -= 5;
+      });
+    },
+    escritorio: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, ins = s.perfil === '2x2' ? 60 : 50;
+      b.panel('y', w, 28, d, c.cubierta, 0, h - 28, 0);
+      b.frameZ(-w / 2 + ins, 0, d - 60, h - 28, s.perfil, c.base);
+      b.frameZ(w / 2 - ins, 0, d - 60, h - 28, s.perfil, c.base);
+      b.box(w - 2 * ins, 50, 25, paint(c.base), 0, h - 28 - 75, -d / 2 + 55);
+      b.panel('z', w - 2 * ins - 40, 360, 16, c.casco, 0, h - 28 - 400, -d / 2 + 90);
+    },
+    escritorioL: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, rl = s.rl, rd = s.rd;
+      b.panel('y', w, 28, d, c.cubierta, 0, h - 28, 0);
+      b.panel('y', rd, 28, rl, c.cubierta, w / 2 - rd / 2, h - 28, d / 2 + rl / 2);
+      b.frameZ(-w / 2 + 50, 0, d - 60, h - 28, '2x1', c.base);
+      b.frameZ(w / 2 - 50, 0, d - 60, h - 28, '2x1', c.base);
+      b.box(w - 100, 50, 25, paint(c.base), 0, h - 28 - 75, -d / 2 + 55);
+      b.panel('z', w - 160, 360, 16, c.casco, 0, h - 28 - 400, -d / 2 + 90);
+      var sub = new THREE.Group(), sb = new Builder(sub), cw = Math.min(440, rl - 60);
+      sb.cajones(0, 0, cw, rd - 40, h - 28 - 4, 3, c);
+      sub.rotation.y = -Math.PI / 2;
+      sub.position.set((w / 2 - rd / 2) * MM, 0, (d / 2 + rl - cw / 2 - 20) * MM);
+      b.g.add(sub);
+    },
+    mesa: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, off = Math.min(380, w * 0.18);
+      b.panel('y', w, 28, d, c.cubierta, 0, h - 28, 0);
+      var grom = fixed('grom', '#151617', 0.5, 0.2);
+      b.cyl(40, 3, grom, 0, h, 0);
+      b.frameZ(-w / 2 + off, 0, d - 220, h - 28, s.perfil, c.base);
+      b.frameZ(w / 2 - off, 0, d - 220, h - 28, s.perfil, c.base);
+      b.box(w - 2 * off, s.perfil === '2x2' ? 50 : 50, s.perfil === '2x2' ? 50 : 25, paint(c.base), 0, h - 28 - 90, 0);
+    },
+    estacion: function (b, s, c) {
+      var cols = Math.max(1, Math.round(s.puestos / 2)), w = s.w, d = s.d, h = s.h, total = cols * w;
+      for (var i = 0; i < cols; i++) {
+        var x = -total / 2 + w / 2 + i * w;
+        b.panel('y', w - 4, 28, d - 2, c.cubierta, x, h - 28, d / 2);
+        b.panel('y', w - 4, 28, d - 2, c.cubierta, x, h - 28, -d / 2);
+      }
+      for (var k = 0; k <= cols; k++) {
+        var fx = -total / 2 + k * w + (k === 0 ? 40 : k === cols ? -40 : 0);
+        b.frameZ(fx, 0, 2 * d - 80, h - 28, '2x1', c.base);
+      }
+      b.panel('z', total - 20, 380, 16, c.casco, 0, h, 0);
+      b.box(total - 20, 20, 24, paint(c.base), 0, h + 380, 0);
+      b.box(total - 80, 50, 25, paint(c.base), 0, h - 28 - 75, 0);
+    },
+    librero: function (b, s, c) {
+      var w = s.w, d = s.d, h = s.h, t = 16, zoc = 60;
+      b.box(w - 2 * t, zoc, t, fixed('zoclo', '#2A2C2E', 0.7, 0), 0, 0, d / 2 - 30);
+      b.panel('x', t, h, d, c.casco, -w / 2 + t / 2, 0, 0);
+      b.panel('x', t, h, d, c.casco, w / 2 - t / 2, 0, 0);
+      b.panel('y', w - 2 * t, t, d, c.casco, 0, h - t, 0);
+      b.panel('y', w - 2 * t, t, d, c.casco, 0, zoc, 0);
+      b.panel('z', w - 2 * t, h - zoc - t, 6, c.casco, 0, zoc + t, -d / 2 + 3);
+      var doorH = s.puertas ? 760 : 0, shelfStart = zoc + t + doorH, n = s.puertas ? 3 : 4;
+      if (s.puertas) {
+        b.panel('y', w - 2 * t, t, d - 20, c.frentes, 0, zoc + t + doorH - t, -10);
+        var dw = (w - 4) / 2 - 2;
+        b.panel('z', dw, doorH - 6, 18, c.frentes, -dw / 2 - 1, zoc + 3, d / 2 + 9);
+        b.panel('z', dw, doorH - 6, 18, c.frentes, dw / 2 + 1, zoc + 3, d / 2 + 9);
+        b.handle(120, -40, zoc + doorH - 120, d / 2 + 18, true);
+        b.handle(120, 40, zoc + doorH - 120, d / 2 + 18, true);
+      }
+      var span = (h - t) - shelfStart;
+      for (var i = 1; i < n; i++) b.panel('y', w - 2 * t, t, d - 20, c.frentes, 0, shelfStart + span * i / n, -10);
+    },
+    archivero: function (b, s, c) { b.cajones(0, 0, s.w, s.d, s.h, s.cajones, c); },
+    cajonera: function (b, s, c) { b.cajones(0, 0, s.w, s.d, s.h, 3, c, 0, true); },
+    cocineta: function (b, s, c) {
+      var w = s.w, d = 600, t = 16, h = 870, zoc = 100;
+      b.box(w - 2 * t, zoc, t, fixed('zoclo', '#2A2C2E', 0.7, 0), 0, 0, d / 2 - 50);
+      b.panel('x', t, h - 30, d - 20, c.casco, -w / 2 + t / 2, 0, -10);
+      b.panel('x', t, h - 30, d - 20, c.casco, w / 2 - t / 2, 0, -10);
+      b.panel('y', w - 2 * t, t, d - 20, c.casco, 0, zoc, -10);
+      b.panel('z', w - 2 * t, h - 30 - zoc, 6, c.casco, 0, zoc, -d / 2 + 3);
+      b.panel('y', w + 20, 30, d + 20, c.cubierta, 0, h - 30, 0);
+      var steel = fixed('steel', '#C9CDD1', 0.22, 0.95);
+      var sx = w / 2 - 330;
+      b.box(500, 2, 400, fixed('sinkin', '#7D8286', 0.35, 0.9), sx, h, 10);
+      b.box(520, 6, 20, steel, sx, h, -200); b.box(520, 6, 20, steel, sx, h, 220);
+      b.box(20, 6, 420, steel, sx - 260, h, 10); b.box(20, 6, 420, steel, sx + 260, h, 10);
+      b.cyl(14, 230, steel, sx, h, -250);
+      b.box(24, 24, 170, steel, sx, h + 206, -175);
+      var n = Math.max(2, Math.round(w / 450)), dw = (w - 6) / n - 3, fh = h - 30 - zoc - 6;
+      for (var i = 0; i < n; i++) {
+        var x = -w / 2 + 3 + dw / 2 + i * (dw + 3);
+        b.panel('z', dw, fh, 18, c.frentes, x, zoc + 3, d / 2 + 9);
+        b.handle(120, x + (i % 2 ? -dw / 2 + 50 : dw / 2 - 50), zoc + fh - 110, d / 2 + 18, true);
+      }
+      if (s.alacenas) {
+        var uy = 1500, uh = 700, ud = 350;
+        b.panel('z', w, 1500 - h + uh - 40, 16, c.casco, 0, h, -d / 2 + 8);
+        b.panel('x', t, uh, ud, c.casco, -w / 2 + t / 2, uy, -d / 2 + 16 + ud / 2);
+        b.panel('x', t, uh, ud, c.casco, w / 2 - t / 2, uy, -d / 2 + 16 + ud / 2);
+        b.panel('y', w - 2 * t, t, ud, c.casco, 0, uy, -d / 2 + 16 + ud / 2);
+        b.panel('y', w - 2 * t, t, ud, c.casco, 0, uy + uh - t, -d / 2 + 16 + ud / 2);
+        for (var j = 0; j < n; j++) {
+          var ux = -w / 2 + 3 + dw / 2 + j * (dw + 3);
+          b.panel('z', dw, uh - 6, 18, c.frentes, ux, uy + 3, -d / 2 + 16 + ud + 9);
+          b.handle(120, ux + (j % 2 ? -dw / 2 + 50 : dw / 2 - 50), uy + 120, -d / 2 + 16 + ud + 18, true);
+        }
+      }
+    }
+  };
+
+  function envMap(renderer) {
+    var pm = new THREE.PMREMGenerator(renderer);
+    var sc = new THREE.Scene();
+    var room = new THREE.Mesh(new THREE.BoxGeometry(20, 10, 20), new THREE.MeshBasicMaterial({ color: 0x8a8d90, side: THREE.BackSide }));
+    room.position.y = 4; sc.add(room);
+    function light(w, h, x, y, z, ry, s) {
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(s, s, s) }));
+      m.position.set(x, y, z); m.lookAt(0, 1, 0); sc.add(m);
+    }
+    light(8, 4, -6, 6, 3, 0, 6);
+    light(6, 3, 6, 5, -2, 0, 3);
+    light(10, 2, 0, 8.5, 0, 0, 2.5);
+    var rt = pm.fromScene(sc, 0.04);
+    pm.dispose();
+    return rt.texture;
+  }
+
+  function mount(el, opts) {
+    opts = opts || {};
+    if (!hasGL || !window.THREE) { if (opts.onFail) opts.onFail(); return null; }
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' }); }
+    catch (e) { if (opts.onFail) opts.onFail(); return null; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.setClearColor(0x000000, 0);
+    var cv = renderer.domElement; cv.style.display = 'block'; cv.style.width = '100%'; cv.style.height = '100%'; cv.style.touchAction = 'pan-y';
+    cv.setAttribute('role', 'img'); cv.setAttribute('aria-label', opts.label || 'Modelo 3D del mueble');
+    el.appendChild(cv);
+
+    var scene = new THREE.Scene();
+    scene.environment = envMap(renderer);
+    var cam = new THREE.PerspectiveCamera(32, 1, 0.05, 60);
+    var sun = new THREE.DirectionalLight(0xffffff, 1.6);
+    sun.castShadow = true; sun.shadow.mapSize.set(1024, 1024); sun.shadow.bias = -0.0004; sun.shadow.radius = 4;
+    scene.add(sun); scene.add(sun.target);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x9a9690, 0.25));
+    var ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: opts.shadow || 0.2 })); /* taste-skill-ignore: sombra en el piso del visor 3D, no es una sombra de caja */
+    ground.rotation.x = -Math.PI / 2; ground.receiveShadow = true; scene.add(ground);
+
+    var group = new THREE.Group(); scene.add(group);
+    var yaw = opts.yaw != null ? opts.yaw : 0.62, pitch = opts.pitch != null ? opts.pitch : 0.32, zoom = 1, center = new THREE.Vector3(), radius = 1;
+    var auto = opts.autoRotate !== false && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var dirty = true, visible = true, raf = 0, pop = 1, lastSpec = null;
+
+    var dims = new THREE.Vector3(1, 1, 1);
+    function place() {
+      /* encuadre por caja: el ancho que ocupa al girar y el alto visto con la inclinación de la cámara,
+         con el ángulo vertical u horizontal que sea más cerrado; así no se corta ni un locker alto en un marco ancho */
+      var hv = cam.fov * Math.PI / 360, hh = Math.atan(Math.tan(hv) * cam.aspect);
+      var hd = Math.sqrt(dims.x * dims.x + dims.z * dims.z) / 2;
+      var vy = (dims.y * Math.cos(pitch) + 2 * hd * Math.sin(pitch)) / 2;
+      var dist = (Math.max(vy / Math.tan(hv), hd / Math.tan(hh)) + hd * 0.55) * 1.02 * zoom;
+      cam.position.set(center.x + dist * Math.cos(pitch) * Math.sin(yaw), center.y + dist * Math.sin(pitch), center.z + dist * Math.cos(pitch) * Math.cos(yaw));
+      cam.lookAt(center);
+    }
+    function size() {
+      var w = el.clientWidth || 300, h = el.clientHeight || 220;
+      renderer.setSize(w, h, false); cam.aspect = w / h;
+      cam.fov = w / h < 1 ? 40 : 32; cam.updateProjectionMatrix(); dirty = true;
+    }
+    function clear() {
+      group.traverse(function (m) { if (m.geometry) m.geometry.dispose(); });
+      while (group.children.length) group.remove(group.children[0]);
+    }
+    function set(spec, colors) {
+      lastSpec = { spec: spec, colors: colors };
+      clear();
+      var b = new Builder(group);
+      (build[spec.tipo] || build.escritorio)(b, spec, colors);
+      var box = new THREE.Box3().setFromObject(group), s = new THREE.Vector3();
+      box.getSize(s); box.getCenter(center); dims.copy(s);
+      center.y = s.y * (s.y > 1.1 * Math.max(s.x, s.z) ? 0.5 : 0.42);
+      radius = Math.max(0.35, Math.sqrt(s.x * s.x + s.y * s.y + s.z * s.z) / 2);
+      var r = radius * 1.6;
+      sun.position.set(center.x - r * 0.9, r * 2.2, center.z + r * 1.1); sun.target.position.copy(center);
+      var sc = sun.shadow.camera; sc.left = -r; sc.right = r; sc.top = r; sc.bottom = -r; sc.near = 0.1; sc.far = r * 6; sc.updateProjectionMatrix();
+      pop = 0.965; dirty = true; place(); kick();
+    }
+    function frame() {
+      raf = 0;
+      if (!visible) return;
+      if (auto) { yaw += 0.0032; dirty = true; }
+      if (pop < 1) { pop = Math.min(1, pop + 0.006); group.scale.setScalar(pop); dirty = true; }
+      if (dirty) { place(); renderer.render(scene, cam); dirty = false; }
+      if (auto || pop < 1) raf = requestAnimationFrame(frame);
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+
+    var pts = {}, lastPinch = 0, dragging = false, moved = 0;
+    cv.addEventListener('pointerdown', function (e) {
+      pts[e.pointerId] = { x: e.clientX, y: e.clientY }; dragging = true; moved = 0;
+      if (e.pointerType === 'mouse') cv.setPointerCapture(e.pointerId);
+      auto = false; if (opts.onInteract) opts.onInteract();
+    });
+    cv.addEventListener('pointermove', function (e) {
+      var p = pts[e.pointerId]; if (!p) return;
+      var ids = Object.keys(pts);
+      if (ids.length === 2) {
+        var a = pts[ids[0]], c2 = pts[ids[1]]; p.x = e.clientX; p.y = e.clientY;
+        var dd = Math.hypot(a.x - c2.x, a.y - c2.y);
+        if (lastPinch) { zoom = Math.max(0.55, Math.min(1.7, zoom * lastPinch / dd)); }
+        lastPinch = dd; dirty = true; kick(); return;
+      }
+      var dx = e.clientX - p.x, dy = e.clientY - p.y; p.x = e.clientX; p.y = e.clientY; moved += Math.abs(dx) + Math.abs(dy);
+      yaw -= dx * 0.009;
+      if (e.pointerType === 'mouse') pitch = Math.max(0.04, Math.min(1.25, pitch + dy * 0.006));
+      dirty = true; kick();
+    });
+    function up(e) { delete pts[e.pointerId]; lastPinch = 0; if (!Object.keys(pts).length) dragging = false; }
+    cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up); cv.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') up(e); });
+    cv.addEventListener('wheel', function (e) {
+      if (!opts.wheelZoom) return;
+      e.preventDefault(); zoom = Math.max(0.55, Math.min(1.7, zoom * (1 + Math.sign(e.deltaY) * 0.08))); dirty = true; kick();
+    }, { passive: false });
+
+    var ro = window.ResizeObserver ? new ResizeObserver(function () { size(); kick(); }) : null;
+    if (ro) ro.observe(el); else window.addEventListener('resize', function () { size(); kick(); });
+    var io = window.IntersectionObserver ? new IntersectionObserver(function (en) { visible = en[0].isIntersecting; if (visible) { dirty = true; kick(); } }) : null;
+    if (io) io.observe(el);
+    size();
+
+    return {
+      set: set,
+      view: function (y, p) { yaw = y; pitch = p; zoom = 1; dirty = true; kick(); },
+      zoomBy: function (f) { zoom = Math.max(0.55, Math.min(1.7, zoom * f)); dirty = true; kick(); },
+      spin: function (on) { auto = on && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches); kick(); },
+      snapshot: function () { renderer.render(scene, cam); return cv.toDataURL('image/png'); },
+      destroy: function () {
+        if (raf) cancelAnimationFrame(raf); if (ro) ro.disconnect(); if (io) io.disconnect();
+        clear(); renderer.dispose(); if (cv.parentNode) cv.parentNode.removeChild(cv);
+      }
+    };
+  }
+
+  function colorsFor(p, chosen) {
+    var c = {}, d = p.defaults || {};
+    if (p.linea === 'metal') {
+      (p.roles || []).forEach(function (k) { c[k] = (chosen && chosen[k]) || d[k] || 'grisclaro'; });
+      return c;
+    }
+    ['cubierta', 'casco', 'frentes'].forEach(function (k) { c[k] = (chosen && chosen[k]) || d[k] || d.casco || d.cubierta || 'gris'; });
+    c.base = (chosen && chosen.base) || d.base || 'negro';
+    return c;
+  }
+
+  return { mount: mount, supported: hasGL, colorsFor: colorsFor };
+})();
+
+</script>
+<script>
+/* Sala JOME: capas (foto, video, foto…) que se funden una tras otra, como la oficina vacía que se amuebla.
+   Cada capa lleva .ly; data-tag es el letrero que la acompaña y data-hold los milisegundos que se queda una foto.
+   Un video avanza al terminar. Se detiene fuera de pantalla y con la pestaña oculta; con movimiento reducido se queda en una sola capa.
+   Uso: JOME_SALA(raiz, { tag: elementoDelLetrero, still: capaFija, delay: msAntesDeEmpezar }) */
+window.JOME_SALA = function (root, opts) {
+  opts = opts || {};
+  if (!root) return null;
+  var layers = Array.prototype.slice.call(root.querySelectorAll('.ly'));
+  var tag = opts.tag || null, k = 0, timer = 0, visible = false, hidden = false, started = false, played = false;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!layers.length) return null;
+  function isVid(l) { return !!l && l.tagName === 'VIDEO'; }
+  function label(i) {
+    if (tag) tag.textContent = layers[i].getAttribute('data-tag') || '';
+    if (opts.onShow) opts.onShow(i, layers[i]);
+  }
+  if (reduce) {
+    var still = opts.still != null ? opts.still : 0;
+    layers.forEach(function (l, i) { l.classList.toggle('on', i === still); });
+    label(still);
+    return null;
+  }
+  /* el video que sigue se empieza a cargar mientras se ve la capa anterior */
+  function prep(i) { var l = layers[i]; if (isVid(l) && !l.dataset.prep) { l.dataset.prep = '1'; l.preload = 'auto'; try { l.load(); } catch (e) {} } }
+  /* data-wait: milisegundos que el video se queda en su primer cuadro (el póster) antes de correr; no aplica la primera vez */
+  var first = true, waitT = 0;
+  function run() {
+    clearTimeout(timer); clearTimeout(waitT);
+    if (!visible || hidden) return;
+    var l = layers[k];
+    played = true;
+    if (isVid(l)) {
+      var w = first ? 0 : +(l.getAttribute('data-wait') || 0);
+      try { l.currentTime = 0; } catch (e) {}
+      waitT = setTimeout(function () {
+        if (layers[k] !== l || !visible || hidden) return;
+        var pr = l.play();
+        if (pr && pr.catch) pr.catch(function () { clearTimeout(timer); timer = setTimeout(next, 2600); });
+      }, w);
+      var dur = isFinite(l.duration) && l.duration > 0 ? l.duration : 6;
+      timer = setTimeout(next, w + dur * 1000 + 2500); /* por si el video nunca avisa que terminó */
+    } else {
+      timer = setTimeout(next, +(l.getAttribute('data-hold') || 4600));
+    }
+    first = false;
+  }
+  /* data-tag2 y data-tag2-at: el letrero cambia a medio video (de "Tu oficina, hoy" a "Amueblando") */
+  layers.forEach(function (l) {
+    if (!isVid(l) || !l.hasAttribute('data-tag2')) return;
+    l.addEventListener('timeupdate', function () {
+      if (tag && layers[k] === l && l.currentTime >= +(l.getAttribute('data-tag2-at') || 1)) tag.textContent = l.getAttribute('data-tag2');
+    });
+  });
+  function show(i) {
+    k = i; played = false;
+    layers.forEach(function (l, j) {
+      l.classList.toggle('on', j === i);
+      if (j !== i && isVid(l)) { try { l.pause(); } catch (e) {} }
+    });
+    label(i);
+    prep((i + 1) % layers.length);
+    run();
+  }
+  function next() { show((k + 1) % layers.length); }
+  layers.forEach(function (l) { if (isVid(l)) l.addEventListener('ended', function () { if (layers[k] === l) next(); }); });
+  function pause() { clearTimeout(timer); clearTimeout(waitT); var l = layers[k]; if (isVid(l)) { try { l.pause(); } catch (e) {} } }
+  /* al volver a la vista, un video que ya corrió salta a la capa siguiente: la habitación ya amueblada */
+  function resume() { if (!started) return; if (isVid(layers[k]) && played) next(); else run(); }
+  function start() {
+    started = true;
+    label(0); prep(isVid(layers[0]) ? 0 : 1);
+    clearTimeout(timer);
+    timer = setTimeout(function () { if (visible && !hidden) show(0); }, opts.delay != null ? opts.delay : 1200);
+  }
+  document.addEventListener('visibilitychange', function () { hidden = document.hidden; if (hidden) pause(); else resume(); });
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (en) {
+      var v = en[0].isIntersecting;
+      if (v === visible) return;
+      visible = v;
+      if (!started) { if (v) start(); return; }
+      if (v) resume(); else pause();
+    }, { threshold: 0.15 }).observe(root);
+  } else { visible = true; start(); }
+  return { show: show, pause: pause, resume: resume };
+};
+
+</script>
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var has3d = JOME3D.supported && !!window.THREE;
+  function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+  function toast(m) { var t = $('#toast'); t.textContent = m; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { t.hidden = true; }, 2600); }
+  /* campo de color de cada espécimen; el viejo 'amarillo' del catálogo ahora es el color de acento de la paleta */
+  function field(id) { if (id === 'amarillo') id = 'campo'; return 'var(--' + id + ')'; }
+  function fieldInk(id) { if (id === 'amarillo') id = 'campo'; return 'var(--' + id + '-ink)'; }
+  /* Muestras de color: cada rol usa su paleta (melamina, pintura de la base o pintura en polvo de la lámina) */
+  function swatch(p, r, id) { var c = JOME.color(p, r, id), wood = !!c.wood; return 'style="--c:' + c.hex + (wood ? ';--tex:url(../../img/sw-' + id + '.webp)' : '') + '" class="sw' + (wood ? ' wood' : '') + '"'; }
+  function colorName(r, id, p) { return JOME.color(p, r, id).nombre; }
+  $$('[data-close]').forEach(function (b) { b.addEventListener('click', function () { b.closest('dialog').close(); }); });
+
+  /* Encabezado sólido al salir de la portada */
+  var hdr = $('#top');
+  if (window.IntersectionObserver) new IntersectionObserver(function (en) { hdr.classList.toggle('solid', !en[0].isIntersecting); }, { rootMargin: '-80px 0px 0px 0px' }).observe($('.hero-left'));
+
+  /* Portada: tres columnas del catálogo en movimiento. La segunda copia de cada columna solo completa el ciclo y no se anuncia. */
+  var heroCols = [
+    { dur: 104, items: [['LOC-6', 'nogal', 'Locker 6 puertas'], ['ESC-150', 'roble', 'Escritorio 150'], ['ANA-5R', 'campo', 'Anaquel reforzado'], ['ARM-4C', 'roble', 'Archivero metálico'], ['EST-2', 'nogal', 'Estación de 2'], ['LOC-12', 'perla', 'Locker 12 puertas'], ['MJ-240', 'campo', 'Juntas para 8'], ['RAC-200', 'perla', 'Rack de carga media'], ['LIB-80', 'campo', 'Librero con puertas'], ['ESL-180', 'perla', 'Escritorio en L 180']] },
+    { dur: 120, items: [['LOC-3', 'campo', 'Locker 3 puertas'], ['ESL-160', 'perla', 'Escritorio en L 160'], ['ARM-2', 'nogal', 'Archivero 2 gavetas'], ['ANA-5L', 'campo', 'Anaquel esqueleto'], ['ESC-180', 'roble', 'Ejecutivo 180'], ['LOC-R', 'campo', 'Locker ropero'], ['ARC-4', 'roble', 'Archivero 4 gavetas'], ['GAB-U', 'nogal', 'Gabinete universal'], ['EST-4', 'perla', 'Estación de 4'], ['ESC-M', 'roble', 'Escritorio metálico']] }
+  ];
+  var darkFields = { nogal: 1, grafito: 1 };
+  function heroTile(m, copy, first) {
+    var p = JOME.porClave[m[0]];
+    return '<button type="button" class="spec' + (darkFields[m[1]] ? ' on-dark' : '') + '" style="--c:' + field(m[1]) + ';--ci:' + fieldInk(m[1]) + '" data-open="' + p.clave + '"' +
+      (copy ? ' aria-hidden="true" tabindex="-1"' : ' aria-label="' + esc(p.nombre) + ', ' + JOME.fmt(p.precio) + '"') + '><img src="' + p.cut + '" alt=""' + (first ? ' fetchpriority="high"' : '') + '>' +
+      '<span class="tile-label" aria-hidden="true"><span>' + esc(m[2] || p.nombre) + '</span><span>' + JOME.fmt(p.precio) + '</span></span></button>';
+  }
+  $('#heroCols').innerHTML = heroCols.map(function (c, i) {
+    var one = c.items.map(function (m, k) { return heroTile(m, false, i === 0 && k === 0); }).join('');
+    var two = c.items.map(function (m) { return heroTile(m, true); }).join('');
+    return '<div class="col" style="--i:' + i + '"><div class="track" style="--dur:' + c.dur + 's">' + one + two + '</div></div>';
+  }).join('');
+
+  /* La sala de la portada: oficina vacía, amueblando, terminada; luego el archivo con anaqueles */
+  JOME_SALA($('#sala'), { tag: $('#salaTag'), still: 1, delay: 250 });
+  /* Paleta: azul de inicio; naranja y verde para comparar. Cambia los colores al momento, sin recargar */
+  (function () {
+    var root = document.documentElement, names = ['azul', 'naranja', 'verde'];
+    function mark() { var cur = root.getAttribute('data-paleta') || 'azul'; $$('[data-pal]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-pal') === cur)); }); }
+    $$('[data-pal]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var n = b.getAttribute('data-pal');
+        if (names.indexOf(n) < 0) return;
+        if (n === 'azul') root.removeAttribute('data-paleta'); else root.setAttribute('data-paleta', n);
+        try { history.replaceState(null, '', '#' + n); } catch (e) {}
+        mark();
+      });
+    });
+    mark();
+  })();
+  /* Lámina: el pasillo de lockers y la bodega que se llena de racks */
+  JOME_SALA($('#metalSala'), { tag: $('#metalTag'), still: 3, delay: 300 });
+
+  /* Sesión simulada */
+  var session = store('jomeA.session'), afterLogin = null;
+  function paintSession() { $('#loginBtn').textContent = session ? 'Mi cuenta' : 'Entrar'; }
+  function askLogin(why, then) { $('#loginWhy').textContent = why; afterLogin = then || null; $('#loginDlg').showModal(); }
+  $('#loginBtn').addEventListener('click', function () { if (session) { session = null; store('jomeA.session', null); paintSession(); toast('Sesión de prueba cerrada'); } else askLogin('Tu cuenta guarda tus pedidos y tus datos de factura.'); });
+  $$('[data-login]').forEach(function (b) { b.addEventListener('click', function () { session = { via: b.dataset.login }; store('jomeA.session', session); paintSession(); $('#loginDlg').close(); toast('Sesión iniciada con ' + session.via + ' (prueba)'); if (afterLogin) { var f = afterLogin; afterLogin = null; f(); } }); });
+  paintSession();
+
+  /* Carrito */
+  var cart = store('jomeA.cart') || [];
+  var cp = store('jomeA.cp') || '';
+  function saveCart() { store('jomeA.cart', cart); paintCart(); }
+  function addToCart(p, colors, qty, silent) {
+    var key = p.clave + '|' + JSON.stringify(colors);
+    var it = cart.filter(function (i) { return i.key === key; })[0];
+    if (it) it.qty += qty; else cart.push({ key: key, clave: p.clave, colors: colors, qty: qty });
+    saveCart(); if (!silent) toast(qty + ' × ' + p.nombre + ' en el carrito');
+  }
+  function totals() {
+    var sub = 0, pcs = 0;
+    cart.forEach(function (i) { var p = JOME.porClave[i.clave]; sub += JOME.precioUnitario(p, i.qty) * i.qty; pcs += i.qty; });
+    var env = cp ? JOME.envio(cp, sub) : null;
+    return { sub: sub, pcs: pcs, env: env, total: sub + (env ? env.costo : 0) };
+  }
+  function paintCart() {
+    var t = totals();
+    $('#cartCount').textContent = t.pcs;
+    if (!cart.length) {
+      $('#items').innerHTML = '<div style="padding:48px 0;display:grid;gap:16px;justify-items:start"><p>Tu carrito está vacío.</p><a class="btn" href="#catalogo" id="emptyGo">Ver catálogo</a></div>';
+      $('#emptyGo').onclick = closeDrawer; $('#totals').innerHTML = ''; return;
+    }
+    $('#items').innerHTML = cart.map(function (i, k) {
+      var p = JOME.porClave[i.clave], u = JOME.precioUnitario(p, i.qty), tr = JOME.tramo(i.qty);
+      return '<div class="ci"><img src="' + p.cut + '" alt="" style="--c:' + field(p.campo) + '"><div><h4>' + esc(p.nombre) + '</h4><div class="m">' + esc(p.roles.map(function (r) { return colorName(r, i.colors[r], p); }).join(', ')) + '</div><div class="m num">' + JOME.fmt(u) + ' por pieza' + (tr.factor < 1 ? ', precio por volumen' : '') + '</div>' +
+        '<div class="r2"><div class="qty"><button type="button" data-dec="' + k + '" aria-label="Quitar una pieza">−</button><input type="number" min="1" value="' + i.qty + '" data-q="' + k + '" aria-label="Cantidad de ' + esc(p.nombre) + '"><button type="button" data-inc="' + k + '" aria-label="Agregar una pieza">+</button></div><button class="tlink" type="button" data-rm="' + k + '">Quitar</button></div></div><div class="lt">' + JOME.fmt(u * i.qty) + '</div></div>';
+    }).join('');
+    var e = t.env;
+    $('#totals').innerHTML = '<div class="field"><label for="cartCp">Código postal de entrega</label><div class="cp-row"><input id="cartCp" type="text" inputmode="numeric" maxlength="5" value="' + esc(cp) + '" placeholder="44100"><button class="btn dark" type="button" id="cartCpBtn" style="min-height:46px">Calcular</button></div></div>' +
+      '<div class="trow"><span>Subtotal, ' + t.pcs + ' piezas</span><span>' + JOME.fmt(t.sub) + '</span></div>' +
+      '<div class="trow"><span>Envío' + (e ? ' a ' + esc(e.estado) : '') + '</span><span>' + (e ? (e.costo ? JOME.fmt(e.costo) : 'Sin costo') : 'Falta tu código postal') + '</span></div>' +
+      '<div class="trow big"><span>Total</span><span>' + JOME.fmt(t.total) + '</span></div>' +
+      '<div class="trow muted" style="font-size:var(--step-small)"><span>Incluye IVA de</span><span>' + JOME.fmtCent(Math.round(t.total / 1.16 * 0.16 * 100) / 100) + '</span></div>' +
+      '<button class="btn" type="button" id="checkout" style="width:100%"' + (e ? '' : ' disabled') + '>Pagar</button>';
+    $$('[data-inc]', $('#items')).forEach(function (b) { b.onclick = function () { cart[+b.dataset.inc].qty++; saveCart(); }; });
+    $$('[data-dec]', $('#items')).forEach(function (b) { b.onclick = function () { var i = cart[+b.dataset.dec]; i.qty = Math.max(1, i.qty - 1); saveCart(); }; });
+    $$('[data-q]', $('#items')).forEach(function (inp) { inp.onchange = function () { cart[+inp.dataset.q].qty = Math.max(1, parseInt(inp.value, 10) || 1); saveCart(); }; });
+    $$('[data-rm]', $('#items')).forEach(function (b) { b.onclick = function () { cart.splice(+b.dataset.rm, 1); saveCart(); }; });
+    function setCp() { var v = $('#cartCp').value.trim(); if (!JOME.estadoDeCP(v)) { toast('Revisa el código postal: son 5 dígitos.'); return; } cp = v; store('jomeA.cp', cp); paintCart(); }
+    $('#cartCpBtn').onclick = setCp; $('#cartCp').onkeydown = function (ev) { if (ev.key === 'Enter') setCp(); };
+    $('#checkout').onclick = function () { if (!session) askLogin('Inicia sesión para pagar. Así guardamos tu pedido y tus datos de factura.', openPay); else openPay(); };
+  }
+  function openDrawer() { paintCart(); $('#scrim').hidden = false; $('#drawer').hidden = false; $('#drawerClose').focus(); }
+  function closeDrawer() { $('#scrim').hidden = true; $('#drawer').hidden = true; }
+  $('#cartBtn').addEventListener('click', openDrawer);
+  $('#drawerClose').addEventListener('click', closeDrawer);
+  $('#scrim').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('#drawer').hidden) closeDrawer(); });
+  paintCart();
+
+  function openPay() {
+    closeDrawer();
+    var t = totals();
+    $('#payBody').innerHTML = '<form id="payForm" style="display:grid;gap:16px" novalidate><div class="fields">' +
+      '<div class="field full"><label for="pNom">Nombre de quien recibe</label><input id="pNom" type="text" autocomplete="name"></div>' +
+      '<div class="field"><label for="pTel">Teléfono</label><input id="pTel" type="tel" autocomplete="tel"></div>' +
+      '<div class="field"><label for="pCp">Código postal</label><input id="pCp" type="text" value="' + esc(cp) + '" readonly></div>' +
+      '<div class="field full"><label for="pDir">Calle, número y colonia</label><input id="pDir" type="text" autocomplete="street-address"></div>' +
+      '<div class="field full"><label style="display:flex;gap:10px;align-items:center;color:var(--ink)"><input type="checkbox" id="pFac" style="width:18px;height:18px;min-height:0;accent-color:var(--ink)"> Necesito factura</label></div>' +
+      '<div class="field" data-fac hidden><label for="pRfc">RFC</label><input id="pRfc" type="text" maxlength="13" style="text-transform:uppercase"></div>' +
+      '<div class="field" data-fac hidden><label for="pUso">Uso del CFDI</label><select id="pUso"><option>G03 Gastos en general</option><option>I02 Mobiliario y equipo de oficina</option></select></div>' +
+      '</div><div class="pay-opt"><label><input type="radio" name="pm" value="mp" checked><span><b>Mercado Pago</b><small>Tarjeta, efectivo en OXXO o meses.</small></span></label><label><input type="radio" name="pm" value="spei"><span><b>Transferencia SPEI</b><small>El pedido entra a producción al reflejarse el pago.</small></span></label></div>' +
+      '<div class="trow big"><span>Total</span><span>' + JOME.fmt(t.total) + '</span></div><p class="errline" id="pErr" hidden></p><button class="btn" type="submit" id="pGo">Continuar a Mercado Pago</button><p class="note">Borrador: no se cobra nada. En la versión final este botón abre el pago de Mercado Pago.</p></form>';
+    $('#payDlg').showModal();
+    $('#pFac').onchange = function () { $$('[data-fac]').forEach(function (f) { f.hidden = !$('#pFac').checked; }); };
+    $$('input[name="pm"]').forEach(function (r) { r.onchange = function () { $('#pGo').textContent = r.value === 'mp' ? 'Continuar a Mercado Pago' : 'Confirmar pedido'; }; });
+    $('#payForm').onsubmit = function (ev) {
+      ev.preventDefault();
+      var miss = []; if (!$('#pNom').value.trim()) miss.push('nombre'); if (!$('#pTel').value.trim()) miss.push('teléfono'); if (!$('#pDir').value.trim()) miss.push('dirección');
+      if ($('#pFac').checked && !/^[A-ZÑ&]{3,4}\d{6}[A-Z0-9]{3}$/i.test($('#pRfc').value.trim())) miss.push('un RFC válido');
+      if (miss.length) { $('#pErr').textContent = 'Falta: ' + miss.join(', ') + '.'; $('#pErr').hidden = false; return; }
+      var mp = $('input[name="pm"]:checked').value === 'mp';
+      $('#payBody').innerHTML = '<div style="text-align:center;padding:24px 0"><div class="spin" role="progressbar" aria-label="Procesando"></div><p>' + (mp ? 'Conectando con Mercado Pago…' : 'Registrando tu pedido…') + '</p></div>';
+      setTimeout(function () {
+        var folio = 'JOME-A-' + (10400 + Math.floor(Math.random() * 500));
+        $('#payBody').innerHTML = '<div class="okbox"><b>Pedido ' + folio + ' confirmado.</b><br>' + (mp ? 'Pago de prueba aprobado por ' + JOME.fmt(t.total) + '.' : 'Te enviamos la CLABE para transferir ' + JOME.fmt(t.total) + '.') + ' Entrega estimada: ' + esc(t.env.dias) + '.</div><button class="btn dark" type="button" id="payDone">Seguir viendo</button>';
+        $('#payDone').onclick = function () { $('#payDlg').close(); };
+        cart = []; saveCart();
+      }, 1600);
+    };
+  }
+
+  /* Configurador (escaparate) */
+  var cfgSizes = ['ESC-120', 'ESC-150', 'ESC-180'];
+  var cfg = { clave: 'ESC-150', cubierta: 'nogal', base: 'negro' };
+  var cfgV = null;
+  function cfgColors() { return JOME3D.colorsFor(JOME.porClave[cfg.clave], { cubierta: cfg.cubierta, base: cfg.base }); }
+  function mountCfg() {
+    if (cfgV) return;
+    if (has3d) cfgV = JOME3D.mount($('#cfgStage'), { label: 'Escritorio en 3D; arrástralo para girarlo', onInteract: function () { $('#cfgHint').style.opacity = 0; } });
+    if (cfgV) { cfgV.set(JOME.porClave[cfg.clave].modelo, cfgColors()); return; }
+    if (!$('#cfgStage img')) { var i = new Image(); i.className = 'fallback'; i.src = '../../img/cut-escritorio-recto.webp'; i.alt = 'Escritorio recto'; $('#cfgStage').appendChild(i); $('#cfgHint').hidden = true; }
+  }
+  function paintCfg(rebuild) {
+    var p = JOME.porClave[cfg.clave];
+    $('#cfgSizes').innerHTML = cfgSizes.map(function (k) { return '<button type="button" aria-pressed="' + (k === cfg.clave) + '" data-k="' + k + '">' + JOME.porClave[k].medidas[0] + ' cm</button>'; }).join('');
+    $('#cfgTop').innerHTML = Object.keys(JOME.colores).map(function (id) { return '<button type="button" ' + swatch(p, 'cubierta', id) + ' aria-pressed="' + (id === cfg.cubierta) + '" aria-label="Cubierta ' + JOME.colores[id].nombre + '" data-c="' + id + '"></button>'; }).join('');
+    $('#cfgBase').innerHTML = Object.keys(JOME.bases).map(function (id) { return '<button type="button" ' + swatch(p, 'base', id) + ' aria-pressed="' + (id === cfg.base) + '" aria-label="Base ' + JOME.bases[id].nombre + '" data-b="' + id + '"></button>'; }).join('');
+    $('#cubName').textContent = JOME.colores[cfg.cubierta].nombre; $('#baseName').textContent = JOME.bases[cfg.base].nombre;
+    $('#cfgPrice').innerHTML = JOME.fmt(p.precio) + '<small>Con IVA. ' + p.medidas.join(' × ') + ' cm</small>';
+    $('#cfgName').textContent = p.nombre; $('#cfgDims').textContent = p.medidas.join(' × ') + ' cm';
+    $$('#cfgSizes button').forEach(function (b) { b.onclick = function () { cfg.clave = b.dataset.k; paintCfg(true); }; });
+    $$('#cfgTop button').forEach(function (b) { b.onclick = function () { cfg.cubierta = b.dataset.c; paintCfg(true); }; });
+    $$('#cfgBase button').forEach(function (b) { b.onclick = function () { cfg.base = b.dataset.b; paintCfg(true); }; });
+    if (rebuild && cfgV) cfgV.set(p.modelo, cfgColors());
+  }
+  paintCfg(false);
+  if (window.IntersectionObserver) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { mountCfg(); o.disconnect(); } }, { rootMargin: '300px 0px' }).observe($('#cfgStage'));
+  else mountCfg();
+  $('#cfgAdd').onclick = function () { addToCart(JOME.porClave[cfg.clave], cfgColors(), 1); };
+
+  /* Lockers: el más vendido, en 3D con sus colores de pintura */
+  var lkSizes = ['LOC-3', 'LOC-6', 'LOC-12', 'LOC-R'];
+  var lkNames = { 'LOC-3': '3 puertas', 'LOC-6': '6 puertas', 'LOC-12': '12 puertas', 'LOC-R': 'Ropero' };
+  var lk = { clave: 'LOC-6', cuerpo: 'grisclaro', puertas: 'grisclaro' }, lkV = null;
+  function lkColors() { return JOME3D.colorsFor(JOME.porClave[lk.clave], { cuerpo: lk.cuerpo, puertas: lk.puertas }); }
+  function mountLk() {
+    if (lkV) return;
+    if (has3d) lkV = JOME3D.mount($('#lkStage'), { label: 'Locker en 3D; arrástralo para girarlo', yaw: 0.5, onInteract: function () { $('#lkHint').style.opacity = 0; } });
+    if (lkV) { lkV.set(JOME.porClave[lk.clave].modelo, lkColors()); return; }
+    if (!$('#lkStage img')) { var i = new Image(); i.className = 'fallback'; i.src = JOME.porClave[lk.clave].cut; i.alt = JOME.porClave[lk.clave].nombre; $('#lkStage').appendChild(i); $('#lkHint').hidden = true; }
+  }
+  function paintLk(rebuild) {
+    var p = JOME.porClave[lk.clave], ids = Object.keys(JOME.pinturas);
+    $('#lkSizes').innerHTML = lkSizes.map(function (k) { return '<button type="button" aria-pressed="' + (k === lk.clave) + '" data-k="' + k + '">' + lkNames[k] + '</button>'; }).join('');
+    $('#lkBody').innerHTML = ids.map(function (id) { return '<button type="button" ' + swatch(p, 'cuerpo', id) + ' aria-pressed="' + (id === lk.cuerpo) + '" aria-label="Cuerpo ' + JOME.pinturas[id].nombre + '" data-c="' + id + '"></button>'; }).join('');
+    $('#lkDoor').innerHTML = ids.map(function (id) { return '<button type="button" ' + swatch(p, 'puertas', id) + ' aria-pressed="' + (id === lk.puertas) + '" aria-label="Puertas ' + JOME.pinturas[id].nombre + '" data-d="' + id + '"></button>'; }).join('');
+    $('#lkCName').textContent = JOME.pinturas[lk.cuerpo].nombre; $('#lkPName').textContent = JOME.pinturas[lk.puertas].nombre;
+    $('#lkPrice').innerHTML = JOME.fmt(p.precio) + '<small>Con IVA. ' + p.medidas.join(' × ') + ' cm</small>';
+    $$('#lkSizes button').forEach(function (b) { b.onclick = function () { lk.clave = b.dataset.k; var d = JOME.porClave[lk.clave].defaults; if (lk.clave === 'LOC-R' || lk.clave === 'LOC-12') { lk.cuerpo = d.cuerpo; lk.puertas = d.puertas; } paintLk(true); }; });
+    $$('#lkBody button').forEach(function (b) { b.onclick = function () { lk.cuerpo = b.dataset.c; paintLk(true); }; });
+    $$('#lkDoor button').forEach(function (b) { b.onclick = function () { lk.puertas = b.dataset.d; paintLk(true); }; });
+    if (rebuild && lkV) lkV.set(p.modelo, lkColors());
+    if (rebuild && !lkV) { var im = $('#lkStage img'); if (im) { im.src = p.cut; im.alt = p.nombre; } }
+  }
+  paintLk(false);
+  if (window.IntersectionObserver) new IntersectionObserver(function (en, o) { if (en[0].isIntersecting) { mountLk(); o.disconnect(); } }, { rootMargin: '300px 0px' }).observe($('#lkStage'));
+  else mountLk();
+  $('#lkAdd').onclick = function () { addToCart(JOME.porClave[lk.clave], lkColors(), 1); };
+
+  /* Las cuatro familias de lámina: llevan al catálogo ya filtrado */
+  var mf = [['lockers', 'LOC-6', 'nogal'], ['anaqueles', 'ANA-5L', 'campo'], ['racks', 'RAC-200', 'perla'], ['archiveros-metal', 'ARM-4C', 'roble']];
+  $('#mfams').innerHTML = mf.map(function (m, i) {
+    var f = JOME.familias.filter(function (x) { return x.id === m[0]; })[0], ps = JOME.productos.filter(function (p) { return p.familia === m[0]; });
+    var desde = Math.min.apply(null, ps.map(function (p) { return p.precio; }));
+    return '<button type="button" class="mfam" data-mf="' + m[0] + '" data-reveal style="--d:' + (i * 70) + 'ms"><span class="spec' + (m[2] === 'nogal' ? ' on-dark' : '') + '" style="--c:' + field(m[2]) + ';--ci:' + fieldInk(m[2]) + '"><img src="' + JOME.porClave[m[1]].cut + '" alt="" loading="lazy"></span><b>' + esc(f.nombre) + '</b><span>' + ps.length + (ps.length === 1 ? ' modelo' : ' modelos') + ', desde ' + JOME.fmt(desde) + '</span></button>';
+  }).join('');
+
+  /* Catálogo */
+  var fam = 'todos', dobles = { 'ESC-150': 1, 'EST-4': 1 };
+  var cortos = { 'lockers': 'Lockers', 'anaqueles': 'Anaqueles', 'racks': 'Racks', 'archiveros-metal': 'Archiveros metálicos', 'gabinetes': 'Gabinetes', 'escritorios': 'Escritorios', 'escritorios-l': 'En L', 'juntas': 'Juntas', 'estaciones': 'Estaciones', 'libreros': 'Libreros', 'archiveros': 'Archiveros', 'cocinetas': 'Cocinetas' };
+  function paintFilters() {
+    var counts = {}; JOME.productos.forEach(function (p) { counts[p.familia] = (counts[p.familia] || 0) + 1; });
+    $('#filters').innerHTML = '<button type="button" data-f="todos" aria-pressed="' + (fam === 'todos') + '">Todo<span>' + JOME.productos.length + '</span></button>' +
+      JOME.familias.map(function (f) { return '<button type="button" data-f="' + f.id + '" aria-pressed="' + (fam === f.id) + '">' + cortos[f.id] + '<span>' + counts[f.id] + '</span></button>'; }).join('');
+    $$('#filters button').forEach(function (b) { b.onclick = function () { fam = b.dataset.f; paintFilters(); paintCatalog(); }; });
+  }
+  function paintCatalog() {
+    var list = JOME.productos.filter(function (p) { return fam === 'todos' || p.familia === fam; });
+    $('#specimens').innerHTML = list.map(function (p) {
+      var dbl = fam === 'todos' && dobles[p.clave];
+      return '<article class="item' + (dbl ? ' double' : '') + '"><button type="button" class="spec" style="--c:' + field(p.campo) + '" data-open="' + p.clave + '" aria-label="Ver ' + esc(p.nombre) + ' en 3D"><img src="' + p.cut + '" alt="' + esc(p.nombre) + '" loading="lazy"></button>' +
+        '<div class="meta"><h3>' + esc(p.nombre) + '</h3><span class="pr">' + JOME.fmt(p.precio) + '</span><span class="dims">' + p.medidas.join(' × ') + ' cm</span><button class="tlink add" type="button" data-add="' + p.clave + '">Agregar</button></div></article>';
+    }).join('');
+    bindOpen($('#specimens'));
+    $$('[data-add]', $('#specimens')).forEach(function (b) { b.onclick = function () { var p = JOME.porClave[b.dataset.add]; addToCart(p, JOME3D.colorsFor(p), 1); }; });
+  }
+  function bindOpen(root) { $$('[data-open]', root).forEach(function (b) { b.onclick = function () { openProduct(b.dataset.open); }; }); }
+  paintFilters(); paintCatalog(); bindOpen($('#heroCols'));
+  $$('[data-fam]').forEach(function (a) { a.addEventListener('click', function () { fam = a.dataset.fam; paintFilters(); paintCatalog(); }); });
+  $$('[data-mf]').forEach(function (b) { b.addEventListener('click', function () { fam = b.dataset.mf; paintFilters(); paintCatalog(); document.getElementById('catalogo').scrollIntoView(); }); });
+
+  /* Ficha de producto */
+  var pdV = null, pd = null;
+  function openProduct(clave) {
+    var p = JOME.porClave[clave];
+    pd = { p: p, colors: JOME3D.colorsFor(p), qty: 1 };
+    $('#pdName').textContent = p.nombre; $('#pdClave').textContent = 'Clave ' + p.clave;
+    $('#pdDims').textContent = p.medidas.join(' × ') + ' cm, ancho × fondo × alto';
+    $('#pdSpecs').innerHTML = p.specs.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('');
+    $('#pdEntrega').textContent = 'Entrega: ' + p.entrega;
+    $('#pdImg').src = p.foto; $('#pdImg').alt = p.nombre;
+    $('#pdMedia').style.setProperty('--c', field(p.campo));
+    $('#pdQty').value = 1;
+    setTab(has3d ? '3d' : 'ph');
+    $('#pdDlg').showModal();
+    if (!pdV && has3d) pdV = JOME3D.mount($('#pdStage'), { label: p.nombre + ' en 3D', wheelZoom: true });
+    if (!pdV) setTab('ph');
+    paintPd(true);
+  }
+  function paintPd(rebuild) {
+    var p = pd.p;
+    $('#pdRoles').innerHTML = p.roles.map(function (r) {
+      var ids = Object.keys(JOME.paleta(p, r)), cur = pd.colors[r];
+      return '<div><div class="ctl-name">' + JOME.roles[r] + ': ' + colorName(r, cur, p) + '</div><div class="swatches">' + ids.map(function (id) { return '<button type="button" ' + swatch(p, r, id) + ' aria-pressed="' + (id === cur) + '" aria-label="' + JOME.roles[r] + ' ' + colorName(r, id, p) + '" data-r="' + r + '" data-id="' + id + '"></button>'; }).join('') + '</div></div>';
+    }).join('');
+    $$('[data-r]', $('#pdRoles')).forEach(function (b) { b.onclick = function () { pd.colors[b.dataset.r] = b.dataset.id; if (pdV) setTab('3d'); paintPd(true); }; });
+    var q = pd.qty, u = JOME.precioUnitario(p, q), tr = JOME.tramo(q);
+    $('#pdTiers').innerHTML = JOME.tramos.map(function (t) { return '<div class="' + (t === tr ? 'on' : '') + '"><span>' + t.texto + '</span><span class="num">' + (t.cotizar ? 'Cotización especial' : JOME.fmt(Math.round(p.precio * t.factor)) + ' c/u') + '</span></div>'; }).join('');
+    $('#pdPrice').innerHTML = JOME.fmt(u * q) + '<small>' + (q > 1 ? q + ' piezas de ' + JOME.fmt(u) + '. ' : '') + 'Con IVA</small>';
+    if (rebuild && pdV) pdV.set(p.modelo, pd.colors);
+  }
+  function setTab(t) { var is3d = t === '3d' && has3d; $('#tab3d').setAttribute('aria-selected', is3d); $('#tabPh').setAttribute('aria-selected', !is3d); $('#pdStage').hidden = !is3d; $('#pdImg').hidden = is3d; }
+  $('#tab3d').onclick = function () { setTab('3d'); };
+  $('#tabPh').onclick = function () { setTab('ph'); };
+  $('#pdQty').onchange = function () { pd.qty = Math.max(1, parseInt($('#pdQty').value, 10) || 1); $('#pdQty').value = pd.qty; paintPd(false); };
+  $('#pdMinus').onclick = function () { pd.qty = Math.max(1, pd.qty - 1); $('#pdQty').value = pd.qty; paintPd(false); };
+  $('#pdPlus').onclick = function () { pd.qty++; $('#pdQty').value = pd.qty; paintPd(false); };
+  $('#pdAdd').onclick = function () { addToCart(pd.p, Object.assign({}, pd.colors), pd.qty, true); $('#pdDlg').close(); openDrawer(); };
+
+  /* Espacios: lista activa con foto fija */
+  var spaces = [
+    ['Vestidores de personal', 'Lockers desde $3,290', 'Lockers de 3, 6 y 12 puertas y roperos, con ventilas, portacandado y portaetiqueta. Se anclan al muro.', 'esp-lockers'],
+    ['Atención ciudadana', 'Escritorios desde $3,190', 'Escritorios en fila para ventanillas de servicio, con base tubular que aguanta el uso de todo el día.', 'esp-atencion'],
+    ['Direcciones', 'En L desde $8,490', 'Escritorio en L con cajonera, librero con puertas y archivero a juego, en nogal y grafito.', 'esp-direccion'],
+    ['Salas de juntas', 'Mesas desde $6,290', 'Mesas para 6, 8 y 10 personas con pasacables al centro. La de 10 lleva base de 2x2".', 'esp-sala-juntas'],
+    ['Archivo', 'Anaqueles desde $1,390', 'Anaqueles de 5 entrepaños para cajas de archivo y archiveros metálicos de 2 y 4 gavetas, carta u oficio.', 'esp-archivo-metal'],
+    ['Bodegas y almacenes', 'Racks desde $4,690', 'Racks de carga media de 150 y 200 cm, para 300 y 400 kg por nivel, y anaqueles esqueleto para cajas y refacciones.', 'esp-bodega'],
+    ['Oficina abierta', 'Estaciones desde $8,790', 'Estaciones de 2, 4 y 6 puestos con divisor de melamina. Crecen por módulos.', 'esp-oficina-abierta'],
+    ['Escuelas', 'Escritorios desde $3,190', 'Escritorios, libreros y mesas de trabajo para direcciones escolares y salas de maestros.', 'esp-escuela'],
+    ['Cocinetas', 'Desde $12,490', 'Cocinetas de 150 y 180 cm con tarja de acero inoxidable y alacenas para el área de café.', 'esp-cocineta'],
+    ['Home office', 'Escritorio 120, $3,190', 'El escritorio de 120 cm cabe en una recámara y lleva la misma base que el de una dependencia.', 'esp-home']
+  ];
+  $('#spPhoto').innerHTML = spaces.map(function (s, i) { return '<img src="../../img/' + s[3] + '-m.webp" alt="" loading="' + (i < 2 ? 'eager' : 'lazy') + '"' + (i === 0 ? ' class="on"' : '') + '>'; }).join('');
+  $('#spList').innerHTML = spaces.map(function (s, i) { return '<button type="button" class="row' + (i === 0 ? ' on' : '') + '" data-i="' + i + '" aria-expanded="' + (i === 0) + '"><span class="r1"><span class="nm">' + s[0] + '</span><span class="pv">' + s[1] + '</span></span><span class="ds"><span>' + s[2] + '</span></span></button>'; }).join('');
+  var spRows = $$('#spList .row'), spImgs = $$('#spPhoto img'), spCur = 0;
+  function spSet(i) { if (i === spCur || i < 0) return; spCur = i; spRows.forEach(function (r, k) { r.classList.toggle('on', k === i); r.setAttribute('aria-expanded', k === i); }); spImgs.forEach(function (im, k) { im.classList.toggle('on', k === i); }); }
+  spRows.forEach(function (r, i) { r.addEventListener('click', function () { spSet(i); }); r.addEventListener('focus', function () { spSet(i); }); if (window.matchMedia && matchMedia('(hover: hover)').matches) r.addEventListener('mouseenter', function () { spSet(i); }); });
+  if (window.IntersectionObserver) { var spIO = new IntersectionObserver(function (en) { en.forEach(function (e) { if (e.isIntersecting) spSet(spRows.indexOf(e.target)); }); }, { rootMargin: '-48% 0px -48% 0px' }); spRows.forEach(function (r) { spIO.observe(r); }); }
+
+  /* Recibo por partes */
+  var picks = [['LOC-6', 10], ['ESC-150', 10], ['ARM-4C', 4], ['RAC-200', 3], ['ANA-5L', 0]];
+  function paintPicks() {
+    $('#picks').innerHTML = picks.map(function (k, i) {
+      var p = JOME.porClave[k[0]];
+      return '<div class="pick"><img src="' + p.cut + '" alt="" style="--c:' + field(p.campo) + '"><div><b>' + esc(p.nombre) + '</b><small>' + JOME.fmt(p.precio) + ' c/u</small></div><div class="stepper"><button type="button" data-pm="' + i + '" aria-label="Quitar ' + esc(p.nombre) + '">−</button><output>' + k[1] + '</output><button type="button" data-pp="' + i + '" aria-label="Agregar ' + esc(p.nombre) + '">+</button></div></div>';
+    }).join('');
+    $$('[data-pm]').forEach(function (b) { b.onclick = function () { var k = picks[+b.dataset.pm]; k[1] = Math.max(0, k[1] - 1); paintPicks(); }; });
+    $$('[data-pp]').forEach(function (b) { b.onclick = function () { picks[+b.dataset.pp][1]++; paintPicks(); }; });
+    paintSlip();
+  }
+  var shownTotal = 0;
+  function paintSlip() {
+    var total = 0, rows = [], disc = 0;
+    picks.forEach(function (k) {
+      if (!k[1]) return; var p = JOME.porClave[k[0]], u = JOME.precioUnitario(p, k[1]);
+      total += u * k[1]; disc += (p.precio - u) * k[1];
+      rows.push('<div class="lr"><span>' + k[1] + ' × ' + esc(p.nombre) + '</span><span>' + JOME.fmt(p.precio * k[1]) + '</span></div>');
+    });
+    if (disc > 0) rows.push('<div class="lr disc"><span>Precio por volumen: 7 % menos en cada pieza desde 10 iguales</span><span>−' + JOME.fmt(disc) + '</span></div>');
+    else if (rows.length) rows.push('<div class="lr muted"><span>Desde 10 piezas iguales el precio baja 7 %; desde 50, cotización especial</span><span></span></div>');
+    if (!rows.length) rows.push('<div class="lr muted"><span>Agrega piezas con los botones de la izquierda para armar tu pedido</span><span></span></div>');
+    $('#slipLines').innerHTML = rows.join('');
+    rollTo(total);
+    $('#volAdd').disabled = total === 0;
+  }
+  function rollTo(target) {
+    var el = $('#slipTot'), from = shownTotal, t0 = performance.now(), dur = reduce ? 0 : 450;
+    function frame(now) { var k = dur ? Math.min(1, (now - t0) / dur) : 1; var v = from + (target - from) * (1 - Math.pow(1 - k, 3)); el.innerHTML = JOME.fmt(v) + '<small>Total con IVA</small>'; if (k < 1) requestAnimationFrame(frame); else shownTotal = target; }
+    requestAnimationFrame(frame);
+  }
+  paintPicks();
+  $('#volAdd').onclick = function () { var n = 0; picks.forEach(function (k) { if (k[1]) { var p = JOME.porClave[k[0]]; addToCart(p, JOME3D.colorsFor(p), k[1], true); n += k[1]; } }); openDrawer(); };
+
+  /* Cupón */
+  $('#cform').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (!$('#c3').value.trim() || !$('#c4').value.trim()) { $('#cerr').textContent = 'Escribe tu nombre y tu WhatsApp para poder responderte.'; return; }
+    $('#cerr').textContent = ''; $('#coupon').classList.add('sent'); ev.target.querySelector('.submit').disabled = true;
+  });
+
+  /* Aparición al entrar en pantalla, una sola vez */
+  if (window.IntersectionObserver && !reduce) {
+    var io = new IntersectionObserver(function (en) { en.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in'); io.unobserve(e.target);
+      if (e.target.classList.contains('lifted')) $$('[data-reveal="follow"]').forEach(function (f) { f.classList.add('in'); });
+    }); }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    $$('[data-reveal]:not([data-reveal="follow"])').forEach(function (el) { io.observe(el); });
+  } else $$('[data-reveal]').forEach(function (el) { el.classList.add('in'); });
+
+  /* Videos en bucle: solo corren mientras se ven */
+  if (!reduce && window.IntersectionObserver) {
+    var vio = new IntersectionObserver(function (en) { en.forEach(function (e) { var v = e.target; if (e.isIntersecting) { if (v.preload === 'none') v.preload = 'auto'; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else v.pause(); }); }, { threshold: 0.2 });
+    $$('video[data-auto]').forEach(function (v) { vio.observe(v); });
+  }
+})();
+</script>
+</body>
+</html>
